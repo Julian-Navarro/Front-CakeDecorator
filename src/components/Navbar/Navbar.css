@@ -1,0 +1,8 @@
+.containerNavbar {
+    background-color: rgba(0, 0, 255, 0.565);
+    box-shadow: 0 .3rem .8rem .2rem rgba(0, 0, 0, 0.521);
+    height: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

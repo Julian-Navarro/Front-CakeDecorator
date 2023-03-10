@@ -1,0 +1,1 @@
+export const GET_LISTS_FROM_DB = "GET_LISTS_FROM_DB";

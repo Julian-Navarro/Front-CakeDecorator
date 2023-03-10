@@ -1,0 +1,10 @@
+.formLogin {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+
+}
+.formLogin input {
+    width: 15%;
+    border-radius: .4rem;
+}
