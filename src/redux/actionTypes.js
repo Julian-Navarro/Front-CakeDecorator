@@ -1,0 +1,1 @@
+export const GET_COURSES_FROM_DB = "GET_COURSES_FROM_DB";
