@@ -9,11 +9,11 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Navbar from "./components/Navbar/Navbar";
 import CourseList from "./components/CourseLists/CourseLists.jsx";
-import MyAccount from "./components/MyAccount/MyAccount";
 
 function App() {
   return (
     <div>
+      <div className="App"></div>
       <Navbar />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
