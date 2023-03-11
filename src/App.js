@@ -1,25 +1,29 @@
-import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LandingPage from "./components/LandingPage/LandingPage";
-import Home from "./components/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
-import CoursesList from "./components/CourseLists/CourseLists";
+import React from "react";
+// import "./App.css";
+import {
+  Route,
+  Routes,
+} from "react-router-dom"; /*Switch se reemplaza ahora por Routes */
+import Home from "./components/Home/Home.jsx";
 import AboutUs from "./components/AboutUs/AboutUs";
-import MyAccount from "./components/MyAccount/MyAccount";
+import LandingPage from "./components/LandingPage/LandingPage";
+import Navbar from "./components/Navbar/Navbar";
+import CourseList from "./components/CourseLists/CourseLists.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <div>
       <div className="App"></div>
       <Navbar />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/home" element={<Home />} />
-        <Route path="/courses" element={<CoursesList />} />
-        <Route path="/aboutUs" element={<AboutUs />} />
-        <Route path="/myAccount" element={<MyAccount />} />
+        <Route exact path="/courses" element={<CourseList />} />
+        <Route exact path="/myAccount" element={<MyAccount />} />
+        <Route exact path="/aboutUs" element={<AboutUs />} />
+        {/* <Route exact path="/aboutUs" element={<AboutUs />} /> */}
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
 

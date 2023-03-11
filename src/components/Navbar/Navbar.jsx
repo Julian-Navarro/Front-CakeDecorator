@@ -9,6 +9,7 @@ export default function Navbar () {
             <Link to="/courses"><h3>Cursos</h3></Link>
             <Link to="/aboutUs"><h3>Nosotros</h3></Link>
             <Link to="/myAccount"><h3>Mi Cuenta</h3></Link>
+            <Link to="/"><h3>Log In</h3></Link>
         </div>
     )
 }
