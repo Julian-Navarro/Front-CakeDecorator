@@ -10,6 +10,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import Navbar from "./components/Navbar/Navbar";
 import CourseList from "./components/CourseLists/CourseLists.jsx";
 import MyAccount from "./components/MyAccount/MyAccount";
+import FormPostUser from "./components/Login/FormPostUser";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/courses" element={<CourseList />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
         <Route exact path="/aboutUs" element={<AboutUs />} />
+        <Route exact path="/createAccount" element={<FormPostUser />} />
         {/* <Route exact path="/aboutUs" element={<AboutUs />} /> */}
       </Routes>
     </div>
