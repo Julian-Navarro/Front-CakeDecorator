@@ -6,6 +6,7 @@ import { getCoursesFromDB } from "../../redux/actions";
 export default function CourseLists () {
     const dispatch = useDispatch()
     const courses = useSelector((state) => state.courses)
+    console.log("COURSES ",courses);
     
     useEffect(()=>{
       dispatch(getCoursesFromDB())  

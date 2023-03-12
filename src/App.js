@@ -9,6 +9,7 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Navbar from "./components/Navbar/Navbar";
 import CourseList from "./components/CourseLists/CourseLists.jsx";
+import MyAccount from "./components/MyAccount/MyAccount";
 
 function App() {
   return (
