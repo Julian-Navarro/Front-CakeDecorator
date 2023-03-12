@@ -1,7 +1,7 @@
 import React from "react";
-import Login from "../Login/FormLogin";
+import FormLogin from "../Login/FormLogin";
 import "./LandingPage.css"
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 // import s from "./Landing.module.css"
 
 export default function LandingPage () {
@@ -10,7 +10,8 @@ export default function LandingPage () {
             <div className="title">
                 <h1>Bienvenidos al Mundo Dulce De Marite!</h1>
             </div>
-            <Login/>
+            <FormLogin/>
+            <Link to="/createAccount"><span>Si no tienes cuenta, creala aquí</span></Link>
 
         </div>
     )
