@@ -19,6 +19,7 @@ export default function Login () {
             ...input,
             [e.target.name]: e.target.value
         })
+        
         console.log("INPUT: ", input);
     }
     async function validate() {
