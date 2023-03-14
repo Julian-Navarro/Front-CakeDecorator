@@ -1,15 +1,26 @@
 import React from "react";
 import "./Navbar.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar () {
+    const navigate = useNavigate();
+    function handlerNavigateMyAccount(e) {
+        e.preventDefault();
+        const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+        if(loggedUser !== null) {
+            navigate("/myAccount")
+        } else {
+            alert("Ingresa a tu cuenta")
+            navigate("/")
+        }
+    }
     return (
         <div className="containerNavbar">
             <Link to="/home"><h3>Home</h3></Link>
             <Link to="/courses"><h3>Cursos</h3></Link>
             <Link to="/aboutUs"><h3>Nosotros</h3></Link>
-            <Link to="/myAccount"><h3>Mi Cuenta</h3></Link>
-            <Link to="/"><h3>Log In</h3></Link>
+            <Link><h3 onClick={(e)=>handlerNavigateMyAccount(e)}>Mi cuenta</h3></Link>
+            <Link to="/"><h3>Log in</h3></Link>
         </div>
     )
 }

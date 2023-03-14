@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import "./App.css";
 import {
   Route,
@@ -13,12 +13,33 @@ import MyAccount from "./components/MyAccount/MyAccount";
 import FormPostUser from "./components/Login/FormPostUser";
 
 function App() {
+  console.log("APP LOG");
+  const [loggedUser, setLoggedUser] = useState(
+    JSON.parse(localStorage.getItem("loggedUser"))
+  );
+  const [loggedUserFlagApp, setLoggedUserFlagApp] = useState(false);
+  function handlerSetUserFlagApp() {
+    // e.preventDefault();
+    if (loggedUserFlagApp === false) {
+      setLoggedUserFlagApp(true);
+    } else {
+      setLoggedUserFlagApp(false);
+    }
+  }
+
+  useEffect(() => {}, [loggedUserFlagApp]);
   return (
     <div>
       <div className="App"></div>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route
+          exact
+          path="/"
+          element={
+            <LandingPage handlerSetUserFlagApp={handlerSetUserFlagApp} />
+          }
+        />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/courses" element={<CourseList />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
