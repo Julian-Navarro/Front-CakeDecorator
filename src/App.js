@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/Navbar";
 import CourseList from "./components/CourseLists/CourseLists.jsx";
 import MyAccount from "./components/MyAccount/MyAccount";
 import FormPostUser from "./components/Login/FormPostUser";
+import DashboardAdmin from "./components/DashboardAdmin/Dashboard/DashboardAdmin.jsx";
 
 function App() {
   console.log("APP LOG");
@@ -41,11 +42,15 @@ function App() {
           }
         />
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/courses" element={<CourseList />} />
+        <Route exact path="/courses" element={<CourseList path={false} />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
         <Route exact path="/aboutUs" element={<AboutUs />} />
         <Route exact path="/createAccount" element={<FormPostUser />} />
-        {/* <Route exact path="/aboutUs" element={<AboutUs />} /> */}
+        {loggedUser !== null ? (
+          loggedUser.role === "admin" ? (
+            <Route exact path="/dashboardAdmin" element={<DashboardAdmin />} />
+          ) : null
+        ) : null}
       </Routes>
     </div>
   );

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { HOST } from "../utils";
-import { GET_COURSES_FROM_DB, POST_USER } from "./actionTypes";
+import { GET_COURSES_FROM_DB, GET_USERS } from "./actionTypes";
 
 export function getCoursesFromDB() {
   return async function (dispatch) {
@@ -16,18 +16,16 @@ export function getCoursesFromDB() {
   };
 }
 
-// export function postUser(input) {
-//   return async function (dispatch) {
-//     try {
-//       input.role = "user";
-//       console.log("ACTION INPUT: ",input);
-//       dispatch({
-//         type: POST_USER,
-//         payload: input
-//       })
-
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-// }
+export function getUsers() {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get(`${HOST}/users`);
+      dispatch({
+        type: GET_USERS,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
