@@ -1,0 +1,48 @@
+.userCard {
+    background-color: rgb(255, 163, 140);
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    padding: 0px 10px 0px 10px;
+}
+.userCardTitles{
+    background-color: rgb(212, 79, 46);
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    padding: 0px 5% 0px 10px;
+}
+.userP {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgba(0, 255, 255, 0.541);
+    width: 200px;
+}
+.userCardDiv p{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times NewRoman', serif;
+    background-color: rgba(0, 255, 255, 0.541);
+    width: 200px;
+    /* background-color: blue; */
+}
+.userCardDiv {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    background-color: aqua;
+}
+.btnStatusContainer {
+    display: flex;
+    justify-content: space-around;
+    background-color: bisque;
+}
+
+.btnStatus {
+    border: none;
+    width: 120px;
+    height: 30px;
+    border-radius: 20px;
+}
+.btnStatus:hover{
+    cursor: pointer;
+    background-color: orange;
+    transition: .3s;
+}

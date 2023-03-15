@@ -1,0 +1,25 @@
+.divContainer {
+    background-color: rgba(0, 0, 255, 0.24);
+    width: 100%;
+    display: flex;
+
+}
+.divDashboardLeftContainer {
+    background-color: gray;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+}
+.divDashboardLeftContainer  button{
+    background-color: rgb(202, 28, 28);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    font-size: 22px;
+    cursor: pointer;
+}
+.divDashboardRightContainer {
+    width: 85%;
+    background-color: rgba(255, 0, 0, 0.196);
+}
