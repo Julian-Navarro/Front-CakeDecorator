@@ -37,7 +37,7 @@ export default function Users () {
 
     return (
         <div>
-            <div>
+            <div className={s.userProfileCard}>
               {
               user !== false
                 ? <UserProfileCard user={user}/>
