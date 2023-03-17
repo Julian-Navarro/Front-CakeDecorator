@@ -51,6 +51,7 @@ export default function FormCoursePostAndEdit({ update, course }) {
             : <h1>Crea un nuevo curso</h1> 
           }
 
+
           <form>
             <div>
               <label htmlFor="">Titulo: </label>
