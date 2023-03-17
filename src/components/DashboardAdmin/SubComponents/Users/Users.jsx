@@ -11,8 +11,19 @@ export default function Users () {
 
   const dispatch = useDispatch()
   const allUsers = useSelector((state) => state.users)
+  const [users, setUsers] = useState(allUsers)
+  // let users = allUsers
   const [user, setUser] = useState(false)
-  
+  const [flag, setFlag] = useState(false)
+
+  function handlerSetFlag() {
+    if(flag) {
+      setFlag(false)
+    } else {
+      setFlag(true)
+    }
+  }
+
   function handlerViewUser(e, user) {
     e.preventDefault()
     setUser(user)
@@ -24,20 +35,52 @@ export default function Users () {
       alert("No puedes bloquear a un administrador")
     } else if(user.status === "active") {
       await axios.put(`${HOST}/users/block?id=${user.id}`, {status: "banned"})
+      handlerSetFlag()
+      handlerViewUser(e, {...user, status: "banned"})
       alert(`Bloqueaste al usuario ${user.name} ${user.surname}`)
     } else {
       await axios.put(`${HOST}/users/block?id=${user.id}`, {status: "active"})
+      handlerSetFlag()
+      handlerViewUser(e, {...user, status: "active"})
       alert(`Desbloqueaste al usuario ${user.name} ${user.surname}`)
     }
   }
 
   useEffect(()=>{
+    console.log("Rendering USER.JSX");
     dispatch(getUsers())
-  },[allUsers])
+  },[flag])
 
+
+const [searchValue, setSearchValue] = useState({es:"email", en: "email"})
+function handlerSetSearchValue (e) {
+  e.preventDefault();
+  if(searchValue.es === "email") {
+    setSearchValue({es:"apellido", en: "surname"})
+  } else {
+    setSearchValue({es:"email", en: "email"})
+  }
+}
+const [inputValue, setInputValue] = useState("")
+function handlerSearchValue(e) {
+  e.preventDefault();
+  const newUsers = allUsers.filter((user) => user[searchValue.en].toLowerCase().includes(inputValue.toLowerCase()))
+  setUsers(newUsers)
+  handlerSetFlag()
+// console.log("ALL USERS", allUsers.length);
+//   console.log("USERS: ", users.length);
+}
     return (
         <div>
+          <h1>USER COMP</h1>
+        
             <div className={s.userProfileCard}>
+              <div>
+                <button onClick={(e)=>{handlerSetSearchValue(e)}}>Cambiar modo de búsqueda</button>
+                <label htmlFor="">{`Búsqueda por ${searchValue.es}: `}</label>
+                <input onChange={(e)=> {setInputValue(e.target.value); console.log("INPUT VALUE",inputValue);} } type="text" />
+                <button onClick={(e)=>{handlerSearchValue(e)}}>Buscar</button>
+              </div>
               {
               user !== false
                 ? <UserProfileCard user={user}/>
@@ -53,7 +96,7 @@ export default function Users () {
               <p className={s.userP}>Estado</p>
             </div>
             {
-              allUsers.length > 0 ? allUsers.map((user) => {
+              users.length > 0 ? users.map((user) => {
                 return (
                     <div key={user.id} className={s.userCard}>
                         <p className={s.userP}>{user.name} {user.surname}</p>

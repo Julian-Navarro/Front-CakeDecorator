@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./CourseListCard.css"
 
-export default function CourseListCard ({ course, path, type, category, description, id, img, price, title, videos }) {
-    
-    function handlerEditCourse(e) {
-        e.preventDefault();
-        console.log(course);
-    }
+export default function CourseListCard ({ course, handlerEditCourse, path, type, category, description, id, img, price, title, videos }) {
+
+
     return (
         <div className="divContainerCard">
+            
             <h3 className="cardTitle">{title}</h3>
             <img src={img} alt="img not found" />    
             <div className="divCardH4">
@@ -19,8 +17,8 @@ export default function CourseListCard ({ course, path, type, category, descript
             <div className="divCardButtons">
                 <button>Ver Detalles</button>
                 {
-                  path === "adm"
-                  ?<button onClick={(e)=>{handlerEditCourse(e)}}>Editar</button>
+                path === "adm"
+                  ?<button onClick={(e)=>{handlerEditCourse(e, course)}}>Editar</button>
                   :<button>Comprar Curso</button>
                 }
             </div>

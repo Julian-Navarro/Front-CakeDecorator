@@ -26,7 +26,7 @@ export default function DashboardAdmin () {
 
               </div>
               <div className={s.divDashboardRightContainer}>
-                <h2>Container List</h2>
+                <h2>Container List COMP DASHBOARD</h2>
                 {
                     render === false ? <h2>Elige una opcion</h2> : null
                 }
