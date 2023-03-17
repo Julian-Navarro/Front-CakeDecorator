@@ -53,6 +53,7 @@ export default function FormCoursePostAndEdit({ update, course }) {
 
 
 
+
           <form>
             <div>
               <label htmlFor="">Titulo: </label>
