@@ -10,6 +10,7 @@ export default function FormCoursePostAndEdit({ update, course }) {
         type: "",
         videos: [],
     });
+    
     function handlerSetInputUpdate() {
         setInput({...course})
     }
