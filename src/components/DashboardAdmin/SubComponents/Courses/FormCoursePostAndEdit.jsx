@@ -84,6 +84,7 @@ export default function FormCoursePostAndEdit({ update, course, handlerEditCours
               </select>
             </div>
             <div>
+              <h1>HOLA PUSH</h1>
               <label htmlFor="">Descripción: </label>
               <input name="description" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.description}/>
             </div>
