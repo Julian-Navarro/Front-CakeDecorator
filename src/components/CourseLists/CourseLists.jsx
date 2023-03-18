@@ -7,11 +7,10 @@ import FormCoursePostAndEdit from "../DashboardAdmin/SubComponents/Courses/FormC
 export default function CourseLists ({ path }) {
     const dispatch = useDispatch()
     const courses = useSelector((state) => state.courses)
-    //! *****************************************
     const [createCourseFlag, setCreateCourseFlag] = useState(false);
-
     const [editFlag, setEditFlag] = useState(false)
     const [courseToEdit, setCourseToEdit] = useState(false)
+
     function handlerSetEditFlag() {
         if(editFlag) {
             setEditFlag(false)
@@ -23,9 +22,14 @@ export default function CourseLists ({ path }) {
     function handlerEditCourse(e, course) {
         e.preventDefault();
         handlerSetEditFlag()
-        setCourseToEdit({...course})
-        setCreateCourseFlag(false)
-        console.log("COURSE TO EDIT: ", courseToEdit);
+        console.log(editFlag);
+        if(course !== undefined) {
+            setCourseToEdit({...course})
+            setCreateCourseFlag(false)
+        } else {
+            setCourseToEdit(false)
+            setCreateCourseFlag(false)            
+        }
     }
 
     function handlerSetCreateCourseFlag(e) {
@@ -52,13 +56,13 @@ export default function CourseLists ({ path }) {
             {path==="adm" ? <button onClick={(e)=>{handlerSetCreateCourseFlag(e)}}>{createCourseFlag? "Cerrar Formulario":"Crear Nuevo Curso"}</button>:null}
             {
                 courseToEdit !== false
-                ? <FormCoursePostAndEdit update={true} course={courseToEdit}/>
+                ? <FormCoursePostAndEdit update={true} course={courseToEdit} handlerEditCourse={handlerEditCourse}/>
                 : null
             }
             {
                 //! CASO HAY QUE CREAR UN CURSO Y NO EDITARLO
                 createCourseFlag === true
-                ? <FormCoursePostAndEdit/>
+                ? <FormCoursePostAndEdit />
                 : null
             }
 

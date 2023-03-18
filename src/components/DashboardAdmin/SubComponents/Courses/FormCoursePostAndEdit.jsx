@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function FormCoursePostAndEdit({ update, course }) {
+export default function FormCoursePostAndEdit({ update, course, handlerEditCourse}) {
     const [input, setInput] = useState({
         category: "",
         description: "",
@@ -12,7 +12,7 @@ export default function FormCoursePostAndEdit({ update, course }) {
     });
     function handlerSetInputUpdate() {
         setInput({...course})
-    }
+    };
     function handlerSetInput(e){
         e.preventDefault();
         if(e.target.value !== "default") {
@@ -31,7 +31,7 @@ export default function FormCoursePostAndEdit({ update, course }) {
    
     function handlerPostOrEdit(e) {
         e.preventDefault();
-        if(e.target.value === undefined) {
+        if(e.target.value === "true") {
             console.log("EDIT: ", e.target.value);
         } else {
             console.log("POST: ", e.target.value);
@@ -50,10 +50,6 @@ export default function FormCoursePostAndEdit({ update, course }) {
             ? <h1>Edita el curso</h1> 
             : <h1>Crea un nuevo curso</h1> 
           }
-
-
-
-
 
           <form>
             <div>
@@ -93,12 +89,14 @@ export default function FormCoursePostAndEdit({ update, course }) {
             </div>
             {
             update 
-              ? <button  value={update} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} >Guardar</button>
-              : <button  value={update} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} >Crear</button> 
-              }
+            ? <div>
+                <button value={true} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} >Guardar</button>
+                <button onClick={(e)=>{handlerEditCourse(e)}}>Cerrar edición</button>
+              </div>
+            : <button value={false} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} >Crear</button> 
+            }
           </form>
 
         </div>
     )
 }
-   
