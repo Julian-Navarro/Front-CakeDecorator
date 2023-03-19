@@ -36,15 +36,6 @@ const [input, setInput] = useState({
     confirmPassword: ""
 })
 
-// var errors = {
-//     email: "",
-//     name: "",
-//     surname: "",
-//     phone: "",
-//     password: "",
-//     confirmPassword: "",
-// }
-
 function handlerChange (e) {
     e.preventDefault();
     setInput({
@@ -154,7 +145,7 @@ useEffect(()=>{
     // validate()
 },[])
     return (
-        <div>
+        <div >
             <h1>
             FORM POST USER
             </h1>

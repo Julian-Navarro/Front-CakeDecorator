@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HOST } from "../../../../utils";
-export default function FormCoursePostAndEdit({ handlerSetComponentFlag, update, course, handlerEditCourse}) {
+export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFlag, update, course, handlerEditCourse}) {
   //! ↓↓↓↓↓↓↓↓↓↓↓  *HANDLERS QUE ABREN LOS FORMS Y SETEAN EL CURSO EN CASO DE EDICIÓN* ↓↓↓↓↓↓↓↓↓↓↓
     const [input, setInput] = useState({
       category: "",
@@ -10,7 +10,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentFlag, update,
       price: "",
       img: "",
       type: "",
-      videos: [],
+      videos: [1],//! El 1 es para que tenga algo y la validacion del formulario no se queje
     });
     const [errors, setErrors] = useState({
       category: "",
@@ -65,11 +65,11 @@ export default function FormCoursePostAndEdit({ handlerSetComponentFlag, update,
                 handlerSetFormFlag()
                console.log("CASO NO HAY ERRORES");
                axios.put(`${HOST}/courses?id=${course.id}`, input)
-               handlerSetComponentFlag()
+               handlerSetComponentCourseListFlag()
                alert("Curso editado con éxito")
               } else {
-                handlerSetFormFlag()
-                alert("Falta llenar algun campo")
+               handlerSetFormFlag()
+               alert("Falta llenar algun campo")
             }
         } else {
             console.log("POST: ", e.target.value);
@@ -82,7 +82,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentFlag, update,
                 handlerSetFormFlag()
                console.log("CASO NO HAY ERRORES");
                axios.post(`${HOST}/courses`, input)
-               handlerSetComponentFlag()
+               handlerSetComponentCourseListFlag()
                alert("Curso creado con éxito")
               } else {
                 handlerSetFormFlag()
@@ -131,11 +131,11 @@ export default function FormCoursePostAndEdit({ handlerSetComponentFlag, update,
       } else {
         errors.type = ""
       }
-      if(input.videos.length === 0) {
-        errors.videos = "Debes cargar uno o mas videos"
-      } else {
-        errors.videos = ""
-      }
+      // if(input.videos.length === 0) {                  //! ACÁ LA VALIDACION PARA LOS VIDEOS                              
+      //   errors.videos = "Debes cargar uno o mas videos"
+      // } else {                                         //! ACÁ LA VALIDACION PARA LOS VIDEOS      
+      //   errors.videos = ""                             //! ACÁ LA VALIDACION PARA LOS VIDEOS                  
+      // }                                                //! ACÁ LA VALIDACION PARA LOS VIDEOS
       console.log("ERRORS: ", errors);
     }
 
