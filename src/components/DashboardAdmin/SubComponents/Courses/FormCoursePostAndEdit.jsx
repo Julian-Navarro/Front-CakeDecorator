@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HOST } from "../../../../utils";
+import { Div, Form, DivContainer, FormInput, Label, Select, Option, PDanger, Button, DivButtons, H1 } from "../../../../utils/StyledComponents/StyledForm";
+
 export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFlag, update, course, handlerEditCourse}) {
   //! ↓↓↓↓↓↓↓↓↓↓↓  *HANDLERS QUE ABREN LOS FORMS Y SETEAN EL CURSO EN CASO DE EDICIÓN* ↓↓↓↓↓↓↓↓↓↓↓
     const [input, setInput] = useState({
@@ -74,11 +76,12 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
         } else {
             console.log("POST: ", e.target.value);
             if(errors.category === "" && 
-               errors.category === "" && 
-               errors.category === "" && 
-               errors.category === "" && 
-               errors.category === "" && 
-               errors.category === "") {
+               errors.description === "" && 
+               errors.img === "" && 
+               errors.price === "" && 
+               errors.title === "" && 
+               errors.videos === "" &&
+               errors.type === "") {
                 handlerSetFormFlag()
                console.log("CASO NO HAY ERRORES");
                axios.post(`${HOST}/courses`, input)
@@ -138,71 +141,89 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
       // }                                                //! ACÁ LA VALIDACION PARA LOS VIDEOS
       console.log("ERRORS: ", errors);
     }
+    const colorSelect = input.category === "" ? "blue" : "#161616";
+    const colorBorderInputTitle = errors.title !== "" ? "red" : "black";
+    const colorBorderInputCategory = errors.category !== "" ? "red" : "black";
+    const colorBorderInputType = errors.type !== "" ? "red" : "black";
+    const colorBorderInputVideos = errors.videos !== "" ? "red" : "black";
+    const colorBorderInputDescription = errors.description !== "" ? "red" : "black";
+    const colorBorderInputPrice = errors.price !== "" ? "red" : "black";
+    const colorBorderInputImg = errors.img !== "" ? "red" : "black";
+
 
     useEffect(()=>{
       console.log("RENDERING");
+      console.log("COLOR TITLE BORDER: ", colorBorderInputTitle);
     }, [formFlag])
-    return (
-        <div>
-          {
-          update 
-            ? <h1>Edita el curso</h1> 
-            : <h1>Crea un nuevo curso</h1> 
-          }
 
-          <form>
-            <div>
-              <label htmlFor="">Titulo: </label>
-              <input name="title" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.title}/>
-            </div>
-            <p>{errors.title}</p>
-            <div>
-              <label htmlFor="">Precio: </label>
-              <input name="price" onChange={(e)=>{handlerSetInput(e)}} type="number" value={input.price}/>
-            </div>
-            <p>{errors.price}</p>
-            <div>
-              <label htmlFor="">Img: </label>
-              <input name="img" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.img}/>
-            </div>
-            <p>{errors.img}</p>
-            <div>
-              <label htmlFor="">Videos: </label> Proximamente(?
+    //! ********************** COLORES PARA CSS  **********************
+    return (
+      <div>
+        <DivContainer>
+        {
+        update 
+          ? 
+          <div>
+            <H1 fSize="40px">Editando</H1>
+            <H1>{`${course.title}`}</H1>
+          </div> 
+          : <H1 fSize="40px">Crea un nuevo curso</H1> 
+        }
+          <Form>
+            <Div>
+              <Label>Título </Label>
+              <FormInput name="title" color={colorBorderInputTitle} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.title}/>
+            </Div>
+            {errors.title !== ""?<PDanger>{errors.title}</PDanger>:<p></p>}
+            <Div>
+              <Label>Precio </Label>
+              <FormInput name="price" color={colorBorderInputPrice} onChange={(e)=>{handlerSetInput(e)}} type="number" value={input.price}/>
+            </Div>
+            {errors.price !== ""?<PDanger>{errors.price}</PDanger>:<p></p>}
+            <Div>
+              <Label>Imagen </Label>
+              <FormInput name="img" color={colorBorderInputImg} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.img}/>
+            </Div>
+            {errors.img !== ""?<PDanger>{errors.img}</PDanger>:<p></p>}
+            <Div>
+              <Label>Videos </Label> Proximamente
               {/* <input name="videos" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.videos}/> */}
               {/* //! ↑↑↑↑↑↑↑↑↑↑↑↑   ****ACA ARRIBA ESTA EL INPUT DE LOS VIDEOS****   ↑↑↑↑↑↑↑↑↑↑↑↑ */}
-            </div>
-            <p>{errors.videos}</p>
-            <div>
-              <select name="category" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
-                <option value="default">Selecciona Categoría</option>
-                <option value="Seminario">Seminario</option>
-                <option value="Curso">Curso</option>
-              </select>
-            </div>
-            <p>{errors.category}</p>
-            <div>
-              <select name="type" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.type}>
-                <option value="default">Selecciona Tipo de Dictacion</option>
-                <option value="Presencial">Presencial</option>
-                <option value="Online">Online</option>
-                <option value="Hibrido">Hibrido</option>
-              </select>
-            </div>
-            <p>{errors.type}</p>
-            <div>
-              <label htmlFor="">Descripción: </label>
-              <input name="description" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.description}/>
-            </div>
-            <p>{errors.description}</p>
+            </Div>
+            {errors.videos !== ""?<PDanger>{errors.videos}</PDanger>:<p></p>}
+            <Div>
+              <Select name="category" color={colorBorderInputCategory} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
+                <Option value="default">Selecciona Categoría</Option>
+                <Option value="Seminario">Seminario</Option>
+                <Option value="Curso">Curso</Option>
+              </Select>
+            </Div>
+            {errors.category !== ""?<PDanger>{errors.category}</PDanger>:<p></p>}
+            <Div>
+              <Select name="type" color={colorBorderInputType} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.type} >
+                <Option value="default">Selecciona Tipo de Dictación</Option>
+                <Option value="Presencial">Presencial</Option>
+                <Option value="Online">Online</Option>
+                <Option value="Hibrido">Híbrido</Option>
+              </Select>
+            </Div>
+            {errors.type !== ""?<PDanger>{errors.type}</PDanger>:<p></p>}
+          <Div>
+            <Label>Descripción </Label>
+            <FormInput name="description" color={colorBorderInputDescription} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.description}/>
+          </Div>
+            {errors.description !== ""?<PDanger>{errors.description}</PDanger>:<p></p>}
             {
             update 
-            ? <div>
-                <button value={true} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} >Guardar</button>
-                <button onClick={(e)=>{handlerEditCourse(e)}}>Cerrar edición</button>
-              </div>
-            : <button value={false} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} >Crear</button> 
+            ? <DivButtons>
+                <Button value={true} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} bgColor="#0172AF">Guardar</Button>
+                <Button onClick={(e)=>{handlerEditCourse(e)}} bgColor="#0172AF">Cerrar edición</Button>
+              </DivButtons>
+            : <Button value={false} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} bgColor="#0172AF" >Crear</Button> 
             }
-          </form>
-        </div>
+
+          </Form>
+        </DivContainer>
+      </div>
     )
 }
