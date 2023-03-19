@@ -10,6 +10,14 @@ export default function CourseLists ({ path }) {
     const [createCourseFlag, setCreateCourseFlag] = useState(false);
     const [editFlag, setEditFlag] = useState(false)
     const [courseToEdit, setCourseToEdit] = useState(false)
+    const [componentFlag, setComponentFlag] = useState(false)
+    function handlerSetComponentFlag () {
+        if(componentFlag) {
+            setComponentFlag(false)
+        } else {
+            setComponentFlag(true)
+        }
+    }
 
     function handlerSetEditFlag() {
         if(editFlag) {
@@ -48,7 +56,7 @@ export default function CourseLists ({ path }) {
 
     useEffect(()=>{
       dispatch(getCoursesFromDB())  
-    }, [dispatch])
+    }, [componentFlag])
     
     return (
         <div>
@@ -56,13 +64,13 @@ export default function CourseLists ({ path }) {
             {path==="adm" ? <button onClick={(e)=>{handlerSetCreateCourseFlag(e)}}>{createCourseFlag? "Cerrar Formulario":"Crear Nuevo Curso"}</button>:null}
             {
                 courseToEdit !== false
-                ? <FormCoursePostAndEdit update={true} course={courseToEdit} handlerEditCourse={handlerEditCourse}/>
+                ? <FormCoursePostAndEdit handlerSetComponentFlag={handlerSetComponentFlag} update={true} course={courseToEdit} handlerEditCourse={handlerEditCourse}/>
                 : null
             }
             {
                 //! CASO HAY QUE CREAR UN CURSO Y NO EDITARLO
                 createCourseFlag === true
-                ? <FormCoursePostAndEdit />
+                ? <FormCoursePostAndEdit handlerSetComponentFlag={handlerSetComponentFlag} />
                 : null
             }
 
