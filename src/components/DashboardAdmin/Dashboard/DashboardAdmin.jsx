@@ -34,10 +34,10 @@ export default function DashboardAdmin () {
                     render === "users" ? <Users/> : null
                 }
                 {
-                    render === "courses" ? <Courses/> : null
+                    render === "courses" ? <Courses path={"adm"}/> : null
                 }
                 {
-                    render === "products" ? <Products/> : null
+                    render === "products" ? <Products path={"adm"}/> : null
                 }
 
               </div>
