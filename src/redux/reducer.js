@@ -3,6 +3,8 @@ const initialState = {
   courses: [],
   users: [],
   user: {},
+  product: {},
+  products: [],
 };
 
 export default function rootReducer(state = initialState, action) {
