@@ -14,7 +14,7 @@ export default function Products() {
         category: "",
         description: "",
         stock: "",
-        image: [""],
+        img: [""],
       });
 
     const [errors, setErrors] = useState({
@@ -23,7 +23,7 @@ export default function Products() {
         category: "",
         description: "",
         stock: "",
-        image: "",
+        img: "",
     })
     
     useEffect(() => {
@@ -36,6 +36,12 @@ export default function Products() {
         // validate()           //el validate todavía no está desarrollado, crear.
       }, [input]);
 
+    function handlerChange(e) {
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value
+        })
+      }
     
       function handlerSubmit (e) {
         e.preventDefault();
@@ -68,32 +74,80 @@ export default function Products() {
             <div>
                 <div>
                     <label>Nombre:</label>
-                    <input/>
+                    <input
+                    type='text'
+                    value={input.name}
+                    name='name'
+                    placeholder='Producto'
+                    onChange={e => handlerChange(e)}
+                    required={true}
+                    />
                 </div>
 
                 <div>
                     <label>Precio:</label>
-                    <input/>
+                    <input
+                    type='number'
+                    value={input.price}
+                    name='price'
+                    placeholder='0.00 - 5000.00'
+                    min={0.00}
+                    max={50000}
+                    step={0.01}
+                    onChange={e => handlerChange(e)}
+                    required={true}
+                    />
                 </div>
 
                 <div>
                     <label>Categoría:</label>
-                    <input/>
+                    <input
+                    type='text'
+                    value={input.category}
+                    name='category'
+                    placeholder='Categoría'
+                    onChange={e => handlerChange(e)}
+                    required={true}
+                    />
                 </div>
 
                 <div>
                     <label>Descripción:</label>
-                    <input/>
+                    <input
+                    type='text'
+                    value={input.description}
+                    name='description'
+                    placeholder='Descripción'
+                    onChange={e => handlerChange(e)}
+                    required={true}
+                    />
                 </div>
 
                 <div>
                     <label>Stock:</label>
-                    <input/>
+                    <input
+                    type='number'
+                    value={input.stock}
+                    name='stock'
+                    placeholder='0.00 - 100.00'
+                    min={0.00}
+                    max={50000}
+                    step={0.01}
+                    onChange={e => handlerChange(e)}
+                    required={true}
+                    />
                 </div>
 
                 <div>
                     <label>Imagen:</label>
-                    <input/>
+                    <input
+                    type='text'
+                    value={input.img}
+                    name='image'
+                    placeholder='Colocar un link con la imagen'
+                    onChange={e => handlerChange(e)}
+                    required={true}
+                    />
                 </div>
             </div>
         </form>
