@@ -27,14 +27,33 @@ export default function Products() {
         img: "",
     })
     
-    useEffect(() => {
-        dispatch(getCourses()) // action y reducer no creada, revisar y crear. No olvidarse
-      }, []);
+    function validate () {
+        const inputValues = Object.entries(input) //genera un arreglo de tuplas de un objeto que vos le pases. Las tuplas son mini arreglos donde vos guardas el key por un lado y el valor por el otro.
+        const objectError = {}
+        const errorsMessages = {
 
+            name: "el nombre es requerido",
+            price: "la precio es requerido",
+            category: "La categoría es requerida",
+            description: "La descripción es requerida",
+            stock: "Debes elegir un stock minimo",
+            img: "La imagen es requerida"
+        }
+
+        inputValues.forEach(([key, value]) => {
+            if(value === "" || value.length === 0 ) {
+                return Object.assign(objectError, { 
+                [key]: errorsMessages[key]
+            })
+            }
+        })
+        return setErrors(objectError)
     
+        
+    }
 
     useEffect(() => {
-        // validate()           //el validate todavía no está desarrollado, crear.
+        validate()           //el validate todavía no está desarrollado, crear.
       }, [input]);
 
     function handlerChange(e) {
