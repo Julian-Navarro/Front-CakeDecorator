@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postProduct } from '../../../../redux/actions.js';
+import { Link } from "react-router-dom";
 
 
 
@@ -16,7 +17,7 @@ export default function Products() {
         category: "",
         description: "",
         stock: "",
-        img: [""],
+        img: [''],
       });
 
     const [errors, setErrors] = useState({
@@ -58,10 +59,18 @@ export default function Products() {
       }, [input]);
 
     function handlerChange(e) {
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        })
+        if(e.target.name === "img") {
+            setInput({
+                ...input,
+                [e.target.name]: [e.target.value]
+            })
+        } else {
+            setInput({
+                ...input,
+                [e.target.name]: e.target.value
+            })
+        }
+        // console.log("INPUT", input)
       }
     
       function handlerSubmit (e) {
@@ -70,7 +79,7 @@ export default function Products() {
 
            return alert("Éste producto ya existe")
         } else {
-
+            // console.log("INPUT", input)
             dispatch(postProduct(input))    //crear el Action y el reducer de postProduct
             alert("El Producto ha sido creado con éxito")
             setInput({
@@ -79,7 +88,7 @@ export default function Products() {
                 category: "",
                 description: "",
                 stock: "",
-                image: [""],
+                img: [""],
             })
             // history.push('/home')
         }
@@ -104,7 +113,7 @@ export default function Products() {
                     required={true}
                     />
                 </div>
-
+                {errors.name&&(<p >{errors.name}</p>)}
                 <div>
                     <label>Precio:</label>
                     <input
@@ -119,7 +128,7 @@ export default function Products() {
                     required={true}
                     />
                 </div>
-
+                {errors.price&&(<p >{errors.price}</p>)}
                 <div>
                     <label>Categoría:</label>
                     <input
@@ -131,7 +140,7 @@ export default function Products() {
                     required={true}
                     />
                 </div>
-
+                {errors.category&&(<p >{errors.category}</p>)}
                 <div>
                     <label>Descripción:</label>
                     <input
@@ -143,7 +152,7 @@ export default function Products() {
                     required={true}
                     />
                 </div>
-
+                {errors.description&&(<p >{errors.description}</p>)}
                 <div>
                     <label>Stock:</label>
                     <input
@@ -158,20 +167,24 @@ export default function Products() {
                     required={true}
                     />
                 </div>
-
+                {errors.stock&&(<p >{errors.stock}</p>)}
                 <div>
                     <label>Imagen:</label>
                     <input
                     type='text'
                     value={input.img}
-                    name='image'
-                    placeholder='Colocar un link con la imagen'
+                    name='img'
+                    placeholder='Img URL'
                     onChange={e => handlerChange(e)}
                     required={true}
                     />
                 </div>
+                {errors.img&&(<p >{errors.img}</p>)}
             </div>
-        </form>
+            <Link to='/home'><button >Volver</button></Link>
+            <button type="submit" disabled={!input.name || !input.price || !input.category || !input.description || !input.stock || !input.img}>Crear Producto</button>
+    
+       </form>
 
     </div>
     )   
