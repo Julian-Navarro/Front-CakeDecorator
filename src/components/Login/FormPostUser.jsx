@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HOST } from "../../utils";
 import { useNavigate } from "react-router-dom";
-import bcryptjs from "bcryptjs"
 
 export default function FormPostUser() {
 const navigate = useNavigate()
@@ -46,7 +45,7 @@ function handlerChange (e) {
 }
 
 async function postUser(trimInput){
-        trimInput.password = await bcryptjs.hash(trimInput.password, 8)
+        // trimInput.password = await bcryptjs.hash(trimInput.password, 8)
         await axios.post(`${HOST}/users`, {...trimInput, role: "user", availableCourses: [], status: "active"});
         alert("Se ha creado tu cuenta con éxito")
         navigate("/")

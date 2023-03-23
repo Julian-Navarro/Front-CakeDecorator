@@ -37,14 +37,15 @@ export default function Login ({handlerSetUserFlagApp}) {
     }
     async function validate() {
         console.log("SUBMIT INPUT: ",input);
-        var user = await axios.post(`${HOST}/users/userEmail`, {userEmail: input.email});
-        console.log("USER: ",user.data);
+        const userDB = await axios.get(`${HOST}/users/userEmail/?email=${input.email}`);
+        const user = userDB.data
+        console.log("USER: ",user);
 
         if(input.email.trim() === "") {
             errors.email = "Debes ingresar tu email para ingresar a tu cuenta"
         } else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input.email))) {
             errors.email = "El formato de email ingresado no es válido"
-        } else if(user.data === false) {
+        } else if(user === false) {
             errors.email = "No existe un usuario con ese email"
         } else {
             errors.email = ""
@@ -55,12 +56,14 @@ export default function Login ({handlerSetUserFlagApp}) {
             errors.password = "La contraseña debe tener entre 8 y 16 caracteres, una mayúscula, una minúscula y un número."
         } else {
             errors.password = ""
-            if(user.data !== false){
-                const pwIsCorrect = await bcryptjs.compare(input.password, user.data.password)
-                // console.log("PW IS CORRECT: ",pwIsCorrect);
+            if(user !== false){
+                console.log("Usuario existe validate: ");
+
+                const pwIsCorrect = await bcryptjs.compare(input.password, user.password)
+                console.log("PW IS CORRECT: ",pwIsCorrect);
                 if(pwIsCorrect) {
                     // console.log("CASO LA PW ES LA MISMA");
-                    localStorage.setItem("loggedUser", JSON.stringify(user.data))
+                    localStorage.setItem("loggedUser", JSON.stringify(user))
                     handlerSetLoggedUserFlag()
                     handlerSetUserFlagApp()
                     alert("Usuario logeado correctamente");
