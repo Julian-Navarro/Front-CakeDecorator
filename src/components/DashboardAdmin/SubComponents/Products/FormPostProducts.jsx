@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postProduct } from '../../../../redux/actions.js'
-import { Link, useHistory } from 'react-router-dom';
+import { postProduct } from '../../../../redux/actions.js';
+
+
 
 export default function Products() {
     const dispatch = useDispatch();
     const allProducts = useSelector((state) => state.products);
-    const history = useHistory();
+    // const history = useHistory();
     // const allProduct = useSelector((state) => state.product); 
 
     const [input, setInput] = useState({
@@ -67,7 +68,7 @@ export default function Products() {
         e.preventDefault();
         if(allProducts.some((e) => e.name === input.name)){
 
-           return alert("Éste profucto ya existe")
+           return alert("Éste producto ya existe")
         } else {
 
             dispatch(postProduct(input))    //crear el Action y el reducer de postProduct
@@ -80,7 +81,7 @@ export default function Products() {
                 stock: "",
                 image: [""],
             })
-            history.push('/home')
+            // history.push('/home')
         }
     }
 
@@ -110,7 +111,7 @@ export default function Products() {
                     type='number'
                     value={input.price}
                     name='price'
-                    placeholder='0.00 - 5000.00'
+                    placeholder='0.00 - 50000.00'
                     min={0.00}
                     max={50000}
                     step={0.01}

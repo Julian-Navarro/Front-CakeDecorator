@@ -33,7 +33,7 @@ export function getUsers() {
 export function postProduct (payload) {
   return async function (dispatch) {
       try {
-          const info3 = await axios.post(`${HOST}/product`, payload);
+          const info3 = await axios.post(`${HOST}/products`, payload);
           return dispatch({
               type: POST_PRODUCT,
           })
