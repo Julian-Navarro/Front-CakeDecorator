@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HOST } from "../../../../utils";
-import { Div, Form, DivContainer, FormInput, Label, Select, Option, PDanger, Button, DivButtons, H1 } from "../../../../utils/StyledComponents/StyledForm";
+import { Div, Form, Input, Label, Select, Option, P, Button, H1 } from "../../../../utils/StyledComponents/StyledComponents";
 
 export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFlag, update, course, handlerEditCourse}) {
   //! ↓↓↓↓↓↓↓↓↓↓↓  *HANDLERS QUE ABREN LOS FORMS Y SETEAN EL CURSO EN CASO DE EDICIÓN* ↓↓↓↓↓↓↓↓↓↓↓
@@ -141,89 +141,89 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
       // }                                                //! ACÁ LA VALIDACION PARA LOS VIDEOS
       console.log("ERRORS: ", errors);
     }
-    const colorSelect = input.category === "" ? "blue" : "#161616";
-    const colorBorderInputTitle = errors.title !== "" ? "red" : "black";
-    const colorBorderInputCategory = errors.category !== "" ? "red" : "black";
-    const colorBorderInputType = errors.type !== "" ? "red" : "black";
-    const colorBorderInputVideos = errors.videos !== "" ? "red" : "black";
-    const colorBorderInputDescription = errors.description !== "" ? "red" : "black";
-    const colorBorderInputPrice = errors.price !== "" ? "red" : "black";
-    const colorBorderInputImg = errors.img !== "" ? "red" : "black";
+    const colorTitle = errors.title !== "" ? "#FF8282" : "black";
+    const colorCategory = errors.category !== "" ? "#FF8282" : "black";
+    const colorType = errors.type !== "" ? "#FF8282" : "black";
+    const colorVideos = errors.videos !== "" ? "#FF8282" : "black";
+    const colorDescription = errors.description !== "" ? "#FF8282" : "black";
+    const colorPrice = errors.price !== "" ? "#FF8282" : "black";
+    const colorImg = errors.img !== "" ? "#FF8282" : "black";
 
 
     useEffect(()=>{
       console.log("RENDERING");
-      console.log("COLOR TITLE BORDER: ", colorBorderInputTitle);
+      console.log("COLOR TITLE BORDER: ", colorTitle);
     }, [formFlag])
 
     //! ********************** COLORES PARA CSS  **********************
     return (
-      <div>
-        <DivContainer>
+        <Div flexDir="column" wd="100%" hg="34rem" mt="1rem" mb="2rem">
         {
         update 
-          ? 
-          <div>
-            <H1 fSize="40px">Editando</H1>
-            <H1>{`${course.title}`}</H1>
-          </div> 
-          : <H1 fSize="40px">Crea un nuevo curso</H1> 
+          ? <H1 fSize="2rem" bg="none">Editando {`${course.title}`}</H1>
+          : <H1 fSize="2rem" bg="none">Crea un nuevo curso</H1> 
         }
-          <Form>
-            <Div>
-              <Label>Título </Label>
-              <FormInput name="title" color={colorBorderInputTitle} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.title}/>
+          <Form flexDir="row" bd="#9AEFFF" wd="80%" hg="100%" pd="0rem 0rem 1rem 0rem">
+            <Div flexDir="column" hg="100%" wd="100%" >
+              <Div hg="100%" wd="100%">
+                <Div flexDir="column" hg="100%" wd="50%">
+                  <Div flexDir="column">
+                    <Label color={colorTitle}>Título </Label>
+                    <Input name="title" bd={colorTitle} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.title}/>
+                  </Div>
+                  {errors.title !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorTitle} color={colorTitle}>{errors.title}</P>:<p></p>}
+                  <Div flexDir="column">
+                    <Label color={colorPrice}>Precio </Label>
+                    <Input name="price" bd={colorPrice} onChange={(e)=>{handlerSetInput(e)}} type="number" value={input.price}/>
+                  </Div>
+                  {errors.price !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorPrice} color={colorPrice}>{errors.price}</P>:<p></p>}
+                  <Div flexDir="column">
+                    <Label color={colorImg}>Imagen </Label>
+                    <Input name="img" bd={colorImg} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.img}/>
+                  </Div>
+                  {errors.img !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorImg} color={colorImg}>{errors.img}</P>:<p></p>}
+                  <Div flexDir="column">
+                    <Label>Videos </Label> Proximamente
+                    {/* <input name="videos" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.videos}/> */}
+                    {/* //! ↑↑↑↑↑↑↑↑↑↑↑↑   ****ACA ARRIBA ESTA EL INPUT DE LOS VIDEOS****   ↑↑↑↑↑↑↑↑↑↑↑↑ */}
+                  </Div>
+                  {errors.videos !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorVideos} color={colorVideos}>{errors.videos}</P>:<p></p>}
+                </Div>
+                <Div flexDir="column" hg="100%" wd="50%">
+                  <Div>
+                    <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
+                      <Option value="default">Selecciona Categoría</Option>
+                      <Option value="Seminario">Seminario</Option>
+                      <Option value="Curso">Curso</Option>
+                    </Select>
+                  </Div>
+                  {errors.category !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorCategory} color={colorCategory}>{errors.category}</P>:<p></p>}
+                  <Div>
+                    <Select name="type"  bd={colorType} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.type} >
+                      <Option value="default">Selecciona Tipo de Dictación</Option>
+                      <Option value="Presencial">Presencial</Option>
+                      <Option value="Online">Online</Option>
+                      <Option value="Hibrido">Híbrido</Option>
+                    </Select>
+                  </Div>
+                  {errors.type !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorType} color={colorType}>{errors.type}</P>:<p></p>}
+                  <Div flexDir="column">
+                    <Label color={colorDescription}>Descripción </Label>
+                    <Input name="description" bd={colorDescription} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.description}/>
+                  </Div>
+                    {errors.description !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorDescription} color={colorDescription}>{errors.description}</P>:<p></p>}
+                </Div>
+              </Div>
+                  {
+                  update 
+                  ? <Div>
+                      <Button value={true} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} bgColor="#0172AF">Guardar</Button>
+                      <Button onClick={(e)=>{handlerEditCourse(e)}} bgColor="#0172AF">Cerrar edición</Button>
+                    </Div>
+                  : <Button value={false} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} color="#161616" bg="#9AEFFF" pd="6px 4rem 6px 4rem" _hovBg="lightblue">Crear</Button> 
+                }
             </Div>
-            {errors.title !== ""?<PDanger>{errors.title}</PDanger>:<p></p>}
-            <Div>
-              <Label>Precio </Label>
-              <FormInput name="price" color={colorBorderInputPrice} onChange={(e)=>{handlerSetInput(e)}} type="number" value={input.price}/>
-            </Div>
-            {errors.price !== ""?<PDanger>{errors.price}</PDanger>:<p></p>}
-            <Div>
-              <Label>Imagen </Label>
-              <FormInput name="img" color={colorBorderInputImg} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.img}/>
-            </Div>
-            {errors.img !== ""?<PDanger>{errors.img}</PDanger>:<p></p>}
-            <Div>
-              <Label>Videos </Label> Proximamente
-              {/* <input name="videos" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.videos}/> */}
-              {/* //! ↑↑↑↑↑↑↑↑↑↑↑↑   ****ACA ARRIBA ESTA EL INPUT DE LOS VIDEOS****   ↑↑↑↑↑↑↑↑↑↑↑↑ */}
-            </Div>
-            {errors.videos !== ""?<PDanger>{errors.videos}</PDanger>:<p></p>}
-            <Div>
-              <Select name="category" color={colorBorderInputCategory} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
-                <Option value="default">Selecciona Categoría</Option>
-                <Option value="Seminario">Seminario</Option>
-                <Option value="Curso">Curso</Option>
-              </Select>
-            </Div>
-            {errors.category !== ""?<PDanger>{errors.category}</PDanger>:<p></p>}
-            <Div>
-              <Select name="type" color={colorBorderInputType} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.type} >
-                <Option value="default">Selecciona Tipo de Dictación</Option>
-                <Option value="Presencial">Presencial</Option>
-                <Option value="Online">Online</Option>
-                <Option value="Hibrido">Híbrido</Option>
-              </Select>
-            </Div>
-            {errors.type !== ""?<PDanger>{errors.type}</PDanger>:<p></p>}
-          <Div>
-            <Label>Descripción </Label>
-            <FormInput name="description" color={colorBorderInputDescription} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.description}/>
-          </Div>
-            {errors.description !== ""?<PDanger>{errors.description}</PDanger>:<p></p>}
-            {
-            update 
-            ? <DivButtons>
-                <Button value={true} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} bgColor="#0172AF">Guardar</Button>
-                <Button onClick={(e)=>{handlerEditCourse(e)}} bgColor="#0172AF">Cerrar edición</Button>
-              </DivButtons>
-            : <Button value={false} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} bgColor="#0172AF" >Crear</Button> 
-            }
-
           </Form>
-        </DivContainer>
-      </div>
+        </Div>
     )
 }

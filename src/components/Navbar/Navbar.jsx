@@ -23,6 +23,7 @@ export default function Navbar () {
             <Link to="/aboutUs"><h3>Nosotros</h3></Link>
             <Link><h3 onClick={(e)=>handlerNavigateMyAccount(e)}>Mi cuenta</h3></Link>
             <Link to="/"><h3>Log in</h3></Link>
+            <Link to="/shop"><h3>Tienda</h3></Link>
         {
             loggedUser !== null ? loggedUser.role === "admin" 
             ? <Link to="/dashboardAdmin"><h3>Administrar Pagina</h3></Link>

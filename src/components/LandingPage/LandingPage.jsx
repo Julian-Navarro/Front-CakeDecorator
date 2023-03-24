@@ -1,11 +1,10 @@
 import React from "react";
 import FormLogin from "../Login/FormLogin";
-import "./LandingPage.css"
 import { Link } from "react-router-dom"
-// import s from "./Landing.module.css"
+
 
 export default function LandingPage ({handlerSetUserFlagApp}) {
-    // console.log("SET LOGGED USER APP", setLoggedUserApp);
+
     return (
         <div className="containerLandingPage">
             <div className="title">
