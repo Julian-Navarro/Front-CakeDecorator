@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postProduct } from '../../../../redux/actions.js';
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { HOST } from "../../../../utils/index.js";
 
 
 
@@ -73,14 +75,15 @@ export default function Products() {
         // console.log("INPUT", input)
       }
     
-      function handlerSubmit (e) {
+      async function handlerSubmit (e) {
         e.preventDefault();
         if(allProducts.some((e) => e.name === input.name)){
 
            return alert("Éste producto ya existe")
         } else {
             // console.log("INPUT", input)
-            dispatch(postProduct(input))    //crear el Action y el reducer de postProduct
+            await axios.post(`${HOST}/products`, input)
+            // dispatch(postProduct(input))    //crear el Action y el reducer de postProduct
             alert("El Producto ha sido creado con éxito")
             setInput({
                 name: "",

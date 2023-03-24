@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CourseLists from "../../../CourseLists/CourseLists";
+import CourseLists from "../../../CourseList/CourseList";
 import FormCoursePostAndEdit from "./FormCoursePostAndEdit";
 
 
-export default function Courses ({ path }) {
+export default function CoursesAdm ({ path }) {
     const [createCourseFlag, setCreateCourseFlag] = useState(false);
     const [editFlag, setEditFlag] = useState(false)
     const [courseToEdit, setCourseToEdit] = useState(false)
@@ -31,6 +31,7 @@ export default function Courses ({ path }) {
         if(course !== undefined) {
             setCourseToEdit({...course})
             setCreateCourseFlag(false)
+            window.scroll(0, 400)
         } else {
             setCourseToEdit(false)
             setCreateCourseFlag(false)            
