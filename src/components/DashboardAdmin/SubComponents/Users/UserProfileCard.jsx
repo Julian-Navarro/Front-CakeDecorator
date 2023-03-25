@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import s from "./UserProfileCard.module.css"
 import userIcon from "../../../../utils/user-icon.png"
 
-export default function UserProfileCard({ user: {name, surname, email, status, phone, id, img, availableCourses} }) {
+export default function UserProfileCard({ user: {name, surname, email, status, phone, id, img} }) {
 
     useEffect(()=>{
 
@@ -19,7 +19,6 @@ export default function UserProfileCard({ user: {name, surname, email, status, p
               <p>email: {email}</p>
               <p>Tel: {phone}</p>
               <p>Estado: {status}</p>
-              <p>Cursos: {availableCourses.length}</p>
               {/* <p>Id: {id}</p> */}
             </div>
         </div>

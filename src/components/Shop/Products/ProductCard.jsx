@@ -10,7 +10,6 @@ export default function ProductCard ({name,category, description, id, img, price
             <P bg="red">Precio: {price}</P>
             <P bg="red">Category: {category}</P>
             <P bg="red">Stock: {stock}</P>
-            {/* <P bg="red">Descripción: {description}</P> */}
         </Div>
     )
 }
