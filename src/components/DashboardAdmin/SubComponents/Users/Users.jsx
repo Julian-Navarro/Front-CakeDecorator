@@ -11,8 +11,7 @@ export default function Users () {
 
   const dispatch = useDispatch()
   const allUsers = useSelector((state) => state.users)
-  const [users, setUsers] = useState(allUsers)
-  // let users = allUsers
+  const [users, setUsers] = useState(false)
   const [user, setUser] = useState(false)
   const [flag, setFlag] = useState(false)
 
@@ -45,11 +44,21 @@ export default function Users () {
       alert(`Desbloqueaste al usuario ${user.name} ${user.surname}`)
     }
   }
-
+function cb() {
+  if(allUsers.length !== 0 ) {
+    setUsers(allUsers)
+  }
+}
   useEffect(()=>{
     console.log("Rendering USER.JSX");
     dispatch(getUsers())
-  },[flag])
+  },[])
+  
+  useEffect(()=>{
+    cb()
+    console.log("ALLusers: ",allUsers);
+    console.log("users: ", users);
+  },[allUsers])
 
 
 const [searchValue, setSearchValue] = useState({es:"email", en: "email"})
@@ -67,8 +76,8 @@ function handlerSearchValue(e) {
   const newUsers = allUsers.filter((user) => user[searchValue.en].toLowerCase().includes(inputValue.toLowerCase()))
   setUsers(newUsers)
   handlerSetFlag()
-// console.log("ALL USERS", allUsers.length);
-//   console.log("USERS: ", users.length);
+console.log("ALL USERS", allUsers.length);
+  console.log("USERS: ", users.length);
 }
     return (
         <div>
@@ -102,7 +111,6 @@ function handlerSearchValue(e) {
                         <p className={s.userP}>{user.name} {user.surname}</p>
                         <p className={s.userP}>{user.email}</p>
                         <p className={s.userP}>{user.phone!== null ?user.phone:"No existe"}</p>
-                        <p className={s.userP}>{user.availableCourses.length}</p>
                         <div className={s.userCardDiv}>
                           {user.status === "active"
                           ? <p>Activo</p>   //! CLASSNAME PARA CADA UNO CON COLOR DISTINTO

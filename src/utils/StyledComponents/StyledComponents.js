@@ -97,10 +97,10 @@ export const Button = styled.button`
 `;
 export const Div = styled.div`
   background: ${({ bg }) => bg || "#fff"};
+  color: ${({ color }) => color || "black"};
   padding: ${({ pd }) => pd || "5px"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
-  color: ${({ color }) => color || "black"};
   border: 2px solid ${({ bd }) => bd || "none"};
   border-radius: ${({ br }) => br || "8px"};
   display: ${({ display }) => display || "flex"};
@@ -112,10 +112,10 @@ export const Div = styled.div`
   margin-top: ${({ mt }) => mt || "none"};
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
+  box-shadow: ${({ boxSh }) => boxSh || "none"};
   background-image: url(${({ img }) => img || "none"});
   background-repeat: no-repeat;
   background-size: contain;
-  box-shadow: ${({ boxSh }) => boxSh || "none"};
 `;
 export const DivGradient = styled.div`
   padding: ${({ pd }) => pd || "5px"};
