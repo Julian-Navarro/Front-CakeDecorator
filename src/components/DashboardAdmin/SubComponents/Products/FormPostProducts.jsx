@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postProduct } from '../../../../redux/actions.js';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { HOST } from "../../../../utils/index.js";
 
 
 
-export default function Products() {
+export default function FormProducts() {
     const dispatch = useDispatch();
     const allProducts = useSelector((state) => state.products);
     // const history = useHistory();
@@ -57,7 +56,7 @@ export default function Products() {
     }
 
     useEffect(() => {
-        validate()           //el validate todavía no está desarrollado, crear.
+        validate()
       }, [input]);
 
     function handlerChange(e) {
@@ -72,7 +71,6 @@ export default function Products() {
                 [e.target.name]: e.target.value
             })
         }
-        // console.log("INPUT", input)
       }
     
       async function handlerSubmit (e) {
@@ -81,9 +79,7 @@ export default function Products() {
 
            return alert("Éste producto ya existe")
         } else {
-            // console.log("INPUT", input)
             await axios.post(`${HOST}/products`, input)
-            // dispatch(postProduct(input))    //crear el Action y el reducer de postProduct
             alert("El Producto ha sido creado con éxito")
             setInput({
                 name: "",
@@ -93,7 +89,6 @@ export default function Products() {
                 stock: "",
                 img: [""],
             })
-            // history.push('/home')
         }
     }
 
