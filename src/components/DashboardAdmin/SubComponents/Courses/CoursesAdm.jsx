@@ -8,6 +8,13 @@ export default function CoursesAdm ({ path }) {
     const [editFlag, setEditFlag] = useState(false)
     const [courseToEdit, setCourseToEdit] = useState(false)
     const [componentCourseListFlag, setComponentCourseListFlag] = useState(false)
+    function handlerSetComponentCourseListFlag () {
+        if(componentCourseListFlag) {
+            setComponentCourseListFlag(false)
+        } else {
+            setComponentCourseListFlag(true)
+        }
+    }    
     function handlerSetCreateCourseFlag(e) {
         e.preventDefault();
         if(createCourseFlag) {
@@ -17,17 +24,9 @@ export default function CoursesAdm ({ path }) {
             setCourseToEdit(false)
         }
     }
-    function handlerSetComponentCourseListFlag () {
-        if(componentCourseListFlag) {
-            setComponentCourseListFlag(false)
-        } else {
-            setComponentCourseListFlag(true)
-        }
-    }    
      function handlerEditCourse(e, course) {
         e.preventDefault();
         handlerSetEditFlag()
-        console.log(editFlag);
         if(course !== undefined) {
             setCourseToEdit({...course})
             setCreateCourseFlag(false)
@@ -58,16 +57,24 @@ useEffect(()=>{
             }
             {
                 courseToEdit !== false
-                ? <FormCoursePostAndEdit handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} update={true} course={courseToEdit} handlerEditCourse={handlerEditCourse}/>
+                ? <FormCoursePostAndEdit 
+                    handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} 
+                    update={true} 
+                    course={courseToEdit} 
+                    handlerEditCourse={handlerEditCourse}/>
                 : null
             }
             {
                 //! CASO HAY QUE CREAR UN CURSO Y NO EDITARLO
                 createCourseFlag === true
-                ? <FormCoursePostAndEdit handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} />
+                ? <FormCoursePostAndEdit 
+                    handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} />
                 : null
             }
-          <CourseLists path="adm" componentCourseListFlag={componentCourseListFlag} handlerEditCourse={handlerEditCourse}/>
+          <CourseLists 
+            path="adm" 
+            componentCourseListFlag={componentCourseListFlag}
+            handlerEditCourse={handlerEditCourse}/>
         </div>
 
     )

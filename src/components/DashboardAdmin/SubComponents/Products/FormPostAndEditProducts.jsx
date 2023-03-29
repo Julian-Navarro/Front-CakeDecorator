@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { HOST } from "../../../../utils/index.js";
 
 
 
-export default function FormProducts() {
-    const dispatch = useDispatch();
+export default function FormPostAndEditProducts({ setProductToEdit, product }) {
     const allProducts = useSelector((state) => state.products);
-    // const history = useHistory();
-    // const allProduct = useSelector((state) => state.product); 
-
     const [input, setInput] = useState({
         name: "",
         price: "",
@@ -19,7 +15,12 @@ export default function FormProducts() {
         description: "",
         stock: "",
         img: [''],
-      });
+    });
+    function handlerSetInputEditValues() {
+        if(product !== undefined) {
+            setInput({...product})
+        }
+    }
 
     const [errors, setErrors] = useState({
         name: "",
@@ -51,13 +52,16 @@ export default function FormProducts() {
             }
         })
         return setErrors(objectError)
-    
-        
     }
 
     useEffect(() => {
         validate()
-      }, [input]);
+    }, [input]);
+
+    useEffect(()=>{
+        handlerSetInputEditValues()
+        console.log("USEEFFCT EDIT ");
+    },[product])
 
     function handlerChange(e) {
         if(e.target.name === "img") {
@@ -92,11 +96,16 @@ export default function FormProducts() {
         }
     }
 
-
     return (
     <div>
         <div>
-            <h1>Crea tu Producto</h1>
+            {product !== undefined 
+            ? <h1>Edita tu producto</h1> 
+            : <h1>Crea tu Producto</h1>}
+            {product !== undefined 
+            ? <button onClick={()=>{setProductToEdit(false)}}>Cerrar Edición</button> 
+            :null}
+
         </div>
         <form onSubmit={e => handlerSubmit(e)}>
             <div>
@@ -179,7 +188,6 @@ export default function FormProducts() {
                 </div>
                 {errors.img&&(<p >{errors.img}</p>)}
             </div>
-            <Link to='/home'><button >Volver</button></Link>
             <button type="submit" disabled={!input.name || !input.price || !input.category || !input.description || !input.stock || !input.img}>Crear Producto</button>
     
        </form>
