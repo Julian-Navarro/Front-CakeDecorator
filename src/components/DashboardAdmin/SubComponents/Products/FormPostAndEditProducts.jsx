@@ -35,19 +35,27 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
         setInput({...product})
     };
     function handlerSetInput(e){
-        e.preventDefault();
+      e.preventDefault();
+      
+      if(e.target.name === "img") {
+        setInput({
+          ...input,
+          img: [e.target.value]
+        })
+      } else {
         if(e.target.value !== "default") {
-            setInput({
-                ...input,
-                [e.target.name]: e.target.value
-            })
+          setInput({
+            ...input,
+            [e.target.name]: e.target.value
+          })
         } else {
-            setInput({
-                ...input,
-                [e.target.name]: ""
-            }) 
+          setInput({
+            ...input,
+            [e.target.name]: ""
+          }) 
         }
-        // console.log("INPUT: ", input);
+      }
+      // console.log("INPUT: ", input);
     }
    
     function handlerPostOrEdit(e) {
@@ -66,6 +74,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                 console.log("HACER EL PUT");
                 // axios.put(`${HOST}/products?id=${product.id}`, input)
                 handlerSetComponentProductListFlag()
+                console.log("INPUT: ", input);
                 alert("Producto editado con éxito")
               } else {
                 handlerSetFormFlag()
@@ -82,6 +91,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                handlerSetFormFlag()
                console.log("CASO NO HAY ERRORES");
                console.log("HACER EL POST");
+               console.log("INPUT: ", input);
             //    axios.post(`${HOST}/products`, input)
                handlerSetComponentProductListFlag()
                alert("Producto creado con éxito")
@@ -136,8 +146,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
       console.log("ERRORS: ", errors);
     }
     useEffect(()=>{
-      console.log("RENDERING");
-      console.log("COLOR TITLE BORDER: ", colorName);
+      console.log("RENDER -", input);
     }, [formFlag])
     //! ********************** COLORES PARA CSS  **********************
     const colorName = errors.name !== "" ? "#FF8282" : "black";
@@ -184,6 +193,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                     <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
                       <Option value="default">Selecciona Categoría</Option>
                   //! ACA IRIAN LAS CATEGORIAS EXISTENTES
+                  
                     </Select>
                   </Div>
                   {errors.category !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorCategory} color={colorCategory}>{errors.category}</P>:<p></p>}
