@@ -5,6 +5,13 @@ import { Div, Form, Input, Label, Select, Option, P, Button, H1 } from "../../..
 
 export default function FormProductPostAndEdit({ handlerSetComponentProductListFlag, update, product, handlerEditProduct }) {
   //! ↓↓↓↓↓↓↓↓↓↓↓  *HANDLERS QUE ABREN LOS FORMS Y SETEAN EL CURSO EN CASO DE EDICIÓN* ↓↓↓↓↓↓↓↓↓↓↓
+  // const [categories, setCategories] = useState([]);                  //! UNIR CREANDO RUTA EN BACK
+  // async function getCategories() {                                   //! UNIR CREANDO RUTA EN BACK
+  //     let newCategories = await axios.get(`${HOST}/categories`)      //! UNIR CREANDO RUTA EN BACK
+  //     setCategories(newCategories)                                   //! UNIR CREANDO RUTA EN BACK
+  //   } //! DESCOMENTAR TMB EN EL USE EFFECT LA EJECUCION DE LA FN GET-CATEGORIES
+  const categories = ["Picos", "Cortantes", "Mangas"] //! HARDCODEO HASTA QUE ESTÉ LA RUTA DE ARRIBA
+
     const [input, setInput] = useState({
       category: "",
       description: "",
@@ -58,7 +65,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
       // console.log("INPUT: ", input);
     }
    
-    function handlerPostOrEdit(e) {
+    async function handlerPostOrEdit(e) {
         e.preventDefault();
         validate()
         if(e.target.value === "true") {
@@ -72,7 +79,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                 handlerSetFormFlag()
                 console.log("CASO NO HAY ERRORES");
                 console.log("HACER EL PUT");
-                // axios.put(`${HOST}/products?id=${product.id}`, input)
+                await axios.put(`${HOST}/products/${product.id}`, input)
                 handlerSetComponentProductListFlag()
                 console.log("INPUT: ", input);
                 alert("Producto editado con éxito")
@@ -92,7 +99,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                console.log("CASO NO HAY ERRORES");
                console.log("HACER EL POST");
                console.log("INPUT: ", input);
-            //    axios.post(`${HOST}/products`, input)
+               await axios.post(`${HOST}/products`, input)
                handlerSetComponentProductListFlag()
                alert("Producto creado con éxito")
               } else {
@@ -146,8 +153,9 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
       console.log("ERRORS: ", errors);
     }
     useEffect(()=>{
-      console.log("RENDER -", input);
-    }, [formFlag])
+      console.log("RENDER FORM - INPUT", input);
+      // getCategories()
+    }, [formFlag, categories])
     //! ********************** COLORES PARA CSS  **********************
     const colorName = errors.name !== "" ? "#FF8282" : "black";
     const colorCategory = errors.category !== "" ? "#FF8282" : "black";
@@ -169,31 +177,36 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                 <Div flexDir="column" hg="100%" wd="50%">
                   <Div flexDir="column">
                     <Label color={colorName}>Nombre </Label>
-                    <Input name="title" bd={colorName} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.name}/>
+                    <Input name="name" bd={colorName} onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.name}/>
                   </Div>
                   {errors.name !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorName} color={colorName}>{errors.name}</P>:<p></p>}
                   <Div flexDir="column">
                     <Label color={colorPrice}>Precio </Label>
-                    <Input name="price" bd={colorPrice} onChange={(e)=>{handlerSetInput(e)}} type="number" value={input.price}/>
+                    <Input name="price" bd={colorPrice} onChange={(e)=>{handlerSetInput(e)}} type="number" defaultValue={input.price}/>
                   </Div>
                   {errors.price !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorPrice} color={colorPrice}>{errors.price}</P>:<p></p>}
                   <Div flexDir="column">
                     <Label color={colorImg}>Imagen </Label>
-                    <Input name="img" bd={colorImg} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.img}/> //! img es un array
+                    <Input name="img" bd={colorImg} onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.img}/> //! img es un array
                   </Div>
                   {errors.img !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorImg} color={colorImg}>{errors.img}</P>:<p></p>}
                   <Div flexDir="column">
                     <Label>Stock </Label>
-                    <Input name="stock" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.stock}/>
+                    <Input name="stock" onChange={(e)=>{handlerSetInput(e)}} type="number" defaultValue={input.stock}/>
                   </Div>
                   {errors.stock !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorStock} color={colorStock}>{errors.stock}</P>:<p></p>}
                 </Div>
                 <Div flexDir="column" hg="100%" wd="50%">
                   <Div>
-                    <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
+                    <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.category}>
                       <Option value="default">Selecciona Categoría</Option>
                   //! ACA IRIAN LAS CATEGORIAS EXISTENTES
-                  
+                      {
+                        categories.length === 0
+                        ? null
+                        : categories.map((cat)=> <Option key={cat} >{cat}</Option> )
+                      }
+
                     </Select>
                   </Div>
                   {errors.category !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorCategory} color={colorCategory}>{errors.category}</P>:<p></p>}
