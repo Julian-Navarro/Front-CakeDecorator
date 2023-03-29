@@ -1,63 +1,79 @@
 import React, { useEffect, useState } from "react";
-import FormPostAndEditProducts from "./FormPostAndEditProducts"
 import ProductCards from "../../../Shop/Products/ProductCards";
-export default function ProductsAdm({ path }) {
-    const [crtProdFlag, setCrtProdFlag] = useState(false); //? createProductFlag
-    const [editFlag, setEditFlag] = useState(false);
-    const [productToEdit, setProductToEdit] = useState(false);
+import FormProductPostAndEdit from "./FormPostAndEditProducts";
 
-    function handlerSetCreateProductFlag() {
-    if(crtProdFlag) {
-        setCrtProdFlag(false)
-    } else {
-        setCrtProdFlag(true)
-        setProductToEdit(false)
-    }
-}
-     function handlerEditProduct(e, product) {
-        e.preventDefault();
-        handlerSetCreateProductFlag()
-        if(product !== undefined) {
-            setEditFlag(true)
-            setProductToEdit({...product})
-            setCrtProdFlag(false)
-            window.scroll(0, 400)
-            console.log(product, editFlag, crtProdFlag);
+export default function ProductsAdm ({ path }) {
+    const [createProductFlag, setCreateProductFlag] = useState(false);
+    const [editFlag, setEditFlag] = useState(false)
+    const [productToEdit, setProductToEdit] = useState(false)
+    const [componentProductListFlag, setComponentProductListFlag] = useState(false)
+    function handlerSetComponentProductListFlag () {
+        if(componentProductListFlag) {
+            setComponentProductListFlag(false)
         } else {
+            setComponentProductListFlag(true)
+        }
+    }    
+    function handlerSetCreateProductFlag(e) {
+        e.preventDefault();
+        if(createProductFlag) {
+            setCreateProductFlag(false)
+        } else {
+            setCreateProductFlag(true)
             setProductToEdit(false)
-            setCrtProdFlag(false)            
         }
     }
-    function handlerSetCreateProductFlag() {
-        setCrtProdFlag(!crtProdFlag)
-        setProductToEdit(false)
+     function handlerEditProduct(e, product) {
+        e.preventDefault();
+        handlerSetEditFlag()
+        if(product !== undefined) {
+            setProductToEdit({...product})
+            setCreateProductFlag(false)
+            window.scroll(0, 400)
+        } else {
+            setProductToEdit(false)
+            setCreateProductFlag(false)            
+        }
     }
+    function handlerSetEditFlag() {
+        if(editFlag) {
+            setEditFlag(false)
+        } else {
+            setEditFlag(true)
+        }
+    }   
+
 useEffect(()=>{
-    console.log("RENDERING PRODUCTS ADM");
-},[editFlag, productToEdit])
+    console.log("RENDERING: PRODUCT STATE: ", productToEdit);
+},[productToEdit, editFlag])
     return (
         <div>
-            <h1>Products</h1>
-            <button onClick={()=> handlerSetCreateProductFlag()}>{
-                crtProdFlag
-                ? "Cerrar Formulario"
-                : "Crear Nuevo Producto" }
-            </button>
-            { crtProdFlag 
-            ? <FormPostAndEditProducts/> 
-            : null }
-
-
-
-            { productToEdit
-            ? <FormPostAndEditProducts 
-              setProductToEdit={setProductToEdit}
-              course={productToEdit}/>
-            : null
+          <h1>PRODUCT PADRE</h1>
+            {
+            path==="adm" 
+            ? <button onClick={(e)=>{handlerSetCreateProductFlag(e)}}>{createProductFlag? "Cerrar Formulario":"Crear Nuevo Curso"}</button>
+            :null
             }
-            <ProductCards 
-                handlerEditProduct={handlerEditProduct}
-                path="adm"/>
+            {
+                productToEdit !== false
+                ? <FormProductPostAndEdit 
+                    handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} 
+                    update={true} 
+                    product={productToEdit} 
+                    handlerEditProduct={handlerEditProduct}/>
+                : null
+            }
+            {
+                //! CASO HAY QUE CREAR UN CURSO Y NO EDITARLO
+                createProductFlag === true
+                ? <FormProductPostAndEdit 
+                    handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} />
+                : null
+            }
+          <ProductCards
+            path="adm" 
+            handlerEditProduct={handlerEditProduct}/>
         </div>
+
     )
 }

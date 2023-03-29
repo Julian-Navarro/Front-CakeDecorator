@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { HOST } from "../../../utils";
 import ProductCard from "./ProductCard";
 import { Div } from "../../../utils/StyledComponents/StyledComponents";
-export default function ProductCards ({ handlerEditProduct, path }) {
+export default function ProductCards ({ path, handlerEditProduct }) {
     let [products, setProducts] = useState(false);
     async function getProducts() {
         products = await axios.get(`${HOST}/products`)
@@ -18,16 +18,17 @@ export default function ProductCards ({ handlerEditProduct, path }) {
             {
                 products?.length > 0 
                 ? products.map((pr) => (<ProductCard 
-                    product={pr}
-                    handlerEditProduct={handlerEditProduct}
                     path={path}
+                    handlerEditProduct={handlerEditProduct}
+                    product={pr}
                     name={pr.name} 
-                    price={pr.price}
+                    price={pr.price} 
                     stock={pr.stock} 
                     category={pr.category} 
-                    id={pr.id} img={pr.img} 
+                    id={pr.id} 
+                    img={pr.img} 
                     description={pr.description}/>) )
-                : "Aún no hay productos cargados"
+                : null
             } 
         </Div>
     )
