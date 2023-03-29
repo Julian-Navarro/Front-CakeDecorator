@@ -8,12 +8,14 @@ import { HOST } from "../../../../utils";
 
 
 export default function Users () {
-
+  
   const dispatch = useDispatch()
-  const allUsers = useSelector((state) => state.users)
-  const [users, setUsers] = useState(false)
-  const [user, setUser] = useState(false)
+  const allUsers = useSelector((state) => state.users)//! All users
+  const [users, setUsers] = useState(false) //! Users Filtrados
+  const [user, setUser] = useState(false)  //! El usuario para la UserCardProfile
   const [flag, setFlag] = useState(false)
+  const [inputValue, setInputValue] = useState("")
+  const [searchValue, setSearchValue] = useState({es:"email", en: "email"})
 
   function handlerSetFlag() {
     if(flag) {
@@ -33,35 +35,24 @@ export default function Users () {
     if (user.role === "admin") {
       alert("No puedes bloquear a un administrador")
     } else if(user.status === "active") {
-      await axios.put(`${HOST}/users/block?id=${user.id}`, {status: "banned"})
+      await axios.put(`${HOST}/users?userId=${user.id}`, {status: "banned"})
+      user.status = "banned"
       handlerSetFlag()
-      handlerViewUser(e, {...user, status: "banned"})
       alert(`Bloqueaste al usuario ${user.name} ${user.surname}`)
     } else {
-      await axios.put(`${HOST}/users/block?id=${user.id}`, {status: "active"})
+      await axios.put(`${HOST}/users?userId=${user.id}`, {status: "active"})
+      user.status = "active"
       handlerSetFlag()
-      handlerViewUser(e, {...user, status: "active"})
       alert(`Desbloqueaste al usuario ${user.name} ${user.surname}`)
     }
   }
-function cb() {
-  if(allUsers.length !== 0 ) {
-    setUsers(allUsers)
+  function handlerSetUsers() {
+    if(allUsers.length !== 0 ) {
+      setUsers(allUsers)
+    }
   }
-}
-  useEffect(()=>{
-    console.log("Rendering USER.JSX");
-    dispatch(getUsers())
-  },[])
   
-  useEffect(()=>{
-    cb()
-    console.log("ALLusers: ",allUsers);
-    console.log("users: ", users);
-  },[allUsers])
 
-
-const [searchValue, setSearchValue] = useState({es:"email", en: "email"})
 function handlerSetSearchValue (e) {
   e.preventDefault();
   if(searchValue.es === "email") {
@@ -70,15 +61,22 @@ function handlerSetSearchValue (e) {
     setSearchValue({es:"email", en: "email"})
   }
 }
-const [inputValue, setInputValue] = useState("")
+
+
 function handlerSearchValue(e) {
   e.preventDefault();
   const newUsers = allUsers.filter((user) => user[searchValue.en].toLowerCase().includes(inputValue.toLowerCase()))
   setUsers(newUsers)
   handlerSetFlag()
-console.log("ALL USERS", allUsers.length);
-  console.log("USERS: ", users.length);
 }
+
+useEffect(()=>{
+  dispatch(getUsers())
+},[])
+
+useEffect(()=>{
+  handlerSetUsers()
+},[allUsers, flag])
     return (
         <div>
           <h1>USER COMP</h1>
@@ -91,7 +89,7 @@ console.log("ALL USERS", allUsers.length);
                 <button onClick={(e)=>{handlerSearchValue(e)}}>Buscar</button>
               </div>
               {
-              user !== false
+              users !== false
                 ? <UserProfileCard user={user}/>
                 : null
               }
@@ -101,16 +99,16 @@ console.log("ALL USERS", allUsers.length);
               <p className={s.userP}>Nombre y apellido</p>
               <p className={s.userP}>E-mail</p>
               <p className={s.userP}>Telefono</p>
-              <p className={s.userP}>Cursos</p>
+              {/* <p className={s.userP}>Cursos</p> */}
               <p className={s.userP}>Estado</p>
             </div>
             {
-              users.length > 0 ? users.map((user) => {
+              users.length > 0 ? allUsers.map((user) => {
                 return (
                     <div key={user.id} className={s.userCard}>
                         <p className={s.userP}>{user.name} {user.surname}</p>
                         <p className={s.userP}>{user.email}</p>
-                        <p className={s.userP}>{user.phone!== null ?user.phone:"No existe"}</p>
+                        <p className={s.userP}>{user.phone!== null ? user.phone : "No existe"}</p>
                         <div className={s.userCardDiv}>
                           {user.status === "active"
                           ? <p>Activo</p>   //! CLASSNAME PARA CADA UNO CON COLOR DISTINTO
