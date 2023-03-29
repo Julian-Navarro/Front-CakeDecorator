@@ -1,7 +1,7 @@
 import React from "react";
 import { Div, P, Button, H1, Img } from "../../../utils/StyledComponents/StyledComponents";
 
-export default function ProductCard ({name,category, description, id, img, price, stock}) {
+export default function ProductCard ({ handlerEditProduct, path, product, name,category, description, id, img, price, stock}) {
 
     return (
         <Div wd="18rem" flexDir="column"bd="black" mt="1rem" mr="1rem">
@@ -10,6 +10,7 @@ export default function ProductCard ({name,category, description, id, img, price
             <P bg="red">Precio: {price}</P>
             <P bg="red">Category: {category}</P>
             <P bg="red">Stock: {stock}</P>
+            {path? <button onClick={(e)=>{handlerEditProduct(e, product)}}>Editar</button> :null}
         </Div>
     )
 }
