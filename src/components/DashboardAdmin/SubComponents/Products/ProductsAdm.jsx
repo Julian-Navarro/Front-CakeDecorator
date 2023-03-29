@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { HOST } from "../../../../utils";
 import ProductCards from "../../../Shop/Products/ProductCards";
 import FormProductPostAndEdit from "./FormPostAndEditProducts";
 
@@ -42,10 +44,17 @@ export default function ProductsAdm ({ path }) {
             setEditFlag(true)
         }
     }   
-
+    const [products, setProducts] = useState(false);
+    async function getProducts(){
+        const productsDB = await axios.get(`${HOST}/products`)
+        setProducts([...productsDB.data])
+    }
+    
 useEffect(()=>{
-    console.log("RENDERING: PRODUCT STATE: ", productToEdit);
-},[productToEdit, editFlag])
+    console.log("RENDERING: PRODUCT ADM: ");
+    getProducts()
+},[productToEdit, editFlag, componentProductListFlag])
+useEffect(()=>{},[products])
     return (
         <div>
           <h1>PRODUCT PADRE</h1>
@@ -71,6 +80,7 @@ useEffect(()=>{
                 : null
             }
           <ProductCards
+            products={products}
             path="adm" 
             handlerEditProduct={handlerEditProduct}/>
         </div>
