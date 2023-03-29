@@ -198,13 +198,13 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                 </Div>
                 <Div flexDir="column" hg="100%" wd="50%">
                   <Div>
-                    <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.category}>
+                    <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
                       <Option value="default">Selecciona Categoría</Option>
                   //! ACA IRIAN LAS CATEGORIAS EXISTENTES
                       {
                         categories.length === 0
                         ? null
-                        : categories.map((cat)=> <Option key={cat} >{cat}</Option> )
+                        : categories.map((cat)=> <Option value={cat} key={cat} >{cat}</Option> )
                       }
 
                     </Select>
