@@ -73,7 +73,6 @@ useEffect(()=>{
             }
           <CourseLists 
             path="adm" 
-            componentCourseListFlag={componentCourseListFlag}
             handlerEditCourse={handlerEditCourse}/>
         </div>
 
