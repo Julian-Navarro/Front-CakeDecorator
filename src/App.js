@@ -41,7 +41,7 @@ function App() {
           }
         />
         <Route exact path ="/forgotPassword" element={<ForgotPassword/>}></Route>
-        <Route exact path ="/generateNewPass" element={<GenerateNewPass/>}></Route>
+        <Route exact path ="/generateNewPass/:id" element={<GenerateNewPass/>}></Route>
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/courses" element={<CourseList path={false} />} />
         <Route exact path="/myAccount" element={<MyAccount />} />

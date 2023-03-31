@@ -6,14 +6,14 @@ export default function ForgotPassword() {
   let [error, setError] = useState({
     emailError: "",
   });
-  console.log("ERROR", error);
+  // console.log("ERROR", error);
 
   const [input, setInput] = useState({
     emailExist: "",
   });
-  console.log("INPUT", input);
+  // console.log("INPUT", input);
 
-  function handlerSearchMail(e) {
+  function handlerChange(e) {
     e.preventDefault();
     setInput({
       ...input,
@@ -27,7 +27,7 @@ export default function ForgotPassword() {
     };
     // console.log("TRIM", trimInput);
     if (trimInput.emailExist === "") {
-      error.emailError = "Falta ingresar el email!";
+      error.emailError = "Falta ingresar el email";
     } else if (trimInput.emailExist !== "") {
       error.emailError = "";
     }
@@ -35,13 +35,16 @@ export default function ForgotPassword() {
   }
 
   async function findEmail(trimInput) {
+    console.log("TRIM IN", trimInput)
     const findEmail = await axios.get(
       `${HOST}/users/forgotPassword?email=${trimInput.emailExist}`
     );
-    console.log("FIND", findEmail);
+    // console.log("EMAIL")
     if (findEmail.data !== false) {
+      console.log("HOLA 1")
       alert("Te enviamos un mail para cambiar la contraseña. ¡Revisalo!");
     } else {
+      console.log("HOLA 2")
       alert("Ese email no está registrado");
     }
   }
@@ -74,7 +77,7 @@ export default function ForgotPassword() {
         <input
           type="email"
           name="emailExist"
-          onChange={(e) => handlerSearchMail(e)}
+          onChange={(e) => handlerChange(e)}
         />
         <button type="submit">Buscar</button>
         <p>{error.emailError ? error.emailError : null}</p>
