@@ -49,14 +49,14 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
                 [e.target.name]: ""
             }) 
         }
-        console.log("INPUT: ", input);
+        // console.log("INPUT: ", input);
     }
    
     function handlerPostOrEdit(e) {
         e.preventDefault();
         validate()
         if(e.target.value === "true") {
-            console.log("EDIT: ", e.target.value);
+            // console.log("EDIT: ", e.target.value);
             if(errors.category === "" && 
                errors.description === "" && 
                errors.img === "" && 
@@ -65,7 +65,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
                errors.videos === "" &&
                errors.type === "") {
                 handlerSetFormFlag()
-               console.log("CASO NO HAY ERRORES");
+              //  console.log("CASO NO HAY ERRORES");
                axios.put(`${HOST}/courses?id=${course.id}`, input)
                handlerSetComponentCourseListFlag()
                alert("Curso editado con éxito")
@@ -74,7 +74,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
                alert("Falta llenar algun campo")
             }
         } else {
-            console.log("POST: ", e.target.value);
+            // console.log("POST: ", e.target.value);
             if(errors.category === "" && 
                errors.description === "" && 
                errors.img === "" && 
@@ -83,7 +83,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
                errors.videos === "" &&
                errors.type === "") {
                 handlerSetFormFlag()
-               console.log("CASO NO HAY ERRORES");
+              //  console.log("CASO NO HAY ERRORES");
                axios.post(`${HOST}/courses`, input)
                handlerSetComponentCourseListFlag()
                alert("Curso creado con éxito")
@@ -92,6 +92,8 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
                 alert("Falta llenar algun campo")
             }
         }
+        console.log("SARASA");
+        handlerSetComponentCourseListFlag()
     }
 
     useEffect(()=>{
@@ -139,7 +141,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
       // } else {                                         //! ACÁ LA VALIDACION PARA LOS VIDEOS      
       //   errors.videos = ""                             //! ACÁ LA VALIDACION PARA LOS VIDEOS                  
       // }                                                //! ACÁ LA VALIDACION PARA LOS VIDEOS
-      console.log("ERRORS: ", errors);
+      // console.log("ERRORS: ", errors);
     }
     const colorTitle = errors.title !== "" ? "#FF8282" : "black";
     const colorCategory = errors.category !== "" ? "#FF8282" : "black";
@@ -151,8 +153,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
 
 
     useEffect(()=>{
-      console.log("RENDERING");
-      console.log("COLOR TITLE BORDER: ", colorTitle);
+      console.log("RENDERING FORM COURSES");
     }, [formFlag])
 
     //! ********************** COLORES PARA CSS  **********************

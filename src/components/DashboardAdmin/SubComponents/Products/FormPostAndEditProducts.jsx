@@ -5,12 +5,12 @@ import { Div, Form, Input, Label, Select, Option, P, Button, H1 } from "../../..
 
 export default function FormProductPostAndEdit({ handlerSetComponentProductListFlag, update, product, handlerEditProduct }) {
   //! ↓↓↓↓↓↓↓↓↓↓↓  *HANDLERS QUE ABREN LOS FORMS Y SETEAN EL CURSO EN CASO DE EDICIÓN* ↓↓↓↓↓↓↓↓↓↓↓
-  // const [categories, setCategories] = useState([]);                  //! UNIR CREANDO RUTA EN BACK
-  // async function getCategories() {                                   //! UNIR CREANDO RUTA EN BACK
-  //     let newCategories = await axios.get(`${HOST}/categories`)      //! UNIR CREANDO RUTA EN BACK
-  //     setCategories(newCategories)                                   //! UNIR CREANDO RUTA EN BACK
-  //   } //! DESCOMENTAR TMB EN EL USE EFFECT LA EJECUCION DE LA FN GET-CATEGORIES
-  const categories = ["Picos", "Cortantes", "Mangas"] //! HARDCODEO HASTA QUE ESTÉ LA RUTA DE ARRIBA
+  const [categories, setCategories] = useState([]);                  //! UNIR CREANDO RUTA EN BACK
+  async function getCategories() {                                   //! UNIR CREANDO RUTA EN BACK
+      let newCategories = await axios.get(`${HOST}/categories`)      //! UNIR CREANDO RUTA EN BACK
+      setCategories(newCategories.data)                                   //! UNIR CREANDO RUTA EN BACK
+    } //! DESCOMENTAR TMB EN EL USE EFFECT LA EJECUCION DE LA FN GET-CATEGORIES
+  // const categories = ["Picos", "Cortantes", "Mangas"] //! HARDCODEO HASTA QUE ESTÉ LA RUTA DE ARRIBA
 
     const [input, setInput] = useState({
       category: "",
@@ -153,9 +153,10 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
       console.log("ERRORS: ", errors);
     }
     useEffect(()=>{
-      console.log("RENDER FORM - INPUT", input);
-      // getCategories()
-    }, [formFlag, categories])
+      // console.log("RENDER FORM - INPUT", input);
+      console.log("CATEGORIES: ",categories);
+      getCategories()
+    }, [formFlag])
     //! ********************** COLORES PARA CSS  **********************
     const colorName = errors.name !== "" ? "#FF8282" : "black";
     const colorCategory = errors.category !== "" ? "#FF8282" : "black";
@@ -204,7 +205,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                       {
                         categories.length === 0
                         ? null
-                        : categories.map((cat)=> <Option value={cat} key={cat} >{cat}</Option> )
+                        : categories.map((cat)=> <Option value={cat.category} key={cat.id} >{cat.category}</Option> )
                       }
 
                     </Select>

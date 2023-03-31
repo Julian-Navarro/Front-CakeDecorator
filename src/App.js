@@ -47,7 +47,13 @@ function App() {
         <Route exact path="/shop" element={<Shop />} />
         {loggedUser !== null ? (
           loggedUser.role === "admin" ? (
-            <Route exact path="/dashboardAdmin" element={<DashboardAdmin />} />
+            <>
+              <Route
+                exact
+                path="/dashboardAdmin"
+                element={<DashboardAdmin />}
+              />
+            </>
           ) : null
         ) : null}
       </Routes>
