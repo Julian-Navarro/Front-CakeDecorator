@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import { HOST } from "../../../utils";
 import ProductCard from "./ProductCard";
 import { Div } from "../../../utils/StyledComponents/StyledComponents";
-export default function ProductCards ({ path, handlerEditProduct, products  }) {
+export default function ProductCards ({ path, handlerEditProduct, products, handleRemoveItemCart, handlerSetCart}) {
     return (
         <Div flWr="wrap" wd="100%">
             {
                 products?.length > 0 
                 ? products.map((pr) => (<ProductCard 
+                    handleRemoveItemCart={handleRemoveItemCart}
+                    handlerSetCart={handlerSetCart}
                     key={pr.id}
                     path={path}
                     handlerEditProduct={handlerEditProduct}
