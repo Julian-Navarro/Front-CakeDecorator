@@ -3,11 +3,12 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home.jsx";
 import AboutUs from "./components/AboutUs/AboutUs";
 import LandingPage from "./components/LandingPage/LandingPage";
-import Navbar from "./components/Navbar/Navbar";
 import CourseList from "./components/CourseList/CourseList.jsx";
 import MyAccount from "./components/MyAccount/MyAccount";
 import FormPostUser from "./components/Login/FormPostUser";
 import DashboardAdmin from "./components/DashboardAdmin/Dashboard/DashboardAdmin.jsx";
+import ForgotPassword from "./components/ForgotPass/ForgotPassword.jsx";
+import GenerateNewPass from "./components/ForgotPass/GenerateNewPass.jsx";
 import Shop from "./components/Shop/Shop.jsx";
 import "./App.css";
 
@@ -30,7 +31,7 @@ function App() {
   return (
     <div>
       <div className="App"></div>
-      <Navbar />
+
       <Routes>
         <Route
           exact
@@ -39,6 +40,8 @@ function App() {
             <LandingPage handlerSetUserFlagApp={handlerSetUserFlagApp} />
           }
         />
+        <Route exact path ="/forgotPassword" element={<ForgotPassword/>}></Route>
+        <Route exact path ="/generateNewPass" element={<GenerateNewPass/>}></Route>
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/courses" element={<CourseList path={false} />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
@@ -58,6 +61,7 @@ function App() {
         ) : null}
       </Routes>
     </div>
+    
   );
 }
 
