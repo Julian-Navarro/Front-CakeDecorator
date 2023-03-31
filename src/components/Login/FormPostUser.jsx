@@ -17,13 +17,13 @@ let [errors, setErrors] = useState({
 
 function changeErrorsFlag () {
     if(errorsFlag === true) {
-        console.log("Seteando TRUE ");
+        // console.log("Seteando TRUE ");
         setErrorsFlag(false)
-        console.log(errorsFlag);
+        // console.log(errorsFlag);
     } else {
-        console.log("Seteando FALSE ");
+        // console.log("Seteando FALSE ");
         setErrorsFlag(true)
-        console.log(errorsFlag);
+        // console.log(errorsFlag);
     }
 }
 const [input, setInput] = useState({
@@ -41,13 +41,14 @@ function handlerChange (e) {
         ...input,
         [e.target.name]: e.target.value
     })
-    console.log("INPUT HANDLER: ",input);
+    // console.log("INPUT HANDLER: ",input);
 }
 
 async function postUser(trimInput){
         // trimInput.password = await bcryptjs.hash(trimInput.password, 8)
-        await axios.post(`${HOST}/users`, {...trimInput, role: "user", availableCourses: [], status: "active"});
-        alert("Se ha creado tu cuenta con éxito")
+        console.log("TRIMINPUT",trimInput)
+        await axios.post(`${HOST}/users`, {...trimInput, role: "user", status: "inactive"});
+        alert("¡Revisá tu casilla de correo para verificar tu cuenta!")
         navigate("/")
 }
 async function validate() {
@@ -109,7 +110,7 @@ async function validate() {
         errors.confirmPassword = ""
     }
     changeErrorsFlag()
-    console.log("FN VALIDATE ERRORS: ", errors);
+    // console.log("FN VALIDATE ERRORS: ", errors);
     return errors
 }
 
@@ -139,8 +140,8 @@ async function validate() {
 }
 
 useEffect(()=>{
-    console.log("USEEFFECT------------------------------------");
-    console.log("Errors: ",errors);
+    // console.log("USEEFFECT------------------------------------");
+    // console.log("Errors: ",errors);
     // validate()
 },[])
     return (
