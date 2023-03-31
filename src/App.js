@@ -12,7 +12,7 @@ import Shop from "./components/Shop/Shop.jsx";
 import "./App.css";
 
 function App() {
-  console.log("APP LOG");
+  // console.log("APP LOG");
   const [loggedUser, setLoggedUser] = useState(
     JSON.parse(localStorage.getItem("loggedUser"))
   );

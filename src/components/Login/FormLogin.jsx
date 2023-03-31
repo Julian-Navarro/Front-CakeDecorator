@@ -12,18 +12,19 @@ export default function Login ({handlerSetUserFlagApp}) {
     })
     const [errors, setErrors] = useState({
         email: "",
-        password: ""
+        password: "",
+        status: ""
     })
     const [errorsFlag, setErrorsFlag] = useState(false)
     function changeErrorsFlag () {
         if(errorsFlag === true) {
-            console.log("Seteando TRUE ");
+            // console.log("Seteando TRUE ");
             setErrorsFlag(false)
-            console.log(errorsFlag);
+            // console.log(errorsFlag);
         } else {
-            console.log("Seteando FALSE ");
+            // console.log("Seteando FALSE ");
             setErrorsFlag(true)
-            console.log(errorsFlag);
+            // console.log(errorsFlag);
         }
     }
     function handlerChange(e) {
@@ -38,7 +39,6 @@ export default function Login ({handlerSetUserFlagApp}) {
         console.log("SUBMIT INPUT: ",input);
         const userDB = await axios.get(`${HOST}/users/userEmail/?email=${input.email}`);
         const user = userDB.data
-        console.log("USER: ",user);
 
         if(input.email.trim() === "") {
             errors.email = "Debes ingresar tu email para ingresar a tu cuenta"
@@ -56,17 +56,21 @@ export default function Login ({handlerSetUserFlagApp}) {
         } else {
             errors.password = ""
             if(user !== false){
-                console.log("Usuario existe validate: ");
 
                 const pwIsCorrect = await bcryptjs.compare(input.password, user.password)
                 console.log("PW IS CORRECT: ",pwIsCorrect);
                 if(pwIsCorrect) {
                     // console.log("CASO LA PW ES LA MISMA");
-                    localStorage.setItem("loggedUser", JSON.stringify(user))
-                    handlerSetLoggedUserFlag()
-                    handlerSetUserFlagApp()
-                    alert("Usuario logeado correctamente");
-                    navigate("/home")
+                    if(user.status === "active"){
+                        localStorage.setItem("loggedUser", JSON.stringify(user))
+                        handlerSetLoggedUserFlag()
+                        handlerSetUserFlagApp()
+                        alert("Usuario logeado correctamente");
+                        navigate("/home")
+                    }else{
+                        errors.status = "Falta verificar la cuenta. Revisar correo"
+                        alert("Falta verificar la cuenta. Revisá tu correo por favor.")
+                    }
                 } else {
                     // console.log("CASO LA PW NOOO ES LA MISMA");
                     errors.password = "Contraseña incorrecta"
@@ -82,7 +86,7 @@ export default function Login ({handlerSetUserFlagApp}) {
         e.preventDefault()
         validate()
         // console.log("FUERA DE CONTEXTO DE VALIDATE, USER: ",user);
-        if(errors.email && errors.password) {
+        if(errors.email && errors.password && errors.status) {
             
         }
     }
@@ -93,8 +97,8 @@ export default function Login ({handlerSetUserFlagApp}) {
     
     function handlerSetLoggedUserFlag() {
         if(loggedUserFlag === false) {
-            console.log("SETEANDO FLAG: ", loggedUserFlag);
-            console.log("USER STATE: ", loggedUser);
+            // console.log("SETEANDO FLAG: ", loggedUserFlag);
+            // console.log("USER STATE: ", loggedUser);
             setLoggedUserFlag(true)
         } else {
             console.log("SETEANDO FLAG: ", loggedUserFlag);
@@ -122,9 +126,10 @@ export default function Login ({handlerSetUserFlagApp}) {
             <h3> Ingresá a tu cuenta</h3>
             <form onSubmit={(e)=>{handlerSubmit(e)}} className="formLogin">
                 <div><label htmlFor="">Ingresá tu E-mail</label> <input name="email" onChange={(e)=>{handlerChange(e)}} type="text"/></div>
-                <p>{errors.email!== ""? errors.email :"No hay errror"}</p>
+                <p>{errors.email!== ""? errors.email :"No hay error"}</p>
                 <div><label htmlFor="">Ingresá tu Contraseña</label> <input name="password" onChange={(e)=>{handlerChange(e)}} type="password"/></div>
-                <p>{errors.password!== ""? errors.password :"No hay errror"}</p>
+                <p>{errors.password!== ""? errors.password :"No hay error"}</p>
+                <p>{errors.status!== ""? errors.status : null}</p>
                 <button type="submit">Ingresar</button>
                 <br />
             </form>
