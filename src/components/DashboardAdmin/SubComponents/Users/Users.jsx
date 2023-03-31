@@ -76,6 +76,7 @@ useEffect(()=>{
 
 useEffect(()=>{
   handlerSetUsers()
+  console.log("USER: ",user);
 },[allUsers, flag])
     return (
         <div>
@@ -89,7 +90,7 @@ useEffect(()=>{
                 <button onClick={(e)=>{handlerSearchValue(e)}}>Buscar</button>
               </div>
               {
-              users !== false
+              user !== false
                 ? <UserProfileCard user={user}/>
                 : null
               }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import CourseLists from "../../../CourseList/CourseList";
 import FormCoursePostAndEdit from "./FormCoursePostAndEdit";
 
@@ -46,7 +47,7 @@ export default function CoursesAdm ({ path }) {
 
 useEffect(()=>{
     console.log("RENDERING: COURSE STATE: ", courseToEdit);
-},[courseToEdit, editFlag])
+},[courseToEdit, editFlag, componentCourseListFlag])
     return (
         <div>
           <h1>COURSES PADRE</h1>
@@ -72,6 +73,7 @@ useEffect(()=>{
                 : null
             }
           <CourseLists 
+            componentCourseListFlag={componentCourseListFlag}
             path="adm" 
             handlerEditCourse={handlerEditCourse}/>
         </div>

@@ -5,7 +5,6 @@ import userIcon from "../../../../utils/user-icon.png"
 export default function UserProfileCard({ user: {name, surname, email, status, phone, id, img} }) {
 
     useEffect(()=>{
-
     },[])
     return (
         <div className={s.divContainer}>

@@ -9,6 +9,9 @@ export default function ProductsAdm ({ path }) {
     const [editFlag, setEditFlag] = useState(false)
     const [productToEdit, setProductToEdit] = useState(false)
     const [componentProductListFlag, setComponentProductListFlag] = useState(false)
+    const [allProducts, setAllProducts] = useState(false);
+    const [products, setProducts] = useState([])
+    const [input, setInput] = useState("");
     function handlerSetComponentProductListFlag () {
         if(componentProductListFlag) {
             setComponentProductListFlag(false)
@@ -44,17 +47,25 @@ export default function ProductsAdm ({ path }) {
             setEditFlag(true)
         }
     }   
-    const [products, setProducts] = useState(false);
-    async function getProducts(){
+    async function getAllProducts(){
         const productsDB = await axios.get(`${HOST}/products`)
-        setProducts([...productsDB.data])
+        setAllProducts(productsDB.data)
+        setProducts(productsDB.data)    
     }
-    
+    function handlerSetInput(e){
+        e.preventDefault();
+        setInput(e.target.value);
+    }
+    function handlerSearchProducts(e){
+        e.preventDefault();
+        setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(input.toLowerCase())))
+    }
 useEffect(()=>{
     console.log("RENDERING: PRODUCT ADM: ");
-    getProducts()
+    getAllProducts()
+    console.log("ALL PRODUCTS: ", allProducts);
 },[productToEdit, editFlag, componentProductListFlag])
-useEffect(()=>{},[products])
+useEffect(()=>{},[allProducts, products])
     return (
         <div>
           <h1>PRODUCT PADRE</h1>
@@ -79,6 +90,11 @@ useEffect(()=>{},[products])
                     handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} />
                 : null
             }
+            <div>
+                <input type="text" onChange={(e)=>handlerSetInput(e)}/>
+                <button onClick={(e)=>handlerSearchProducts(e)}>Buscar</button>
+            </div>
+                <button onClick={()=>setProducts(allProducts)}>Todos los productos</button>
           <ProductCards
             products={products}
             path="adm" 
