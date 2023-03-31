@@ -2,22 +2,22 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
+import Navbar from "../Navbar/Navbar";
 
-export default function Shop () {
-    const [flag, setFlag] = useState(false);
-    const [allProducts, setAllProducts] = useState([])
-    const [products, setProducts] = useState([])
-    async function getProductsDB() {
-        const productsDB = await axios.get(`${HOST}/products`);
-        setAllProducts(productsDB.data)
-        setProducts(productsDB.data)
-        setFlag(!flag)
-    }
+export default function Shop() {
+  const [flag, setFlag] = useState(false);
+  const [allProducts, setAllProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  async function getProductsDB() {
+    const productsDB = await axios.get(`${HOST}/products`);
+    setAllProducts(productsDB.data);
+    setProducts(productsDB.data);
+    setFlag(!flag);
+  }
 
-    
-    //!  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ LOGICAS SETEADO DE CARRITO LOCALSTORAG ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+  //!  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ LOGICAS SETEADO DE CARRITO LOCALSTORAG ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
-    const [cart, setCart] = useState();
+  const [cart, setCart] = useState();
 
   function handleRemoveItemCart(e, id) {
     e.preventDefault();
@@ -74,7 +74,8 @@ export default function Shop () {
           }
         });
         if (index !== false) {
-          if (stock === oldCart[index].amount) { //! SAQUÉ "stock === 0 ||..."" del if 
+          if (stock === oldCart[index].amount) {
+            //! SAQUÉ "stock === 0 ||..."" del if
             return alert("Se llegó al limite de stock actual");
           } else {
             oldCart[index].amount += 1;
@@ -84,8 +85,11 @@ export default function Shop () {
               "cart",
               JSON.stringify([...oldCart])
             );
-            getProductsDB()
-console.log("CASO SI EXISTE CARRITO Y SIIIII TENGO INDEX",JSON.parse(localStorage.getItem("cart")));
+            getProductsDB();
+            console.log(
+              "CASO SI EXISTE CARRITO Y SIIIII TENGO INDEX",
+              JSON.parse(localStorage.getItem("cart"))
+            );
             return alert(`Agregaste de nuevo el producto ${name}`);
           }
         } else {
@@ -95,7 +99,7 @@ console.log("CASO SI EXISTE CARRITO Y SIIIII TENGO INDEX",JSON.parse(localStorag
               "cart",
               JSON.stringify([...oldCart, product])
             );
-            getProductsDB()
+            getProductsDB();
             console.log(
               "CASO SI EXISTE CARRITO Y NOOOOO TENGO INDEX",
               JSON.parse(localStorage.getItem("cart"))
@@ -112,7 +116,7 @@ console.log("CASO SI EXISTE CARRITO Y SIIIII TENGO INDEX",JSON.parse(localStorag
             "cart",
             JSON.stringify([product])
           );
-          getProductsDB()
+          getProductsDB();
           console.log(
             "CASO NO EXISTE CARRITO",
             JSON.parse(localStorage.getItem("cart"))
@@ -127,23 +131,22 @@ console.log("CASO SI EXISTE CARRITO Y SIIIII TENGO INDEX",JSON.parse(localStorag
     }
   };
 
-    //!  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ LOGICAS SETEADO DE CARRITO LOCALSTORAG ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-useEffect(()=>{
+  //!  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ LOGICAS SETEADO DE CARRITO LOCALSTORAG ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+  useEffect(() => {
     console.log("RENDERING SHOP!");
     console.log("PRODUCTS: ", products);
-    getProductsDB()
-},[])
-useEffect(()=>{
-    
-},[flag, cart])
-    return (
-        <div>
-            <h1>Shop</h1>
-            <ProductCards 
-                handlerSetCart={handlerSetCart}
-                handleRemoveItemCart={handleRemoveItemCart}   
-                products={products}
-            />
-        </div>
-    )
+    getProductsDB();
+  }, []);
+  useEffect(() => {}, [flag, cart]);
+  return (
+    <div>
+      <Navbar />
+      <h1>Shop</h1>
+      <ProductCards
+        handlerSetCart={handlerSetCart}
+        handleRemoveItemCart={handleRemoveItemCart}
+        products={products}
+      />
+    </div>
+  );
 }

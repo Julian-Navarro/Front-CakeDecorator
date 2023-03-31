@@ -12,6 +12,8 @@ export default function LandingPage ({handlerSetUserFlagApp}) {
             </div>
             <FormLogin handlerSetUserFlagApp={handlerSetUserFlagApp}/>
             <Link to="/createAccount"><span>Si no tienes cuenta, creala aquí</span></Link>
+            <br />
+            <Link to="/forgotPassword"><span>¿Olvidaste tu contraseña?</span></Link>
 
         </div>
     )
