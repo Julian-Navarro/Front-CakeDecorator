@@ -27,6 +27,7 @@ export const Input = styled.input`
   color: ${({ color }) => color || "black"};
   border: 2px solid ${({ bd }) => bd || "black"};
   border-radius: ${({ br }) => br || "8px"};
+  text-align: ${({ txAlign }) => txAlign || "center"};
 `;
 export const Label = styled.label`
   background: ${({ bg }) => bg || "#fff"};
@@ -90,6 +91,7 @@ export const Button = styled.button`
   letter-spacing: ${({ letterSp }) => letterSp || "2px"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
+  font-size: ${({ fSize }) => fSize || "22px"};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol, color }) => _hovCol || color};

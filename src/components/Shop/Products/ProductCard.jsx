@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import { Div, P, Button, H1, Img, Input } from "../../../utils/StyledComponents/StyledComponents";
 
 export default function ProductCard ({ handlerSetCart, handleRemoveItemCart, handlerEditProduct, path, product, name,category, description, id, img, price, stock}) {
-console.log("PATH", path);
-const [amountToAdd, setAmountToAdd] = useState(0);
+const [amountToAdd, setAmountToAdd] = useState(1);
 function handlerSetAmountToAdd (e) {
     e.preventDefault()
-console.log("AAAAAAAAAAAAAAAAAA", e.target.value);
-setAmountToAdd(e.target.value)
+    if((/^\d+$/).test(e.target.value)) {
+        console.log("TRUE")
+        setAmountToAdd(e.target.value)
+    }
 }
-function handler (){
-    console.log("amountToAdd: ", amountToAdd);
+function addOne(){
+    setAmountToAdd(`${Number(amountToAdd)+1}`)
 }
+function subtractOne(){
+    if(amountToAdd != 0) {
+        setAmountToAdd(`${Number(amountToAdd)-1}`)
+    }
+}
+
     return (
         <Div wd="18rem" flexDir="column"bd="black" mt="1rem" mr="1rem" >
             <P bg="red">Producto: {name}</P>
@@ -21,9 +28,13 @@ function handler (){
             <P bg="red">Stock: {stock}</P>
             {path === "adm"? <button onClick={(e)=>{handlerEditProduct(e, product)}}>Editar</button> :null}
             {path !== "adm"
-            ? <Div wd="100%" bg='red'jfCont="center">
-                <Input wd="40px" type="number" onChange={(e)=>handlerSetAmountToAdd(e)}></Input>
-                <Button onClick={(e)=>{handler(e)}}>Agregar</Button>
+            ? <Div wd="100%" bg='red'jfCont="space-around">
+                <Div pd="0"jfCont="center">
+                    <Button fWeight="700"fSize="26px" hg="32px"wd="30px"br="0" onClick={subtractOne}>-</Button>
+                    <Input wd="40px"hg="18px" br="0" type="text" value={amountToAdd} onChange={(e)=>handlerSetAmountToAdd(e)}/>
+                    <Button fWeight="700"fSize="26px" hg="32px"wd="30px"br="0" onClick={addOne}>+</Button>
+                </Div>
+                <Button wd="120px"hg="36px" onClick={(e)=>handlerSetCart(e,{...product, amountToAdd: Number(amountToAdd)})}>Agregar</Button>
               </Div>
             : null}
         </Div>
