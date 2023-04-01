@@ -52,7 +52,7 @@ export default function Shop() {
     }
   }
 
-  const handlerSetCart = (e, id, price, image, name, stock) => {
+  const handlerSetCart = (e, {id, price, image, name, stock, amountToAdd}) => {
     e.preventDefault();
 
     try {
@@ -62,65 +62,65 @@ export default function Shop() {
         price,
         id,
         stock,
-        amount: 1,
+        amount: amountToAdd, 
       };
       let oldCart = JSON.parse(window.localStorage.getItem("cart"));
 
       if (oldCart) {
+        //! CASO TENGO CARRITO 
+        //? Recorro oldcart y busco si en el carrito existe el producto que se quiere agregar, guardo su index
         let index = false;
         oldCart.forEach((pr, i) => {
-          if (pr.id === product.id) {
+          if (pr.id === product.id) { //? Se puede sacar "product."
             index = i;
           }
         });
+        //? Pregunto si encontré en oldcart el producto que quiero agregar nuevamente
         if (index !== false) {
-          if (stock === oldCart[index].amount) {
-            //! SAQUÉ "stock === 0 ||..."" del if
-            return alert("Se llegó al limite de stock actual");
-          } else {
-            oldCart[index].amount += 1;
+          console.log("SARASA");
+          if (stock >= oldCart[index].amount + amountToAdd) {
+            console.log("CASO SI EXISTE CARRITO Y SIIIII TENGO INDEX",JSON.parse(localStorage.getItem("cart")));
 
+            oldCart[index].amount += amountToAdd;
             oldCart[index].total = oldCart[index].price * oldCart[index].amount;
             let newCart = window.localStorage.setItem(
               "cart",
               JSON.stringify([...oldCart])
             );
-            getProductsDB();
-            console.log(
-              "CASO SI EXISTE CARRITO Y SIIIII TENGO INDEX",
-              JSON.parse(localStorage.getItem("cart"))
-            );
+            getProductsDB(); //! NO SÉ SI HACE FALTA ESTA LINEA
             return alert(`Agregaste de nuevo el producto ${name}`);
+          } else {
+            console.log("SARACATUNGA", oldCart[index]);
+            oldCart[index].amount = stock
+            return alert("La cantidad que se quiere agregar excede el stock");
           }
         } else {
           if (stock !== 0) {
-            product.total = product.price;
+            console.log(
+              "CASO SI EXISTE CARRITO Y NOOOOO TENGO INDEX",
+              JSON.parse(localStorage.getItem("cart"))
+            );
+            product.total = product.price * amountToAdd;
             let newCart = window.localStorage.setItem(
               "cart",
               JSON.stringify([...oldCart, product])
             );
             getProductsDB();
-            console.log(
-              "CASO SI EXISTE CARRITO Y NOOOOO TENGO INDEX",
-              JSON.parse(localStorage.getItem("cart"))
-            );
-            return alert(`Agregaste el producto ${name}`);
+            return alert(`Agregaste ${amountToAdd} producto/s de ${name}`);
           } else {
             return alert("El producto no tiene stock");
           }
         }
       } else {
+        console.log("CASO NO EXISTE CARRITO", JSON.parse(localStorage.getItem("cart")));
         if (stock !== 0) {
-          product.total = product.price;
+          product.total = product.price * amountToAdd; //! agregado "* amountToAdd"
+
           let newCart = window.localStorage.setItem(
             "cart",
             JSON.stringify([product])
           );
           getProductsDB();
-          console.log(
-            "CASO NO EXISTE CARRITO",
-            JSON.parse(localStorage.getItem("cart"))
-          );
           return alert(`Agregaste el producto ${name}`);
         } else {
           return alert("El producto no tiene stock");
@@ -134,10 +134,12 @@ export default function Shop() {
   //!  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ LOGICAS SETEADO DE CARRITO LOCALSTORAG ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
   useEffect(() => {
     console.log("RENDERING SHOP!");
-    console.log("PRODUCTS: ", products);
     getProductsDB();
+    console.log("PRODUCTS: ", products);
   }, []);
-  useEffect(() => {}, [flag, cart]);
+  useEffect(() => {
+    console.log("RENDERING SHOP!");
+  }, [flag, cart]);
   return (
     <div>
       <Navbar />
