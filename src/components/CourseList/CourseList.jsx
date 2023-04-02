@@ -16,7 +16,13 @@ export default function CourseLists ({ path, handlerEditCourse, componentCourseL
     
     return (
         <div>
-            <Navbar />
+            
+            {
+                path === false
+                ? <Navbar />
+                : null
+            }
+
             <h2>COURSE LIST</h2>
             <CourseListCards path={path} handlerEditCourse={handlerEditCourse} courses={courses}/>
         </div>
