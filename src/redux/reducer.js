@@ -1,4 +1,4 @@
-import { GET_COURSES_FROM_DB, GET_USERS } from "./actionTypes";
+import { GET_COURSES_FROM_DB, GET_USERS, GET_USER } from "./actionTypes";
 const initialState = {
   courses: [],
   users: [],
@@ -19,6 +19,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
+    case GET_USER:
+      return{
+        ...state,
+        user: action.payload
+      }
     default:
       return {
         ...state,

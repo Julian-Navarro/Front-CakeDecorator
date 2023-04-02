@@ -1,11 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
+import { findUserById } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-export default function MyAccount () {
-    return (
-        <div>
-            <Navbar/>
-            <h1>My Account</h1>
-        </div>
-    )
+export default function MyAccount() {
+  const dispatch = useDispatch();
+  const userStorage = JSON.parse(localStorage.getItem("loggedUser"));
+  const loggedUser = useSelector((state) => state.user);
+  useEffect(() => {
+    dispatch(findUserById(userStorage.id));
+  }, []);
+
+  return (
+    <div>
+      <Navbar />
+      <h1>Datos Personales</h1>
+      <div>
+        <label>
+          Foto de perfil:{" "}
+          {loggedUser.img ? (
+            loggedUser.img
+          ) : (
+            <img
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              height={"30px"}
+              width={"30px"}
+              alt="img not found"
+            />
+          )}
+        </label>
+        <br />
+        <label>Nombre: {loggedUser.name}</label>
+        <br />
+        <label>Apellido: {loggedUser.surname}</label>
+        <br />
+        <label>Email: {loggedUser.email}</label>
+        <br />
+        <label>Tel/Cel: {loggedUser.phone}</label>
+        <br />
+        <Link to="/updateUser">
+          <button>Editar✏️</button>
+        </Link>
+      </div>
+    </div>
+  );
 }
