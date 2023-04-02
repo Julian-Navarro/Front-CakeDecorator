@@ -14,14 +14,15 @@ function addOne(){
     setAmountToAdd(`${Number(amountToAdd)+1}`)
 }
 function subtractOne(){
-    if(amountToAdd != 0) {
+    if(amountToAdd != 1) {
         setAmountToAdd(`${Number(amountToAdd)-1}`)
     }
 }
 function handlerBtnAdd(e){
-handlerSetCart(e, {...product, amountToAdd: Number(amountToAdd), img: product.img[0]})
-
-setAmountToAdd(1);
+    if(amountToAdd >= 1) {
+        handlerSetCart(e, {...product, amountToAdd: Number(amountToAdd), img: product.img[0]})
+        setAmountToAdd(1);  
+    }
 }
 
     return (
