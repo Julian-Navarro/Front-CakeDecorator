@@ -1,64 +1,81 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { HOST } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
 export default function ForgotPassword() {
+  const navigate = useNavigate();
   let [error, setError] = useState({
     emailError: "",
   });
-  // console.log("ERROR", error);
+
+  const [errorsFlag, setErrorsFlag] = useState(false);
 
   const [input, setInput] = useState({
-    emailExist: "",
+    email: "",
   });
-  // console.log("INPUT", input);
+  console.log("INPUT", input);
+
+  function changeErrorsFlag() {
+    if (errorsFlag === true) {
+      setErrorsFlag(false);
+      console.log(errorsFlag);
+    } else {
+      setErrorsFlag(true);
+      console.log(errorsFlag);
+    }
+  }
 
   function handlerChange(e) {
     e.preventDefault();
     setInput({
-      ...input,
       [e.target.name]: e.target.value,
     });
+    if (input.email.length > 0) {
+      error.emailError = "";
+    }
+  }
+
+  async function findEmail(trimInput, e) {
+    let userInfo = await axios.get(
+      `${HOST}/users/forgotPassword?email=${trimInput.email}`
+    );
+    console.log("RES", userInfo);
+
+    if (userInfo && userInfo.data !== "") {
+      alert("Te enviamos un mail para cambiar la contraseña. ¡Revisalo!");
+      navigate("/");
+    } else if (userInfo.data === "") {
+      alert("Ese email no está registrado");
+      setInput({
+        email: "",
+      });
+    }
   }
 
   function validate() {
     let trimInput = {
-      emailExist: input.emailExist.trim(),
+      email: input.email.trim(),
     };
-    // console.log("TRIM", trimInput);
-    if (trimInput.emailExist === "") {
-      error.emailError = "Falta ingresar el email";
-    } else if (trimInput.emailExist !== "") {
-      error.emailError = "";
+    if (trimInput.email === "") {
+      error.emailError = "Debes ingresar tu correo electrónico";
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(trimInput.email)
+    ) {
+      error.emailError = "El formato de email es inválido";
     }
+    changeErrorsFlag();
     return error;
-  }
-
-  async function findEmail(trimInput) {
-    console.log("TRIM IN", trimInput)
-    const findEmail = await axios.get(
-      `${HOST}/users/forgotPassword?email=${trimInput.emailExist}`
-    );
-    // console.log("EMAIL")
-    if (findEmail.data !== false) {
-      console.log("HOLA 1")
-      alert("Te enviamos un mail para cambiar la contraseña. ¡Revisalo!");
-    } else {
-      console.log("HOLA 2")
-      alert("Ese email no está registrado");
-    }
   }
 
   async function handlerSubmit(e) {
     e.preventDefault();
 
     let trimInput = {
-      emailExist: input.emailExist.trim(),
+      email: input.email.trim(),
     };
 
     let errorEmail = validate();
-    // console.log("ERROR VALIDATE", errorEmail)
-
     if (error.emailError === "") {
       findEmail(trimInput);
     } else {
@@ -68,15 +85,14 @@ export default function ForgotPassword() {
     }
   }
 
-  useEffect(() => {}, []);
-
   return (
     <div>
       <form onSubmit={(e) => handlerSubmit(e)}>
-        <h3>Ingresar tu email ya registrado</h3>
+        <h3>Ingresar tu email registrado</h3>
         <input
           type="email"
-          name="emailExist"
+          name="email"
+          value={input.email}
           onChange={(e) => handlerChange(e)}
         />
         <button type="submit">Buscar</button>

@@ -1,20 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { HOST } from "../../utils";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function GenerateNewPass() {
+  const navigate = useNavigate();
   const { id } = useParams();
-  const navigate = useNavigate()
+
   const [input, setInput] = useState({
     newPassword: "",
     samePassword: "",
   });
+  const [errorsFlag, setErrorsFlag] = useState(false);
   let [errors, setErrors] = useState({
     newPassword: "",
     samePassword: "",
   });
-  console.log("INPUT", input);
+
+  function changeErrorsFlag() {
+    if (errorsFlag === true) {
+      setErrorsFlag(false);
+      console.log(errorsFlag);
+    } else {
+      setErrorsFlag(true);
+      console.log(errorsFlag);
+    }
+  }
 
   function handleChange(e) {
     e.preventDefault();
@@ -22,6 +33,27 @@ export default function GenerateNewPass() {
       ...input,
       [e.target.name]: e.target.value,
     });
+    if (input.newPassword.length > 0) {
+      errors.newPassword = "";
+    }
+    if (input.samePassword.length > 0) {
+      errors.samePassword = "";
+    }
+  }
+
+  async function sendNewPassword(trimInput) {
+    const updateUser = await axios.put(`${HOST}/users/updateUserPass`, {
+      ...trimInput,
+      id,
+    });
+
+    console.log("UPDATE", updateUser);
+    if (updateUser.data !== "") {
+      alert("¡Contraseña actualizada correctamente!");
+      navigate("/");
+    } else {
+      alert("Algo salió mal");
+    }
   }
 
   function validate() {
@@ -50,18 +82,8 @@ export default function GenerateNewPass() {
       errors.samePassword = "";
     }
 
+    changeErrorsFlag();
     return errors;
-  }
-
-  async function sendNewPassword(trimInput) {
-    const response = await axios.put(`${HOST}/users/updateUserPass`, {...trimInput, id});
-
-    if(response !== null){
-        alert("¡Contraseña actualizada correctamente!")
-        navigate("/")
-    }else{
-        alert("Algo salió mal")
-    }
   }
 
   function handleSubmit(e) {
@@ -74,12 +96,9 @@ export default function GenerateNewPass() {
     var newErrors = validate();
     if (newErrors.newPassword === "" && newErrors.samePassword === "") {
       errors = newErrors;
-      //   console.log("EMPTY ERR", errors);
       sendNewPassword(trimInput);
     }
   }
-
-  useEffect(() => {}, []);
 
   return (
     <div>
@@ -92,6 +111,7 @@ export default function GenerateNewPass() {
               handleChange(e);
             }}
             type="password"
+            value={input.newPassword}
           />
         </div>
         <p>{errors.newPassword ? errors.newPassword : null} </p>
@@ -103,11 +123,14 @@ export default function GenerateNewPass() {
               handleChange(e);
             }}
             type="password"
+            value={input.samePassword}
           />
         </div>
         <p>{errors.samePassword ? errors.samePassword : null} </p>
         <br />
         <button type="submit">Guardar</button>
+        <br />
+        <Link to="/">Ingresar</Link>
       </form>
     </div>
   );
