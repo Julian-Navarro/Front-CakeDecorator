@@ -16,6 +16,7 @@ export default function CardsCart({ handlerSetCartFlag, cart}){
 
             { cart?.length 
             ? cart.map((pr, i)=> <CardCart
+            key={pr.id}
             handlerSetCartFlag={handlerSetCartFlag}
             index={i}
             id={pr.id}

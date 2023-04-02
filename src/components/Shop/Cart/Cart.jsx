@@ -6,6 +6,7 @@ export default function Cart () {
     const navigate = useNavigate()
     const cart = JSON.parse(localStorage.getItem("cart"))
     const [cartFlag, setCartFlag] = useState(false);
+    const total = cart?.reduce((acc, el) => acc + el.total, 0);
     function handlerSetCartFlag(){
         setCartFlag(!cartFlag)
     }
@@ -16,11 +17,17 @@ export default function Cart () {
     return (
         <Div flexDir="column">
             <H1>CART</H1>
+            <Div>
+            { 
+                "TOTAL CARRITO: " + total
+            }
+            </Div>
             <Button onClick={()=>navigate("/shop")}>Volver</Button>
 
             <CardsCart 
             handlerSetCartFlag={handlerSetCartFlag}
             cart={cart}/>
+
         </Div>
     )
 }

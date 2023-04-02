@@ -15,9 +15,8 @@ import Cart from "./components/Shop/Cart/Cart.jsx";
 
 function App() {
   // console.log("APP LOG");
-  const [loggedUser, setLoggedUser] = useState(
-    JSON.parse(localStorage.getItem("loggedUser"))
-  );
+  const userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
+  const [loggedUser, setLoggedUser] = useState(userLocalStorage);
   const [loggedUserFlagApp, setLoggedUserFlagApp] = useState(false);
   function handlerSetUserFlagApp() {
     // e.preventDefault();
@@ -28,7 +27,10 @@ function App() {
     }
   }
 
-  useEffect(() => {}, [loggedUserFlagApp]);
+  useEffect(() => {
+    console.log("RENDERING APP ROUTES");
+    console.log(loggedUser);
+  }, [loggedUserFlagApp, loggedUser]);
   return (
     <div>
       <div className="App"></div>
