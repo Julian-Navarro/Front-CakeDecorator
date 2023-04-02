@@ -4,6 +4,7 @@ import Users from "../SubComponents/Users/Users";
 import CoursesAdm from "../SubComponents/Courses/CoursesAdm";
 import Products from "../SubComponents/Products/ProductsAdm";
 import CreateCategories from "../SubComponents/Products/EditCategories";
+import Navbar from "../../Navbar/Navbar";
 export default function DashboardAdmin () {
     const [render, setRender] = useState(false)
     function handlerChangeRender(e) {
@@ -15,6 +16,7 @@ export default function DashboardAdmin () {
     useEffect(()=>{}, [render])
     return (
         <div>
+            <Navbar/>
             <h2>DASHBOARD ADMIN</h2>
             <br />
             <div className={s.divContainer}>
