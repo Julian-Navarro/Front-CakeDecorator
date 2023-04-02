@@ -5,6 +5,8 @@ import { HOST } from "../../utils";
 import Navbar from "../Navbar/Navbar";
 import { Div, Button, H1, Img } from "../../utils/StyledComponents/StyledComponents"; 
 import { Link } from "react-router-dom";
+import LeftSideBar from "./LifeSideBar/LeftSideBar";
+
 export default function Shop() {
   const [flag, setFlag] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
@@ -169,20 +171,29 @@ export default function Shop() {
     console.log("RENDERING SHOP!");
   }, [flag, cart]);
   return (
-    <div>
-      <Navbar />
-      <h1>Shop</h1>
-      <Div>
+    <Div flexDir="column" wd="100%">
+      <Div wd="100%" bg="yellow">
+        <Navbar/>
+      </Div>
+
+      <Div bg="greenyellow" wd="100%">
         <Link to="/shop/cart">
           <Img wd="100px" hg="100px" src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="" />
         </Link>
       </Div>
-      
-      <ProductCards
-        handlerSetCart={handlerSetCart}
-        handleRemoveItemCart={handleRemoveItemCart}
-        products={products}
-      />
-    </div>
+
+
+      <Div wd="100%" bg="lightblue">
+        
+        <LeftSideBar/>
+        
+        <ProductCards
+          handlerSetCart={handlerSetCart}
+          handleRemoveItemCart={handleRemoveItemCart}
+          products={products}
+          />
+      </Div>
+
+    </Div>
   );
 }

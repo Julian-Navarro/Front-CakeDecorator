@@ -1,5 +1,6 @@
 .containerNavbar {
-    background-color: rgba(0, 0, 255, 0.565);
+    background-color: rgba(0, 0, 255, 0.735);
+    width: 100%;
     box-shadow: 0 .3rem .8rem .2rem rgba(0, 0, 0, 0.521);
     height: 4rem;
     display: flex;
