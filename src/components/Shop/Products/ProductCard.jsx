@@ -26,21 +26,31 @@ function handlerBtnAdd(e){
 }
 
     return (
-        <Div wd="18rem" flexDir="column"bd="black" mt="1rem" mr="1rem" >
-            <P bg="red">Producto: {name}</P>
-            <Img br=".5rem"wd="100%"src={img} alt="img not found" />
-            <P bg="red">Precio: {price}</P>
-            <P bg="red">Category: {category}</P>
-            <P bg="red">Stock: {stock}</P>
+        <Div wd="14rem" hg="18rem"flexDir="column"bd="black" mt="1rem" mr="1rem" jfCont="space-between" >
+            <Div hg="1rem" bg="green"wd="100%">
+                <P bg="red"fSize=".7rem"hg="10px">Producto: {name}</P>
+            </Div>
+
+            <Img br=".5rem" wd="100%" hg="10rem"src={img} alt="img not found" />
+
+            <Div hg="1rem" bg="green">
+                <P bg="red"fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Precio: {price}</P>
+            </Div>
+            <Div hg="1rem" bg="green">
+                <P bg="red"fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Category: {category}</P>
+            </Div>
+            <Div hg="1rem" bg="green">
+                <P bg="red"fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Stock: {stock}</P>
+            </Div>
             {path === "adm"? <button onClick={(e)=>{handlerEditProduct(e, product)}}>Editar</button> :null}
             {path !== "adm"
             ? <Div wd="100%" bg='red'jfCont="space-around">
                 <Div pd="0"jfCont="center">
-                    <Button fWeight="700"fSize="26px" hg="32px"wd="30px"br="0" onClick={subtractOne}>-</Button>
-                    <Input wd="40px"hg="18px" br="0" type="text" value={amountToAdd} onChange={(e)=>handlerSetAmountToAdd(e)}/>
-                    <Button fWeight="700"fSize="26px" hg="32px"wd="30px"br="0" onClick={addOne}>+</Button>
+                    <Button fWeight="700"fSize="24px" hg="28px"wd="30px"br="0" onClick={subtractOne}>-</Button>
+                    <Input wd="40px"hg="14px" br="0" type="text" value={amountToAdd} onChange={(e)=>handlerSetAmountToAdd(e)}/>
+                    <Button fWeight="700"fSize="24px" hg="28px"wd="30px"br="0" onClick={addOne}>+</Button>
                 </Div>
-                <Button wd="120px"hg="36px" onClick={(e)=>handlerBtnAdd(e)}>Agregar</Button>
+                <Button wd="120px"hg="26px" onClick={(e)=>handlerBtnAdd(e)}>Agregar</Button>
               </Div>
             : null}
         </Div>
