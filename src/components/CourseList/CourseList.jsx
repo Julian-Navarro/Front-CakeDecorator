@@ -15,6 +15,15 @@ export default function CourseLists ({ path, handlerEditCourse, componentCourseL
     
     return (
         <div>
+<<<<<<< Updated upstream
+=======
+            {
+                path === false
+                ? <Navbar />
+                : null
+            }
+           
+>>>>>>> Stashed changes
             <h2>COURSE LIST</h2>
             <CourseListCards path={path} handlerEditCourse={handlerEditCourse} courses={courses}/>
         </div>
