@@ -18,6 +18,11 @@ function subtractOne(){
         setAmountToAdd(`${Number(amountToAdd)-1}`)
     }
 }
+function handlerBtnAdd(e){
+handlerSetCart(e, {...product, amountToAdd: Number(amountToAdd), img: product.img[0]})
+
+setAmountToAdd(1);
+}
 
     return (
         <Div wd="18rem" flexDir="column"bd="black" mt="1rem" mr="1rem" >
@@ -34,7 +39,7 @@ function subtractOne(){
                     <Input wd="40px"hg="18px" br="0" type="text" value={amountToAdd} onChange={(e)=>handlerSetAmountToAdd(e)}/>
                     <Button fWeight="700"fSize="26px" hg="32px"wd="30px"br="0" onClick={addOne}>+</Button>
                 </Div>
-                <Button wd="120px"hg="36px" onClick={(e)=>handlerSetCart(e,{...product, amountToAdd: Number(amountToAdd)})}>Agregar</Button>
+                <Button wd="120px"hg="36px" onClick={(e)=>handlerBtnAdd(e)}>Agregar</Button>
               </Div>
             : null}
         </Div>

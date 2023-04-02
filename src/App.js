@@ -11,6 +11,7 @@ import ForgotPassword from "./components/ForgotPass/ForgotPassword.jsx";
 import GenerateNewPass from "./components/ForgotPass/GenerateNewPass.jsx";
 import Shop from "./components/Shop/Shop.jsx";
 import "./App.css";
+import Cart from "./components/Shop/Cart/Cart.jsx";
 
 function App() {
   // console.log("APP LOG");
@@ -40,14 +41,24 @@ function App() {
             <LandingPage handlerSetUserFlagApp={handlerSetUserFlagApp} />
           }
         />
-        <Route exact path ="/forgotPassword" element={<ForgotPassword/>}></Route>
-        <Route exact path ="/generateNewPass/:id" element={<GenerateNewPass/>}></Route>
+        <Route
+          exact
+          path="/forgotPassword"
+          element={<ForgotPassword />}
+        ></Route>
+        <Route
+          exact
+          path="/generateNewPass/:id"
+          element={<GenerateNewPass />}
+        ></Route>
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/courses" element={<CourseList path={false} />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
         <Route exact path="/aboutUs" element={<AboutUs />} />
         <Route exact path="/createAccount" element={<FormPostUser />} />
         <Route exact path="/shop" element={<Shop />} />
+        <Route exact path="/shop/cart" element={<Cart />} />
+
         {loggedUser !== null ? (
           loggedUser.role === "admin" ? (
             <>
@@ -61,7 +72,6 @@ function App() {
         ) : null}
       </Routes>
     </div>
-    
   );
 }
 

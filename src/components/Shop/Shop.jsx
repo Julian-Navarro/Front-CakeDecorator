@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
 import Navbar from "../Navbar/Navbar";
-
+import { Div, Button, H1, Img } from "../../utils/StyledComponents/StyledComponents"; 
+import { Link } from "react-router-dom";
 export default function Shop() {
   const [flag, setFlag] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
@@ -52,13 +53,13 @@ export default function Shop() {
     }
   }
 
-  const handlerSetCart = (e, {id, price, image, name, stock, amountToAdd}) => {
+  const handlerSetCart = (e, {id, price, img, name, stock, amountToAdd}) => {
     e.preventDefault();
 
     try {
       let product = {
         name,
-        image,
+        img,
         price,
         id,
         stock,
@@ -79,7 +80,7 @@ export default function Shop() {
         if (index !== false) {
           console.log("SARASA");
           if (stock >= oldCart[index].amount + amountToAdd) {
-            console.log("CASO SI EXISTE CARRITO Y SIIIII TENGO INDEX",JSON.parse(localStorage.getItem("cart")));
+            console.log("CASO HAY CARRITO HAY INDEX & NO SE SUPERA EL STOCK",JSON.parse(localStorage.getItem("cart")));
 
             oldCart[index].amount += amountToAdd;
             oldCart[index].total = oldCart[index].price * oldCart[index].amount;
@@ -90,21 +91,38 @@ export default function Shop() {
             getProductsDB(); //! NO SÉ SI HACE FALTA ESTA LINEA
             return alert(`Agregaste de nuevo el producto ${name}`);
           } else {
-            console.log("SARACATUNGA", oldCart[index]);
+            console.log("CASO HAY CARRITO HAY INDEX & SE SUPERA EL STOCK DISPONIBLE");
             oldCart[index].amount = stock
+            oldCart[index].total = stock * oldCart[index].price;
+            window.localStorage.setItem(
+              "cart",
+              JSON.stringify([...oldCart])
+            );
+            console.log("SARACATUNGA");
+
             return alert("La cantidad que se quiere agregar excede el stock");
           }
         } else {
+          console.log(
+            "CASO SI EXISTE CARRITO Y NOOOOO TENGO INDEX",
+            JSON.parse(localStorage.getItem("cart"))
+          );
           if (stock !== 0) {
-            console.log(
-              "CASO SI EXISTE CARRITO Y NOOOOO TENGO INDEX",
-              JSON.parse(localStorage.getItem("cart"))
-            );
-            product.total = product.price * amountToAdd;
-            let newCart = window.localStorage.setItem(
-              "cart",
-              JSON.stringify([...oldCart, product])
-            );
+            if(amountToAdd < stock) {
+              product.total = product.price * amountToAdd;
+              let newCart = window.localStorage.setItem(
+                "cart",
+                JSON.stringify([...oldCart, product])
+              );
+            } else {
+              product.total = product.price * stock;
+              product.amount = stock
+              let newCart = window.localStorage.setItem(
+                "cart",
+                JSON.stringify([...oldCart, product])
+              );
+              return alert("La cantidad solicitada excede el stock")
+            }
             getProductsDB();
             return alert(`Agregaste ${amountToAdd} producto/s de ${name}`);
           } else {
@@ -114,14 +132,24 @@ export default function Shop() {
       } else {
         console.log("CASO NO EXISTE CARRITO", JSON.parse(localStorage.getItem("cart")));
         if (stock !== 0) {
-          product.total = product.price * amountToAdd; //! agregado "* amountToAdd"
-
-          let newCart = window.localStorage.setItem(
-            "cart",
-            JSON.stringify([product])
-          );
-          getProductsDB();
-          return alert(`Agregaste el producto ${name}`);
+          if(amountToAdd < stock) {
+            product.total = product.price * amountToAdd; //! agregado "* amountToAdd"
+  
+            let newCart = window.localStorage.setItem(
+              "cart",
+              JSON.stringify([product])
+            );
+            getProductsDB(); //! NO SÉ SI HACE FALTA ESTA LINEA
+            return alert(`Agregaste el producto ${name}`);
+          } else {
+              product.total = product.price * stock;
+              product.amount = stock
+              let newCart = window.localStorage.setItem(
+                "cart",
+                JSON.stringify([product])
+              );           
+              alert("La cantidad solicitada excede el stock actual")
+          }
         } else {
           return alert("El producto no tiene stock");
         }
@@ -144,6 +172,12 @@ export default function Shop() {
     <div>
       <Navbar />
       <h1>Shop</h1>
+      <Div>
+        <Link to="/shop/cart">
+          <Img wd="100px" hg="100px" src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="" />
+        </Link>
+      </Div>
+      
       <ProductCards
         handlerSetCart={handlerSetCart}
         handleRemoveItemCart={handleRemoveItemCart}
