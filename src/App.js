@@ -12,7 +12,7 @@ import GenerateNewPass from "./components/ForgotPass/GenerateNewPass.jsx";
 import Shop from "./components/Shop/Shop.jsx";
 import "./App.css";
 import Cart from "./components/Shop/Cart/Cart.jsx";
-import UpdateMyInfo from "./components/MyAccount/UpdateMyInfo.jsx";
+import UpdateMyInfo from "./components/MyAccount/ShowData/UpdateMyInfo.jsx";
 
 function App() {
   // console.log("APP LOG");
