@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { findUserById } from "../../../redux/actions";
+import { findUserById } from "../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 

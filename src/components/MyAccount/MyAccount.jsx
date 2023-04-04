@@ -1,36 +1,71 @@
+import s from "../DashboardAdmin/Dashboard/DashboardAdmin.module.css";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Navbar from "../Navbar/Navbar";
-import ShowProfileData from "./ShowData/ShowProfileData";
-import ShowPurchases from "./ShowData/ShowPurchases";
-import ShowMyCourses from "./ShowData/ShowCourses";
+import ShowProfileData from "./Cards/Profile/ProfileDataCard";
+import ShowPurchasesData from "./ShowData/ShowPurchasesData";
+import ShowMyCourses from "./ShowData/ShowCoursesData";
+import { HOST } from "../../utils";
 
 export default function MyAccount() {
-  const [selection, setSelection] = useState("");
-  // console.log("SLECT", selection);
+  const [selection, setSelection] = useState(false);
+  // const [allMyCourses, setAllMyCourses] = useState([]);
+  
+  // console.log("ALL PRODUCT", allMyProducts)
 
-  function handlerShowMyData() {
-    setSelection("my-data");
+  // async function getMyCourses() {
+  //   const response = await axios.get(
+  //     `${HOST}/courses/getUserCourses?id=${userInfo.id}`
+  //   );
+  //   setAllMyCourses(response.data);
+  // }
+  
+
+  function handlerChangeSelection(e) {
+    e.preventDefault();
+    setSelection(e.target.value);
   }
-  function handlerShowPurchases() {
-    setSelection("my-purchases");
-  }
-  function handlerShowCourses() {
-    setSelection("my-courses");
-  }
+
+  useEffect(()=>{
+
+  },[selection])
 
   return (
     <div>
       <Navbar />
-      <button onClick={(e) => handlerShowMyData(e)}>Mis datos</button>
-      <button onClick={(e) => handlerShowPurchases(e)}>Compras realizadas</button>
-      <button onClick={(e) => handlerShowCourses(e)}>Ver mis cursos</button>
-      {selection === "my-data" ? (
-        <ShowProfileData />
-      ) : selection === "my-purchases" ? (
-        <ShowPurchases />
-      ) : selection === "my-courses" ? (
-        <ShowMyCourses />
-      ) : null}
+      <h2>Mi cuenta</h2>
+      <br />
+      <div className={s.divContainer}>
+        <div className={s.divDashboardLeftContainer}>
+          <button onClick={(e) => handlerChangeSelection(e)} value="my-data">
+            Mis datos
+          </button>
+          <button
+            onClick={(e) => handlerChangeSelection(e)}
+            value="my-purchases"
+          >
+            Compras
+          </button>
+          <button
+            onClick={(e) => handlerChangeSelection(e)}
+            value="my-courses"
+          >
+            Ver mis cursos
+          </button>
+        </div>
+        <div className={s.divDashboardRightContainer}>
+          <h2>CONTAINER INFO MY ACCOUNT</h2>
+          {selection === false ? (
+            <h2>Explorar información</h2>
+          ) : selection === "my-data" ? (
+            <ShowProfileData />
+          ) : selection === "my-purchases" ? (
+            <ShowPurchasesData />
+          ) : selection === "my-courses" ? (
+            <ShowMyCourses />
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }
