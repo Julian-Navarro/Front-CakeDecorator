@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { findUserById } from "../../redux/actions";
+import { findUserById } from "../../../redux/actions";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { HOST } from "../../utils";
+import { HOST } from "../../../utils";
 
 export default function UpdateMyInfo() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function UpdateMyInfo() {
       ? userInfo.img
       : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
   });
-  console.log("INPUT", input);
+  // console.log("INPUT", input);
   function handlerChange(e) {
     e.preventDefault();
     setInput({
@@ -67,12 +67,6 @@ export default function UpdateMyInfo() {
           <label>Apellido: {userInfo.surname}</label>
         </div>
         <label>Email: {userInfo.email}</label>
-        {/* <input
-          type="email"
-          name="email"
-          onChange={(e) => handlerChange(e)}
-          defaultValue={userInfo.email}
-        /> */}
         <br />
         <label>Tel/Cel: </label>
         <input
@@ -83,8 +77,16 @@ export default function UpdateMyInfo() {
         />
         <br />
         <label>Foto de Perfil:</label>
+        <input
+          type="text"
+          name="img"
+          onChange={(e) => handlerChange(e)}
+          defaultValue={userInfo.img}
+          placeholder="Insertar URL de imagen"
+        />
+        <br />
         {userInfo.img ? (
-          userInfo.img
+          <img src={userInfo.img} height={"30px"} width={"30px"} alt="img not found"/>
         ) : (
           <div>
             <img
@@ -95,13 +97,6 @@ export default function UpdateMyInfo() {
             />
           </div>
         )}
-        <input
-          type="text"
-          name="img"
-          onChange={(e) => handlerChange(e)}
-          defaultValue={userInfo.img}
-          placeholder="Insertar URL de imagen"
-        />
         <br />
         <button type="submit">Guardar</button>
         <Link to="/myAccount">
