@@ -4,6 +4,7 @@ import Home from "./components/Home/Home.jsx";
 import AboutUs from "./components/AboutUs/AboutUs";
 import LandingPage from "./components/LandingPage/LandingPage";
 import CourseList from "./components/CourseList/CourseList.jsx";
+import CourseDetailCard from "./components/MyAccount/Card/Course/CourseDetailCard.jsx";
 import MyAccount from "./components/MyAccount/MyAccount";
 import FormPostUser from "./components/Login/FormPostUser";
 import DashboardAdmin from "./components/DashboardAdmin/Dashboard/DashboardAdmin.jsx";
@@ -57,6 +58,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/courses" element={<CourseList path={false} />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
+        <Route exact path="/myAccount/courseDetail/:id" element={<CourseDetailCard />}/>
         <Route exact path="/aboutUs" element={<AboutUs />} />
         <Route exact path="/createAccount" element={<FormPostUser />} />
         <Route exact path="/shop" element={<Shop />} />

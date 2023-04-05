@@ -1,0 +1,5 @@
+.divContainer {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: antiquewhite;
+    grid-template-rows: repeat(3);
+}
