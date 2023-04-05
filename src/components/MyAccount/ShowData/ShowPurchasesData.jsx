@@ -11,7 +11,6 @@ export default function ShowPurchasesData() {
     const response = await axios.get(
       `${HOST}/products/getUserProducts?id=${userInfo.id}`
     );
-    // console.log("RES", response);
     setAllmyProducts(response.data);
   }
 

@@ -9,27 +9,15 @@ import { HOST } from "../../utils";
 
 export default function MyAccount() {
   const [selection, setSelection] = useState(false);
-  // const [allMyCourses, setAllMyCourses] = useState([]);
-  
-  // console.log("ALL PRODUCT", allMyProducts)
-
-  // async function getMyCourses() {
-  //   const response = await axios.get(
-  //     `${HOST}/courses/getUserCourses?id=${userInfo.id}`
-  //   );
-  //   setAllMyCourses(response.data);
-  // }
-  
 
   function handlerChangeSelection(e) {
     e.preventDefault();
     setSelection(e.target.value);
   }
 
-  useEffect(()=>{
+  useEffect(() => {}, [selection]);
 
-  },[selection])
-
+  useEffect(()=>{console.log("RENDER MY ACCOUNT")},[])
   return (
     <div>
       <Navbar />
@@ -46,10 +34,7 @@ export default function MyAccount() {
           >
             Compras
           </button>
-          <button
-            onClick={(e) => handlerChangeSelection(e)}
-            value="my-courses"
-          >
+          <button onClick={(e) => handlerChangeSelection(e)} value="my-courses">
             Ver mis cursos
           </button>
         </div>
