@@ -1,12 +1,13 @@
 import React from "react";
 import FormLogin from "../Login/FormLogin";
 import { Link } from "react-router-dom"
-
+import Navbar from "../Navbar/Navbar"
 
 export default function LandingPage ({handlerSetUserFlagApp}) {
 
     return (
         <div className="containerLandingPage">
+            <Navbar/>
             <div className="title">
                 <h1>Bienvenidos al Mundo Dulce De Marite!</h1>
             </div>

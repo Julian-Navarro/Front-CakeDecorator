@@ -84,15 +84,17 @@ export const Button = styled.button`
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"}
   color: ${({ color }) => color || "#fff"};
   border: 2px solid ${({ bd }) => bd || "none"};
   border-radius: ${({ br }) => br || "8px"};
   cursor: ${({ cursor }) => cursor || "pointer"};
-  transition: ${({ trans }) => trans || "0.3s"};
+  transition: ${({ trans }) => trans || ".4s ease"};
   letter-spacing: ${({ letterSp }) => letterSp || "2px"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
+  margin-top: ${({ mt }) => mt || "none"};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol, color }) => _hovCol || color};
@@ -111,12 +113,14 @@ export const Div = styled.div`
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"}
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-top: ${({ mt }) => mt || "none"};
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
   box-shadow: ${({ boxSh }) => boxSh || "none"};
   background-image: url(${({ img }) => img || "none"});
+  transition: ${({ trans }) => trans || ".4s ease"};
   background-repeat: no-repeat;
   background-size: contain;
 `;
@@ -159,6 +163,7 @@ export const H1 = styled.h1`
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
 `;
 export const Img = styled.img`
   height: ${({ hg }) => hg || "12rem"};
@@ -169,4 +174,5 @@ export const Img = styled.img`
   margin-top: ${({ mt }) => mt || "none"};
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
 `;

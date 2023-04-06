@@ -11,6 +11,13 @@ export default function Shop() {
   const [flag, setFlag] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
+  function handlerSetProducts(value) {
+    if(value === "default") {
+      setProducts(allProducts)
+    } else {
+      setProducts(allProducts.filter((pr)=>pr.category === value))
+    }
+  }
   async function getProductsDB() {
     const productsDB = await axios.get(`${HOST}/products`);
     setAllProducts(productsDB.data);
@@ -165,8 +172,9 @@ export default function Shop() {
   useEffect(() => {
     console.log("RENDERING SHOP!");
     getProductsDB();
-    console.log("PRODUCTS: ", products);
+    // console.log("PRODUCTS: ", products);
   }, []);
+
   useEffect(() => {
     console.log("RENDERING SHOP!");
   }, [flag, cart]);
@@ -185,7 +193,7 @@ export default function Shop() {
 
       <Div wd="100%" bg="lightblue">
         
-        <LeftSideBar/>
+        <LeftSideBar handlerSetProducts={handlerSetProducts}/>
         
         <ProductCards
           handlerSetCart={handlerSetCart}
