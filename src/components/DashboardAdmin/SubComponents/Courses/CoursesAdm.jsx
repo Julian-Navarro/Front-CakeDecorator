@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import CourseLists from "../../../CourseList/CourseList";
 import FormCoursePostAndEdit from "./FormCoursePostAndEdit";
 
 
 export default function CoursesAdm ({ path }) {
     const [createCourseFlag, setCreateCourseFlag] = useState(false);
-    const [editFlag, setEditFlag] = useState(false)
-    const [courseToEdit, setCourseToEdit] = useState(false)
-    const [componentCourseListFlag, setComponentCourseListFlag] = useState(false)
+    const [editFlag, setEditFlag] = useState(false);
+    const [courseToEdit, setCourseToEdit] = useState(false);
+    const [componentCourseListFlag, setComponentCourseListFlag] = useState(false);
     function handlerSetComponentCourseListFlag () {
-        if(componentCourseListFlag) {
-            setComponentCourseListFlag(false)
-        } else {
-            setComponentCourseListFlag(true)
-        }
-    }    
+        setComponentCourseListFlag(!componentCourseListFlag)
+    };
     function handlerSetCreateCourseFlag(e) {
         e.preventDefault();
         if(createCourseFlag) {
@@ -24,7 +19,7 @@ export default function CoursesAdm ({ path }) {
             setCreateCourseFlag(true)
             setCourseToEdit(false)
         }
-    }
+    };
      function handlerEditCourse(e, course) {
         e.preventDefault();
         handlerSetEditFlag()
@@ -36,14 +31,14 @@ export default function CoursesAdm ({ path }) {
             setCourseToEdit(false)
             setCreateCourseFlag(false)            
         }
-    }
+    };
     function handlerSetEditFlag() {
         if(editFlag) {
             setEditFlag(false)
         } else {
             setEditFlag(true)
         }
-    }   
+    };   
 
 useEffect(()=>{
     console.log("RENDERING: COURSE STATE: ", courseToEdit);
@@ -58,10 +53,10 @@ useEffect(()=>{
             }
             {
                 courseToEdit !== false
-                ? <FormCoursePostAndEdit 
-                    handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} 
-                    update={true} 
-                    course={courseToEdit} 
+                ? <FormCoursePostAndEdit
+                    handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag}
+                    update={true}
+                    course={courseToEdit}
                     handlerEditCourse={handlerEditCourse}/>
                 : null
             }
