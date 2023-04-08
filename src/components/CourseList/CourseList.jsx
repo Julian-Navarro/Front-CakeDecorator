@@ -3,6 +3,7 @@ import CourseListCards from "./CourseListCards";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoursesFromDB } from "../../redux/actions";
 import Navbar from "../Navbar/Navbar";
+import { Button } from "../../utils/StyledComponents/StyledComponents";
 
 export default function CourseLists ({ path, handlerEditCourse, componentCourseListFlag }) {
     const dispatch = useDispatch()
@@ -22,8 +23,7 @@ export default function CourseLists ({ path, handlerEditCourse, componentCourseL
                 ? <Navbar />
                 : null
             }
-
-            <h2>COURSE LIST</h2>
+            <Button>asdas</Button>
             <CourseListCards path={path} handlerEditCourse={handlerEditCourse} courses={courses}/>
         </div>
     )
