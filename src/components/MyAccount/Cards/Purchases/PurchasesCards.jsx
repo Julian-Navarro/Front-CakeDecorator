@@ -5,34 +5,33 @@ import style from "./PurchasesCards.module.css";
 import { Link } from "react-router-dom";
 
 export default function PurchasesCards({ allMyProducts }) {
-  
+  // console.log("PRODUCTS PUR", allMyProducts)
 
-  
-    return (
+  return (
+    <div>
+      <h1>Lo que compraste (HIJO)</h1>
       <div>
-        <h1>Lo que compraste</h1>
-        <div>
-          {allMyProducts.length > 0
-            ? allMyProducts.map((product) => (
-                <div className={style.cardContainer}>
-                  <div>
-                    <PurchaseCard
-                      name={product.name}
-                      img={product.img}
-                      price={product.price}
-                    />
-                  </div>
-                  <div>
-                    <Link
-                      to={`/myAccount/purchaseDetail/${product.products_user.productId}`}
-                    >
-                      <button>Ver detalles</button>
-                    </Link>
-                  </div>
+        {allMyProducts.length > 0
+          ? allMyProducts.map((product) => (
+              <div className={style.cardContainer}>
+                <div>
+                  <PurchaseCard
+                    name={product.name}
+                    img={product.img}
+                    price={product.price}
+                  />
                 </div>
-              ))
-            : "Aún no compraste productos"}
-        </div>
+                <div>
+                  <Link
+                    to={`/myAccount/purchaseDetail/${product.products_user.productId}`}
+                  >
+                    <button>Ver detalles</button>
+                  </Link>
+                </div>
+              </div>
+            ))
+          : "Aún no compraste productos"}
       </div>
-    )
+    </div>
+  );
 }

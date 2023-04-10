@@ -5,7 +5,6 @@ const initialState = {
   user: {},
   product: {},
   products: [],
-  findProductUser: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -24,11 +23,6 @@ export default function rootReducer(state = initialState, action) {
       return{
         ...state,
         user: action.payload
-      }
-    case "GET_BY_NAME":
-      return{
-        ...state,
-        findProductUser: action.payload
       }
     default:
       return {
