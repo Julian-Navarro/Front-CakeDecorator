@@ -15,7 +15,7 @@ export default function SearchBarPurchase({ getMyProducts }) {
         placeholder="Buscar por nombre"
         onChange={(e) => handlerInputChange(e)}
       />
-      <button onClick={() => getMyProducts(input)}>Buscar</button>
+      <button onClick={() => getMyProducts(input)}>🔎</button>
       <br />
       <button onClick={()=> {getMyProducts()}}>Ver todo</button>
     </div>

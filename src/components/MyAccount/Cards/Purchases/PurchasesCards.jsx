@@ -9,18 +9,16 @@ export default function PurchasesCards({ allMyProducts }) {
 
   return (
     <div>
-      <h1>Lo que compraste (HIJO)</h1>
+      <h1>Lo que compraste - (HIJO)</h1>
       <div>
         {allMyProducts.length > 0
-          ? allMyProducts.map((product) => (
-              <div className={style.cardContainer}>
-                <div>
-                  <PurchaseCard
-                    name={product.name}
-                    img={product.img}
-                    price={product.price}
-                  />
-                </div>
+          ? allMyProducts.map((product, idx) => (
+              <div className={style.cardContainer} key={idx}>
+                <PurchaseCard
+                  name={product.name}
+                  img={product.img}
+                  price={product.price}
+                />
                 <div>
                   <Link
                     to={`/myAccount/purchaseDetail/${product.products_user.productId}`}
