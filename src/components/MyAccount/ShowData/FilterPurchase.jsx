@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
 
-export default function FilterPurchase({ allMyProducts }) {
-  const [render, setRender] = useState(false);
+export default function FilterPurchase({
+  allMyProducts,
+  filterProductsByCategories,
+}) {
+  // console.log("FILTER ALL",allMyProducts)
+  // const [render, setRender] = useState(false);
   const [select, setSelect] = useState("");
-  const [filteredByCategory, setFilteredByCategory] = useState([]);
-  console.log("SELECT", select);
+  const [mapMyCategories, setMyCategories] = useState([]);
 
-  function handlerSetRender() {
-    setRender(true);
-    console.log("render", render);
-  }
+  // console.log("MY SELECT", select);
+  // console.log("FILTERED", filteredByCategory);
 
-  function handlerFilter() {
-    const filtered = allMyProducts.filter(
-      (product) => product.category === select
-    );
-    console.log("FILTERED", filtered);
+  function getAllCategories() {
+    if (allMyProducts.length > 0) {
+      allMyProducts.forEach((product) => {
+        if (mapMyCategories.includes(product.category)) {
+          // console.log("NO LO AGREGO")
+        } else {
+          mapMyCategories.push(product.category);
+        }
+      });
+    }
   }
 
   function handlerSelect(e) {
@@ -23,26 +29,37 @@ export default function FilterPurchase({ allMyProducts }) {
     setSelect(e.target.value);
   }
 
-  useEffect(() => {}, [render, select]);
+  useEffect(() => {
+    getAllCategories();
+  });
+
+  useEffect(() => {
+    if (select !== "") {
+      console.log("ME RENDERIZO");
+    }
+  });
+
+  useEffect(() => {
+    if (select !== "") {
+      filterProductsByCategories(select);
+      setSelect("");
+    }
+  });
 
   return (
     <div>
-      <label>Tipos de categorias: </label>
+      <label>Filtrar: </label>
       <select
         name="categories"
         id="categories"
-        onClick={(e) => [handlerSelect(e)]}
-        onChange={() => handlerFilter()}
+        onChange={(e) => [handlerSelect(e), filterProductsByCategories(select)]}
       >
-        <option
-          defaultValue={"Seleccionar"}
-          oncClick={() => handlerSetRender()}
-        >
-          Seleccionar
-        </option>
-        {allMyProducts.length > 0
-          ? allMyProducts.map((product) => (
-              <option value={product.category}>{product.category}</option>
+        <option defaultValue={"Categorias"}>Categorias</option>
+        {mapMyCategories.length > 0
+          ? mapMyCategories.map((category, idx) => (
+              <option value={category} key={idx}>
+                {category}
+              </option>
             ))
           : null}
       </select>

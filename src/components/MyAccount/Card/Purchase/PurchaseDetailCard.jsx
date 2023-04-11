@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {useParams} from "react-router-dom"
+import {useParams, Link} from "react-router-dom"
 import { HOST } from "../../../../utils";
 
 
@@ -30,6 +30,10 @@ export default function PurchaseDetailCard(){
                 <h2>Precio: {myProduct.price}</h2>
                 <h2>Descripcion del producto: {myProduct.description}</h2>
             </div>
+
+            <Link to="/myAccount">
+            <button>Atrás</button>
+            </Link>
         </div>
     )
 }
