@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function FilterPurchase({
   allMyProducts,
   filterProductsByCategories,
   reset,
 }) {
+
   const [select, setSelect] = useState("");
   const [mapMyCategories, setMapMyCategories] = useState([]);
-  console.log("RESET EN HIJO", reset);
+  // console.log("RESET EN HIJO", reset);
 
   function getAllCategories() {
     if (allMyProducts.length > 0) {
@@ -36,7 +37,7 @@ export default function FilterPurchase({
 
   useEffect(() => {
     if (select !== "") {
-      console.log("ME RENDERIZO");
+      // console.log("ME RENDERIZO");
     }
   });
 
@@ -61,10 +62,10 @@ export default function FilterPurchase({
         id="categories"
         onChange={(e) => [handlerSelect(e), filterProductsByCategories(select)]}
       >
-        <option defaultValue={"Categorias"}>Todo</option>
+        <option defaultValue={"Categorias"}>Todos los productos</option>
         {mapMyCategories.length > 0
           ? mapMyCategories.map((category, idx) => (
-              <option value={category} key={idx}>
+            <option value={category} key={idx}>
                 {category}
               </option>
             ))
