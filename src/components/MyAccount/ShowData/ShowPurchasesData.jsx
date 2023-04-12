@@ -10,7 +10,7 @@ export default function ShowPurchasesData() {
   const userInfo = JSON.parse(localStorage.getItem("loggedUser"));
   const [allMyProducts, setAllMyProducts] = useState([]);
   const [myProducts, setMyProducts] = useState([]);
-  const [searchedProducts, setSearchedProducts] = useState([]);
+  // const [searchedProducts, setSearchedProducts] = useState([]);
   const [reset, setReset] = useState(false);
   const [noMatch, setNoMatch] = useState("");
   const [input2, setInput2] = useState("");
@@ -19,7 +19,7 @@ export default function ShowPurchasesData() {
   // console.log("MYPRODUCTS", myProducts.length);
   // console.log("INPUT 2", input2);
   // console.log("allMyProducts", allMyProducts);
-  // console.log("COPY", myProducts);
+  console.log("COPY", myProducts);
 
   const getProductByName = (input) => {
     // console.log("INPUT EN PADRE", input);
@@ -51,6 +51,13 @@ export default function ShowPurchasesData() {
     setMyProducts(response.data);
   };
 
+  const getSortedArray = async (sortedByNameProducts) => {
+    console.log("SORTED PADRE", sortedByNameProducts);
+    if (sortedByNameProducts.length > 0) {
+      setMyProducts(sortedByNameProducts);
+    }
+  };
+
   const filterProductsByCategories = async (select) => {
     // console.log("MY SELECT PADRE", select);
     setSelect2(select);
@@ -71,8 +78,10 @@ export default function ShowPurchasesData() {
 
   const resetProduct = async () => {
     const select = document.getElementById("categories"); //Para setear el select al defaultValue("Todos")
+    const orderOptions = document.getElementById("sorted");
     // console.log("SELECT", select)
     select.options.selectedIndex = 0;
+    orderOptions.options.selectedIndex = 0;
     await getMyProducts();
     setNoMatch("");
   };
@@ -95,8 +104,13 @@ export default function ShowPurchasesData() {
 
   useEffect(() => {
     const selectOptions = document.getElementById("categories");
-    // console.log("ELEMENT",selectOptions.options);
-    if (selectOptions.options.selectedIndex === 0 && input2 === "") {
+    const orderOptions = document.getElementById("sorted");
+    console.log("ELEMENT", orderOptions.options);
+    if (
+      selectOptions.options.selectedIndex === 0 &&
+      input2 === "" &&
+      orderOptions.options.selectedIndex === 0
+    ) {
       // console.log("ENTRÉ ");
       setMyProducts(allMyProducts);
     }
@@ -116,7 +130,13 @@ export default function ShowPurchasesData() {
         filterProductsByCategories={filterProductsByCategories}
         reset={reset}
       />
-      <OrderByName allMyProducts={allMyProducts} />
+      {/*
+      HACIENDO ::::::: ORDER
+      */}
+      <OrderByName
+        allMyProducts={allMyProducts}
+        getSortedArray={getSortedArray}
+      />
       {noMatch === "no-match" ? (
         <div>
           <h3>No hay coincidencias</h3>
@@ -133,9 +153,6 @@ export default function ShowPurchasesData() {
           <PurchasesCards allMyProducts={myProducts} />
         </div>
       )}
-      {/*
-      PARA HACER DESPUES ::::::: ORDER
-      */}
     </div>
   );
 }
