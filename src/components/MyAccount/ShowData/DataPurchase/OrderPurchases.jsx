@@ -3,15 +3,12 @@ import React, { useEffect, useState } from "react";
 export default function OrderByName({ allMyProducts, getSortedArray }) {
   const [sortedByNameProducts, setSortedProducts] = useState([]);
   const [select, setSelect] = useState("");
-  console.log("SELECT", select);
 
   function handlerSelect(e) {
-    e.preventDefault();
     setSelect(e.target.value);
   }
 
   function sortedArray(e) {
-    // console.log("VALUE", e.target.value);
     if (e.target.value === "todos") {
       setSortedProducts(allMyProducts);
     } else if (e.target.value === "ascendente") {
@@ -27,7 +24,6 @@ export default function OrderByName({ allMyProducts, getSortedArray }) {
             return 0;
           }
         });
-      //   console.log("SORTED 1", sorted_A_Z);
       setSortedProducts(sorted_A_Z);
     } else {
       const sorted_Z_A = allMyProducts
@@ -42,15 +38,9 @@ export default function OrderByName({ allMyProducts, getSortedArray }) {
             return 0;
           }
         });
-      //   console.log("SORTED 2", sorted_Z_A);
       setSortedProducts(sorted_Z_A);
     }
   }
-
-  useEffect(() => {
-    if (select !== "") {
-    }
-  });
 
   useEffect(() => {
     if (select !== "") {
