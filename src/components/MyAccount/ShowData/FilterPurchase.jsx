@@ -3,25 +3,26 @@ import { useEffect, useState } from "react";
 export default function FilterPurchase({
   allMyProducts,
   filterProductsByCategories,
+  reset,
 }) {
-  // console.log("FILTER ALL",allMyProducts)
-  // const [render, setRender] = useState(false);
   const [select, setSelect] = useState("");
-  const [mapMyCategories, setMyCategories] = useState([]);
-
-  // console.log("MY SELECT", select);
-  // console.log("FILTERED", filteredByCategory);
+  const [mapMyCategories, setMapMyCategories] = useState([]);
+  console.log("RESET EN HIJO", reset);
 
   function getAllCategories() {
     if (allMyProducts.length > 0) {
       allMyProducts.forEach((product) => {
         if (mapMyCategories.includes(product.category)) {
-          // console.log("NO LO AGREGO")
+          //NO SUCEDE NADA SI ES TRUE
         } else {
           mapMyCategories.push(product.category);
         }
       });
     }
+  }
+
+  function resetSelect() {
+    setMapMyCategories(mapMyCategories);
   }
 
   function handlerSelect(e) {
@@ -46,15 +47,21 @@ export default function FilterPurchase({
     }
   });
 
+  useEffect(() => {
+    if (reset === true) {
+      resetSelect();
+    }
+  });
+
   return (
     <div>
-      <label>Filtrar: </label>
+      <label>Filtrar por: </label>
       <select
         name="categories"
         id="categories"
         onChange={(e) => [handlerSelect(e), filterProductsByCategories(select)]}
       >
-        <option defaultValue={"Categorias"}>Categorias</option>
+        <option defaultValue={"Categorias"}>Todo</option>
         {mapMyCategories.length > 0
           ? mapMyCategories.map((category, idx) => (
               <option value={category} key={idx}>

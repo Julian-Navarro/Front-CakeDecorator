@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-export default function SearchBarPurchase({ getMyProducts }) {
+export default function SearchBarPurchase({
+  getProductByName,
+  resetProduct,
+  setReset,
+}) {
   const [input, setInput] = useState("");
 
   function handlerInputChange(e) {
@@ -15,9 +19,16 @@ export default function SearchBarPurchase({ getMyProducts }) {
         placeholder="Buscar por nombre"
         onChange={(e) => handlerInputChange(e)}
       />
-      <button onClick={() => getMyProducts(input)}>🔎</button>
+      <button onClick={() => getProductByName(input)}>🔎</button>
       <br />
-      <button onClick={()=> {getMyProducts()}}>Ver todo</button>
+      <button onClick={() => [resetProduct(), setReset(true)]}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/4140/4140789.png"
+          alt="Sin imagen"
+          height={"17"}
+          width={"17"}
+        />
+      </button>
     </div>
   );
 }
