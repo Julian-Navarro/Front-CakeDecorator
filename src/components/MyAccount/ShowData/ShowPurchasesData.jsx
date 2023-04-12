@@ -3,40 +3,44 @@ import axios from "axios";
 import { HOST } from "../../../utils";
 import PurchasesCards from "../Cards/Purchases/PurchasesCards";
 import FilterPurchase from "./FilterPurchase";
+import OrderByName from "./OrderPurchases";
 import SearchBarPurchase from "./SearchBarPurchase";
 
 export default function ShowPurchasesData() {
   const userInfo = JSON.parse(localStorage.getItem("loggedUser"));
   const [allMyProducts, setAllMyProducts] = useState([]);
   const [myProducts, setMyProducts] = useState([]);
+  const [searchedProducts, setSearchedProducts] = useState([]);
   const [reset, setReset] = useState(false);
   const [noMatch, setNoMatch] = useState("");
   const [input2, setInput2] = useState("");
   const [select2, setSelect2] = useState("");
 
-  // console.log("reset", reset);
-  console.log("ALL", allMyProducts);
-  console.log("COPY", myProducts);
+  // console.log("MYPRODUCTS", myProducts.length);
+  // console.log("INPUT 2", input2);
+  // console.log("allMyProducts", allMyProducts);
+  // console.log("COPY", myProducts);
 
   const getProductByName = (input) => {
-    console.log("input", input);
-    //   setInput2(input);
-    // const searchedWithInput = [];
-    // if (input !== undefined) {
-    //   allProducts.forEach((product) => {
-    //     if (
-    //       product.name.toLowerCase().indexOf(input.toLowerCase().trim()) !== -1
-    //     ) {
-    //       searchedWithInput.push(product);
-    //     }
-    //   });
-    //   if (searchedWithInput.length > 0) {
-    //     setAllMyProducts(searchedWithInput);
-    //     setNoMatch("");
-    //   } else {
-    //     setNoMatch("noMatch");
-    //   }
-    // }
+    // console.log("INPUT EN PADRE", input);
+    setInput2(input);
+    const searchedWithInput = [];
+    if (input !== undefined || input !== "") {
+      allMyProducts.forEach((product) => {
+        if (
+          product.name.toLowerCase().indexOf(input.toLowerCase().trim()) !== -1
+        ) {
+          searchedWithInput.push(product);
+        }
+      });
+    }
+    if (searchedWithInput.length > 0) {
+      setMyProducts(searchedWithInput);
+      setNoMatch("");
+    } else {
+      setNoMatch("no-match");
+    }
+    // console.log("SEARCHED", searchedWithInput);
   };
 
   const getMyProducts = async () => {
@@ -50,6 +54,7 @@ export default function ShowPurchasesData() {
   const filterProductsByCategories = async (select) => {
     // console.log("MY SELECT PADRE", select);
     setSelect2(select);
+    setInput2("");
     if (select !== "" || select !== undefined) {
       const filtered = allMyProducts.filter(
         (product) => product.category === select
@@ -65,31 +70,37 @@ export default function ShowPurchasesData() {
   };
 
   const resetProduct = async () => {
-    const select = document.getElementById("categories"); //Para setear el select al defaultValue
-    // console.log("SELECT", select)F
+    const select = document.getElementById("categories"); //Para setear el select al defaultValue("Todos")
+    // console.log("SELECT", select)
     select.options.selectedIndex = 0;
     await getMyProducts();
+    setNoMatch("");
   };
 
   useEffect(() => {
     if (allMyProducts.length === 0) {
-      console.log("EJECUTO EL GET");
+      // console.log("EJECUTO EL GET");
       getMyProducts();
-    } else {
-      console.log("NO EJECUTO EL GET");
     }
   }, [allMyProducts]);
 
   useEffect(() => {
     if (reset === true) {
-      console.log("RESETEO");
+      // console.log("RESETEO");
       resetProduct();
-      console.log("SETEO");
+      // console.log("SETEO");
       setReset(false);
     }
   }, [reset]);
 
-  // useEffect(() => {}, [allMyProducts]);
+  useEffect(() => {
+    const selectOptions = document.getElementById("categories");
+    // console.log("ELEMENT",selectOptions.options);
+    if (selectOptions.options.selectedIndex === 0 && input2 === "") {
+      // console.log("ENTRÉ ");
+      setMyProducts(allMyProducts);
+    }
+  });
 
   return (
     <div>
@@ -98,30 +109,33 @@ export default function ShowPurchasesData() {
         getProductByName={getProductByName}
         resetProduct={resetProduct}
         setReset={setReset}
+        input2={input2}
       />
       <FilterPurchase
         allMyProducts={allMyProducts}
         filterProductsByCategories={filterProductsByCategories}
         reset={reset}
       />
-      {noMatch === "noMatch" ? (
+      <OrderByName allMyProducts={allMyProducts} />
+      {noMatch === "no-match" ? (
         <div>
           <h3>No hay coincidencias</h3>
         </div>
       ) : (
         <div>
           <h3>
-            {allMyProducts.length === 1
-              ? `Viendo ${allMyProducts.length} resultado`
-              : (allMyProducts.length > 1 && input2 === "") ||
-                input2 === undefined
-              ? "Viendo todos los resultados"
-              : `Viendo ${allMyProducts.length} resultados posibles`}
+            {myProducts.length === 1
+              ? `Viendo ${myProducts.length} resultado`
+              : myProducts.length > 1
+              ? `Viendo ${myProducts.length} resultados`
+              : null}
           </h3>
           <PurchasesCards allMyProducts={myProducts} />
         </div>
       )}
-      {/* PARA HACER DESPUES */}
+      {/*
+      PARA HACER DESPUES ::::::: ORDER
+      */}
     </div>
   );
 }
