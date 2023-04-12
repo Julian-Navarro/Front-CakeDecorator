@@ -3,41 +3,31 @@ import React, { useEffect, useState } from "react";
 export default function FilterPurchase({
   allMyProducts,
   filterProductsByCategories,
-  reset,
 }) {
-
   const [select, setSelect] = useState("");
   const [mapMyCategories, setMapMyCategories] = useState([]);
-  // console.log("RESET EN HIJO", reset);
 
   function getAllCategories() {
     if (allMyProducts.length > 0) {
       allMyProducts.forEach((product) => {
-        if (mapMyCategories.includes(product.category)) {
+        if (!mapMyCategories.includes(product.category)) {
           //NO SUCEDE NADA SI ES TRUE
-        } else {
           mapMyCategories.push(product.category);
         }
       });
     }
   }
 
-  function resetSelect() {
-    setMapMyCategories(mapMyCategories);
-  }
-
   function handlerSelect(e) {
     e.preventDefault();
     setSelect(e.target.value);
+    const orderReset = document.getElementById("sorted");
+    orderReset.options.selectedIndex = 0;
   }
 
   useEffect(() => {
-    getAllCategories();
-  });
-
-  useEffect(() => {
-    if (select !== "") {
-      // console.log("ME RENDERIZO");
+    if (mapMyCategories.length === 0) {
+      getAllCategories();
     }
   });
 
@@ -45,12 +35,6 @@ export default function FilterPurchase({
     if (select !== "") {
       filterProductsByCategories(select);
       setSelect("");
-    }
-  });
-
-  useEffect(() => {
-    if (reset === true) {
-      resetSelect();
     }
   });
 
@@ -65,7 +49,7 @@ export default function FilterPurchase({
         <option defaultValue={"Categorias"}>Todos los productos</option>
         {mapMyCategories.length > 0
           ? mapMyCategories.map((category, idx) => (
-            <option value={category} key={idx}>
+              <option value={category} key={idx}>
                 {category}
               </option>
             ))

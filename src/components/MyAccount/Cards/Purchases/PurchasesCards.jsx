@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PurchaseCard from "../../Card/Purchase/PurchaseCard";
-import s from "../../../DashboardAdmin/SubComponents/Users/Users.module.css";
 import style from "./PurchasesCards.module.css";
 import { Link } from "react-router-dom";
 
 export default function PurchasesCards({ allMyProducts }) {
-  // console.log("PRODUCTS PUR", allMyProducts)
-
   return (
     <div>
       <h1>Lo que compraste - (HIJO)</h1>

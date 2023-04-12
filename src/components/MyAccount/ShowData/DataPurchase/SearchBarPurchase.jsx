@@ -3,10 +3,9 @@ import React, { useState } from "react";
 export default function SearchBarPurchase({
   getProductByName,
   resetProduct,
-  setReset,
+  
 }) {
   const [input, setInput] = useState("");
-  // console.log("INPUT", input)
 
   function handlerInputChange(e) {
     e.preventDefault();
@@ -14,7 +13,6 @@ export default function SearchBarPurchase({
   }
   
   function cleanInput(){
-    // console.log("CLEAN INPUT")
     setInput("")
   }
 
@@ -28,7 +26,7 @@ export default function SearchBarPurchase({
       />
       <button onClick={() => getProductByName(input)}>🔎</button>
       <br />
-      <button onClick={() => [resetProduct(), setReset(true), cleanInput()]}>
+      <button onClick={() => [resetProduct(), cleanInput()]}>
         <img
           src="https://cdn-icons-png.flaticon.com/512/4140/4140789.png"
           alt="Sin imagen"

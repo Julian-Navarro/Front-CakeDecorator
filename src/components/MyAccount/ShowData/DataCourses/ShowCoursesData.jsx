@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { HOST } from "../../../utils";
-import CoursesCards from "../Cards/Courses/CoursesCards";
+import { HOST } from "../../../../utils";
+import CoursesCards from "../../Cards/Courses/CoursesCards";
 
 export default function ShowCoursesData() {
   const [allMyCourses, setAllMyCourses] = useState([]);

@@ -1,11 +1,9 @@
 import s from "../DashboardAdmin/Dashboard/DashboardAdmin.module.css";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import ShowProfileData from "./Cards/Profile/ProfileDataCard";
-import ShowPurchasesData from "./ShowData/ShowPurchasesData";
-import ShowMyCourses from "./ShowData/ShowCoursesData";
-import { HOST } from "../../utils";
+import ShowPurchasesData from "./ShowData/DataPurchase/ShowPurchasesData"
+import ShowMyCourses from "./ShowData/DataCourses/ShowCoursesData";
 
 export default function MyAccount() {
   const [selection, setSelection] = useState(false);
@@ -15,9 +13,6 @@ export default function MyAccount() {
     setSelection(e.target.value);
   }
 
-  useEffect(() => {}, [selection]);
-
-  useEffect(()=>{console.log("RENDER MY ACCOUNT")},[])
   return (
     <div>
       <Navbar />

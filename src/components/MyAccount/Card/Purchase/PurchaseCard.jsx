@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import style from "./PurchaseCard.module.css";
 
 export default function PurchaseCard({ name, img, price }) {
