@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 
-export default function SearchBarPurchase({
-  getProductByName,
-  resetProduct,
-  
-}) {
+export default function SearchBarPurchase({ getProductByName, resetProduct }) {
   const [input, setInput] = useState("");
 
   function handlerInputChange(e) {
     e.preventDefault();
     setInput(e.target.value);
   }
-  
-  function cleanInput(){
-    setInput("")
+
+  function cleanInput() {
+    setInput("");
   }
 
   return (
