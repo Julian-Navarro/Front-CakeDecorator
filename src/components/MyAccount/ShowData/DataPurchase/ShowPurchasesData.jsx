@@ -14,6 +14,14 @@ export default function ShowPurchasesData() {
   const [input2, setInput2] = useState("");
   const [select2, setSelect2] = useState("");
 
+  const getMyProducts = async () => {
+    const response = await axios.get(
+      `${HOST}/products/getUserProducts?id=${userInfo.id}`
+    );
+    setAllMyProducts(response.data);
+    setMyProducts(response.data);
+  };
+
   const getProductByName = (input) => {
     setInput2(input);
     const searchedWithInput = [];
@@ -32,14 +40,6 @@ export default function ShowPurchasesData() {
     } else {
       setNoMatch("no-match");
     }
-  };
-
-  const getMyProducts = async () => {
-    const response = await axios.get(
-      `${HOST}/products/getUserProducts?id=${userInfo.id}`
-    );
-    setAllMyProducts(response.data);
-    setMyProducts(response.data);
   };
 
   const getSortedArray = async (sortedByNameProducts) => {
@@ -65,7 +65,7 @@ export default function ShowPurchasesData() {
   };
 
   const resetProduct = async () => {
-    const select = document.getElementById("categories"); //Para setear el select al defaultValue("Todos")
+    const select = document.getElementById("categories"); //Para reiniciar el select filter => defaultValue
     const orderOptions = document.getElementById("sorted");
     select.options.selectedIndex = 0;
     orderOptions.options.selectedIndex = 0;
@@ -101,6 +101,7 @@ export default function ShowPurchasesData() {
       <FilterPurchase
         allMyProducts={allMyProducts}
         filterProductsByCategories={filterProductsByCategories}
+        noMatch={noMatch}
       />
       <OrderByName
         allMyProducts={allMyProducts}

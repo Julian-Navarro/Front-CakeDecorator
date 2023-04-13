@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function FilterPurchase({
   allMyProducts,
   filterProductsByCategories,
+  noMatch,
 }) {
   const [select, setSelect] = useState("");
   const [mapMyCategories, setMapMyCategories] = useState([]);
@@ -11,7 +12,6 @@ export default function FilterPurchase({
     if (allMyProducts.length > 0) {
       allMyProducts.forEach((product) => {
         if (!mapMyCategories.includes(product.category)) {
-          //NO SUCEDE NADA SI ES TRUE
           mapMyCategories.push(product.category);
         }
       });
@@ -42,6 +42,7 @@ export default function FilterPurchase({
     <div>
       <label>Filtrar por: </label>
       <select
+        disabled={noMatch === "no-match"}
         name="categories"
         id="categories"
         onChange={(e) => [handlerSelect(e), filterProductsByCategories(select)]}
