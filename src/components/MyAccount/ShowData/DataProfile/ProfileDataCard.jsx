@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { findUserById } from "../../../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-export default function ShowProfileData() {
-  const dispatch = useDispatch();
+
+export default function ShowProfileData() {//HECHO CON REDUX STORE
+  const dispatch = useDispatch()
   const userStorage = JSON.parse(localStorage.getItem("loggedUser"));
   const loggedUser = useSelector((state) => state.user);
   useEffect(() => {
-    dispatch(findUserById(userStorage.id));
+    if(!loggedUser["id"]){
+      dispatch(findUserById(userStorage.id))
+    }else{
+      dispatch(findUserById(userStorage.id))
+    }
   }, []);
 
   return (
@@ -34,13 +39,13 @@ export default function ShowProfileData() {
           )}
         </label>
         <br />
-        <label>Nombre: {loggedUser.name}</label>
+        <label>Nombre: {loggedUser?.name}</label>
         <br />
-        <label>Apellido: {loggedUser.surname}</label>
+        <label>Apellido: {loggedUser?.surname}</label>
         <br />
-        <label>Email: {loggedUser.email}</label>
+        <label>Email: {loggedUser?.email}</label>
         <br />
-        <label>Tel/Cel: {loggedUser.phone}</label>
+        <label>Tel/Cel: {loggedUser?.phone}</label>
         <br />
         <Link to="/updateUser">
           <button>Editar✏️</button>

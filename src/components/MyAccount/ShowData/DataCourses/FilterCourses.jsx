@@ -25,7 +25,7 @@ export default function FilterCourses({
   }
 
   function handlerAllSelectsToFilter(e) {
-    // e.preventDefault();
+    e.preventDefault();
     if (e.target.id === "types") {
       setSelectType(e.target.value);
     } else {
