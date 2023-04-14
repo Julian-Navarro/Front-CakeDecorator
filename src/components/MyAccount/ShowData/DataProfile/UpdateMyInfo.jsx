@@ -11,6 +11,7 @@ export default function UpdateMyInfo() {
   const userStorage = JSON.parse(localStorage.getItem("loggedUser"));
 
   const userInfo = useSelector((state) => state.user);
+  // console.log(userInfo)
 
   const [input, setInput] = useState({
     name: userInfo?.name,
@@ -39,11 +40,15 @@ export default function UpdateMyInfo() {
   }
 
   useEffect(() => {
-    dispatch(findUserById(userStorage.id));
+    if(!userInfo["id"] ){
+      console.log("BUSCO EL USER")
+      dispatch(findUserById(userStorage.id));
+    }
   }, []);
 
   useEffect(() => {
     if (input.name === undefined && input.surname === undefined) {
+      console.log("VUELVO A SETEAR")
       setInput({
         name: userInfo.name,
         surname: userInfo.surname,
@@ -86,7 +91,12 @@ export default function UpdateMyInfo() {
         />
         <br />
         {userInfo.img ? (
-          <img src={userInfo.img} height={"30px"} width={"30px"} alt="img not found"/>
+          <img
+            src={userInfo.img}
+            height={"30px"}
+            width={"30px"}
+            alt="img not found"
+          />
         ) : (
           <div>
             <img

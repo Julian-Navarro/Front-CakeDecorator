@@ -1,7 +1,7 @@
 import s from "../DashboardAdmin/Dashboard/DashboardAdmin.module.css";
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import ShowProfileData from "./Cards/Profile/ProfileDataCard";
+import ShowProfileData from "./ShowData/DataProfile/ProfileDataCard";
 import ShowPurchasesData from "./ShowData/DataPurchase/ShowPurchasesData"
 import ShowMyCourses from "./ShowData/DataCourses/ShowCoursesData";
 
