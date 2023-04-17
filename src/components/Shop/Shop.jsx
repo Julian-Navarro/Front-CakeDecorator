@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
 import Navbar from "../Navbar/Navbar";
-import { Div, Button, H1, Img } from "../../utils/StyledComponents/StyledComponents"; 
+import { Div, Button, H1, Img, P } from "../../utils/StyledComponents/StyledComponents"; 
 import LeftSideBar from "./LifeSideBar/LeftSideBar";
 import { ShopNavbar } from "./ShopNavbar";
 
@@ -192,11 +192,15 @@ export default function Shop() {
         
         <LeftSideBar handlerSetProducts={handlerSetProducts} isOpen={isOpen} setIsOpen={setIsOpen}/>
         
-        <ProductCards
+        { products.length 
+        ?
+          <ProductCards
           handlerSetCart={handlerSetCart}
           handleRemoveItemCart={handleRemoveItemCart}
           products={products}
           />
+          : <P>No se encontraron productos</P>
+          }
       </Div>
 
     </Div>
