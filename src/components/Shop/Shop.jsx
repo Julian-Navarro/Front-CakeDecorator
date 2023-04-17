@@ -4,13 +4,17 @@ import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
 import Navbar from "../Navbar/Navbar";
 import { Div, Button, H1, Img } from "../../utils/StyledComponents/StyledComponents"; 
-import { Link } from "react-router-dom";
 import LeftSideBar from "./LifeSideBar/LeftSideBar";
+import { ShopNavbar } from "./ShopNavbar";
 
 export default function Shop() {
   const [flag, setFlag] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  function handlerSearchProducts (value) {
+    setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(value.toLowerCase())))
+  }
   function handlerSetProducts(value) {
     if(value === "default") {
       setProducts(allProducts)
@@ -180,20 +184,13 @@ export default function Shop() {
   }, [flag, cart]);
   return (
     <Div flexDir="column" wd="100%">
-      <Div wd="100%" bg="yellow">
+      <Div wd="100%">
         <Navbar/>
       </Div>
-
-      <Div bg="greenyellow" wd="100%">
-        <Link to="/shop/cart">
-          <Img wd="100px" hg="100px" src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="" />
-        </Link>
-      </Div>
-
-
-      <Div wd="100%" bg="lightblue">
+        <ShopNavbar isOpen={isOpen} setIsOpen={setIsOpen} handlerSearchProducts={handlerSearchProducts}/>
+      <Div wd="100%" bg="lightgray">
         
-        <LeftSideBar handlerSetProducts={handlerSetProducts}/>
+        <LeftSideBar handlerSetProducts={handlerSetProducts} isOpen={isOpen} setIsOpen={setIsOpen}/>
         
         <ProductCards
           handlerSetCart={handlerSetCart}

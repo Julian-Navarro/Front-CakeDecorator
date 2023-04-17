@@ -113,7 +113,7 @@ export const Div = styled.div`
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
-  align-self: ${({ alSelf }) => alSelf || "none"}
+  align-self: ${({ alSelf }) => alSelf || "none"};
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-top: ${({ mt }) => mt || "none"};
   margin-left: ${({ ml }) => ml || "none"};
@@ -121,8 +121,11 @@ export const Div = styled.div`
   box-shadow: ${({ boxSh }) => boxSh || "none"};
   background-image: url(${({ img }) => img || "none"});
   transition: ${({ trans }) => trans || ".4s ease"};
+  position: ${({ pos }) => pos || "static"};
+  top: 0px;
   background-repeat: no-repeat;
   background-size: contain;
+  backdrop-filter: ${({ blur }) => blur || "none"};
 `;
 export const DivGradient = styled.div`
   padding: ${({ pd }) => pd || "5px"};
@@ -168,6 +171,10 @@ export const H1 = styled.h1`
 export const Img = styled.img`
   height: ${({ hg }) => hg || "12rem"};
   width: ${({ wd }) => wd || "12rem"};
+  display: ${({ display }) => display || "flex"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  justify-content: ${({ jfCont }) => jfCont || "center"};
+  align-items: ${({ alItems }) => alItems || "center"};
   border-radius: ${({ br }) => br || "none"};
   padding: ${({ pd }) => pd || "none"};
   margin-bottom: ${({ mb }) => mb || "none"};
@@ -175,4 +182,5 @@ export const Img = styled.img`
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
   align-self: ${({ alSelf }) => alSelf || "none"};
+  cursor: pointer;
 `;
