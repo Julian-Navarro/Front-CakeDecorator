@@ -199,7 +199,7 @@ export default function Shop() {
           handleRemoveItemCart={handleRemoveItemCart}
           products={products}
           />
-          : <P>No se encontraron productos</P>
+          : <P wd="100%">No se encontraron productos</P>
           }
       </Div>
 
