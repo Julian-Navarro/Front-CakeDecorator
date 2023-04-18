@@ -174,13 +174,13 @@ export default function Shop() {
 
   //!  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ LOGICAS SETEADO DE CARRITO LOCALSTORAG ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
   useEffect(() => {
-    console.log("RENDERING SHOP!");
+    // console.log("RENDERING SHOP!");
     getProductsDB();
     // console.log("PRODUCTS: ", products);
   }, []);
 
   useEffect(() => {
-    console.log("RENDERING SHOP!");
+    // console.log("RENDERING SHOP!");
   }, [flag, cart]);
   return (
     <Div flexDir="column" wd="100%">

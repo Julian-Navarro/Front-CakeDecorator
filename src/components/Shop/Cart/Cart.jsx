@@ -11,15 +11,15 @@ export default function Cart () {
         setCartFlag(!cartFlag)
     }
     useEffect(()=>{
-        console.log("Rendering CART");
-        console.log("CART FLAG: ", cartFlag);
+        // console.log("Rendering CART");
+        // console.log("CART FLAG: ", cartFlag);
     },[cartFlag])
     return (
         <Div flexDir="column">
             <H1>CART</H1>
             <Div>
             { 
-                "TOTAL CARRITO: " + total
+                "TOTAL: $" + total.toLocaleString()
             }
             </Div>
             <Button onClick={()=>navigate("/shop")}>Volver</Button>

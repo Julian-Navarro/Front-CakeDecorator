@@ -122,7 +122,56 @@ export const Div = styled.div`
   background-image: url(${({ img }) => img || "none"});
   transition: ${({ trans }) => trans || ".4s ease"};
   position: ${({ pos }) => pos || "static"};
-  top: 0px;
+  top: ${({ posTop }) => posTop};
+  background-repeat: no-repeat;
+  background-size: contain;
+  backdrop-filter: ${({ blur }) => blur || "none"};
+
+  Span {
+    display: ${({ dis }) => dis || "inline"};
+    transition: background 0.6s;
+  }
+  &:hover {
+    background: ${({ _hovBg, bg }) => _hovBg || bg};
+    color: ${({ _hovCol, color }) => _hovCol || color};
+
+    Span {
+      transition: 0.6s;
+      display: ${({ _hovSpanDis }) => _hovSpanDis};
+      justify-content: center;
+      position: absolute;
+      width: 180px;
+      font-family: cursive;
+      transform: translate(100px, -10px);
+      font-size: 18px;
+      top: 30px;
+      font-weight: 700;
+    }
+  }
+`;
+export const Span = styled.span`
+  background: ${({ bg }) => bg || "#fff"};
+  color: ${({ color }) => color || "black"};
+  padding: ${({ pd }) => pd || "0px"};
+  height: ${({ hg }) => hg || "auto"};
+  width: ${({ wd }) => wd || "auto"};
+  border: 2px solid ${({ bd }) => bd || "none"};
+  border-radius: ${({ br }) => br || "8px"};
+  display: ${({ display }) => display || "flex"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
+  justify-content: ${({ jfCont }) => jfCont || "center"};
+  align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
+  margin-bottom: ${({ mb }) => mb || "none"};
+  margin-top: ${({ mt }) => mt || "none"};
+  margin-left: ${({ ml }) => ml || "none"};
+  margin-right: ${({ mr }) => mr || "none"};
+  box-shadow: ${({ boxSh }) => boxSh || "none"};
+  background-image: url(${({ img }) => img || "none"});
+  transition: ${({ trans }) => trans || ".4s ease"};
+  // position: ${({ pos }) => pos || "static"};
+  // top: 0px;
   background-repeat: no-repeat;
   background-size: contain;
   backdrop-filter: ${({ blur }) => blur || "none"};
