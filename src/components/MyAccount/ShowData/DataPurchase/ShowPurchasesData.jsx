@@ -106,6 +106,7 @@ export default function ShowPurchasesData() {
       <OrderByName
         allMyProducts={allMyProducts}
         getSortedArray={getSortedArray}
+        noMatch={noMatch}
       />
       {noMatch === "no-match" ? (
         <div>

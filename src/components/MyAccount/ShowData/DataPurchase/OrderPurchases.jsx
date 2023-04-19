@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-export default function OrderByName({ allMyProducts, getSortedArray }) {
+export default function OrderByName({ allMyProducts, getSortedArray, noMatch }) {
   const [sortedByNameProducts, setSortedProducts] = useState([]);
   const [select, setSelect] = useState("");
 
   function handlerSelect(e) {
     setSelect(e.target.value);
+    const select = document.getElementById("categories")
+    select.options.selectedIndex = 0
   }
 
   function sortedArray(e) {
@@ -53,6 +55,7 @@ export default function OrderByName({ allMyProducts, getSortedArray }) {
     <div>
       <label>Ordenar: </label>
       <select
+      disabled={noMatch === "no-match"}
         name="sorted"
         id="sorted"
         onChange={(e) => [
