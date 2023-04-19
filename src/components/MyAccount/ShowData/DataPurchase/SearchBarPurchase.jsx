@@ -6,6 +6,10 @@ export default function SearchBarPurchase({ getProductByName, resetProduct }) {
   function handlerInputChange(e) {
     e.preventDefault();
     setInput(e.target.value);
+    const resetSeletcs3 = document.getElementById("sorted");
+    const resetSeletcs4 = document.getElementById("categories");
+    resetSeletcs3.options.selectedIndex = 0;
+    resetSeletcs4.options.selectedIndex = 0;
   }
 
   function cleanInput() {
