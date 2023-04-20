@@ -98,7 +98,9 @@ useEffect(()=>{},[allProducts, products])
           <ProductCards
             products={products}
             path="adm" 
-            handlerEditProduct={handlerEditProduct}/>
+            handlerEditProduct={handlerEditProduct}
+            handlerSetEditFlag={handlerSetEditFlag}/>
+            
         </div>
 
     )
