@@ -59,7 +59,7 @@ export const Select = styled.select`
 `;
 export const Option = styled.option``;
 export const P = styled.p`
-  background: ${({ bg }) => bg || "#fff"};
+  background: ${({ bg }) => bg || "transparent"};
   padding: ${({ pd }) => pd || "5px"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
@@ -67,6 +67,7 @@ export const P = styled.p`
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"}
   color: ${({ color }) => color || "black"};
   border: 2px solid ${({ bd }) => bd || "none"};
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
@@ -98,10 +99,11 @@ export const Button = styled.button`
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol, color }) => _hovCol || color};
+    box-shadow: ${({ _hovBSh }) => _hovBSh};
   }
 `;
 export const Div = styled.div`
-  background: ${({ bg }) => bg || "#fff"};
+  background: ${({ bg }) => bg || "transparent"};
   color: ${({ color }) => color || "black"};
   padding: ${({ pd }) => pd || "0px"};
   height: ${({ hg }) => hg || "auto"};
@@ -135,7 +137,7 @@ export const Div = styled.div`
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol, color }) => _hovCol || color};
-
+    box-shadow: ${({ _hovBSh }) => _hovBSh};
     Span {
       transition: 0.6s;
       display: ${({ _hovSpanDis }) => _hovSpanDis};
@@ -219,8 +221,10 @@ export const H1 = styled.h1`
   align-self: ${({ alSelf }) => alSelf || "none"};
 `;
 export const Img = styled.img`
-  height: ${({ hg }) => hg || "12rem"};
-  width: ${({ wd }) => wd || "12rem"};
+  height: ${({ hg }) => hg || "10rem"};
+  min-height: ${({ minHg }) => minHg};
+  width: ${({ wd }) => wd || "10rem"};
+  min-height: ${({ minWd }) => minWd};
   display: ${({ display }) => display || "flex"};
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};

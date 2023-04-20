@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { HOST } from "../../../utils";
 import ProductCard from "./ProductCard";
 import { Div } from "../../../utils/StyledComponents/StyledComponents";
-export default function ProductCards ({ path, handlerEditProduct, products, handleRemoveItemCart, handlerSetCart}) {
+export default function ProductCards ({ path, handlerEditProduct, handlerSetEditFlag, products, handleRemoveItemCart, handlerSetCart}) {
     return (
         <Div flWr="wrap" wd="100%">
             {
@@ -13,6 +13,7 @@ export default function ProductCards ({ path, handlerEditProduct, products, hand
                     handlerSetCart={handlerSetCart}
                     key={pr.id}
                     path={path}
+                    handlerSetEditFlag={handlerSetEditFlag}
                     handlerEditProduct={handlerEditProduct}
                     product={pr}
                     name={pr.name} 
