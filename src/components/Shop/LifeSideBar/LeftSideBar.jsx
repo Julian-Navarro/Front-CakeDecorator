@@ -20,7 +20,7 @@ export default function LeftSideBar({ handlerSetProducts, isOpen, setIsOpen }) {
         console.log("productsCategories: ",productsCategories);
     },[])
     return (
-        <Div hg="100vh" wd={isOpen?"200px":"0px"} bg="gray"flexDir="column">
+        <Div wd={isOpen?"200px":"0px"} bg="gray"flexDir="column"pos="sticky" posTop="60px" posLeft="0">
             <Div flexDir="column">
             {
                 productsCategories.length && isOpen

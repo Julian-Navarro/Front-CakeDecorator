@@ -12,6 +12,7 @@ export default function Shop() {
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+
   function handlerSearchProducts (value) {
     setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(value.toLowerCase())))
   }
@@ -29,7 +30,7 @@ export default function Shop() {
     setFlag(!flag);
   }
 
-  //!  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ LOGICAS SETEADO DE CARRITO LOCALSTORAG ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+  //!  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ LOGICAS SETEADO DE CARRITO LOCALSTORAGE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
   const [cart, setCart] = useState();
 
@@ -172,7 +173,7 @@ export default function Shop() {
     }
   };
 
-  //!  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ LOGICAS SETEADO DE CARRITO LOCALSTORAG ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+  //!  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ LOGICAS SETEADO DE CARRITO LOCALSTORAGE ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
   useEffect(() => {
     // console.log("RENDERING SHOP!");
     getProductsDB();
@@ -187,20 +188,21 @@ export default function Shop() {
       <Div wd="100%">
         <Navbar/>
       </Div>
-        <ShopNavbar isOpen={isOpen} setIsOpen={setIsOpen} handlerSearchProducts={handlerSearchProducts}/>
-      <Div wd="100%" bg="lightgray">
-        
-        <LeftSideBar handlerSetProducts={handlerSetProducts} isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <ShopNavbar isOpen={isOpen} setIsOpen={setIsOpen} handlerSearchProducts={handlerSearchProducts}/>
+      <Div wd="100%"bg="lightgray">
+        <Div bg="red" alSelf="flex-start"pos="sticky" posTop="53px">
+          <LeftSideBar handlerSetProducts={handlerSetProducts} isOpen={isOpen} setIsOpen={setIsOpen}/>
+        </Div>
         
         { products.length 
         ?
-          <ProductCards
-          handlerSetCart={handlerSetCart}
-          handleRemoveItemCart={handleRemoveItemCart}
-          products={products}
-          />
-          : <P wd="100%">No se encontraron productos</P>
-          }
+        <ProductCards
+        handlerSetCart={handlerSetCart}
+        handleRemoveItemCart={handleRemoveItemCart}
+        products={products}
+        />
+        : <P wd="100%">No se encontraron productos</P>
+        }
       </Div>
 
     </Div>

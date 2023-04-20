@@ -16,7 +16,6 @@ export default function Cart () {
     },[cartFlag])
     return (
         <Div flexDir="column">
-            <H1>CART</H1>
             <Div>
             { 
                 "TOTAL: $" + total.toLocaleString()
