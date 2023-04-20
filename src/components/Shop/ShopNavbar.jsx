@@ -9,7 +9,7 @@ export function ShopNavbar ({ isOpen, setIsOpen, handlerSearchProducts }) {
     const [input, setInput] = useState("")
     function handlerSearchProductsNavbar (e) {
         if(input.trim() !== "") {
-            handlerSearchProducts(input)
+            handlerSearchProducts(input.trim())
             setInput("")
         } else {
             alert("Debes indicar el nombre de un producto")

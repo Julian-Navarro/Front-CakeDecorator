@@ -106,7 +106,7 @@ export const Div = styled.div`
   padding: ${({ pd }) => pd || "0px"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
-  border: 2px solid ${({ bd }) => bd || "none"};
+  border: 1px solid ${({ bd }) => bd || "none"};
   border-radius: ${({ br }) => br || "8px"};
   display: ${({ display }) => display || "flex"};
   flex-direction: ${({ flexDir }) => flexDir || "row"};
@@ -123,6 +123,7 @@ export const Div = styled.div`
   transition: ${({ trans }) => trans || ".4s ease"};
   position: ${({ pos }) => pos || "static"};
   top: ${({ posTop }) => posTop};
+  left: ${({ posLeft }) => posLeft};
   background-repeat: no-repeat;
   background-size: contain;
   backdrop-filter: ${({ blur }) => blur || "none"};
