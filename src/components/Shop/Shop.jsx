@@ -183,20 +183,19 @@ export default function Shop() {
   useEffect(() => {
     // console.log("RENDERING SHOP!");
   }, [flag, cart]);
+
   return (
     <Div flexDir="column" wd="100%">
-      <Div wd="100%">
-        <Navbar/>
-      </Div>
+      <Navbar/>
       <ShopNavbar isOpen={isOpen} setIsOpen={setIsOpen} handlerSearchProducts={handlerSearchProducts}/>
       <Div wd="100%"bg="lightgray">
         <Div bg="red" alSelf="flex-start"pos="sticky" posTop="53px">
-          <LeftSideBar handlerSetProducts={handlerSetProducts} isOpen={isOpen} setIsOpen={setIsOpen}/>
+          <LeftSideBar handlerSetProducts={handlerSetProducts} isOpen={isOpen}/>
         </Div>
         
-        { products.length 
-        ?
-        <ProductCards
+        { 
+        products.length 
+        ? <ProductCards
         handlerSetCart={handlerSetCart}
         handleRemoveItemCart={handleRemoveItemCart}
         products={products}
@@ -204,7 +203,6 @@ export default function Shop() {
         : <P wd="100%">No se encontraron productos</P>
         }
       </Div>
-
     </Div>
   );
 }

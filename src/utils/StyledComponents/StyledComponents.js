@@ -67,7 +67,7 @@ export const P = styled.p`
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
-  align-self: ${({ alSelf }) => alSelf || "none"}
+  align-self: ${({ alSelf }) => alSelf || "none"};
   color: ${({ color }) => color || "black"};
   border: 2px solid ${({ bd }) => bd || "none"};
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
@@ -75,6 +75,14 @@ export const P = styled.p`
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
+  cursor: ${({ cursor }) => cursor || "pointer"};
+  &:hover {
+    background: ${({ _hovBg, bg }) => _hovBg || bg};
+    color: ${({ _hovCol }) => _hovCol};
+    box-shadow: ${({ _hovBSh }) => _hovBSh};
+    text-shadow: ${({ txtSh }) =>
+      `1px 1px 1px ${txtSh}, -2px -2px 4px ${txtSh}`};
+  }
 `;
 export const Button = styled.button`
   background: ${({ bg }) => bg || "lightblue"};
@@ -85,7 +93,7 @@ export const Button = styled.button`
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
-  align-self: ${({ alSelf }) => alSelf || "none"}
+  align-self: ${({ alSelf }) => alSelf || "none"};
   color: ${({ color }) => color || "#fff"};
   border: 2px solid ${({ bd }) => bd || "none"};
   border-radius: ${({ br }) => br || "8px"};
@@ -98,8 +106,10 @@ export const Button = styled.button`
   margin-top: ${({ mt }) => mt || "none"};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
-    color: ${({ _hovCol, color }) => _hovCol || color};
+    color: ${({ _hovCol }) => _hovCol};
     box-shadow: ${({ _hovBSh }) => _hovBSh};
+    text-shadow: ${({ txtSh }) =>
+      `1px 1px 1px ${txtSh}, -2px -2px 4px ${txtSh}`};
   }
 `;
 export const Div = styled.div`
@@ -237,4 +247,62 @@ export const Img = styled.img`
   margin-right: ${({ mr }) => mr || "none"};
   align-self: ${({ alSelf }) => alSelf || "none"};
   cursor: pointer;
+`;
+export const Ul = styled.ul`
+  background: ${({ bg }) => bg || "transparent"};
+  padding: ${({ pd }) => pd || "5px"};
+  height: ${({ hg }) => hg || "auto"};
+  width: ${({ wd }) => wd || "auto"};
+  display: ${({ display }) => display || "flex"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  justify-content: ${({ jfCont }) => jfCont || "center"};
+  align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
+  color: ${({ color }) => color || "black"};
+  border: 2px solid ${({ bd }) => bd || "none"};
+  flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
+  border-radius: ${({ br }) => br || "8px"};
+  font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  font-weight: ${({ fWeight }) => fWeight || "300"};
+  font-size: ${({ fSize }) => fSize || "22px"};
+  cursor: ${({ cursor }) => cursor || "pointer"};
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-bottom: ${({ mb }) => mb || "none"};
+  margin-top: ${({ mt }) => mt || "none"};
+  margin-left: ${({ ml }) => ml || "none"};
+  margin-right: ${({ mr }) => mr || "none"};
+  &:hover {
+    background: ${({ _hovBg, bg }) => _hovBg || bg};
+    color: ${({ _hovCol }) => _hovCol};
+    box-shadow: ${({ _hovBSh }) => _hovBSh};
+    text-shadow: ${({ txtSh }) =>
+      `1px 1px 1px ${txtSh}, -2px -2px 4px ${txtSh}`};
+  }
+`;
+export const Li = styled.li`
+  background: ${({ bg }) => bg || "transparent"};
+  padding: ${({ pd }) => pd || "5px"};
+  height: ${({ hg }) => hg || "auto"};
+  width: ${({ wd }) => wd || "auto"};
+  display: ${({ display }) => display || "flex"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  justify-content: ${({ jfCont }) => jfCont || "center"};
+  align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
+  color: ${({ color }) => color || "black"};
+  border: 2px solid ${({ bd }) => bd || "none"};
+  flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
+  border-radius: ${({ br }) => br || "8px"};
+  font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  font-weight: ${({ fWeight }) => fWeight || "300"};
+  font-size: ${({ fSize }) => fSize || "22px"};
+  cursor: ${({ cursor }) => cursor || "pointer"};
+  &:hover {
+    background: ${({ _hovBg, bg }) => _hovBg || bg};
+    color: ${({ _hovCol }) => _hovCol};
+    box-shadow: ${({ _hovBSh }) => _hovBSh};
+    text-shadow: ${({ txtSh }) =>
+      `1px 1px 1px ${txtSh}, -2px -2px 4px ${txtSh}`};
+  }
 `;
