@@ -5,12 +5,11 @@ import { Div, Form, Input, Label, Select, Option, P, Button, H1 } from "../../..
 
 export default function FormProductPostAndEdit({ handlerSetComponentProductListFlag, update, product, handlerEditProduct }) {
   //! ↓↓↓↓↓↓↓↓↓↓↓  *HANDLERS QUE ABREN LOS FORMS Y SETEAN EL CURSO EN CASO DE EDICIÓN* ↓↓↓↓↓↓↓↓↓↓↓
-  const [categories, setCategories] = useState([]);                  //! UNIR CREANDO RUTA EN BACK
-  async function getCategories() {                                   //! UNIR CREANDO RUTA EN BACK
-      let newCategories = await axios.get(`${HOST}/categories`)      //! UNIR CREANDO RUTA EN BACK
-      setCategories(newCategories.data)                                   //! UNIR CREANDO RUTA EN BACK
-    } //! DESCOMENTAR TMB EN EL USE EFFECT LA EJECUCION DE LA FN GET-CATEGORIES
-  // const categories = ["Picos", "Cortantes", "Mangas"] //! HARDCODEO HASTA QUE ESTÉ LA RUTA DE ARRIBA
+  const [categories, setCategories] = useState([]);
+  async function getCategories() {
+      let newCategories = await axios.get(`${HOST}/categories`)
+      setCategories(newCategories.data)
+    }
 
     const [input, setInput] = useState({
       category: "",
@@ -18,7 +17,8 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
       name: "",
       price: "",
       img: [""],
-      stock: ""
+      stock: "",
+      brand: ""
     });
     const [errors, setErrors] = useState({
       category: "",
@@ -210,11 +210,20 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
 
                     </Select>
                   </Div>
+
+
+                  <Div>
+                    <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
+                      <Option>Selecciona Marca</Option>
+                    </Select>
+                  </Div>
+
+
                   {errors.category !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorCategory} color={colorCategory}>{errors.category}</P>:<p></p>}
                   <Div flexDir="column">
                     <Label color={colorDescription}>Descripción </Label>
                     <Input name="description" bd={colorDescription} onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.description}/>
-                  </Div>
+                  </Div>  //! ESTE TIENE QUE SER UN TEXT-AREA
                     {errors.description !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorDescription} color={colorDescription}>{errors.description}</P>:<p></p>}
                 </Div>
               </Div>
@@ -225,7 +234,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                       <Button onClick={(e)=>{handlerEditProduct(e)}} bgColor="#0172AF">Cerrar edición</Button>
                     </Div>
                   : <Button value={false} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} color="#161616" bg="#9AEFFF" pd="6px 4rem 6px 4rem" _hovBg="lightblue">Crear</Button> 
-                }
+                  }
             </Div>
           </Form>
         </Div>

@@ -3,7 +3,7 @@ import s from "./DashboardAdmin.module.css"
 import Users from "../SubComponents/Users/Users";
 import CoursesAdm from "../SubComponents/Courses/CoursesAdm";
 import Products from "../SubComponents/Products/ProductsAdm";
-import CreateCategories from "../SubComponents/Products/EditCategories";
+import CreateCategoriesAndBrands from "../SubComponents/Products/EditCategoriesAndBrands";
 import Navbar from "../../Navbar/Navbar";
 export default function DashboardAdmin () {
     const [render, setRender] = useState(false)
@@ -24,12 +24,10 @@ export default function DashboardAdmin () {
                   <button onClick={(e)=>handlerChangeRender(e)} value="users" >Usuarios</button>
                   <button onClick={(e)=>handlerChangeRender(e)} value="courses" >Cursos</button>
                   <button onClick={(e)=>handlerChangeRender(e)} value="products" >Productos</button>
-                  <button onClick={(e)=>handlerChangeRender(e)} value="editCategories">Editar categorias</button>
-                  {/* <button onClick={(e)=>handlerChangeRender(e)} value="formPostProducts" >Crear Productos</button> */}
+                  <button onClick={(e)=>handlerChangeRender(e)} value="editCategoriesAndBrands">Editar categorias y marcas</button>
 
               </div>
               <div className={s.divDashboardRightContainer}>
-                <h2>Container List COMP DASHBOARD</h2>
                 {
                     render === false ? <h2>Elige una opcion</h2> : null
                 }
@@ -43,7 +41,7 @@ export default function DashboardAdmin () {
                     render === "products" ? <Products path={"adm"}/> : null
                 }
                 {
-                    render === "editCategories" ? <CreateCategories/> : null
+                    render === "editCategoriesAndBrands" ? <CreateCategoriesAndBrands/> : null
                 }
               </div>
 
