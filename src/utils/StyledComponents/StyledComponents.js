@@ -14,6 +14,9 @@ export const Form = styled.form`
   border-radius: ${({ br }) => br || "8px"};
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-top: ${({ mt }) => mt || "none"};
+  font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  font-weight: ${({ fWeight }) => fWeight || "300"};
+  font-size: ${({ fSize }) => fSize || "22px"};
 `;
 export const Input = styled.input`
   background: ${({ bg }) => bg || "#fff"};
@@ -28,6 +31,9 @@ export const Input = styled.input`
   border: 2px solid ${({ bd }) => bd || "black"};
   border-radius: ${({ br }) => br || "8px"};
   text-align: ${({ txAlign }) => txAlign || "center"};
+  font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  font-weight: ${({ fWeight }) => fWeight || "300"};
+  font-size: ${({ fSize }) => fSize || "22px"};
 `;
 export const Label = styled.label`
   background: ${({ bg }) => bg || "#fff"};
@@ -42,6 +48,8 @@ export const Label = styled.label`
   border: 2px solid ${({ bd }) => bd || "none"};
   border-radius: ${({ br }) => br || "8px"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  font-weight: ${({ fWeight }) => fWeight || "300"};
+  font-size: ${({ fSize }) => fSize || "22px"};
 `;
 export const Select = styled.select`
   background: ${({ bg }) => bg || "#fff"};
@@ -56,6 +64,8 @@ export const Select = styled.select`
   border: 2px solid ${({ bd }) => bd || "black"};
   border-radius: ${({ br }) => br || "8px"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  font-weight: ${({ fWeight }) => fWeight || "300"};
+  font-size: ${({ fSize }) => fSize || "22px"};
 `;
 export const Option = styled.option``;
 export const P = styled.p`
