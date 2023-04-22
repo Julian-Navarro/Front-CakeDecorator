@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Div, P, Button, H1, Img, Input } from "../../../utils/StyledComponents/StyledComponents";
+import { Div, P, Button, H1, Img, Input, Ul, Li } from "../../../utils/StyledComponents/StyledComponents";
 import axios from "axios";
 import { HOST } from "../../../utils";
 
@@ -39,39 +39,35 @@ function handlerDeleteProduct (id) {
                     <P fSize="1rem"hg="10px">{name}</P>
                 </Div>
                 <Img br="0" wd="100%" minHg="9rem"src={img} alt="img not found" />
-            
-
-            <Div flexDir="column" wd="100%" hg="100%"bg="lightblue"alItems="flex-start"jfCont="space-between"mb="6px"mt="6px">
-
-                <Div bg="blue"hg="1.8rem"wd="100%">
-                        { categories.length > 0 
-                        ? <Div alSelf="center"fSize=".7rem"wd="100%"hg="100%"pd="0"fWeight="bold"flWr="wrap" >
-                            <P bg="green"fSize=".5rem"fWeight="bold">Categoría/s: </P> 
-                            { categories.map((cat, i)=> <P pd="2px"bg="pink"fSize=".5rem">{cat} { categories.length !== 1 ? i === categories.length - 1 ? null : "," : null}</P>) } 
-                          </Div>
-                         : null }
-                </Div>
-                <Div jfCont="space-around"wd="100%"bg="red">
-                    <Div hg="1rem" bg="violet">
+            <Div flexDir="column" wd="100%" hg="100%"bg="aliceblue"alItems="flex-start"jfCont="space-between"mb="6px"mt="6px">
+                <Div jfCont="space-around"wd="100%"hg="100%">
+                    <Div hg="1rem" >
                         <P fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Precio: ${price}</P>
                     </Div>
-                    <Div hg="1rem"bg="violet" >
+                    <Div hg="1rem">
                         <P fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Stock: {stock}u</P>
                     </Div>
                 </Div>
-
-                {brand?<P bg="greenyellow"fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="100%">Marca: {brand}</P>:null}
+                <Div wd="100%"hg="100%"flexDir="column">
+                        { categories.length > 0 
+                        ? <Ul alSelf="center"fSize=".7rem"wd="100%"hg="100%"pd="0"fWeight="bold"flWr="wrap" >
+                            <Li fSize=".6rem"fWeight="bold">Categoría/s: </Li> 
+                            { categories.map((cat, i)=> <Li pd="2px"fSize=".7rem">{cat} { categories.length !== 1 ? i === categories.length - 1 ? null : "," : null}</Li>) } 
+                          </Ul>
+                         : null }
+                {brand?<Li mb="5px"fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="100%">Marca: {brand}</Li>:null}
+                </Div>
 
                 {path !== "adm"
-                ? <Div wd="100%"jfCont="space-around"bg="yellow">
-                    <Div pd="0"jfCont="center"bg="orange">
+                ? <Div wd="100%"jfCont="space-around">
+                    <Div pd="0"jfCont="center">
                         <Button fWeight="700"fSize="24px" hg="28px"wd="30px"br="4px" onClick={subtractOne} _hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow">-</Button>
                         <Input wd="40px"hg="14px" type="text" br="4px"value={amountToAdd} onChange={(e)=>handlerSetAmountToAdd(e)}/>
                         <Button fWeight="700"fSize="24px" hg="28px"wd="30px"br="4px" onClick={addOne} _hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow">+</Button>
                     </Div>
                     <Button wd="120px"hg="30px" onClick={(e)=>handlerBtnAdd(e)} _hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow">Agregar</Button>
                   </Div>
-                : <Div wd="100%"jfCont="space-around" bg="black">
+                : <Div wd="100%"jfCont="space-around" >
                     <Button hg="1.8rem"onClick={(e)=>{handlerEditProduct(e, product)}} _hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow">Editar</Button>
                     <Button hg="1.8rem"_hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow" onClick={()=>{handlerDeleteProduct(id)}}>Eliminar</Button>
                   </Div> }

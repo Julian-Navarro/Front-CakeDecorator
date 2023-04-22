@@ -79,7 +79,6 @@ export const P = styled.p`
   align-items: ${({ alItems }) => alItems || "center"};
   align-self: ${({ alSelf }) => alSelf || "none"};
   color: ${({ color }) => color || "black"};
-  border: 2px solid ${({ bd }) => bd || "none"};
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
   border-radius: ${({ br }) => br || "8px"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
@@ -308,6 +307,8 @@ export const Li = styled.li`
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
   cursor: ${({ cursor }) => cursor || "pointer"};
+  margin-bottom: ${({ mb }) => mb || "none"};
+  margin-top: ${({ mt }) => mt || "none"};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};
