@@ -203,6 +203,7 @@ export default function Shop() {
         : <P wd="100%">No se encontraron productos</P>
         }
       </Div>
+                  <br /><br /><br /><br /><br /><br /><br /><br />
     </Div>
   );
 }

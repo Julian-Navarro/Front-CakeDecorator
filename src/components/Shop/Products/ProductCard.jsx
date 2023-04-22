@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Div, DivHover, P, Button, H1, Img, Input, Ul, Li } from "../../../utils/StyledComponents/StyledComponents";
+import { Div, P, Button, H1, Img, Input, Ul, Li } from "../../../utils/StyledComponents/StyledComponents";
 import axios from "axios";
 import { HOST } from "../../../utils";
 
@@ -35,21 +35,20 @@ function handlerDeleteProduct (id) {
 
     return (
         <Div hg="18rem"wd="15rem">
-        <Div _hovHg="17.5rem"_hovImgHg="11rem"_hovUlDis="flex"bg="aliceblue"mt="1rem" mr="1rem"flexDir="column"hg="15rem"wd="14rem" jfCont="space-between"_hovBSh="0 0 .8rem .1rem rgba(0, 0 , 0, 0.3)">
+        <Div _hovHg="17.5rem"_hovImgHg="11rem"_hovUlDis="flex"_hovBShUl="0 30px .8rem .1rem rgba(0, 0 , 0, 0.3)"bg="aliceblue"mt="1rem" mr="1rem"flexDir="column"hg="15rem"wd="14rem" jfCont="space-between"_hovBSh="0 0 .8rem .1rem rgba(0, 0 , 0, 0.3)">
             <Img br="7px" wd="100%" hg="13rem"src={img} alt="img not found" />
-            {/* <Div bg="violet"hg="1rem" wd="100%"mt="5px"mb="5px">
-                <P fSize="1rem"hg="10px">{name}</P>
-            </Div> */}
+
             <Div mb="5px"ml="1rem"mt=".3rem"hg="1.8rem" wd="100%"jfCont="flex-start"alItems="flex-end">
                 <P fSize="1rem"pd="0"fWeight="500"hg="10px" color="gray">Precio: ${price}</P>
             </Div>
+            
+            
             <Ul br="0px 0px 8px 8px"pos="relative"zInd="1"display="none"flexDir="column" wd="100%" hg="100%"pd="0"bg="aliceblue"alItems="flex-start"jfCont="space-between"mt="6px">
+                
                 <Div jfCont="space-around"wd="100%"hg="100%">
-                    {/* <Div hg="1rem" >
-                        <P fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Precio: ${price}</P>
-                    </Div> */}
+
                     <Div hg="100%"wd="70%"mt="5px"mb="5px">
-                        <Li pd="0"mt="5px"flWr="wrap"fSize=".8rem"hg="100%"txtDec="underline">{name}</Li>
+                        <Li pd="0"mt="5px"flWr="wrap"fSize=".8rem"hg="100%"ml="5px"mr="5px"txtDec="underline">{name}</Li>
                     </Div>
                     <Div hg="1rem"mr="5px">
                         <P fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Stock: {stock}u</P>
@@ -57,8 +56,8 @@ function handlerDeleteProduct (id) {
                 </Div>
                 <Div wd="100%"hg="100%"flexDir="column">
                         { categories.length > 0 
-                        ? <Ul alSelf="center"fSize=".7rem"wd="100%"hg="100%"pd="0"fWeight="bold"flWr="wrap" >
-                            <Li fSize=".6rem"fWeight="bold">Categoría/s: </Li> 
+                        ? <Ul boxSh="none !important"alSelf="center"fSize=".7rem"wd="100%"hg="100%"pd="0"fWeight="bold"flWr="wrap" >
+                            <Li fSize=".7rem"fWeight="bold">Categoría/s: </Li> 
                             { categories.map((cat, i)=> <Li pd="2px"fSize=".7rem">{cat} { categories.length !== 1 ? i === categories.length - 1 ? null : "," : null}</Li>) } 
                           </Ul>
                          : null }

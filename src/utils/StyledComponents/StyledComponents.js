@@ -164,6 +164,7 @@ export const Div = styled.div`
     Ul {
       display: ${({ _hovUlDis }) => _hovUlDis};
       background-color: ${({ _hovUlBg }) => _hovUlBg};
+      box-shadow: ${({ _hovBShUl }) => _hovBShUl};
     }
     Span {
       transition: 0.6s;
@@ -182,57 +183,7 @@ export const Div = styled.div`
     display: ${({ dis }) => dis || "inline"};
     transition: background 0.6s;
   }
-`;
-export const DivHover = styled.div`
-  background: ${({ bg }) => bg || "transparent"};
-  color: ${({ color }) => color || "black"};
-  padding: ${({ pd }) => pd || "0px"};
-  height: ${({ hg }) => hg || "auto"};
-  width: ${({ wd }) => wd || "auto"};
-  border: 1px solid ${({ bd }) => bd || "none"};
-  border-radius: ${({ br }) => br || "8px"};
-  display: ${({ display }) => display || "flex"};
-  flex-direction: ${({ flexDir }) => flexDir || "row"};
-  flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
-  justify-content: ${({ jfCont }) => jfCont || "center"};
-  align-items: ${({ alItems }) => alItems || "center"};
-  align-self: ${({ alSelf }) => alSelf || "none"};
-  margin-bottom: ${({ mb }) => mb || "none"};
-  margin-top: ${({ mt }) => mt || "none"};
-  margin-left: ${({ ml }) => ml || "none"};
-  margin-right: ${({ mr }) => mr || "none"};
-  box-shadow: ${({ boxSh }) => boxSh || "none"};
-  background-image: url(${({ img }) => img || "none"});
-  transition: ${({ trans }) => trans || ".4s ease"};
-  position: ${({ pos }) => pos || "static"};
-  top: ${({ posTop }) => posTop};
-  left: ${({ posLeft }) => posLeft};
-  background-repeat: no-repeat;
-  background-size: contain;
-  backdrop-filter: ${({ blur }) => blur || "none"};
-
-  &:hover {
-    background: ${({ _hovBg, bg }) => _hovBg || bg};
-    color: ${({ _hovCol, color }) => _hovCol || color};
-    box-shadow: ${({ _hovBSh }) => _hovBSh};
-    display: ${({ _hovDis }) => _hovDis};
-    Span {
-      transition: 0.6s;
-      display: ${({ _hovSpanDis }) => _hovSpanDis};
-      justify-content: center;
-      position: absolute;
-      width: 180px;
-      font-family: cursive;
-      transform: translate(100px, -10px);
-      font-size: 18px;
-      top: 30px;
-      font-weight: 700;
-    }
-  }
-  Span {
-    display: ${({ dis }) => dis || "inline"};
-    transition: background 0.6s;
-  }
+  //
 `;
 export const Span = styled.span`
   background: ${({ bg }) => bg || "#fff"};
@@ -337,6 +288,7 @@ export const Ul = styled.ul`
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
+  transition: ${({ trans }) => trans || ".4s ease"};
   cursor: ${({ cursor }) => cursor || "pointer"};
   margin-block-start: 0;
   margin-block-end: 0;
@@ -345,6 +297,7 @@ export const Ul = styled.ul`
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
   z-index: ${({ zInd }) => zInd};
+  box-shadow: ${({ boxSh }) => boxSh || "none"};
   text-decoration: ${({ txtDec }) => txtDec};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
@@ -372,8 +325,11 @@ export const Li = styled.li`
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
   cursor: ${({ cursor }) => cursor || "pointer"};
+  transition: ${({ trans }) => trans || ".4s ease"};
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-top: ${({ mt }) => mt || "none"};
+  margin-left: ${({ ml }) => ml || "none"};
+  margin-right: ${({ mr }) => mr || "none"};
   text-decoration: ${({ txtDec }) => txtDec};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
