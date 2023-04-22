@@ -4,6 +4,7 @@ import { HOST } from "../../../utils";
 import ProductCard from "./ProductCard";
 import { Div } from "../../../utils/StyledComponents/StyledComponents";
 export default function ProductCards ({ path, handlerEditProduct, handlerSetEditFlag, products, handleRemoveItemCart, handlerSetCart}) {
+    console.log("PRODUCTS: ", products);
     return (
         <Div flWr="wrap" wd="100%">
             {
@@ -12,6 +13,7 @@ export default function ProductCards ({ path, handlerEditProduct, handlerSetEdit
                     handleRemoveItemCart={handleRemoveItemCart}
                     handlerSetCart={handlerSetCart}
                     key={pr.id}
+                    brand={pr.brand}
                     path={path}
                     handlerSetEditFlag={handlerSetEditFlag}
                     handlerEditProduct={handlerEditProduct}
@@ -19,7 +21,7 @@ export default function ProductCards ({ path, handlerEditProduct, handlerSetEdit
                     name={pr.name} 
                     price={pr.price} 
                     stock={pr.stock} 
-                    category={pr.category} 
+                    categories={[...pr.categories]} 
                     id={pr.id} 
                     img={pr.img} 
                     description={pr.description}/>) )
