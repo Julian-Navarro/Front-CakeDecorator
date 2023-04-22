@@ -127,6 +127,68 @@ export const Div = styled.div`
   padding: ${({ pd }) => pd || "0px"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
+  border: 2px solid ${({ bd }) => bd || "none"};
+  border-radius: ${({ br }) => br || "8px"};
+  display: ${({ display }) => display || "flex"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
+  justify-content: ${({ jfCont }) => jfCont || "center"};
+  align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
+  margin-bottom: ${({ mb }) => mb || "none"};
+  margin-top: ${({ mt }) => mt || "none"};
+  margin-left: ${({ ml }) => ml || "none"};
+  margin-right: ${({ mr }) => mr || "none"};
+  box-shadow: ${({ boxSh }) => boxSh || "none"};
+  background-image: url(${({ img }) => img || "none"});
+  transition: ${({ trans }) => trans || ".4s ease"};
+  position: ${({ pos }) => pos || "static"};
+  top: ${({ posTop }) => posTop};
+  left: ${({ posLeft }) => posLeft};
+  background-repeat: no-repeat;
+  background-size: contain;
+  backdrop-filter: ${({ blur }) => blur || "none"};
+  border-top-left-radius: Xpx;
+  border-top-right-radius: Xpx;
+
+  &:hover {
+    background: ${({ _hovBg, bg }) => _hovBg || bg};
+    color: ${({ _hovCol, color }) => _hovCol || color};
+    box-shadow: ${({ _hovBSh }) => _hovBSh};
+    display: ${({ _hovDis }) => _hovDis};
+    height: ${({ _hovHg }) => _hovHg};
+    Img {
+      transition: 0.3s;
+      // height: ${({ _hovImgHg }) => _hovImgHg};
+    }
+    Ul {
+      display: ${({ _hovUlDis }) => _hovUlDis};
+      background-color: ${({ _hovUlBg }) => _hovUlBg};
+    }
+    Span {
+      transition: 0.6s;
+      display: ${({ _hovSpanDis }) => _hovSpanDis};
+      justify-content: center;
+      position: absolute;
+      width: 180px;
+      font-family: cursive;
+      transform: translate(100px, -10px);
+      font-size: 18px;
+      top: 30px;
+      font-weight: 700;
+    }
+  }
+  Span {
+    display: ${({ dis }) => dis || "inline"};
+    transition: background 0.6s;
+  }
+`;
+export const DivHover = styled.div`
+  background: ${({ bg }) => bg || "transparent"};
+  color: ${({ color }) => color || "black"};
+  padding: ${({ pd }) => pd || "0px"};
+  height: ${({ hg }) => hg || "auto"};
+  width: ${({ wd }) => wd || "auto"};
   border: 1px solid ${({ bd }) => bd || "none"};
   border-radius: ${({ br }) => br || "8px"};
   display: ${({ display }) => display || "flex"};
@@ -149,14 +211,11 @@ export const Div = styled.div`
   background-size: contain;
   backdrop-filter: ${({ blur }) => blur || "none"};
 
-  Span {
-    display: ${({ dis }) => dis || "inline"};
-    transition: background 0.6s;
-  }
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol, color }) => _hovCol || color};
     box-shadow: ${({ _hovBSh }) => _hovBSh};
+    display: ${({ _hovDis }) => _hovDis};
     Span {
       transition: 0.6s;
       display: ${({ _hovSpanDis }) => _hovSpanDis};
@@ -169,6 +228,10 @@ export const Div = styled.div`
       top: 30px;
       font-weight: 700;
     }
+  }
+  Span {
+    display: ${({ dis }) => dis || "inline"};
+    transition: background 0.6s;
   }
 `;
 export const Span = styled.span`
@@ -281,6 +344,8 @@ export const Ul = styled.ul`
   margin-top: ${({ mt }) => mt || "none"};
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
+  z-index: ${({ zInd }) => zInd};
+  text-decoration: ${({ txtDec }) => txtDec};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};
@@ -309,6 +374,7 @@ export const Li = styled.li`
   cursor: ${({ cursor }) => cursor || "pointer"};
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-top: ${({ mt }) => mt || "none"};
+  text-decoration: ${({ txtDec }) => txtDec};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};
