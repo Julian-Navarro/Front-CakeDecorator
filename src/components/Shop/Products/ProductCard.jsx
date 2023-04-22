@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Div, P, Button, H1, Img, Input, Ul, Li } from "../../../utils/StyledComponents/StyledComponents";
+import { Div, DivHover, P, Button, H1, Img, Input, Ul, Li } from "../../../utils/StyledComponents/StyledComponents";
 import axios from "axios";
 import { HOST } from "../../../utils";
 
@@ -34,17 +34,24 @@ function handlerDeleteProduct (id) {
 }
 
     return (
-        <Div mt="1rem" mr="1rem" bg="aliceblue"flexDir="column"hg="17.5rem"wd="14rem"bd="black" jfCont="space-between"_hovBSh="0 0 .8rem .1rem rgba(0, 0 , 0, 0.3)">
-                <Div hg="1rem" wd="100%"mt="5px"mb="5px">
-                    <P fSize="1rem"hg="10px">{name}</P>
-                </Div>
-                <Img br="0" wd="100%" minHg="9rem"src={img} alt="img not found" />
-            <Div flexDir="column" wd="100%" hg="100%"bg="aliceblue"alItems="flex-start"jfCont="space-between"mb="6px"mt="6px">
+        <Div hg="18rem"wd="15rem">
+        <Div _hovHg="17.5rem"_hovImgHg="11rem"_hovUlDis="flex"bg="aliceblue"mt="1rem" mr="1rem"flexDir="column"hg="15rem"wd="14rem" jfCont="space-between"_hovBSh="0 0 .8rem .1rem rgba(0, 0 , 0, 0.3)">
+            <Img br="7px" wd="100%" hg="13rem"src={img} alt="img not found" />
+            {/* <Div bg="violet"hg="1rem" wd="100%"mt="5px"mb="5px">
+                <P fSize="1rem"hg="10px">{name}</P>
+            </Div> */}
+            <Div mb="5px"ml="1rem"mt=".3rem"hg="1.8rem" wd="100%"jfCont="flex-start"alItems="flex-end">
+                <P fSize="1rem"pd="0"fWeight="500"hg="10px" color="gray">Precio: ${price}</P>
+            </Div>
+            <Ul br="0px 0px 8px 8px"pos="relative"zInd="1"display="none"flexDir="column" wd="100%" hg="100%"pd="0"bg="aliceblue"alItems="flex-start"jfCont="space-between"mt="6px">
                 <Div jfCont="space-around"wd="100%"hg="100%">
-                    <Div hg="1rem" >
+                    {/* <Div hg="1rem" >
                         <P fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Precio: ${price}</P>
+                    </Div> */}
+                    <Div hg="100%"wd="70%"mt="5px"mb="5px">
+                        <Li pd="0"mt="5px"flWr="wrap"fSize=".8rem"hg="100%"txtDec="underline">{name}</Li>
                     </Div>
-                    <Div hg="1rem">
+                    <Div hg="1rem"mr="5px">
                         <P fSize=".7rem"wd="100%"pd="0"fWeight="bold"hg="10px" >Stock: {stock}u</P>
                     </Div>
                 </Div>
@@ -59,7 +66,7 @@ function handlerDeleteProduct (id) {
                 </Div>
 
                 {path !== "adm"
-                ? <Div wd="100%"jfCont="space-around">
+                ? <Div wd="100%"jfCont="space-around"mb="10px">
                     <Div pd="0"jfCont="center">
                         <Button fWeight="700"fSize="24px" hg="28px"wd="30px"br="4px" onClick={subtractOne} _hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow">-</Button>
                         <Input wd="40px"hg="14px" type="text" br="4px"value={amountToAdd} onChange={(e)=>handlerSetAmountToAdd(e)}/>
@@ -67,11 +74,12 @@ function handlerDeleteProduct (id) {
                     </Div>
                     <Button wd="120px"hg="30px" onClick={(e)=>handlerBtnAdd(e)} _hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow">Agregar</Button>
                   </Div>
-                : <Div wd="100%"jfCont="space-around" >
+                : <Div wd="100%"jfCont="space-around" mb="5px">
                     <Button hg="1.8rem"onClick={(e)=>{handlerEditProduct(e, product)}} _hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow">Editar</Button>
                     <Button hg="1.8rem"_hovBSh="0 0 .5rem .02rem rgba(0, 0 , 0, 0.3)"_hovBg="greenyellow" onClick={()=>{handlerDeleteProduct(id)}}>Eliminar</Button>
                   </Div> }
-            </Div>
+            </Ul>
+        </Div>
         </Div>
     )
 }
