@@ -61,9 +61,9 @@ export default function ProductsAdm ({ path }) {
         setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(input.toLowerCase())))
     }
 useEffect(()=>{
-    console.log("RENDERING: PRODUCT ADM: ");
+    // console.log("RENDERING: PRODUCT ADM: ");
     getAllProducts()
-    console.log("ALL PRODUCTS: ", allProducts);
+    // console.log("ALL PRODUCTS: ", allProducts);
 },[productToEdit, editFlag, componentProductListFlag])
 useEffect(()=>{},[allProducts, products])
     return (
@@ -71,7 +71,7 @@ useEffect(()=>{},[allProducts, products])
           <h1>PRODUCT PADRE</h1>
             {
             path==="adm" 
-            ? <button onClick={(e)=>{handlerSetCreateProductFlag(e)}}>{createProductFlag? "Cerrar Formulario":"Crear Nuevo Curso"}</button>
+            ? <button onClick={(e)=>{handlerSetCreateProductFlag(e)}}>{createProductFlag? "Cerrar Formulario":"Crear Nuevo Producto"}</button>
             :null
             }
             {

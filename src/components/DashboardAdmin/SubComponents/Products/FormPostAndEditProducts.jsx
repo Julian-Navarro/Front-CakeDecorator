@@ -7,12 +7,17 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
   //! ↓↓↓↓↓↓↓↓↓↓↓  *HANDLERS QUE ABREN LOS FORMS Y SETEAN EL CURSO EN CASO DE EDICIÓN* ↓↓↓↓↓↓↓↓↓↓↓
   const [categories, setCategories] = useState([]);
   async function getCategories() {
-      let newCategories = await axios.get(`${HOST}/categories`)
-      setCategories(newCategories.data)
-    }
+    let categoriesDB = await axios.get(`${HOST}/categories`);
+    setCategories(categoriesDB.data);
+  }
+  const [brands, setBrands] = useState([]);
+  async function getBrands() {
+    let brandsDB = await axios.get(`${HOST}/brands`);
+    setBrands(brandsDB.data);
+  }
 
     const [input, setInput] = useState({
-      category: "",
+      categories: [],
       description: "",
       name: "",
       price: "",
@@ -21,7 +26,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
       brand: ""
     });
     const [errors, setErrors] = useState({
-      category: "",
+      categories: "",
       description: "",
       name: "",
       price: "",
@@ -32,73 +37,75 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
     function handlerSetFormFlag () {
       if(formFlag) {
         setFormFlag(false)
-        console.log("SETEANDO FLAG");
+        // console.log("SETEANDO FLAG");
       } else {
         setFormFlag(true)
-        console.log("SETEANDO FLAG");
+        // console.log("SETEANDO FLAG");
       }
     }
     function handlerSetInputUpdate() {
         setInput({...product})
     };
-    function handlerSetInput(e){
-      e.preventDefault();
-      
-      if(e.target.name === "img") {
-        setInput({
-          ...input,
-          img: [e.target.value]
-        })
-      } else {
-        if(e.target.value !== "default") {
+
+    function handlerSetInput (e) {
+      if(e.target.value !== "default") {
+        if(e.target.name === "categories") {
+          if(!input[e.target.name].includes(e.target.value)) {
+            setInput({
+              ...input,
+              [e.target.name]: [...input[e.target.name], e.target.value]
+            });
+          };
+        };
+        if(e.target.name === "img") {
+          setInput({
+            ...input,
+            [e.target.name]: [e.target.value]
+          });
+        };
+        if(e.target.name !== "img" && e.target.name !== "categories") {
           setInput({
             ...input,
             [e.target.name]: e.target.value
-          })
-        } else {
-          setInput({
-            ...input,
-            [e.target.name]: ""
-          }) 
-        }
-      }
-      // console.log("INPUT: ", input);
-    }
+          });
+        };
+      };
+    };
    
     async function handlerPostOrEdit(e) {
         e.preventDefault();
         validate()
         if(e.target.value === "true") {
             console.log("EDIT: ", e.target.value);
-            if(errors.category === "" 
+            if(errors.categories === "" 
                 && errors.description === "" 
                 && errors.img === "" 
                 && errors.price === "" 
                 && errors.stock === ""
                 && errors.name === "") {
                 handlerSetFormFlag()
-                console.log("CASO NO HAY ERRORES");
-                console.log("HACER EL PUT");
+                // console.log("CASO NO HAY ERRORES");
+                // console.log("HACER EL PUT");
                 await axios.put(`${HOST}/products/${product.id}`, input)
                 handlerSetComponentProductListFlag()
-                console.log("INPUT: ", input);
+                // console.log("INPUT: ", input);
                 alert("Producto editado con éxito")
               } else {
                 handlerSetFormFlag()
                 alert("Falta llenar algun campo")
             }
         } else {
-            console.log("POST: ", e.target.value);
-            if(errors.category === "" && 
+            // console.log("POST: ", e.target.value);
+            if(errors.categories === "" && 
                errors.description === "" && 
                errors.img === "" && 
                errors.price === "" && 
                errors.name === "" && 
                errors.stock === "") {
                handlerSetFormFlag()
-               console.log("CASO NO HAY ERRORES");
-               console.log("HACER EL POST");
-               console.log("INPUT: ", input);
+              //  console.log("CASO NO HAY ERRORES");
+              //  console.log("HACER EL POST");
+              //  console.log("INPUT: ", input);
                await axios.post(`${HOST}/products`, input)
                handlerSetComponentProductListFlag()
                alert("Producto creado con éxito")
@@ -110,7 +117,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
     }
 
     useEffect(()=>{
-        console.log("UPDATE VALUE: ",update);
+        // console.log("UPDATE VALUE: ",update);
         if(update) {
             handlerSetInputUpdate()
         }
@@ -120,10 +127,10 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
 
 
     function validate() {
-      if(input.category === "") {
-        errors.category = "Debes indicar una categoría"
+      if(input.categories.length === 0) {
+        errors.categories = "Debes indicar al menos una categoría"
       } else {
-        errors.category = ""
+        errors.categories = ""
       }
       if(input.description === "") {
         errors.description = "Debes escribir una descripción"
@@ -150,16 +157,18 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
       } else {
         errors.stock = ""
       }
-      console.log("ERRORS: ", errors);
+      // console.log("ERRORS: ", errors);
     }
     useEffect(()=>{
-      // console.log("RENDER FORM - INPUT", input);
-      console.log("CATEGORIES: ",categories);
-      getCategories()
-    }, [formFlag])
+      console.log("RENDER FORM - INPUT", input);
+      console.log("CATEGORIES ERROR: ",errors);
+      getCategories();
+      getBrands();
+    }, [formFlag, input])
+
     //! ********************** COLORES PARA CSS  **********************
     const colorName = errors.name !== "" ? "#FF8282" : "black";
-    const colorCategory = errors.category !== "" ? "#FF8282" : "black";
+    const colorCategory = errors.categories !== "" ? "#FF8282" : "black";
     const colorStock = errors.stock !== "" ? "#FF8282" : "black";
     const colorDescription = errors.description !== "" ? "#FF8282" : "black";
     const colorPrice = errors.price !== "" ? "#FF8282" : "black";
@@ -192,20 +201,27 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                   </Div>
                   {errors.img !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorImg} color={colorImg}>{errors.img}</P>:<p></p>}
                   <Div flexDir="column">
-                    <Label>Stock </Label>
-                    <Input name="stock" onChange={(e)=>{handlerSetInput(e)}} type="number" defaultValue={input.stock}/>
+                    <Label color={colorStock}>Stock </Label>
+                    <Input name="stock" bd={colorStock} onChange={(e)=>{handlerSetInput(e)}} type="number" defaultValue={input.stock}/>
                   </Div>
                   {errors.stock !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorStock} color={colorStock}>{errors.stock}</P>:<p></p>}
                 </Div>
                 <Div flexDir="column" hg="100%" wd="50%">
                   <Div>
-                    <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
-                      <Option value="default">Selecciona Categoría</Option>
+                    <Select 
+                      name="categories" 
+                      bd={colorCategory} 
+                      br="none" 
+                      onChange={(e)=>{handlerSetInput(e)}} 
+                      type="text" 
+                      // value={input.categories}
+                      >
+                      <Option name="default"value="default">Selecciona Categoría</Option>
                   //! ACA IRIAN LAS CATEGORIAS EXISTENTES
                       {
                         categories.length === 0
                         ? null
-                        : categories.map((cat)=> <Option value={cat.category} key={cat.id} >{cat.category}</Option> )
+                        : categories.map((cat)=> <Option value={cat.category} name={cat.category}key={cat.id} >{cat.category}</Option> )
                       }
 
                     </Select>
@@ -213,13 +229,20 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
 
 
                   <Div>
-                    <Select name="category" bd={colorCategory} br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
-                      <Option>Selecciona Marca</Option>
+                    <Select name="brand" br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
+                      <Option value="default">Selecciona Marca</Option>
+                  //! ACA IRIAN LAS CATEGORIAS EXISTENTES
+                      {
+                        brands.length === 0
+                        ? null
+                        : brands.map((br)=> <Option value={br.brand} key={br.id} >{br.brand}</Option> )
+                      }
+
                     </Select>
                   </Div>
 
 
-                  {errors.category !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorCategory} color={colorCategory}>{errors.category}</P>:<p></p>}
+                  {errors.categories !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorCategory} color={colorCategory}>{errors.categories}</P>:<p></p>}
                   <Div flexDir="column">
                     <Label color={colorDescription}>Descripción </Label>
                     <Input name="description" bd={colorDescription} onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.description}/>
