@@ -4,7 +4,7 @@ import { HOST } from "../../../utils";
 import ProductCard from "./ProductCard";
 import { Div } from "../../../utils/StyledComponents/StyledComponents";
 export default function ProductCards ({ path, handlerEditProduct, handlerSetEditFlag, products, handleRemoveItemCart, handlerSetCart}) {
-    console.log("PRODUCTS: ", products);
+    // console.log("PRODUCTS: ", products);
     return (
         <Div flWr="wrap" wd="100%">
             {
