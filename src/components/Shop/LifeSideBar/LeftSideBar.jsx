@@ -5,7 +5,7 @@ import { IconButton } from "@chakra-ui/react"
 import { useEffect } from "react";
 import axios from "axios";
 import { HOST } from "../../../utils"
-export default function LeftSideBar({ handlerSetFilters, handlerSetProductsCategory, handlerSetProductsBrands, isOpen }) {
+export default function LeftSideBar({ handlerSetFilters, isOpen }) {
     let [productsCategories, setProductsCategories] = useState([]);
     let [brands, setBrands] = useState([]);
     let [showCategoriesFlag, setShowCategoriesFlag] = useState(false);
@@ -25,22 +25,22 @@ export default function LeftSideBar({ handlerSetFilters, handlerSetProductsCateg
         console.log("showCategoriesFlag: ",showCategoriesFlag);
     },[showCategoriesFlag])
     return (
-        <Div wd={isOpen?"170px":"0px"} bg="#262626"flexDir="column"pos="sticky" posTop="60px" posLeft="0">
+        <Div wd={isOpen?"14rem":"0px"} bg="#262626"flexDir="column"pos="sticky" posTop="60px" posLeft="0">
             <Div flexDir="column"wd="100%">
             {
                 productsCategories.length && isOpen
-                ? <Div flexDir="column"bg="aliceblue"wd="100%">
-                    <Ul jfCont="space-between"wd="95%"bg="yellow"fSize="17px"_hovCol="#fff"txtSh="#fff"color="lightgray"ml="0px"hg="2rem"onClick={()=>setShowCategoriesFlag(!showCategoriesFlag)}> 
+                ? <Div flexDir="column"wd="100%">
+                    <Ul jfCont="space-between"wd="95%"fSize="17px"_hovCol="#fff"txtSh="#fff"color="lightgray"ml="0px"hg="2rem"onClick={()=>setShowCategoriesFlag(!showCategoriesFlag)}> 
                       <P color="lightgray">Categorias</P> 
                       <P color="lightgray" fSize="16px">{showCategoriesFlag?"◄":"►"}</P>
                     </Ul>
 
                    { 
                    showCategoriesFlag 
-                  ? <Div bg="green"flexDir="column"alItems="flex-start"ml="20px"wd="80%">
-                      <Button onClick={(e)=>handlerSetFilters(e)}value="all"name="categories" bg="transparent"bd="transparent"fSize="16px"color="lightgray"_hovCol="#fff"txtSh="#fff">Todas</Button>
+                  ? <Div flexDir="column"alItems="flex-start"ml="20px"wd="80%">
+                      <Button pd="0"mt="3px"onClick={(e)=>handlerSetFilters(e)}value="all"name="categories" bg="transparent"bd="transparent"fSize="14px"color="lightgray"_hovCol="#fff"txtSh="#fff">Todas</Button>
                       {productsCategories.map((cat) => 
-                      <Button value={cat.category} name="categories"color="lightgray"_hovCol="#fff"txtSh="#fff"key={cat.id} bg="transparent"bd="transparent"fSize="14px"onClick={(e)=>handlerSetFilters(e)}>{cat.category}</Button>)}
+                      <Button pd="0"mt="3px"value={cat.category} name="categories"color="lightgray"_hovCol="#fff"txtSh="#fff"key={cat.id} wd="100%"jfCont="flex-start"bd="transparent"bg="transparent"fSize="14px"onClick={(e)=>handlerSetFilters(e)}>{cat.category}</Button>)}
                     </Div>
                     : null    
                       }
@@ -49,17 +49,17 @@ export default function LeftSideBar({ handlerSetFilters, handlerSetProductsCateg
             }
             {
                 brands.length && isOpen
-                ? <Div flexDir="column"bg="aliceblue"wd="100%">
-                    <Ul jfCont="space-between"bg="red"wd="95%"fSize="17px"_hovCol="#fff"txtSh="#fff"color="lightgray"hg="2rem"onClick={()=>setShowBrandsFlag(!showBrandsFlag)}> 
+                ? <Div flexDir="column"wd="100%">
+                    <Ul jfCont="space-between"wd="95%"fSize="17px"_hovCol="#fff"txtSh="#fff"color="lightgray"hg="2rem"onClick={()=>setShowBrandsFlag(!showBrandsFlag)}> 
                       <P color="lightgray" >Marcas</P> 
                       <P color="lightgray" fSize="16px">{showBrandsFlag?"◄":"►"}</P>
                     </Ul>
                    { 
                    showBrandsFlag 
-                  ? <Div flexDir="column"alItems="flex-start"ml="20px"bg="green"wd="80%">
-                      <Li onClick={()=>handlerSetProductsBrands("default")} bg="transparent"bd="transparent"fSize="16px"color="lightgray"_hovCol="#fff"txtSh="#fff">Todas</Li>
+                  ? <Div flexDir="column"alItems="flex-start"ml="20px"wd="80%">
+                      <Button pd="0"mt="3px"onClick={(e)=>handlerSetFilters(e)} name="brands"value="all"bg="transparent"bd="transparent"fSize="14px"color="lightgray"_hovCol="#fff"txtSh="#fff">Todas</Button>
                       {brands.map((br) => 
-                      <Li onClick={()=>handlerSetProductsBrands(br.brand)} mr="10px"color="lightgray"_hovCol="#fff"txtSh="#fff"key={br.id} bg="transparent"bd="transparent"fSize="14px">{br.brand}</Li>)}
+                      <Button pd="0"mt="3px"bg="transparent"onClick={(e)=>handlerSetFilters(e)}name="brands"value={br.brand}mr="10px"color="lightgray"_hovCol="#fff"txtSh="#fff"key={br.id} wd="100%"jfCont="flex-start"bd="transparent"fSize="14px">{br.brand}</Button>)}
                     </Div>
                     : null    
                     }
@@ -69,7 +69,7 @@ export default function LeftSideBar({ handlerSetFilters, handlerSetProductsCateg
             {
             isOpen
             ?<Div wd="100%">
-                <Ul color={isOpen?"lightgray":"transparent"}jfCont="space-between"bg="red"wd="95%"fSize="20px"_hovCol="#fff"txtSh="#fff"hg="100%">Condiciones de compra</Ul>
+                <Ul color={isOpen?"lightgray":"transparent"}jfCont="space-between"wd="95%"fSize="20px"_hovCol="#fff"txtSh="#fff"hg="100%">Condiciones de compra</Ul>
             </Div>
             : null
             }

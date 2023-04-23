@@ -25,30 +25,103 @@ export default function Shop() {
       })
     } else {
       console.log(`Caso NO es All en key: ${e.target.name}`);
-      // if(!filters[e.target.name][0] === "all") {
-
-      // } else {
-
-      // }
-
-      if(filters[e.target.name].includes(e.target.value)) {
-        console.log("Caso hay que borrar el valor");
-        let index = filters[e.target.name].indexOf(e.target.value)
-        let firstPart = filters[e.target.name].slice(0, index);  //? Se puede poner directamente el resultado de .slice() en el setFilters
-        let secondPart = filters[e.target.name].slice(index + 1);//? Se puede poner directamente el resultado de .slice() en el setFilters
-        setFilters({
-          ...filters,
-          [e.target.name]: [...firstPart, ...secondPart]
-        });
+      if(!filters[e.target.name].includes("all")) {
+        console.log("Caso all no está");
+        if(filters[e.target.name].includes(e.target.value)) {
+          console.log("Caso hay que borrar el valor");
+          if(filters[e.target.name].length === 1){
+            console.log("Caso borrar Length es 1");
+            setFilters({
+             ...filters,
+             [e.target.name]: ["all"]
+            });
+          } else {
+            console.log("Caso borrar y length no es 1");
+            let index = filters[e.target.name].indexOf(e.target.value)
+            let firstPart = filters[e.target.name].slice(0, index);  //? Se puede poner directamente el resultado de .slice() en el setFilters
+            let secondPart = filters[e.target.name].slice(index + 1);//? Se puede poner directamente el resultado de .slice() en el setFilters
+            setFilters({
+              ...filters,
+              [e.target.name]: [...firstPart, ...secondPart]
+            });
+          };
+        } else {
+          console.log("Caso no incluye el valor");
+          setFilters({
+            ...filters,
+            [e.target.name]: [...filters[e.target.name], e.target.value]
+          }); 
+        };
       } else {
-        console.log("Caso no incluye el valor");
+        console.log("Caso el primer valor es 'all' ");
+        console.log(filters[e.target.name][0]);
         setFilters({
           ...filters,
-          [e.target.name]: [...filters[e.target.name], e.target.value]
-        }) 
-      }
+          [e.target.name]: [e.target.value]
+        });
+      };
+    };
+  };
+  function applyFilters() {
+    const filteredProducts = [];
+    if(filters.categories[0] === "all" && filters.brands[0] === "all") {
+      console.log("Caso todo ALL");
+      setProducts(allProducts)
+    } else if(filters.categories[0] !== "all" && filters.brands[0] !== "all") {
+      console.log("Caso ninguno es ALL, hay que filtrar ambos");
+      allProducts.forEach((pr)=> {
+        let strCategories = pr.categories.join(" "); 
+        let brandFlag = false;
+        let categoryFlag = false;
+        filters.brands.forEach((br)=> pr.brand === br ?brandFlag=true:null);
+        filters.categories.forEach((cat)=>strCategories.includes(cat)?categoryFlag=true:null);
+        if(brandFlag && categoryFlag) {
+          filteredProducts.push(pr)
+        }
+      });     
+      setProducts(filteredProducts)
+    } else if(filters.categories[0] === "all") {
+      console.log("Caso hay que filtrar un valor");
+      console.log("Caso hay que filtrar por marca");
+      allProducts.forEach((pr)=> {
+        let flag = false;
+        filters.brands.forEach((br)=>pr.brand===br?flag=true:null)
+        if(flag) { 
+          filteredProducts.push(pr)
+        }
+      });
+      setProducts(filteredProducts)
+    } else {
+      console.log("Caso hay que filtrar un valor");
+      console.log("Caso hay que filtrar por categoria");
+      allProducts.forEach((pr)=> {
+        let flag = false;
+        let str = pr.categories.join(" ");
+        filters.categories.forEach((cat)=>str.includes(cat)?flag=true:null);
+        if(flag) {
+          filteredProducts.push(pr)
+        }
+      });
+      setProducts(filteredProducts)
     }
-    setFlag(!flag)
+
+
+
+
+
+    // allProducts.forEach((pr) => {
+    //   // const strCategories = pr.categories.join(" ");
+    //   let flags = {
+    //     categories: false,
+    //     brands: false
+    //   };
+    //   for (let prop in filters) {
+    //     filters[prop][0] === "all"
+    //     ? flags[prop] = true
+    //     // filters.prop.forEach((value) => str.includes(value))
+    //     : null 
+    //   } 
+    // })
   }
 
   function handlerSearchProducts (value) {
@@ -77,8 +150,6 @@ export default function Shop() {
   }
 
   //!  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ LOGICAS SETEADO DE CARRITO LOCALSTORAGE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-
-  const [cart, setCart] = useState();
 
   function handleRemoveItemCart(e, id) {
     e.preventDefault();
@@ -229,7 +300,8 @@ export default function Shop() {
   useEffect(() => {
     console.log("RENDERING SHOP!");
     console.log("FILTERS {}: ", filters);
-  }, [flag, cart]);
+    applyFilters()
+  }, [flag, filters]);
 
   return (
     <Div flexDir="column" wd="100%">
@@ -250,7 +322,7 @@ export default function Shop() {
         : <P wd="100%">No se encontraron productos</P>
         }
       </Div>
-                  <br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br /><br />
     </Div>
   );
 }
