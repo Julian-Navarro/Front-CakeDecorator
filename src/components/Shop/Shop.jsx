@@ -8,19 +8,25 @@ import LeftSideBar from "./LifeSideBar/LeftSideBar";
 import { ShopNavbar } from "./ShopNavbar";
 
 export default function Shop() {
+  const [isOpen, setIsOpen] = useState(false);
   const [flag, setFlag] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+
 
   function handlerSearchProducts (value) {
     setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(value.toLowerCase())))
   }
-  function handlerSetProducts(value) {
+  function handlerSetProductsCategory(value) {
     if(value === "default") {
       setProducts(allProducts)
     } else {
       setProducts(allProducts.filter((pr)=>pr.category === value))
+    }
+  }
+  function handlerSetProductsBrands(value) {
+    if(value === "default") {
+      setProducts()
     }
   }
   async function getProductsDB() {
@@ -190,7 +196,7 @@ export default function Shop() {
       <ShopNavbar isOpen={isOpen} setIsOpen={setIsOpen} handlerSearchProducts={handlerSearchProducts}/>
       <Div wd="100%"bg="lightgray">
         <Div bg="red" alSelf="flex-start"pos="sticky" posTop="53px">
-          <LeftSideBar handlerSetProducts={handlerSetProducts} isOpen={isOpen}/>
+          <LeftSideBar handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} isOpen={isOpen}/>
         </Div>
         
         { 
