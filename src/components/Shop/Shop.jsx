@@ -12,16 +12,56 @@ export default function Shop() {
   const [flag, setFlag] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
+  const [filters, setFilters] = useState({
+    categories: ["all"],
+    brands: ["all"]
+  });
+  function handlerSetFilters(e) {
+    if(e.target.value === "all") {
+      console.log(`Caso value All en key: ${e.target.name}`);
+      setFilters({
+        ...filters,
+        [e.target.name]: ["all"]
+      })
+    } else {
+      console.log(`Caso NO es All en key: ${e.target.name}`);
+      // if(!filters[e.target.name][0] === "all") {
 
+      // } else {
+
+      // }
+
+      if(filters[e.target.name].includes(e.target.value)) {
+        console.log("Caso hay que borrar el valor");
+        let index = filters[e.target.name].indexOf(e.target.value)
+        let firstPart = filters[e.target.name].slice(0, index);  //? Se puede poner directamente el resultado de .slice() en el setFilters
+        let secondPart = filters[e.target.name].slice(index + 1);//? Se puede poner directamente el resultado de .slice() en el setFilters
+        setFilters({
+          ...filters,
+          [e.target.name]: [...firstPart, ...secondPart]
+        });
+      } else {
+        console.log("Caso no incluye el valor");
+        setFilters({
+          ...filters,
+          [e.target.name]: [...filters[e.target.name], e.target.value]
+        }) 
+      }
+    }
+    setFlag(!flag)
+  }
 
   function handlerSearchProducts (value) {
     setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(value.toLowerCase())))
   }
   function handlerSetProductsCategory(value) {
+
     if(value === "default") {
       setProducts(allProducts)
     } else {
-      setProducts(allProducts.filter((pr)=>pr.category === value))
+      let array = []
+      allProducts.forEach((pr)=>pr.categories.forEach((cat)=>cat===value?array.push(pr):null))
+      setProducts(array)
     }
   }
   function handlerSetProductsBrands(value) {
@@ -187,7 +227,8 @@ export default function Shop() {
   }, []);
 
   useEffect(() => {
-    // console.log("RENDERING SHOP!");
+    console.log("RENDERING SHOP!");
+    console.log("FILTERS {}: ", filters);
   }, [flag, cart]);
 
   return (
@@ -196,7 +237,7 @@ export default function Shop() {
       <ShopNavbar isOpen={isOpen} setIsOpen={setIsOpen} handlerSearchProducts={handlerSearchProducts}/>
       <Div wd="100%"bg="lightgray">
         <Div bg="red" alSelf="flex-start"pos="sticky" posTop="53px">
-          <LeftSideBar handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} isOpen={isOpen}/>
+          <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} isOpen={isOpen}/>
         </Div>
         
         { 

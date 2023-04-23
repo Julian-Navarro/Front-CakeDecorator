@@ -1,11 +1,11 @@
 import { useState } from "react"
-import { Div, P, Ul, Li } from "../../../utils/StyledComponents/StyledComponents"
+import { Div, P, Ul, Li, Button } from "../../../utils/StyledComponents/StyledComponents"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react"
 import { useEffect } from "react";
 import axios from "axios";
 import { HOST } from "../../../utils"
-export default function LeftSideBar({ handlerSetProductsCategory, handlerSetProductsBrands, isOpen }) {
+export default function LeftSideBar({ handlerSetFilters, handlerSetProductsCategory, handlerSetProductsBrands, isOpen }) {
     let [productsCategories, setProductsCategories] = useState([]);
     let [brands, setBrands] = useState([]);
     let [showCategoriesFlag, setShowCategoriesFlag] = useState(false);
@@ -38,9 +38,9 @@ export default function LeftSideBar({ handlerSetProductsCategory, handlerSetProd
                    { 
                    showCategoriesFlag 
                   ? <Div bg="green"flexDir="column"alItems="flex-start"ml="20px"wd="80%">
-                      <Li onClick={()=>handlerSetProductsCategory("default")} bg="transparent"bd="transparent"fSize="16px"color="lightgray"_hovCol="#fff"txtSh="#fff">Todas</Li>
+                      <Button onClick={(e)=>handlerSetFilters(e)}value="all"name="categories" bg="transparent"bd="transparent"fSize="16px"color="lightgray"_hovCol="#fff"txtSh="#fff">Todas</Button>
                       {productsCategories.map((cat) => 
-                      <Li onClick={()=>handlerSetProductsCategory(cat.category)} color="lightgray"_hovCol="#fff"txtSh="#fff"key={cat.id} bg="transparent"bd="transparent"fSize="14px">{cat.category}</Li>)}
+                      <Button value={cat.category} name="categories"color="lightgray"_hovCol="#fff"txtSh="#fff"key={cat.id} bg="transparent"bd="transparent"fSize="14px"onClick={(e)=>handlerSetFilters(e)}>{cat.category}</Button>)}
                     </Div>
                     : null    
                       }

@@ -4,7 +4,7 @@ import axios from "axios";
 import { HOST } from "../../../utils";
 
 export default function ProductCard ({ handlerSetCart,handlerSetEditFlag, handleRemoveItemCart, handlerEditProduct, path, brand, product, name,categories, description, id, img, price, stock}) {
-    console.log("CATEGORIES: ", categories);
+    // console.log("CATEGORIES: ", categories);
 const [amountToAdd, setAmountToAdd] = useState(1);
 function handlerSetAmountToAdd (e) {
     e.preventDefault()
