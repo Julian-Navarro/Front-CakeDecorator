@@ -1,11 +1,13 @@
 import { useState } from "react"
-import { Div, P, Ul, Li, Button } from "../../../utils/StyledComponents/StyledComponents"
+import { Div, P, Ul, Li, Button, Img } from "../../../utils/StyledComponents/StyledComponents"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react"
 import { useEffect } from "react";
 import axios from "axios";
 import { HOST } from "../../../utils"
-export default function LeftSideBar({ handlerSetFilters, isOpen }) {
+import { useNavigate } from "react-router-dom";
+export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen }) {
+    let navigate = useNavigate()
     let [productsCategories, setProductsCategories] = useState([]);
     let [brands, setBrands] = useState([]);
     let [showCategoriesFlag, setShowCategoriesFlag] = useState(false);
@@ -25,7 +27,14 @@ export default function LeftSideBar({ handlerSetFilters, isOpen }) {
         console.log("showCategoriesFlag: ",showCategoriesFlag);
     },[showCategoriesFlag])
     return (
-        <Div wd={isOpen?"14rem":"0px"} bg="#262626"flexDir="column"pos="sticky" posTop="60px" posLeft="0">
+        <Div wd={isOpen?"14rem":"3rem"} bg="#262626"flexDir="column"pos="sticky" posTop="60px" posLeft="0">
+            <IconButton
+              icon={isOpen ? <CloseIcon/> : <HamburgerIcon/>}
+              onClick={()=>isOpen ? setIsOpen(false) : setIsOpen(true)}
+              w="2.4rem"
+              h="2.4rem"
+              borderRadius="100%"
+            />  
             <Div flexDir="column"wd="100%">
             {
                 productsCategories.length && isOpen
@@ -45,7 +54,14 @@ export default function LeftSideBar({ handlerSetFilters, isOpen }) {
                     : null    
                       }
                   </Div>
-                  : null
+                  : <Div bg="#252525"wd="100%">
+                        <Div wd="2.6rem"hg="2.6rem"
+                        onClick={()=>navigate("/shop/cart")}blur="blur(5px)"
+                        bg="orange"br="50%"mr="10px">
+                        <Img wd="40px" hg="40px"bg="red" 
+                            src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="not found" />
+                        </Div>
+                    </Div> 
             }
             {
                 brands.length && isOpen
