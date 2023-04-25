@@ -3,7 +3,7 @@ import axios from "axios";
 import { HOST } from "../../../utils";
 import s from "../../../utils/example.module.css"
 import { IconButton } from "@chakra-ui/react"
-import { MdOutlineAddShoppingCart, MdAddToPhotos, MdDelete } from "react-icons/md"
+import { MdOutlineAddShoppingCart, MdAddToPhotos, MdDelete, MdOutlineDriveFileRenameOutline } from "react-icons/md"
 
 export default function ProductCard ({ handlerSetCart,handlerSetEditFlag, handleRemoveItemCart, handlerEditProduct, path, brand, product, name,categories, description, id, img, price, stock}) {
 const [amountToAdd, setAmountToAdd] = useState(1);
@@ -65,22 +65,23 @@ function handlerDeleteProduct (id) {
                     icon={<MdOutlineAddShoppingCart/>}
                     w="3.4rem"
                     h="2.2rem"
-                    fontSize="1.4rem"
+                    fontSize="1.6rem"
                     cursor={"pointer"}
                     alignSelf={"flex-start"}
                     marginLeft={".3rem"}
                     marginBottom={".3rem"}
-                    bg="lightgray"
+                    bg="#252525"
+                    color={"rgb(149, 255, 62)"}
                     onClick={(e)=>handlerBtnAdd(e)}
-                    className={s.icons}
+                    className={s.icon}
                     borderRadius={".6rem"}
                     /> 
                   </div>
-                : <div className={s.divBtnsContainer}>
+                : <div className={s.divBtnsContainer}onClick={(e)=>{handlerEditProduct(e, product)}}>
                     <div className={s.btnsAdm}>
-                        <button onClick={(e)=>{handlerEditProduct(e, product)}}>Editar
+                        <button className={s.btnsAdm}>Editar
                         <IconButton 
-                        icon={<MdDelete/>}
+                        icon={<MdOutlineDriveFileRenameOutline/>}
                         w="3.4rem"
                         h="2.2rem"
                         fontSize="1.4rem"
@@ -90,12 +91,13 @@ function handlerDeleteProduct (id) {
                         marginBottom={".3rem"}
                         bg="lightgray"
                         borderRadius={".6rem"}
+                        className={s.iconsAdm}
                         />
                         </button>
                     </div>
 
-                    <div className={s.btnsAdm}>
-                        <button onClick={()=>{handlerDeleteProduct(id)}}className={s.btnsAdm}>Eliminar
+                    <div className={s.btnsAdm}onClick={()=>{handlerDeleteProduct(id)}}>
+                        <button className={s.btnsAdm}>Eliminar
                         <IconButton 
                         icon={<MdDelete/>}
                         w="3.4rem"
@@ -107,6 +109,7 @@ function handlerDeleteProduct (id) {
                         marginBottom={".3rem"}
                         bg="lightgray"
                         borderRadius={".6rem"}
+                        className={s.iconsAdm}
                         />
                         </button>
                     </div>

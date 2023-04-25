@@ -150,7 +150,7 @@ export const Div = styled.div`
   right: ${({ posRight }) => posRight};
   background-repeat: no-repeat;
   background-size: contain;
-  cursor: ${({ cursor }) => cursor || "pointer"};
+  cursor: ${({ cursor }) => cursor || "default"};
   backdrop-filter: ${({ blur }) => blur || "none"};
   overflow: ${({ ovFlow }) => ovFlow};
 
@@ -276,7 +276,6 @@ export const Img = styled.img`
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
   align-self: ${({ alSelf }) => alSelf || "none"};
-  cursor: pointer;
   object-fit: cover;
 `;
 export const Ul = styled.ul`
