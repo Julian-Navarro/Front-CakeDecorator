@@ -308,7 +308,7 @@ export default function Shop() {
   return (
     <Div flexDir="column" wd="100%">
       <Navbar/>
-      <Div wd="100%"bg="red"
+      <Div wd="100%"bg="#fff"
       jfCont="space-between"
       >
         <Div display="flex"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}bg="green"posTop="0px"alItems="flex-start">
@@ -317,7 +317,7 @@ export default function Shop() {
         { 
         products.length 
         ? 
-        <Div posTop="-53px"bg="red"wd="100%">
+        <Div posTop="-53px"bg="#fff"wd="100%">
           <ProductCards
           handlerSetCart={handlerSetCart}
           handleRemoveItemCart={handleRemoveItemCart}

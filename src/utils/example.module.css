@@ -163,4 +163,15 @@
     background-color: #fff;
     box-shadow: 0.05rem 0.05rem 0.6rem 0rem #ffffff8f
 }
-
+.btnsAdm {
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    background: #fff;
+    /* width: 200px; */
+    /* height: 200px; */
+}
+.btnsAdm:hover{
+    background-color: #fff;
+    box-shadow: 0.05rem 0.05rem 0.6rem 0rem #ffffff8f
+}
