@@ -77,8 +77,39 @@ function handlerDeleteProduct (id) {
                     /> 
                   </div>
                 : <div className={s.divBtnsContainer}>
-                    <button onClick={(e)=>{handlerEditProduct(e, product)}}>Editar</button>
-                    <button onClick={()=>{handlerDeleteProduct(id)}}>Eliminar</button>
+                    <div className={s.btnsAdm}>
+                        <button onClick={(e)=>{handlerEditProduct(e, product)}}>Editar
+                        <IconButton 
+                        icon={<MdDelete/>}
+                        w="3.4rem"
+                        h="2.2rem"
+                        fontSize="1.4rem"
+                        cursor={"pointer"}
+                        alignSelf={"flex-start"}
+                        marginLeft={".3rem"}
+                        marginBottom={".3rem"}
+                        bg="lightgray"
+                        borderRadius={".6rem"}
+                        />
+                        </button>
+                    </div>
+
+                    <div className={s.btnsAdm}>
+                        <button onClick={()=>{handlerDeleteProduct(id)}}className={s.btnsAdm}>Eliminar
+                        <IconButton 
+                        icon={<MdDelete/>}
+                        w="3.4rem"
+                        h="2.2rem"
+                        fontSize="1.4rem"
+                        cursor={"pointer"}
+                        alignSelf={"flex-start"}
+                        marginLeft={".3rem"}
+                        marginBottom={".3rem"}
+                        bg="lightgray"
+                        borderRadius={".6rem"}
+                        />
+                        </button>
+                    </div>
                   </div> }
                 </div>
             </div>
