@@ -241,7 +241,7 @@ export default function Shop() {
             JSON.parse(localStorage.getItem("cart"))
           );
           if (stock !== 0) {
-            if(amountToAdd < stock) {
+            if(amountToAdd <= stock) {
               product.total = product.price * amountToAdd;
               let newCart = window.localStorage.setItem(
                 "cart",
@@ -308,23 +308,16 @@ export default function Shop() {
   return (
     <Div flexDir="column" wd="100%">
       <Navbar/>
-      {/* <ShopNavbar isOpen={isOpen} setIsOpen={setIsOpen} handlerSearchProducts={handlerSearchProducts}/> */}
-      <Div wd="100%"bg="#fff">
-        <Div flexDir="column"alSelf="flex-start"pos="sticky" posTop="53px">
-          {/* <IconButton
-              borderRadius="6px"
-              icon={isOpen ? <CloseIcon/> : <HamburgerIcon/>}
-              onClick={()=>isOpen ? setIsOpen(false) : setIsOpen(true)}
-              w="50px"
-              h="34px"
-          />       */}
-          <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}/>
+      <Div wd="100%"bg="red"
+      jfCont="space-between"
+      >
+        <Div display="flex"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}bg="green"posTop="0px"alItems="flex-start">
+          <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/>
         </Div>
-        
         { 
         products.length 
         ? 
-        <Div posTop="-53px"bg="red">
+        <Div posTop="-53px"bg="red"wd="100%">
           <ProductCards
           handlerSetCart={handlerSetCart}
           handleRemoveItemCart={handleRemoveItemCart}

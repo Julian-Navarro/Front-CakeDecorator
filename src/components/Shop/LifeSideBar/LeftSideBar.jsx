@@ -1,12 +1,15 @@
 import { useState } from "react"
 import { Div, P, Ul, Li, Button, Img } from "../../../utils/StyledComponents/StyledComponents"
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { IconButton } from "@chakra-ui/react"
+import { HamburgerIcon, CloseIcon, ArrowRightIcon, ArrowLeftIcon, DragHandleIcon } from "@chakra-ui/icons";
+import { IconButton, filter } from "@chakra-ui/react"
 import { useEffect } from "react";
 import axios from "axios";
 import { HOST } from "../../../utils"
 import { useNavigate } from "react-router-dom";
-export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen }) {
+import { MdShoppingCart } from "react-icons/md"
+import s from "../../../utils/example.module.css"
+// import { FaShoppingCart } from 'react-icons/fa'
+export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filters }) {
     let navigate = useNavigate()
     let [productsCategories, setProductsCategories] = useState([]);
     let [brands, setBrands] = useState([]);
@@ -27,55 +30,69 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen }) {
         console.log("showCategoriesFlag: ",showCategoriesFlag);
     },[showCategoriesFlag])
     return (
-        <Div wd={isOpen?"14rem":"3rem"} bg="#262626"flexDir="column"pos="sticky" posTop="60px" posLeft="0">
-            <IconButton
-              icon={isOpen ? <CloseIcon/> : <HamburgerIcon/>}
+        <Div wd={isOpen?"14rem":"3rem"} bg="#262626"flexDir="column" pd="1.2rem 0 1.2rem 0">
+            <IconButton 
+              icon={isOpen ? <ArrowLeftIcon/> : <DragHandleIcon/>}
               onClick={()=>isOpen ? setIsOpen(false) : setIsOpen(true)}
               w="2.4rem"
               h="2.4rem"
               borderRadius="100%"
+              cursor={"pointer"}
+              alignSelf={"flex-start"}
+              marginLeft={".3rem"}
+              className={s.icons}  
+              marginBottom={".3rem"}
+              bg="lightgray"
             />  
+            <IconButton 
+            icon={<MdShoppingCart/>}
+            onClick={()=>navigate("/shop/cart")}
+            w="2.4rem"
+            h="2.4rem"
+            borderRadius="100%"
+            cursor={"pointer"}
+            alignSelf={"flex-start"}
+            marginLeft={".3rem"}
+            marginBottom={".3rem"}
+            bg="lightgray"
+            className={s.icons}/>                
             <Div flexDir="column"wd="100%">
             {
                 productsCategories.length && isOpen
                 ? <Div flexDir="column"wd="100%">
                     <Ul jfCont="space-between"wd="95%"fSize="17px"_hovCol="#fff"txtSh="#fff"color="lightgray"ml="0px"hg="2rem"onClick={()=>setShowCategoriesFlag(!showCategoriesFlag)}> 
                       <P color="lightgray">Categorias</P> 
-                      <P color="lightgray" fSize="16px">{showCategoriesFlag?"◄":"►"}</P>
+                      <P color="lightgray" fSize="16px">{showCategoriesFlag?<ArrowLeftIcon/>:<ArrowRightIcon/>}</P>
                     </Ul>
-
                    { 
                    showCategoriesFlag 
                   ? <Div flexDir="column"alItems="flex-start"ml="20px"wd="80%">
-                      <Button pd="0"mt="3px"onClick={(e)=>handlerSetFilters(e)}value="all"name="categories" bg="transparent"bd="transparent"fSize="14px"color="lightgray"_hovCol="#fff"txtSh="#fff">Todas</Button>
+                      <Button pd="0"mt="3px"onClick={(e)=>handlerSetFilters(e)}value="all"name="categories" bg="transparent"bd="transparent"fSize="14px"color={filters.categories.includes("all")?"greenyellow":"lightgray"}_hovCol={filters.categories.includes("all")?"greenyellow":"lightgray"}txtSh={filters.categories.includes("all")?"greenyellow":"lightgray"}>Todas</Button>
                       {productsCategories.map((cat) => 
-                      <Button pd="0"mt="3px"value={cat.category} name="categories"color="lightgray"_hovCol="#fff"txtSh="#fff"key={cat.id} wd="100%"jfCont="flex-start"bd="transparent"bg="transparent"fSize="14px"onClick={(e)=>handlerSetFilters(e)}>{cat.category}</Button>)}
+                      <Button pd="0"mt="3px"value={cat.category} name="categories"color={filters.categories.includes(cat.category)?"greenyellow":"lightgray"}_hovCol={filters.categories.includes(cat.category)?"greenyellow":"lightgray"}txtSh={filters.categories.includes(cat.category)?"greenyellow":"lightgray"}key={cat.id} wd="100%"jfCont="flex-start"bd="transparent"bg="transparent"fSize="14px"onClick={(e)=>handlerSetFilters(e)}>{cat.category}</Button>)}
                     </Div>
                     : null    
                       }
                   </Div>
-                  : <Div bg="#252525"wd="100%">
-                        <Div wd="2.6rem"hg="2.6rem"
-                        onClick={()=>navigate("/shop/cart")}blur="blur(5px)"
-                        bg="orange"br="50%"mr="10px">
-                        <Img wd="40px" hg="40px"bg="red" 
-                            src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="not found" />
-                        </Div>
-                    </Div> 
+                  : null
             }
             {
                 brands.length && isOpen
                 ? <Div flexDir="column"wd="100%">
                     <Ul jfCont="space-between"wd="95%"fSize="17px"_hovCol="#fff"txtSh="#fff"color="lightgray"hg="2rem"onClick={()=>setShowBrandsFlag(!showBrandsFlag)}> 
                       <P color="lightgray" >Marcas</P> 
-                      <P color="lightgray" fSize="16px">{showBrandsFlag?"◄":"►"}</P>
+                      <P color="lightgray" fSize="16px">{showBrandsFlag?<ArrowLeftIcon/>:<ArrowRightIcon/>}</P>
                     </Ul>
                    { 
                    showBrandsFlag 
                   ? <Div flexDir="column"alItems="flex-start"ml="20px"wd="80%">
-                      <Button pd="0"mt="3px"onClick={(e)=>handlerSetFilters(e)} name="brands"value="all"bg="transparent"bd="transparent"fSize="14px"color="lightgray"_hovCol="#fff"txtSh="#fff">Todas</Button>
+                      <Button pd="0"mt="3px"onClick={(e)=>handlerSetFilters(e)} name="brands"value="all"bg="transparent"bd="transparent"fSize="14px"color={filters.brands.includes("all")?"greenyellow":"lightgray"}_hovCol={filters.brands.includes("all")?"greenyellow":"lightgray"}txtSh={filters.brands.includes("all")?"greenyellow":"lightgray"}>Todas</Button>
                       {brands.map((br) => 
-                      <Button pd="0"mt="3px"bg="transparent"onClick={(e)=>handlerSetFilters(e)}name="brands"value={br.brand}mr="10px"color="lightgray"_hovCol="#fff"txtSh="#fff"key={br.id} wd="100%"jfCont="flex-start"bd="transparent"fSize="14px">{br.brand}</Button>)}
+                      <Button pd="0"mt="3px"bg="transparent"onClick={(e)=>handlerSetFilters(e)}name="brands"value={br.brand}mr="10px"
+                      color={filters.brands.includes(br.brand)?"greenyellow":"lightgray"}
+                      _hovCol={filters.brands.includes(br.brand)?"greenyellow":"lightgray"}
+                      txtSh={filters.brands.includes(br.brand)?"greenyellow":"lightgray"}
+                      key={br.id} wd="100%"jfCont="flex-start"bd="transparent"fSize="14px">{br.brand}</Button>)}
                     </Div>
                     : null    
                     }
