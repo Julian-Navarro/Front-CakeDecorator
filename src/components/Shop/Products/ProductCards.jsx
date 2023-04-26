@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { HOST } from "../../../utils";
 import ProductCard from "./ProductCard";
 import { Div } from "../../../utils/StyledComponents/StyledComponents";
-export default function ProductCards ({ path, handlerEditProduct, handlerSetEditFlag, products, handleRemoveItemCart, handlerSetCart}) {
+export default function ProductCards ({ path, handlerEditProduct, handlerSetComponentProductListFlag, handlerSetEditFlag, products, handleRemoveItemCart, handlerSetCart}) {
     // console.log("PRODUCTS: ", products);
     return (
         <Div flWr="wrap" wd="100%">
@@ -11,6 +11,7 @@ export default function ProductCards ({ path, handlerEditProduct, handlerSetEdit
                 products?.length > 0 
                 ? products.map((pr) => (<ProductCard 
                     handleRemoveItemCart={handleRemoveItemCart}
+                    handlerSetComponentProductListFlag={handlerSetComponentProductListFlag}
                     handlerSetCart={handlerSetCart}
                     key={pr.id}
                     brand={pr.brand}
