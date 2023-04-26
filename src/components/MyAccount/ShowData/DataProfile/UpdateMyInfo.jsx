@@ -4,6 +4,7 @@ import { findUserById } from "../../../../redux/actions";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { HOST } from "../../../../utils";
+import UploadImage from "../../../UploadImage";
 
 export default function UpdateMyInfo() {
   const dispatch = useDispatch();
@@ -11,7 +12,8 @@ export default function UpdateMyInfo() {
   const userStorage = JSON.parse(localStorage.getItem("loggedUser"));
 
   const userInfo = useSelector((state) => state.user);
-  // console.log(userInfo)
+  const [img, setImg] = useState("")
+  console.log("USER",userInfo)
 
   const [input, setInput] = useState({
     name: userInfo?.name,
@@ -22,7 +24,8 @@ export default function UpdateMyInfo() {
       ? userInfo.img
       : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
   });
-  // console.log("INPUT", input);
+  console.log("INPUT", input);
+
   function handlerChange(e) {
     e.preventDefault();
     setInput({
@@ -30,6 +33,7 @@ export default function UpdateMyInfo() {
       [e.target.name]: e.target.value,
     });
   }
+
 
   async function handlerSubmit(e) {
     e.preventDefault();
@@ -61,6 +65,13 @@ export default function UpdateMyInfo() {
     }
   }, [input]);
 
+  useEffect(()=>{
+    setInput({
+      ...input,
+      img: img
+    })
+  },[img])
+
   return (
     <div>
       <h1>Editar datos personales</h1>
@@ -81,14 +92,8 @@ export default function UpdateMyInfo() {
           defaultValue={userInfo.phone}
         />
         <br />
-        <label>Foto de Perfil:</label>
-        <input
-          type="text"
-          name="img"
-          onChange={(e) => handlerChange(e)}
-          defaultValue={userInfo.img}
-          placeholder="Insertar URL de imagen"
-        />
+        <label>Avatar: </label>
+          <UploadImage setImg={setImg}/>
         <br />
         {userInfo.img ? (
           <img
