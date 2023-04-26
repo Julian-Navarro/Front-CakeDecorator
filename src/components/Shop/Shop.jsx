@@ -6,6 +6,8 @@ import Navbar from "../Navbar/Navbar";
 import { Div, Button, H1, Img, P } from "../../utils/StyledComponents/StyledComponents"; 
 import LeftSideBar from "./LifeSideBar/LeftSideBar";
 import { ShopNavbar } from "./ShopNavbar";
+import { IconButton } from "@chakra-ui/react";
+import { HamburgerIcon, CloseIcon, ArrowUpIcon } from "@chakra-ui/icons";
 
 export default function Shop() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,11 +56,12 @@ export default function Shop() {
         };
       } else {
         console.log("Caso el primer valor es 'all' ");
+        console.log("VALUE: ", e.target.value);
         console.log(filters[e.target.name][0]);
-        setFilters({
+          setFilters({
           ...filters,
           [e.target.name]: [e.target.value]
-        });
+        }); 
       };
     };
   };
@@ -239,7 +242,7 @@ export default function Shop() {
             JSON.parse(localStorage.getItem("cart"))
           );
           if (stock !== 0) {
-            if(amountToAdd < stock) {
+            if(amountToAdd <= stock) {
               product.total = product.price * amountToAdd;
               let newCart = window.localStorage.setItem(
                 "cart",
@@ -304,25 +307,32 @@ export default function Shop() {
   }, [flag, filters]);
 
   return (
-    <Div flexDir="column" wd="100%">
+    <Div flexDir="column" wd="100%"bg="transparent">
       <Navbar/>
-      <ShopNavbar isOpen={isOpen} setIsOpen={setIsOpen} handlerSearchProducts={handlerSearchProducts}/>
-      <Div wd="100%"bg="lightgray">
-        <Div bg="red" alSelf="flex-start"pos="sticky" posTop="53px">
-          <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} isOpen={isOpen}/>
+      <Div wd="100%"bg="transparent"
+      jfCont="space-between"
+      >
+        <Div display="flex"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}bg="green"posTop="0px"alItems="flex-start">
+          <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/>
         </Div>
-        
         { 
         products.length 
-        ? <ProductCards
-        handlerSetCart={handlerSetCart}
-        handleRemoveItemCart={handleRemoveItemCart}
-        products={products}
-        />
+        ? 
+        <Div posTop="-53px"wd="100%"bg="transparent">
+          <br /><br /><br />
+          <ProductCards
+          handlerSetCart={handlerSetCart}
+          handleRemoveItemCart={handleRemoveItemCart}
+          products={products}
+          />
+        </Div>
         : <P wd="100%">No se encontraron productos</P>
         }
       </Div>
-      <br /><br /><br /><br /><br /><br /><br /><br />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </Div>
   );
 }

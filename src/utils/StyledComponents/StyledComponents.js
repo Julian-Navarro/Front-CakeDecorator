@@ -121,10 +121,12 @@ export const Button = styled.button`
       `1px 1px 1px ${txtSh}, -2px -2px 4px ${txtSh}`};
   }
 `;
+// border-top-left-radius: Xpx;
+// border-top-right-radius: Xpx;
 export const Div = styled.div`
   background: ${({ bg }) => bg || "transparent"};
   color: ${({ color }) => color || "black"};
-  padding: ${({ pd }) => pd || "0px"};
+  padding: ${({ pd }) => pd || "0"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
   border: 2px solid ${({ bd }) => bd || "none"};
@@ -145,11 +147,12 @@ export const Div = styled.div`
   position: ${({ pos }) => pos || "static"};
   top: ${({ posTop }) => posTop};
   left: ${({ posLeft }) => posLeft};
+  right: ${({ posRight }) => posRight};
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: ${({ cursor }) => cursor || "default"};
   backdrop-filter: ${({ blur }) => blur || "none"};
-  border-top-left-radius: Xpx;
-  border-top-right-radius: Xpx;
+  overflow: ${({ ovFlow }) => ovFlow};
 
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
@@ -160,6 +163,10 @@ export const Div = styled.div`
     Img {
       transition: 0.3s;
       // height: ${({ _hovImgHg }) => _hovImgHg};
+    }
+    Div {
+      display: ${({ _hovDivDis }) => _hovDivDis};
+      height: ${({ _hovDivHg }) => _hovDivHg};
     }
     Ul {
       display: ${({ _hovUlDis }) => _hovUlDis};
@@ -254,9 +261,9 @@ export const H1 = styled.h1`
   align-self: ${({ alSelf }) => alSelf || "none"};
 `;
 export const Img = styled.img`
-  height: ${({ hg }) => hg || "10rem"};
+  height: ${({ hg }) => hg || "8rem"};
   min-height: ${({ minHg }) => minHg};
-  width: ${({ wd }) => wd || "10rem"};
+  width: ${({ wd }) => wd || "8rem"};
   min-height: ${({ minWd }) => minWd};
   display: ${({ display }) => display || "flex"};
   flex-direction: ${({ flexDir }) => flexDir || "row"};
@@ -269,7 +276,7 @@ export const Img = styled.img`
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
   align-self: ${({ alSelf }) => alSelf || "none"};
-  cursor: pointer;
+  object-fit: cover;
 `;
 export const Ul = styled.ul`
   background: ${({ bg }) => bg || "transparent"};

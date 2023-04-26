@@ -99,7 +99,8 @@ useEffect(()=>{},[allProducts, products])
             products={products}
             path="adm" 
             handlerEditProduct={handlerEditProduct}
-            handlerSetEditFlag={handlerSetEditFlag}/>
+            handlerSetEditFlag={handlerSetEditFlag}
+            handlerSetComponentProductListFlag={handlerSetComponentProductListFlag}/>
             
         </div>
 

@@ -1,6 +1,6 @@
 import React from "react";
-import "./Navbar.css"
 import { Link, useNavigate } from "react-router-dom";
+import { Div } from "../../utils/StyledComponents/StyledComponents";
 
 export default function Navbar () {
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function Navbar () {
     const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
 
     return (
-        <div className="containerNavbar">
+        <Div bg="rgba(0, 204, 255, 0.366)" wd="100%"jfCont="space-around"hg="4rem"boxSh="0 0 1rem .6rem lightblue">
             <Link to="/home"><h3>Home</h3></Link>
             <Link to="/courses"><h3>Cursos</h3></Link>
             <Link to="/aboutUs"><h3>Nosotros</h3></Link>
@@ -30,6 +30,6 @@ export default function Navbar () {
             : null :null
         }
 
-        </div>
+        </Div>
     )
 }
