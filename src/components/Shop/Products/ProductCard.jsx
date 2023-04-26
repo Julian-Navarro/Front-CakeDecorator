@@ -5,7 +5,8 @@ import s from "../../../utils/example.module.css"
 import { IconButton } from "@chakra-ui/react"
 import { MdOutlineAddShoppingCart, MdAddToPhotos, MdDelete, MdOutlineDriveFileRenameOutline } from "react-icons/md"
 
-export default function ProductCard ({ handlerSetCart,handlerSetEditFlag, handleRemoveItemCart, handlerEditProduct, path, brand, product, name,categories, description, id, img, price, stock}) {
+export default function ProductCard ({ handlerSetCart,handlerSetComponentProductListFlag, handlerEditProduct, path, brand, product, name,categories, description, id, img, price, stock}) {
+const newName = name.length > 72 ? name.slice(0, 72)+"...": name
 const [amountToAdd, setAmountToAdd] = useState(1);
 function handlerSetAmountToAdd (e) {
     e.preventDefault()
@@ -29,13 +30,14 @@ function handlerBtnAdd(e){
             handlerSetCart(e, {...product, amountToAdd: Number(amountToAdd), img: product.img[0]})
             setAmountToAdd(1);  
         } else {
-            setAmountToAdd(stock);   
+            // setAmountToAdd(stock);   
+            handlerSetCart(e, {...product, amountToAdd: stock, img: product.img[0]})
         }
     }
 }
 function handlerDeleteProduct (id) {
     axios.delete(`${HOST}/products/${id}`)
-    handlerSetEditFlag() //! El nombre de esta FN no coincide, re-renderiza los componentes padres luego de eliminar un producto
+    handlerSetComponentProductListFlag()
     alert(`Eliminaste el producto "${name}" de tu tienda`)
 }
         return (
@@ -43,7 +45,7 @@ function handlerDeleteProduct (id) {
             <div className={s.card}>
                 <img src={img} alt="" />
                 <div className={s.body}>
-                    <h1>{name}</h1>
+                    <h1>{newName}</h1>
 
                     <p className={s.p}>Stock: {stock}</p>
                     {brand?<p className={s.p}>Marca: {brand}</p>:null}
@@ -77,8 +79,8 @@ function handlerDeleteProduct (id) {
                     borderRadius={".6rem"}
                     /> 
                   </div>
-                : <div className={s.divBtnsContainer}onClick={(e)=>{handlerEditProduct(e, product)}}>
-                    <div className={s.btnsAdm}>
+                : <div className={s.divBtnsContainer}>
+                    <div className={s.btnsAdm}onClick={(e)=>{handlerEditProduct(e, product)}}>
                         <button className={s.btnsAdm}>Editar
                         <IconButton 
                         icon={<MdOutlineDriveFileRenameOutline/>}

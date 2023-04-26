@@ -30,7 +30,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
         console.log("showCategoriesFlag: ",showCategoriesFlag);
     },[showCategoriesFlag])
     return (
-        <Div wd={isOpen?"14rem":"3rem"} bg="#262626"flexDir="column" pd="1.2rem 0 1.2rem 0">
+        <Div wd={isOpen?"14rem":"3rem"} bg="#262626"flexDir="column" pd="1.2rem 0 1.2rem 0"boxSh="0 .2rem .8rem .15rem black">
             <IconButton 
               icon={isOpen ? <ArrowLeftIcon/> : <DragHandleIcon/>}
               onClick={()=>isOpen ? setIsOpen(false) : setIsOpen(true)}
@@ -42,6 +42,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
               marginLeft={".3rem"}
               className={s.icons}  
               marginBottom={".3rem"}
+              fontSize={"1.5rem"}
               bg="lightgray"
             />  
             <IconButton 
@@ -49,6 +50,8 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
             onClick={()=>navigate("/shop/cart")}
             w="2.4rem"
             h="2.4rem"
+            fontSize={"1.6rem"}
+            color="#252525"
             borderRadius="100%"
             cursor={"pointer"}
             alignSelf={"flex-start"}
@@ -93,6 +96,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
                       _hovCol={filters.brands.includes(br.brand)?"greenyellow":"lightgray"}
                       txtSh={filters.brands.includes(br.brand)?"greenyellow":"lightgray"}
                       key={br.id} wd="100%"jfCont="flex-start"bd="transparent"fSize="14px">{br.brand}</Button>)}
+                      <Button pd="0"mt="3px"onClick={(e)=>handlerSetFilters(e)}value={""}name="brands" bg="transparent"bd="transparent"fSize="14px"color={filters.brands.includes("")?"greenyellow":"lightgray"}_hovCol={filters.brands.includes("")?"greenyellow":"lightgray"}txtSh={filters.brands.includes("")?"greenyellow":"lightgray"}>Sin marca</Button>
                     </Div>
                     : null    
                     }

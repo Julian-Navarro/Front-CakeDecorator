@@ -56,11 +56,12 @@ export default function Shop() {
         };
       } else {
         console.log("Caso el primer valor es 'all' ");
+        console.log("VALUE: ", e.target.value);
         console.log(filters[e.target.name][0]);
-        setFilters({
+          setFilters({
           ...filters,
           [e.target.name]: [e.target.value]
-        });
+        }); 
       };
     };
   };
@@ -306,9 +307,9 @@ export default function Shop() {
   }, [flag, filters]);
 
   return (
-    <Div flexDir="column" wd="100%">
+    <Div flexDir="column" wd="100%"bg="transparent">
       <Navbar/>
-      <Div wd="100%"bg="#fff"
+      <Div wd="100%"bg="transparent"
       jfCont="space-between"
       >
         <Div display="flex"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}bg="green"posTop="0px"alItems="flex-start">
@@ -317,7 +318,8 @@ export default function Shop() {
         { 
         products.length 
         ? 
-        <Div posTop="-53px"bg="#fff"wd="100%">
+        <Div posTop="-53px"wd="100%"bg="transparent">
+          <br /><br /><br />
           <ProductCards
           handlerSetCart={handlerSetCart}
           handleRemoveItemCart={handleRemoveItemCart}
