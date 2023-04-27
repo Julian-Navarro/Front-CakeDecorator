@@ -40,8 +40,7 @@ export default function CaptionCarousel() {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
 
-  // This list contains all the data for carousels
-  // This can be static or loaded from a server
+  // Data de cada card que se va a mostrar en el carrousel
   const cards = [
     {
       number: 1,
@@ -64,7 +63,7 @@ export default function CaptionCarousel() {
   return (
     <Box
       position={"relative"}
-      height={"600px"}
+      height={"550px"}
       width={"full"}
       overflow={"hidden"}
     >
@@ -83,47 +82,68 @@ export default function CaptionCarousel() {
       {/* Left Icon */}
       <IconButton
         aria-label="left-arrow"
-        variant="ghost"
+        variant="link"
         position="absolute"
+        color={"whiteAlpha.700"}
         left={side}
         top={top}
         transform={"translate(0%, -50%)"}
         zIndex={2}
         onClick={() => slider?.slickPrev()}
+        backgroundColor={"blackAlpha.300"}
+        _hover={{
+          background: "blackAlpha.500",
+          color: "teal.800",
+        }}
       >
-        <BiLeftArrowAlt size="40px" />
+        <BiLeftArrowAlt size="55px" />
       </IconButton>
       {/* Right Icon */}
       <IconButton
         aria-label="right-arrow"
-        variant="ghost"
+        variant="link"
         position="absolute"
+        color={"whiteAlpha.700"}
         right={side}
         top={top}
         transform={"translate(0%, -50%)"}
         zIndex={2}
         onClick={() => slider?.slickNext()}
+        backgroundColor={"blackAlpha.300"}
+        _hover={{
+          background: "blackAlpha.500",
+          color: "teal.800",
+        }}
       >
-        <BiRightArrowAlt size="40px" />
+        <BiRightArrowAlt size="55px" />
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((card, index) => (
           <Box
             key={index}
-            height={"1x1"}
-            position="relative"
+            // height={"7x1"}
+            // position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
             backgroundImage={`url(${card.image})`}
+            boxSize={"600px"}
           >
             {card.number === 2 ? (
-              <Button>Conocé los cursos</Button>
-              ) : card.number === 3 ? (
-                <Button>¡Explorá la tienda!</Button>
-                ) : <Button>Novedades</Button>}
-                
+              <Button background={"pink.200"} variant={"solid"} _hover={{background:"red.500"}} position="absolute" margin="45px">
+                Conocé los cursos
+              </Button>
+            ) : card.number === 3 ? (
+              <Button background={"green.400"} variant={"solid"} _hover={{background:"green.500"}} position="absolute" margin="45px">
+                ¡Explorá la tienda!
+              </Button>
+            ) : (
+              <Button background={"cyan.300"} variant={"solid"} _hover={{background:"cyan.500"}} position="absolute" margin="45px">
+                Novedades
+              </Button>
+            )}
+
             {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack
@@ -134,12 +154,12 @@ export default function CaptionCarousel() {
                 top="50%"
                 transform="translate(0, -50%)"
               >
-                <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+                {/* <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
                   {card.title}
-                </Heading>
+                </Heading>F
                 <Text fontSize={{ base: "md", lg: "lg" }} color="GrayText">
                   {card.text}
-                </Text>
+                </Text> */}
               </Stack>
             </Container>
           </Box>
