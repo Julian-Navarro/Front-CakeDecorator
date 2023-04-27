@@ -68,7 +68,7 @@ useEffect(()=>{
 useEffect(()=>{},[allProducts, products])
     return (
         <div>
-          <h1>PRODUCT PADRE</h1>
+            <h2>ProductsAdm.jsx</h2>
             {
             path==="adm" 
             ? <button onClick={(e)=>{handlerSetCreateProductFlag(e)}}>{createProductFlag? "Cerrar Formulario":"Crear Nuevo Producto"}</button>

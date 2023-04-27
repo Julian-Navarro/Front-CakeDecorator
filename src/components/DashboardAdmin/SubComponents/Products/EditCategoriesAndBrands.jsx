@@ -67,7 +67,7 @@ useEffect(()=>{
     console.log(brands)
 },[categories, input])
     return (
-        <Div bg="orangered" flexDir="column">
+        <Div bg="orangered" flexDir="column"wd="100%">
             <P fSize="1.8rem">Crea o elimina categorias de productos</P>
             <Div>
                 <Input type="text" hg="2rem"fSize="1.8rem"name="category"value={input.category}onChange={(e)=>handlerSetInput(e)}/>

@@ -8,7 +8,7 @@ import { HOST } from "../../../utils"
 import { useNavigate } from "react-router-dom";
 import { MdShoppingCart } from "react-icons/md"
 import s from "../../../utils/example.module.css"
-// import { FaShoppingCart } from 'react-icons/fa'
+
 export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filters }) {
     let navigate = useNavigate()
     let [productsCategories, setProductsCategories] = useState([]);
