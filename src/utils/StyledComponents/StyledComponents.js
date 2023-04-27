@@ -79,6 +79,10 @@ export const P = styled.p`
   align-items: ${({ alItems }) => alItems || "center"};
   align-self: ${({ alSelf }) => alSelf || "none"};
   color: ${({ color }) => color || "black"};
+  margin-bottom: ${({ mb }) => mb || "none"};
+  margin-top: ${({ mt }) => mt || "none"};
+  margin-left: ${({ ml }) => ml || "none"};
+  margin-right: ${({ mr }) => mr || "none"};
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
   border-radius: ${({ br }) => br || "8px"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
@@ -121,6 +125,26 @@ export const Button = styled.button`
       `1px 1px 1px ${txtSh}, -2px -2px 4px ${txtSh}`};
   }
 `;
+export const Button2 = styled.button`
+  display: ${({ display }) => display || "flex"};
+  border: ${({ bd }) => bd || "none"};
+  border-radius: ${({ br }) => br || "8px"};
+  cursor: ${({ cursor }) => cursor || "pointer"};
+  transition: ${({ trans }) => trans || ".4s ease"};
+  padding: ${({ pd }) => pd || "0"};
+  margin-bottom: ${({ mb }) => mb || "none"};
+  margin-top: ${({ mt }) => mt || "none"};
+  margin-left: ${({ ml }) => ml || "none"};
+  margin-right: ${({ mr }) => mr || "none"};
+  color: ${({ color }) => color || "#fff"};
+  background-color: ${({ bg }) => bg || "green"};
+  width: ${({ wd }) => wd || "100%"};
+  height: ${({ hg }) => hg || "100%"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  justify-content: ${({ jfCont }) => jfCont || "flex-start"};
+  align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
+`;
 // border-top-left-radius: Xpx;
 // border-top-right-radius: Xpx;
 export const Div = styled.div`
@@ -128,7 +152,7 @@ export const Div = styled.div`
   color: ${({ color }) => color || "black"};
   padding: ${({ pd }) => pd || "0"};
   height: ${({ hg }) => hg || "auto"};
-  width: ${({ wd }) => wd || "auto"};
+  width: ${({ wd }) => wd || "100%"};
   border: 2px solid ${({ bd }) => bd || "none"};
   border-radius: ${({ br }) => br || "8px"};
   display: ${({ display }) => display || "flex"};

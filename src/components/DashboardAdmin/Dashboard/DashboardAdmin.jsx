@@ -1,33 +1,50 @@
+
 import React, { useEffect, useState } from "react";
-import s from "./DashboardAdmin.module.css"
 import Users from "../SubComponents/Users/Users";
 import CoursesAdm from "../SubComponents/Courses/CoursesAdm";
 import Products from "../SubComponents/Products/ProductsAdm";
 import CreateCategoriesAndBrands from "../SubComponents/Products/EditCategoriesAndBrands";
 import Navbar from "../../Navbar/Navbar";
+import { Div, Button, P, Button2 } from "../../../utils/StyledComponents/StyledComponents";
+import { FcComboChart, FcDataConfiguration } from "react-icons/fc"
+import { FaUsers, FaProductHunt, FaEdit } from "react-icons/fa"
+import { RiDatabaseLine } from "react-icons/ri"
+
+
 export default function DashboardAdmin () {
     const [render, setRender] = useState(false)
-    function handlerChangeRender(e) {
-        e.preventDefault();
-        setRender(e.target.value)
-        // console.log("RENDER: ",render);
+    function handlerChangeRender(value) {
+        console.log("EJECUTANDO HANDLER!!!!!!!!!!!!!!!!!!!");
+        setRender(value)
     }
 
     useEffect(()=>{}, [render])
     return (
         <div>
             <Navbar/>
-            <h2>DASHBOARD ADMIN</h2>
-            <br />
-            <div className={s.divContainer}>
-              <div className={s.divDashboardLeftContainer}>
-                  <button onClick={(e)=>handlerChangeRender(e)} value="users" >Usuarios</button>
-                  <button onClick={(e)=>handlerChangeRender(e)} value="courses" >Cursos</button>
-                  <button onClick={(e)=>handlerChangeRender(e)} value="products" >Productos</button>
-                  <button onClick={(e)=>handlerChangeRender(e)} value="editCategoriesAndBrands">Editar categorias y marcas</button>
+            <Div bg="green" alItems="flex-start">
 
-              </div>
-              <div className={s.divDashboardRightContainer}>
+
+              <Div flexDir="column"wd="20%"bg="greenyellow">
+                <Div bg="orange"wd="100%">
+                    <RiDatabaseLine/>
+                    <P bg="gray"wd="80%"fSize=".9rem"color="#fff">Panel de administración</P>
+                </Div>
+                <Div flexDir="column"alItems="flex-end"bg="yellow"alSelf="flex-end"wd="95%">
+                   
+                  <Button2 onClick={()=>handlerChangeRender("dashboard")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"><FcComboChart fontSize="1.2rem"/><P ml=".4rem"color="#fff"fSize=".9rem">Inicio</P></Button2>
+
+
+                  <Button2 onClick={()=>handlerChangeRender("users")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"value="users"><FaUsers/><P ml=".4rem"color="#fff"fSize=".9rem">Usuarios</P></Button2>
+
+                  <Button2 onClick={()=>handlerChangeRender("courses")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"><FcDataConfiguration/><P ml=".4rem"color="#fff"fSize=".9rem">Cursos</P></Button2>
+                  <Button2 onClick={()=>handlerChangeRender("products")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"><FaProductHunt/><P ml=".4rem"color="#fff"fSize=".9rem">Productos</P></Button2>
+                  <Button2 onClick={()=>handlerChangeRender("editCategoriesAndBrands")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"><FaEdit/><P  ml=".4rem"color="#fff"fSize=".9rem"hg="100%">Categorias y marcas</P></Button2>
+                </Div>
+              </Div>
+
+
+              <Div wd="80%">
                 {
                     render === false ? <h2>Elige una opcion</h2> : null
                 }
@@ -43,9 +60,9 @@ export default function DashboardAdmin () {
                 {
                     render === "editCategoriesAndBrands" ? <CreateCategoriesAndBrands/> : null
                 }
-              </div>
+              </Div>
 
-            </div>
+            </Div>
 
         </div>
     )
