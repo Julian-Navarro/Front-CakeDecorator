@@ -9,10 +9,11 @@ import { Div, Button, P, Button2 } from "../../../utils/StyledComponents/StyledC
 import { FcComboChart, FcDataConfiguration } from "react-icons/fc"
 import { FaUsers, FaProductHunt, FaEdit } from "react-icons/fa"
 import { RiDatabaseLine } from "react-icons/ri"
+import DashboardStats from "../SubComponents/DashboardStats"
 
 
 export default function DashboardAdmin () {
-    const [render, setRender] = useState(false)
+    const [render, setRender] = useState("dashboard")
     function handlerChangeRender(value) {
         console.log("EJECUTANDO HANDLER!!!!!!!!!!!!!!!!!!!");
         setRender(value)
@@ -24,29 +25,31 @@ export default function DashboardAdmin () {
             <Navbar/>
             <Div bg="green" alItems="flex-start">
 
-
-              <Div flexDir="column"wd="20%"bg="greenyellow">
-                <Div bg="orange"wd="100%">
-                    <RiDatabaseLine/>
-                    <P bg="gray"wd="80%"fSize=".9rem"color="#fff">Panel de administración</P>
+              <Div flexDir="column"jfCont="slex-start"wd="20%"hg="100vh"bg="#dc4a61"pos="sticky"posTop="0px">
+                <br />
+                <Div bg="#dc4a61"wd="95%"bd="#fff">
+                    <RiDatabaseLine fontSize="3rem"color="#fff"/>
+                    <P wd="80%"fSize="1.4rem"color="#fff"fWeight="bold">Panel de administración</P>
                 </Div>
-                <Div flexDir="column"alItems="flex-end"bg="yellow"alSelf="flex-end"wd="95%">
+                <Div flexDir="column"alItems="flex-end"bg="#dc4a61"alSelf="flex-end"hg="40%"jfCont="space-evenly"wd="95%">
                    
-                  <Button2 onClick={()=>handlerChangeRender("dashboard")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"><FcComboChart fontSize="1.2rem"/><P ml=".4rem"color="#fff"fSize=".9rem">Inicio</P></Button2>
+                  <Button2 onClick={()=>handlerChangeRender("dashboard")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg={render==="dashboard"?"#fff":"#dc4a61"}wd="100%"><FcComboChart color={render==="dashboard"?"#fff":"#"} fontSize="1.4rem"/><P ml=".5rem"color={render==="dashboard"?"#dc4a61":"#fff"}fSize="1.1rem">Estadísticas</P></Button2>
 
+                  <Button2 onClick={()=>handlerChangeRender("users")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg={render==="users"?"#fff":"#dc4a61"}wd="100%"value="users"><FaUsers color={render==="users"?"#dc4a61":"#fff"} fontSize="1.4rem"/><P ml=".5rem"color={render==="users"?"#dc4a61":"#fff"}fSize="1.1rem">Usuarios</P></Button2>
 
-                  <Button2 onClick={()=>handlerChangeRender("users")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"value="users"><FaUsers/><P ml=".4rem"color="#fff"fSize=".9rem">Usuarios</P></Button2>
+                  <Button2 onClick={()=>handlerChangeRender("courses")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg={render==="courses"?"#fff":"#dc4a61"}wd="100%"><FcDataConfiguration color={render==="courses"?"#dc4a61":"#fff"} fontSize="1.4rem"/><P ml=".5rem"color={render==="courses"?"#dc4a61":"#fff"}fSize="1.1rem">Cursos</P></Button2>
 
-                  <Button2 onClick={()=>handlerChangeRender("courses")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"><FcDataConfiguration/><P ml=".4rem"color="#fff"fSize=".9rem">Cursos</P></Button2>
-                  <Button2 onClick={()=>handlerChangeRender("products")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"><FaProductHunt/><P ml=".4rem"color="#fff"fSize=".9rem">Productos</P></Button2>
-                  <Button2 onClick={()=>handlerChangeRender("editCategoriesAndBrands")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg="#dc4a61"wd="100%"><FaEdit/><P  ml=".4rem"color="#fff"fSize=".9rem"hg="100%">Categorias y marcas</P></Button2>
+                  <Button2 onClick={()=>handlerChangeRender("products")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg={render==="products"?"#fff":"#dc4a61"}wd="100%"><FaProductHunt color={render==="products"?"#dc4a61":"#fff"} fontSize="1.4rem"/><P ml=".5rem"color={render==="products"?"#dc4a61":"#fff"}fSize="1.1rem">Productos</P></Button2>
+
+                  <Button2 onClick={()=>handlerChangeRender("editCategoriesAndBrands")}pd=".5rem"br="1rem 0 0 1rem"hg="2rem"bg={render==="editCategoriesAndBrands"?"#fff":"#dc4a61"}wd="100%"><FaEdit color={render==="editCategoriesAndBrands"?"#dc4a61":"#fff"} fontSize="1.4rem"/><P  ml=".5rem"color={render==="editCategoriesAndBrands"?"#dc4a61":"#fff"}fSize="1.1rem"hg="100%">Categorias y marcas</P></Button2>
+
                 </Div>
               </Div>
 
 
               <Div wd="80%">
                 {
-                    render === false ? <h2>Elige una opcion</h2> : null
+                    render === "dashboard" ? <DashboardStats/> : null
                 }
                 {
                     render === "users" ? <Users/> : null

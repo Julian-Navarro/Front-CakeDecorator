@@ -107,24 +107,6 @@ export default function Shop() {
       });
       setProducts(filteredProducts)
     }
-
-
-
-
-
-    // allProducts.forEach((pr) => {
-    //   // const strCategories = pr.categories.join(" ");
-    //   let flags = {
-    //     categories: false,
-    //     brands: false
-    //   };
-    //   for (let prop in filters) {
-    //     filters[prop][0] === "all"
-    //     ? flags[prop] = true
-    //     // filters.prop.forEach((value) => str.includes(value))
-    //     : null 
-    //   } 
-    // })
   }
 
   function handlerSearchProducts (value) {
@@ -312,7 +294,7 @@ export default function Shop() {
       <Div wd="100%"bg="transparent"
       jfCont="space-between"
       >
-        <Div display="flex"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}bg="green"posTop="0px"alItems="flex-start">
+        <Div flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}bg="green"posTop="0px"alItems="flex-start">
           <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/>
         </Div>
         { 
