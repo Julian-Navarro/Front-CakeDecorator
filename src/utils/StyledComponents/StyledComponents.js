@@ -83,12 +83,14 @@ export const P = styled.p`
   margin-top: ${({ mt }) => mt || "none"};
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
+  letter-spacing: ${({ letterSp }) => letterSp || "0px"};
+  white-space: ${({ wSp }) => wSp || "pre-line"};
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
   border-radius: ${({ br }) => br || "8px"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
-  cursor: ${({ cursor }) => cursor || "pointer"};
+  cursor: ${({ cursor }) => cursor || "default"};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};
