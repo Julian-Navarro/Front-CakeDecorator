@@ -5,7 +5,7 @@ import s from "./Users.module.css"
 import UserProfileCard from "./UserProfileCard";
 import axios from "axios";
 import { HOST } from "../../../../utils";
-
+import { Div, P, Li, Button, Label, Input } from "../../../../utils/StyledComponents/StyledComponents";
 
 export default function Users () {
   
@@ -79,53 +79,50 @@ useEffect(()=>{
   console.log("USER: ",user);
 },[allUsers, flag])
     return (
-        <div>
-          <h1>USER COMP</h1>
+        <Div flexDir="column"wd="100%"bg="greenyellow">
         
-            <div className={s.userProfileCard}>
-              <div>
-                <button onClick={(e)=>{handlerSetSearchValue(e)}}>Cambiar modo de búsqueda</button>
-                <label htmlFor="">{`Búsqueda por ${searchValue.es}: `}</label>
-                <input onChange={(e)=> {setInputValue(e.target.value); console.log("INPUT VALUE",inputValue);} } type="text" />
-                <button onClick={(e)=>{handlerSearchValue(e)}}>Buscar</button>
-              </div>
+            <Div className={s.userProfileCard}>
+              <Div>
+                <Button onClick={(e)=>{handlerSetSearchValue(e)}}>Cambiar modo de búsqueda</Button>
+                <Label htmlFor="">{`Búsqueda por ${searchValue.es}: `}</Label>
+                <Input onChange={(e)=> {setInputValue(e.target.value); console.log("INPUT VALUE",inputValue);} } type="text" />
+                <Button onClick={(e)=>{handlerSearchValue(e)}}>Buscar</Button>
+              </Div>
               {
               user !== false
                 ? <UserProfileCard user={user}/>
                 : null
               }
-            </div>
+            </Div>
 
-            <div className={s.userCardTitles}>
-              <p className={s.userP}>Nombre y apellido</p>
-              <p className={s.userP}>E-mail</p>
-              <p className={s.userP}>Telefono</p>
+            <Div bg="yellowgreen">
+              <P bg="lightgray">Nombre y apellido</P>
+              <P bg="lightgray">E-mail</P>
+              <P bg="lightgray">Telefono</P>
               {/* <p className={s.userP}>Cursos</p> */}
-              <p className={s.userP}>Estado</p>
-            </div>
+              <P bg="lightgray">Estado</P>
+            </Div>
             {
               users.length > 0 ? allUsers.map((user) => {
                 return (
-                    <div key={user.id} className={s.userCard}>
-                        <p className={s.userP}>{user.name} {user.surname}</p>
-                        <p className={s.userP}>{user.email}</p>
-                        <p className={s.userP}>{user.phone!== null ? user.phone : "No existe"}</p>
-                        <div className={s.userCardDiv}>
+                    <Div  bg="violet"key={user.id}>
+                        <P bg="red">{user.name} {user.surname}</P>
+                        <P bg="red">{user.email}</P>
+                        <P bg="red">{user.phone!== null ? user.phone : "No existe"}</P>
+                        <Div bg="yellow">
                           {user.status === "active"
-                          ? <p>Activo</p>   //! CLASSNAME PARA CADA UNO CON COLOR DISTINTO
-                          : <p>Bloqueado</p>  //! CLASSNAME PARA CADA UNO CON COLOR DISTINTO
+                          ? <P bg="gray">Activo</P>   //! CLASSNAME PARA CADA UNO CON COLOR DISTINTO
+                          : <P bg="gray">Bloqueado</P>  //! CLASSNAME PARA CADA UNO CON COLOR DISTINTO
                           }
-                          <div className={s.btnStatusContainer}>
-                            <button className={s.btnStatus} onClick={(e)=>{handlerViewUser(e, user)}}>Ver</button>
-                            <button className={s.btnStatus} onClick={(e)=>{handlerBlockOrUnlockUser(e, user)}}>{user.status === "active" ? "Bloquear" : "Desbloquear"}</button>
-                          </div>
-                        </div>
-                        <div>
-                        </div>
-                    </div>
+                          <Div bg="orange">
+                            <Button onClick={(e)=>{handlerViewUser(e, user)}}>Ver</Button>
+                            <Button onClick={(e)=>{handlerBlockOrUnlockUser(e, user)}}>{user.status === "active" ? "Bloquear" : "Desbloquear"}</Button>
+                          </Div>
+                        </Div>
+                    </Div>
                 )
               }) :null
             }
-        </div>
+        </Div>
     )
 }
