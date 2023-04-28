@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getUsers } from "../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import s from "./Users.module.css"
 import UserProfileCard from "./UserProfileCard";
 import axios from "axios";
 import { HOST } from "../../../../utils";
-import { Div, P, Li, Button, Label, Input } from "../../../../utils/StyledComponents/StyledComponents";
+import { Div, P, Button, Label, Input } from "../../../../utils/StyledComponents/StyledComponents";
 
 export default function Users () {
   
@@ -79,40 +78,48 @@ useEffect(()=>{
   console.log("USER: ",user);
 },[allUsers, flag])
     return (
-        <Div flexDir="column"wd="100%"bg="greenyellow">
+        <Div flexDir="column"wd="100%"bg="greenyellow"pd="10px">
         
-            <Div className={s.userProfileCard}>
-              <Div>
+            <Div bg="pink"pd="10px"flexDir="column">
+              {
+              user !== false
+                ? <Div bg="blue"pd="15px">
+                    <UserProfileCard user={user}/>
+                  </Div>
+                : null
+              }
+              <Div bg="gray"pd="10px">
                 <Button onClick={(e)=>{handlerSetSearchValue(e)}}>Cambiar modo de búsqueda</Button>
                 <Label htmlFor="">{`Búsqueda por ${searchValue.es}: `}</Label>
                 <Input onChange={(e)=> {setInputValue(e.target.value); console.log("INPUT VALUE",inputValue);} } type="text" />
                 <Button onClick={(e)=>{handlerSearchValue(e)}}>Buscar</Button>
               </Div>
-              {
-              user !== false
-                ? <UserProfileCard user={user}/>
-                : null
-              }
             </Div>
 
-            <Div bg="yellowgreen">
+            <Div bg="purple"pd="10px">
               <P bg="lightgray">Nombre y apellido</P>
               <P bg="lightgray">E-mail</P>
               <P bg="lightgray">Telefono</P>
               {/* <p className={s.userP}>Cursos</p> */}
               <P bg="lightgray">Estado</P>
             </Div>
+
+            
+            <Div flexDir="column"bg="#252525" pd="10px">
             {
               users.length > 0 ? allUsers.map((user) => {
                 return (
-                    <Div  bg="violet"key={user.id}>
+                  <Div  bg="violet"pd="10px"mb="5px"key={user.id}>
                         <P bg="red">{user.name} {user.surname}</P>
                         <P bg="red">{user.email}</P>
                         <P bg="red">{user.phone!== null ? user.phone : "No existe"}</P>
-                        <Div bg="yellow">
-                          {user.status === "active"
-                          ? <P bg="gray">Activo</P>   //! CLASSNAME PARA CADA UNO CON COLOR DISTINTO
-                          : <P bg="gray">Bloqueado</P>  //! CLASSNAME PARA CADA UNO CON COLOR DISTINTO
+                        <Div bg="yellow"pd="5px"flexDir="column"wd="16rem">
+                          {
+                          user.status === "active"
+                          ? <P bg="gray">Activo</P> 
+                          : user.status ==="inactive"
+                          ? <P bg="gray">Inactivo</P> 
+                          : <P bg="gray">Bloqueado</P>  
                           }
                           <Div bg="orange">
                             <Button onClick={(e)=>{handlerViewUser(e, user)}}>Ver</Button>
@@ -123,6 +130,7 @@ useEffect(()=>{
                 )
               }) :null
             }
+            </Div>
         </Div>
     )
 }
