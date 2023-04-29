@@ -4,7 +4,7 @@ import { HOST } from "../../../utils";
 import s from "../../../utils/example.module.css"
 import { IconButton } from "@chakra-ui/react"
 import { MdOutlineAddShoppingCart, MdAddToPhotos, MdDelete, MdOutlineDriveFileRenameOutline } from "react-icons/md"
-
+import { Button, Div } from "../../../utils/StyledComponents/StyledComponents";
 export default function ProductCard ({ handlerSetCart,handlerSetComponentProductListFlag, handlerEditProduct, path, brand, product, name,categories, description, id, img, price, stock}) {
 const newName = name.length > 72 ? name.slice(0, 72)+"...": name
 const [amountToAdd, setAmountToAdd] = useState(1);
@@ -80,40 +80,37 @@ function handlerDeleteProduct (id) {
                     /> 
                   </div>
                 : <div className={s.divBtnsContainer}>
-                    <div className={s.btnsAdm}onClick={(e)=>{handlerEditProduct(e, product)}}>
-                        <button className={s.btnsAdm}>Editar
-                        <IconButton 
-                        icon={<MdOutlineDriveFileRenameOutline/>}
-                        w="3.4rem"
-                        h="2.2rem"
-                        fontSize="1.4rem"
-                        cursor={"pointer"}
-                        alignSelf={"flex-start"}
-                        marginLeft={".3rem"}
-                        marginBottom={".3rem"}
-                        bg="lightgray"
-                        borderRadius={".6rem"}
-                        className={s.iconsAdm}
-                        />
-                        </button>
+                    <div 
+                    // className={s.btnsAdm}
+                    onClick={(e)=>{handlerEditProduct(e, product)}}>
+                        <Button
+                            bg="gray"
+                            _hovBg="lightgray"
+                            _hovCol="#252525"
+                            
+
+                        // className={s.btnsAdm}
+                        >
+                            Editar
+                            <MdOutlineDriveFileRenameOutline fontSize="1.2em"/>
+                       {/* // className={s.iconsAdm} */}
+                        </Button>
                     </div>
 
-                    <div className={s.btnsAdm}onClick={()=>{handlerDeleteProduct(id)}}>
-                        <button className={s.btnsAdm}>Eliminar
-                        <IconButton 
-                        icon={<MdDelete/>}
-                        w="3.4rem"
-                        h="2.2rem"
-                        fontSize="1.4rem"
-                        cursor={"pointer"}
-                        alignSelf={"flex-start"}
-                        marginLeft={".3rem"}
-                        marginBottom={".3rem"}
-                        bg="lightgray"
-                        borderRadius={".6rem"}
-                        className={s.iconsAdm}
-                        />
-                        </button>
+                    <div 
+                    // className={s.btnsAdm}
+                    onClick={()=>{handlerDeleteProduct(id)}}>
+                        <Button 
+                            bg="gray"
+                            _hovBg="lightgray"
+                            _hovCol="#252525"
+                            
+                        // className={s.btnsAdm}
+                        >
+                            Eliminar
+                            <MdDelete fontSize="1.2em"/>
+                        {/* className={s.iconsAdm} */}
+                        </Button>
                     </div>
                   </div> }
                 </div>
