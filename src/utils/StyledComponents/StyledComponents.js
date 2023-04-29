@@ -163,6 +163,7 @@ export const Div = styled.div`
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
   align-self: ${({ alSelf }) => alSelf || "none"};
+  margin: ${({ margin }) => margin || "none"};
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-top: ${({ mt }) => mt || "none"};
   margin-left: ${({ ml }) => ml || "none"};
@@ -341,6 +342,7 @@ export const Ul = styled.ul`
   }
 `;
 export const Li = styled.li`
+  list-style: none;
   background: ${({ bg }) => bg || "transparent"};
   padding: ${({ pd }) => pd || "5px"};
   height: ${({ hg }) => hg || "auto"};
