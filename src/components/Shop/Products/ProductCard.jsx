@@ -4,19 +4,35 @@ import { HOST } from "../../../utils";
 import s from "../../../utils/example.module.css"
 import { IconButton } from "@chakra-ui/react"
 import { MdOutlineAddShoppingCart, MdAddToPhotos, MdDelete, MdOutlineDriveFileRenameOutline } from "react-icons/md"
-import { Button, Div } from "../../../utils/StyledComponents/StyledComponents";
+import { Button, Div, Input } from "../../../utils/StyledComponents/StyledComponents";
 export default function ProductCard ({ handlerSetCart,handlerSetComponentProductListFlag, handlerEditProduct, path, brand, product, name,categories, description, id, img, price, stock}) {
 const newName = name.length > 72 ? name.slice(0, 72)+"...": name
 const [amountToAdd, setAmountToAdd] = useState(1);
 function handlerSetAmountToAdd (e) {
     e.preventDefault()
-    if((/^\d+$/).test(e.target.value)) {
-            setAmountToAdd(e.target.value)
+    console.log("ETARGET VALUE", Number(e.target.value));
+    if((/^\d+$/).test(e.target.value)) { //? Si es un numero positivo
+        if(Number(e.target.value) < 1000 && Number(e.target.value) !== 0) {
+            console.log("A");
+            setAmountToAdd(Number(e.target.value))
+        } else {
+    console.log("ETARGET VALUEeeeeeeeeeeeee", e.target.value);
 
+            if(Number(e.target.value) === 0) {
+                setAmountToAdd(1)
+            } else {
+                setAmountToAdd(999)
+            }
+        }
+    } else {
+        console.log("No: ", e.target.value);
+        setAmountToAdd(1)
     }
 }
 function addOne(){
-    setAmountToAdd(`${Number(amountToAdd)+1}`)
+    if(amountToAdd<999) {
+        setAmountToAdd(`${Number(amountToAdd)+1}`)
+    }
 }
 function subtractOne(){
     if(amountToAdd != 1) {
@@ -56,7 +72,20 @@ function handlerDeleteProduct (id) {
                         onClick={subtractOne}
                         className={s.icons}
                         icon={<MdDelete/>}/>
-                        <input className={s.input} value={amountToAdd} onChange={(e)=>handlerSetAmountToAdd(e)}/>
+                        {/* Arial
+Helvetica
+Times New Roman
+Georgia
+Verdana
+Tahoma
+Trebuchet MS
+Roboto
+Open Sans
+Lato */}
+                        <Input 
+                        wd="2.2em"hg="1.7em"fnFamily="Open Sans"
+                        value={amountToAdd} 
+                        onChange={(e)=>handlerSetAmountToAdd(e)}/>
                         <IconButton
                         onClick={addOne}
                         className={s.icons}
