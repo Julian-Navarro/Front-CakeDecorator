@@ -182,16 +182,15 @@ export const Div = styled.div`
   right: ${({ posRight }) => posRight};
   overflow: ${({ overflow }) => overflow};
   z-index: ${({ zInd }) => zInd};
-  backdrop-filter: ${({ bckDr }) => bckDr};
   background-repeat: no-repeat;
   background-size: contain;
   cursor: ${({ cursor }) => cursor || "default"};
-  backdrop-filter: ${({ blur }) => blur || "none"};
+  backdrop-filter: ${({ blur }) => blur};
   overflow: ${({ ovFlow }) => ovFlow};
 
   &:hover {
-    background: ${({ _hovBg, bg }) => _hovBg || bg};
-    color: ${({ _hovCol, color }) => _hovCol || color};
+    background: ${({ _hovBg }) => _hovBg};
+    color: ${({ _hovCol, color }) => _hovCol};
     box-shadow: ${({ _hovBSh }) => _hovBSh};
     display: ${({ _hovDis }) => _hovDis};
     height: ${({ _hovHg }) => _hovHg};

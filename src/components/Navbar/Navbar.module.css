@@ -1,0 +1,6 @@
+.container {
+    background: linear-gradient(#252525 -20% ,  #9198e5 50%,  #252525d7 120%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
