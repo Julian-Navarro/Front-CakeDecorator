@@ -72,16 +72,6 @@ function handlerDeleteProduct (id) {
                         onClick={subtractOne}
                         className={s.icons}
                         icon={<MdDelete/>}/>
-                        {/* Arial
-Helvetica
-Times New Roman
-Georgia
-Verdana
-Tahoma
-Trebuchet MS
-Roboto
-Open Sans
-Lato */}
                         <Input 
                         wd="2.2em"hg="1.7em"fnFamily="Open Sans"
                         value={amountToAdd} 
@@ -110,35 +100,33 @@ Lato */}
                   </div>
                 : <div className={s.divBtnsContainer}>
                     <div 
-                    // className={s.btnsAdm}
                     onClick={(e)=>{handlerEditProduct(e, product)}}>
                         <Button
-                            bg="gray"
-                            _hovBg="lightgray"
+                            bg="#252525"
+                            _hovBg="#fff"
+                            bd="#252525"
                             _hovCol="#252525"
-                            
-
-                        // className={s.btnsAdm}
-                        >
+                            wd="7em"
+                            pd="0 5px 0 5px"
+                            fSize="1.1em">
                             Editar
                             <MdOutlineDriveFileRenameOutline fontSize="1.2em"/>
-                       {/* // className={s.iconsAdm} */}
                         </Button>
                     </div>
 
                     <div 
-                    // className={s.btnsAdm}
                     onClick={()=>{handlerDeleteProduct(id)}}>
                         <Button 
-                            bg="gray"
-                            _hovBg="lightgray"
+                            bg="#252525"
+                            _hovBg="#fff"
+                            bd="#252525"
                             _hovCol="#252525"
-                            
-                        // className={s.btnsAdm}
+                            wd="7em"
+                            pd="0 5px 0 5px"
+                            fSize="1.1em"
                         >
                             Eliminar
                             <MdDelete fontSize="1.2em"/>
-                        {/* className={s.iconsAdm} */}
                         </Button>
                     </div>
                   </div> }
