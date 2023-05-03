@@ -33,8 +33,8 @@ function App() {
 
   useEffect(() => {
     console.log("RENDERING APP ROUTES");
-    userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
     console.log(loggedUser);
+    userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
     setLoggedUser(userLocalStorage);
   }, [loggedUserFlagApp]);
   return (
