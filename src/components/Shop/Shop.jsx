@@ -294,7 +294,7 @@ export default function Shop() {
       <Div wd="100%"bg="transparent"
       jfCont="space-between"
       >
-        <Div flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}bg="green"posTop="0px"alItems="flex-start">
+        <Div flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}bg="green"posTop="0px"mt="0px"alItems="flex-start">
           <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/>
         </Div>
         { 

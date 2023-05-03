@@ -23,14 +23,16 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
         const productsCategoriesDB = await axios.get(`${HOST}/categories`)
         setProductsCategories(productsCategoriesDB.data)
     } 
-    
+    const pink = "#ddc6da"
+    const violet = "#dddbe8"
+    const lighblue = "#84b6f4"
     useEffect(()=>{
         getCategories()
         getBrands()
         console.log("showCategoriesFlag: ",showCategoriesFlag);
     },[showCategoriesFlag])
     return (
-        <Div wd={isOpen?"14rem":"3rem"} bg="#262626"flexDir="column" pd="1.2rem 0 1.2rem 0"boxSh="0 .2rem .8rem .15rem black">
+        <Div wd={isOpen?"14rem":"3rem"} bg={violet}flexDir="column" br="0"pd="1.2rem 0 1.2rem 0"boxSh="0 .2rem .8rem .15rem black">
             <IconButton 
               icon={isOpen ? <ArrowLeftIcon/> : <DragHandleIcon/>}
               onClick={()=>isOpen ? setIsOpen(false) : setIsOpen(true)}
@@ -43,7 +45,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
               className={s.icons}  
               marginBottom={".3rem"}
               fontSize={"1.5rem"}
-              bg="lightgray"
+              bg={lighblue}
             />  
             <IconButton 
             icon={<MdShoppingCart/>}

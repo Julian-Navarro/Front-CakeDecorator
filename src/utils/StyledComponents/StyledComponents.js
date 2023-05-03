@@ -78,7 +78,7 @@ export const P = styled.p`
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
   align-self: ${({ alSelf }) => alSelf || "none"};
-  color: ${({ color }) => color || "black"};
+  color: ${({ color }) => color};
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-top: ${({ mt }) => mt || "none"};
   margin-left: ${({ ml }) => ml || "none"};
@@ -90,7 +90,9 @@ export const P = styled.p`
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
-  cursor: ${({ cursor }) => cursor || "default"};
+  cursor: ${({ cursor }) => cursor};
+  filter: ${({ filter }) => filter};
+  transition: ${({ trans }) => trans || ".4s"};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};
@@ -118,6 +120,8 @@ export const Button = styled.button`
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
+  box-shadow: ${({ boxSh }) => boxSh || "none"};
+  filter: ${({ filter }) => filter};
   margin-top: ${({ mt }) => mt || "none"};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
@@ -151,6 +155,7 @@ export const Button2 = styled.button`
 // border-top-right-radius: Xpx;
 export const Div = styled.div`
   background: ${({ bg }) => bg || "transparent"};
+  background-color: ${({ bgC }) => bgC};
   color: ${({ color }) => color || "black"};
   padding: ${({ pd }) => pd || "0"};
   height: ${({ hg }) => hg || "auto"};
@@ -175,6 +180,9 @@ export const Div = styled.div`
   top: ${({ posTop }) => posTop};
   left: ${({ posLeft }) => posLeft};
   right: ${({ posRight }) => posRight};
+  overflow: ${({ overflow }) => overflow};
+  z-index: ${({ zInd }) => zInd};
+  backdrop-filter: ${({ bckDr }) => bckDr};
   background-repeat: no-repeat;
   background-size: contain;
   cursor: ${({ cursor }) => cursor || "default"};
