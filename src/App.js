@@ -18,9 +18,10 @@ import UpdateMyInfo from "./components/MyAccount/ShowData/DataProfile/UpdateMyIn
 
 function App() {
   // console.log("APP LOG");
-  const userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
+  let userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
   const [loggedUser, setLoggedUser] = useState(userLocalStorage);
   const [loggedUserFlagApp, setLoggedUserFlagApp] = useState(false);
+
   function handlerSetUserFlagApp() {
     // e.preventDefault();
     if (loggedUserFlagApp === false) {
@@ -31,9 +32,11 @@ function App() {
   }
 
   useEffect(() => {
-    // console.log("RENDERING APP ROUTES");
-    // console.log(loggedUser);
-  }, [loggedUserFlagApp, loggedUser]);
+    console.log("RENDERING APP ROUTES");
+    userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
+    console.log(loggedUser);
+    setLoggedUser(userLocalStorage);
+  }, [loggedUserFlagApp]);
   return (
     <div>
       <div className="App"></div>
@@ -59,8 +62,16 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/courses" element={<CourseList path={false} />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
-        <Route exact path="/myAccount/courseDetail/:id" element={<CourseDetailCard />}/>
-        <Route exact path="/myAccount/purchaseDetail/:id" element={<PurchaseDetailCard />}/>
+        <Route
+          exact
+          path="/myAccount/courseDetail/:id"
+          element={<CourseDetailCard />}
+        />
+        <Route
+          exact
+          path="/myAccount/purchaseDetail/:id"
+          element={<PurchaseDetailCard />}
+        />
         <Route exact path="/aboutUs" element={<AboutUs />} />
         <Route exact path="/createAccount" element={<FormPostUser />} />
         <Route exact path="/shop" element={<Shop />} />
