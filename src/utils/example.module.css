@@ -189,10 +189,21 @@ h1 {
 /* ! ↓↓↓↓↓↓↓↓     PARA EL ARCHIVO LEFT SIDE BAR     ↓↓↓↓↓↓↓↓ */
 
 .icons:hover {
-    background-color: #ddc6dac7;
+    background-color: #84b6f4;
     box-shadow: 0.05rem 0.05rem 0.6rem 0rem #ffffff8f
 }
 .color {
-    color: #252525e0;
-    background: #fff
+    color: #252525d7;
+    background: rgb(255, 190, 70)
+}
+.divGradient {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(circle at -70%,#333 60%, #333 50%, #3f3f3f 75%, #333 100%);
+    background: #ddc6da7e;
+}
+.containerSideBar {
 }

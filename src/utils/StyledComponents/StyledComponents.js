@@ -76,6 +76,8 @@ export const P = styled.p`
   display: ${({ display }) => display || "flex"};
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
+  border-right: ${({ bdR }) => bdR};
+  border-bottom: ${({ brB }) => brB};
   align-items: ${({ alItems }) => alItems || "center"};
   align-self: ${({ alSelf }) => alSelf || "none"};
   color: ${({ color }) => color};
@@ -116,13 +118,16 @@ export const Button = styled.button`
   border-radius: ${({ br }) => br || "8px"};
   cursor: ${({ cursor }) => cursor || "pointer"};
   transition: ${({ trans }) => trans || ".4s ease"};
-  letter-spacing: ${({ letterSp }) => letterSp || "2px"};
+  letter-spacing: ${({ letterSp }) => letterSp || ".1rem"};
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
   box-shadow: ${({ boxSh }) => boxSh || "none"};
   filter: ${({ filter }) => filter};
   margin-top: ${({ mt }) => mt || "none"};
+  margin-bottom: ${({ mb }) => mb || "none"};
+  margin-left: ${({ ml }) => ml || "none"};
+  margin-right: ${({ mr }) => mr || "none"};
   &:hover {
     background: ${({ _hovBg, bg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};
@@ -160,8 +165,11 @@ export const Div = styled.div`
   padding: ${({ pd }) => pd || "0"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "100%"};
-  border: 2px solid ${({ bd }) => bd || "none"};
   border-radius: ${({ br }) => br || "8px"};
+  border: 2px solid ${({ bd }) => bd || "none"};
+  border-right: ${({ bdR }) => bdR};
+  border-left: ${({ bdL }) => bdL};
+  border-bottom: ${({ bdB }) => bdB};
   display: ${({ display }) => display || "flex"};
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
@@ -341,11 +349,11 @@ export const Ul = styled.ul`
   box-shadow: ${({ boxSh }) => boxSh || "none"};
   text-decoration: ${({ txtDec }) => txtDec};
   &:hover {
-    background: ${({ _hovBg, bg }) => _hovBg || bg};
+    background: ${({ _hovBg, bg }) => _hovBg};
     color: ${({ _hovCol }) => _hovCol};
     box-shadow: ${({ _hovBSh }) => _hovBSh};
     text-shadow: ${({ txtSh }) =>
-      `1px 1px 1px ${txtSh}, -2px -2px 4px ${txtSh}`};
+      `1px 1px 1px ${txtSh}, -1px -1px 1px ${txtSh}`};
   }
 `;
 export const Li = styled.li`
