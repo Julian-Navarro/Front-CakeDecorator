@@ -1,6 +1,14 @@
 .container {
-    background: linear-gradient(#252525 -20% ,  #9198e5 50%,  #252525d7 120%);
+    background: radial-gradient(#398ff8 10% , #84b6f4 90%);
+    background: radial-gradient(#a7ceff 10%, #7bb4fa 160%);
     width: 100%;
     display: flex;
     justify-content: space-between;
+    border-radius: 0 0 .5rem .3rem;
+
+    border: 2px solid #6cadfd;
+    box-shadow: 0 0 .3rem .2rem #333c43;
+    margin-bottom: .4rem;
+    margin-top: .1rem;
+
 }

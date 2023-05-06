@@ -4,14 +4,13 @@ import { useEffect } from "react";
 export default function CardsCart({ handlerSetCartFlag, cart}){
 
     return (
-        <Div display="column"flWr="wrap" wd="100%"bg="yellow"hg="150vh">
-
-            <Div bg="transparent" jfCont="space-between" mr="10px"ml="10px">
-                <P bg="red" wd="10rem"> </P>
-                <P bg="pink"wd="10rem">Product</P>
-                <P bg="pink"wd="10rem">Precio</P>
-                <P bg="pink"wd="10rem">Cantidad</P>
-                <P bg="pink"wd="10rem">Subtotal</P>
+        <Div flexDir="column"jfCont="flex-start"wd="100%">
+            <Div bg="#333" jfCont="space-between"br="none">
+                <P wd="20%"color="#fff">Producto</P>
+                <P wd="20%"color="#fff">Nombre</P>
+                <P wd="20%"color="#fff">Cantidad</P>
+                <P wd="20%"color="#fff">Precio</P>
+                <P wd="20%"color="#fff">Subtotal</P>
             </Div>
 
             { cart?.length 

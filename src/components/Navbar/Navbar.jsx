@@ -77,7 +77,7 @@ export default function Navbar () {
                 <Div _hovCol={"#fff"}cursor="pointer">
                     <VscAccount filter="drop-shadow(2px 2px 2px black)"fontSize={"1.8rem"}onClick={()=>setAccount(!account)}/>
                 </Div>
-                <Div hg="60vh"wd="7.8rem"display={"hidden"}overflow="hidden"flexDir="column"
+                <Div hg="60vh"wd="7.8rem"display={"flex"}overflow="hidden"flexDir="column"
                     pos="absolute"posTop="3rem"posRight="0"
                     >
                     <Div wd="100%"hg="100%"jfCont="space-evenly"flexDir="column"bg={"#25252586"}pos="absolute"posRight={account?"0rem":"-7.8rem"}zInd="3"blur="blur(5px)">
