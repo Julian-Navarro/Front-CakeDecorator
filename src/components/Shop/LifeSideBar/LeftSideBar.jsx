@@ -37,7 +37,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
         <Div 
             wd={isOpen?"14rem":"3.2rem"}
             hg="100vh" bg="transparent"overflow="hidden"
-            pos="absolute"posTop="0rem"flexDir="column" br="0"pd="0rem 0rem 0rem 0rem"
+            pos="absolute"posTop="0rem"flexDir="column" br="0 12px 0 0"pd="0rem 0rem 0rem 0rem"
             boxSh=".1rem .1rem .4rem .2rem #333"
             jfCont="flex-start"
             >

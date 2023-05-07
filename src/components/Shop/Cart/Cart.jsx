@@ -21,7 +21,7 @@ export default function Cart () {
             <Div hg="10rem"jfCont="space-between"pd="0 0 0 1rem"alItems="center">
               <Button wd="20%"onClick={()=>navigate("/shop")}bg="#333">Seguir comprando</Button>
               <Div wd="20%"hg="100%"brL=""flexDir="column"jfCont="space-between"bdL="2px solid #333"br="0">
-                <P bg="#333"color="#fff"wd="100%"br="0">Total de tu compra</P>
+                <P bg="#333"color="#fff"wd="100%"br="0">Total del carrito</P>
                 <P>${total.toLocaleString()}</P>
                 <Button wd="60%">Pagar</Button>          
               </Div>
