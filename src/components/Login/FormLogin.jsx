@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { HOST } from "../../utils";
 import bcryptjs from "bcryptjs"
 import { useNavigate } from "react-router-dom";
-
-
+import { Div, Button, P, Label, Form, Input, Img } from "../../utils/StyledComponents/StyledComponents";
+import s from "../../utils/example.module.css"
 export default function Login ({handlerSetUserFlagApp}) {
     const navigate = useNavigate()
     const [input, setInput] = useState({
@@ -123,24 +123,59 @@ export default function Login ({handlerSetUserFlagApp}) {
 
     return loggedUser === null
      ? (
-        <div>
-            <h3> Ingresá a tu cuenta</h3>
-            <form onSubmit={(e)=>{handlerSubmit(e)}} className="formLogin">
-                <div><label htmlFor="">Ingresá tu E-mail</label> <input name="email" onChange={(e)=>{handlerChange(e)}} type="text"/></div>
-                <p>{errors.email!== ""? errors.email :"No hay error"}</p>
-                <div><label htmlFor="">Ingresá tu Contraseña</label> <input name="password" onChange={(e)=>{handlerChange(e)}} type="password"/></div>
-                <p>{errors.password!== ""? errors.password :"No hay error"}</p>
-                <p>{errors.status!== ""? errors.status : null}</p>
-                <button type="submit">Ingresar</button>
-                <br />
-            </form>
-            <button onClick={()=>{navigate("/home")}}>Ingresar como usuario invitado</button>
-        </div>
+        <Div flexDir="column"bg="#b691b67a"blur="blur(3px)"wd="20rem"pd=".5rem"mr="4%"br="1.4rem"bd="#eeeeee">
+            <P 
+            fnFamily="fantasy"letterSp=".05rem"
+            fSize="2rem"color="rgba(195, 120, 212, 1)"textSh="#33333370"
+            > Ingresá a tu cuenta</P>
+            <Form bg="transparent"flexDir="column"wd="100%"onSubmit={(e)=>{handlerSubmit(e)}}>
+                <Div bg="transparent"wd="100%"flexDir="column">
+                <P pd="0"wd="88%"hg="1.5rem"jfCont="flex-start"fSize=".75rem"fWeight="bold"bg="transparent"alItems="flex-start">{errors.email!== ""? errors.email :""}</P>
+                    <Label wd="90%"jfCont="flex-start"color={errors.email?"red":"#333"}pd="0"bg="transparent">
+                        <P br="0"letterSp=".05rem"fSize=".9rem"hg="1.2rem"pd="0 .5rem 0 .5rem"bg="transparent"brB={errors.email?"2px solid red":"2px solid #333"}>E-mail</P>
+                    </Label> 
+                    <input className={errors.email?s.inputFormLoginDanger:s.inputFormLogin}name="email"onChange={(e)=>{handlerChange(e)}}type="text" />
+
+                </Div>
+                <Div bg="transparent"pd="5px"wd="100%"flexDir="column">
+                    <P pd="0"wd="88%"minHg="3.5rem"jfCont="flex-start"fSize=".75rem"fWeight="bold"bg="transparent"mb="rem"alItems="flex-start">{errors.password!== ""? errors.password :""}</P>
+                    <P pd="0"wd="88%"hg="1.3rem"jfCont="flex-start"fSize=".75rem"fWeight="bold"bg="transparent"alItems="flex-start">{errors.status!== ""? errors.status : ""}</P>
+                    <Label wd="90%"jfCont="flex-start"color={errors.password?"red":"#333"}pd="0"bg="transparent">
+                        <P br="0"letterSp=".05rem"fSize=".9rem"hg="1.2rem"pd="0 .5rem 0 .5rem"bg="transparent"brB={errors.password?"2px solid red":"2px solid #333"}>Contraseña</P>
+                    </Label> 
+                    <input className={errors.password?s.inputFormLoginDanger:s.inputFormLogin}name="password"onChange={(e)=>{handlerChange(e)}}type="password"/>
+                </Div>
+                <Div>
+                    <Button mt="0.5rem"type="submit"bg="rgb(240, 147, 186, 0.75)"_hovCol="#333"_hovBSh="3px 3px .2rem .01rem rgb(0,0,0,0.2)"wd="100%"pd="0 5rem 0 5rem">Ingresar</Button>
+                </Div>
+            </Form>
+            <br />
+            <Div flexDir="column">
+                    <P cursor="pointer"fSize=".85rem"_hovCol="rgb(45, 45, 209)"_hovBg="rgb(0, 0, 0, 0.25)"pd="0 1rem 0 1rem"bg="transparent"onClick={()=>navigate("/createAccount")}>Si no tienes cuenta, creala aquí</P>
+                    <P cursor="pointer"fSize=".85rem"_hovCol="rgb(45, 45, 209)"_hovBg="rgb(0, 0, 0, 0.25)"pd="0 1rem 0 1rem"bg="transparent"onClick={()=>navigate("/forgotPassword")}>¿Olvidaste tu contraseña?</P>
+            </Div>
+        </Div>
     )
     : (
-        <div>
-            <h4>USUARIO LOGEADO</h4>
-            <button onClick={(e)=>{handlerCloseSesion(e)}}>Cerrar sesión</button>
-        </div>
+        <Div flexDir="column"bg="#b691b67a"blur="blur(3px)"jfCont="space-around"wd="20rem"hg="30rem"pd=".5rem"mr="4%"br="1.4rem"bd="#eeeeee">
+            <Div flexDir="column">
+                <P fnFamily="fantasy"letterSp=".05rem"
+                    fSize="2rem"color="rgba(195, 120, 212, 1)"textSh="#33333370">
+                        Sesion Iniciada
+                </P>
+                <P 
+                    fnFamily="fantasy"letterSp=".05rem"
+                    fSize="1.5rem"color="#333"textSh="#33333370"
+                    > {loggedUser.name} {loggedUser.surname}
+                </P>
+            </Div>
+            <Div flexDir="column">
+                <Img src={loggedUser.img?loggedUser.img:"https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png"}/>
+                <P fSize="1.1rem">{loggedUser.email}</P>
+            </Div>
+            <Button pd=".2rem 1.2rem .2rem 1.2rem"bg="rgb(0,0,0,0.45)"fSize="1rem"onClick={handlerCloseSesion}>
+                Cerrar sesión
+            </Button>
+        </Div>
     )
 }

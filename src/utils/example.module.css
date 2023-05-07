@@ -193,8 +193,8 @@ h1 {
     box-shadow: 0.05rem 0.05rem 0.6rem 0rem #ffffff8f
 }
 .color {
-    color: #252525d7;
-    background: rgb(255, 190, 70)
+    color: rgb(240, 147, 186);
+    background: #b691b67a
 }
 .divGradient {
     display: flex;
@@ -206,4 +206,33 @@ h1 {
     background: #ddc6da7e;
 }
 .containerSideBar {
+}
+.inputFormLogin {
+    background-color: transparent;
+    width: 90%;
+    height: 2.2rem;
+    border-bottom: 2px solid #333;
+    padding: 0 .2rem 0 .2rem;
+    outline: none;
+    -webkit-text-fill-color: #333;
+    -webkit-background-color: #333;
+    font-family: sans-serif;
+    /* -webkit-autofill:hover,
+    -webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    } */
+}
+
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(240, 147, 186, 0.85) inset;
+} */
+.inputFormLoginDanger {
+    background-color: transparent;
+    width: 90%;
+    height: 2.2rem;
+    border-bottom: 2px solid red;
+    padding: 0 .2rem 0 .2rem;  
+    outline: none;
 }

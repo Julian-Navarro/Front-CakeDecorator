@@ -2,20 +2,18 @@ import React from "react";
 import FormLogin from "../Login/FormLogin";
 import { Link } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
-
+import { Div, Button, P } from "../../utils/StyledComponents/StyledComponents";
+import s from "./LandingPage.module.css"
 export default function LandingPage ({handlerSetUserFlagApp}) {
 
     return (
-        <div className="containerLandingPage">
-            <Navbar/>
-            <div className="title">
-                <h1>Bienvenidos al Mundo Dulce De Marite!</h1>
+        <Div flexDir="column"wd="100%"minHg="100vh"jfCont="flex-start">
+            <div className={s.containerBackground}>
+                <Navbar/>
+                <Div jfCont="flex-end">
+                    <FormLogin handlerSetUserFlagApp={handlerSetUserFlagApp}/>
+                </Div>
             </div>
-            <FormLogin handlerSetUserFlagApp={handlerSetUserFlagApp}/>
-            <Link to="/createAccount"><span>Si no tienes cuenta, creala aquí</span></Link>
-            <br />
-            <Link to="/forgotPassword"><span>¿Olvidaste tu contraseña?</span></Link>
-
-        </div>
+        </Div>
     )
 };
