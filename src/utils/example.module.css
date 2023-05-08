@@ -188,10 +188,10 @@ h1 {
 
 /* ! ↓↓↓↓↓↓↓↓     PARA EL ARCHIVO LEFT SIDE BAR     ↓↓↓↓↓↓↓↓ */
 
-.icons:hover {
-    background-color: #84b6f4;
+/* .icons:hover {
+    background: #252525;
     box-shadow: 0.05rem 0.05rem 0.6rem 0rem #ffffff8f
-}
+} */
 .color {
     color: rgb(240, 147, 186);
     background: #b691b67a
@@ -202,7 +202,7 @@ h1 {
     justify-content: flex-start;
     height: 100%;
     width: 100%;
-    background: radial-gradient(circle at -70%,#eee 20%, #c0dbff 50%, #eee 75%, #a0c9ff 100%);
+    background: radial-gradient(circle at 20% 20%, #f5d7df 1%, #f8b5c5 100%);
     /* background: #ddc6da7e; */
 }
 
