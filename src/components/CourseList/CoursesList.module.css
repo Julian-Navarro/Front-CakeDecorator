@@ -1,0 +1,22 @@
+.divGradientOpen {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    height: 100vh;
+    width: 14rem;
+    background: #333;
+    border-radius: 0 .5rem 0 0;
+    transition: .3s;
+}
+.divGradientClose {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    height: 100vh;
+    width: 3.2rem;
+    background: #333;
+    border-radius: 0 .5rem 0 0;
+    transition: .3s;
+}

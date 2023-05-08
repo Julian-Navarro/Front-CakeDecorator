@@ -202,9 +202,10 @@ h1 {
     justify-content: flex-start;
     height: 100%;
     width: 100%;
-    background: radial-gradient(circle at -70%,#333 60%, #333 50%, #3f3f3f 75%, #333 100%);
-    background: #ddc6da7e;
+    background: radial-gradient(circle at -70%,#eee 20%, #c0dbff 50%, #eee 75%, #a0c9ff 100%);
+    /* background: #ddc6da7e; */
 }
+
 .containerSideBar {
 }
 .inputFormLogin {
@@ -236,3 +237,4 @@ input:-webkit-autofill:focus {
     padding: 0 .2rem 0 .2rem;  
     outline: none;
 }
+
