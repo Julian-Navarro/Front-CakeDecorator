@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { Div, P, Ul, Li, Button, Img } from "../../../utils/StyledComponents/StyledComponents"
-import { HamburgerIcon, CloseIcon, ArrowRightIcon, ArrowLeftIcon, DragHandleIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, ArrowRightIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import { IconButton, filter } from "@chakra-ui/react"
+import { HiMenu } from "react-icons/hi"
 import { useEffect } from "react";
 import axios from "axios";
 import { HOST } from "../../../utils"
@@ -46,7 +47,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
           bg="red" flexDir="column"wd="100%"hg="100%"jfCont="flex-start">
             <Div flexDir="column"mt="1rem">
                 <IconButton 
-                    icon={isOpen ? <ArrowLeftIcon color="#333"/> : <DragHandleIcon color="#333"/>}
+                    icon={isOpen ? <ArrowLeftIcon color="#333"/> : <HiMenu color="#333"/>}
                     onClick={()=>isOpen ? setIsOpen(false) : setIsOpen(true)}
                     w="2.4rem"
                     h="2.4rem"
@@ -56,7 +57,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
                     marginLeft={".3rem"}
                     className={s.icons}  
                     marginBottom={".3rem"}
-                    fontSize={"1.5rem"}
+                    fontSize={"1.6rem"}
                     bg={"lightgray"}
                     />  
                 <IconButton 
