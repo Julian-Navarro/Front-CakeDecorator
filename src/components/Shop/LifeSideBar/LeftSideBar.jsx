@@ -35,7 +35,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
         <Div 
             wd={isOpen?"14rem":"3.2rem"}
             hg="100vh" bg="transparent"overflow="hidden"
-            pos="absolute"posTop="0rem"flexDir="column" br="0 12px 0 0"pd="0rem 0rem 0rem 0rem"
+            pos="absolute"posTop="0rem"flexDir="column" br="0 0.5rem 0 0"pd="0rem 0rem 0rem 0rem"
             boxSh=".1rem .1rem .4rem .2rem #252525"
             jfCont="flex-start"
             >
@@ -45,7 +45,7 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
             <Div flexDir="column"mt="1rem">
                 <Button 
                     onClick={()=>isOpen ? setIsOpen(false) : setIsOpen(true)}
-                    wd="2.4rem"
+                    wd="2.5rem"
                     hg="2.4rem"
                     br="100%"
                     cursor={"pointer"}
@@ -62,8 +62,8 @@ export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filt
                 </Button>  
                 <Button 
                     onClick={()=>navigate("/shop/cart")}
-                    ww="2.4rem"
-                    hh="2.4rem"
+                    wd="2.5rem"
+                    hg="2.4rem"
                     fSize={"1.6rem"}
                     br="100%"
                     cursor={"pointer"}
