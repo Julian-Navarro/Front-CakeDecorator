@@ -309,7 +309,7 @@ export default function Shop() {
           />
         </Div>
         : <P wd="100%">No se encontraron productos</P>
-        }
+      }
       </Div>
       <br/>
       <br/>

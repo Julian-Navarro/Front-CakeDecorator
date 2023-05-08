@@ -222,6 +222,7 @@ export const Div = styled.div`
     box-shadow: ${({ _hovBSh }) => _hovBSh};
     display: ${({ _hovDis }) => _hovDis};
     height: ${({ _hovHg }) => _hovHg};
+    color: ${({ _hovColIm }) => _hovColIm} !important;
     Img {
       transition: 0.3s;
       // height: ${({ _hovImgHg }) => _hovImgHg};
