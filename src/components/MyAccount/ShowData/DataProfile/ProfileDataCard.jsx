@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export default function ShowProfileData() {//HECHO CON REDUX STORE
   const dispatch = useDispatch()
   const userStorage = JSON.parse(localStorage.getItem("loggedUser"));
+  console.log(userStorage)
   const loggedUser = useSelector((state) => state.user);
   useEffect(() => {
     if(!loggedUser["id"]){
@@ -25,8 +26,8 @@ export default function ShowProfileData() {//HECHO CON REDUX STORE
           {loggedUser.img ? (
             <img
               src={loggedUser.img}
-              height={"40px"}
-              width={"40px"}
+              height={"80px"}
+              width={"80px"}
               alt="Sin imagen"
             />
           ) : (
