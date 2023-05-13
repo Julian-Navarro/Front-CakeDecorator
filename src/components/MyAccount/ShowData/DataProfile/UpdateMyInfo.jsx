@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { HOST } from "../../../../utils";
 import UploadImage from "../../../UploadImage";
+import {
+  Image,
+} from "cloudinary-react";
 
 export default function UpdateMyInfo() {
   const dispatch = useDispatch();
@@ -38,7 +41,7 @@ export default function UpdateMyInfo() {
   async function handlerSubmit(e) {
     e.preventDefault();
     const userId = userInfo.id;
-    await axios.put(`${HOST}/users/updateMyAccount?id=${userId}`, input);
+    await axios.put(`${HOST}/users/updateMyAccountInfo?id=${userId}`, input);
     alert("Actualizado de forma correcta");
     navigate("/myAccount");
   }
@@ -95,23 +98,14 @@ export default function UpdateMyInfo() {
         <label>Avatar: </label>
           <UploadImage setImg={setImg}/>
         <br />
-        {userInfo.img ? (
-          <img
-            src={userInfo.img}
-            height={"30px"}
-            width={"30px"}
-            alt="img not found"
-          />
-        ) : (
-          <div>
-            <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-              height={"30px"}
-              width={"30px"}
-              alt="img not found"
-            />
-          </div>
-        )}
+        {userInfo.img && (
+        <Image
+          cloudName="dcq2glrhg"
+          publicId={img}
+          width="300"
+          crop="scale"
+        />
+      )}
         <br />
         <button type="submit">Guardar</button>
         <Link to="/myAccount">
