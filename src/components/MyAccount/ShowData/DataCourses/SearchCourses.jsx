@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { GrPowerReset } from "react-icons/gr";
+import { FcSearch } from "react-icons/fc";
 
 export default function SearchCourses({ getCoursesByName, resetCourses }) {
   const [input, setInput] = useState("");
@@ -27,15 +29,11 @@ export default function SearchCourses({ getCoursesByName, resetCourses }) {
         value={input}
       />
       <button onClick={() => [getCoursesByName(input), cleanInput()]}>
-        🔎
+        <FcSearch size={20}/>
       </button>
+      <br />
       <button onClick={() => [resetCourses(), cleanInput()]}>
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/4140/4140789.png"
-          alt="sin imagen"
-          height={"17px"}
-          width={"17px"}
-        />
+      <GrPowerReset size={20}/>
       </button>
     </div>
   );
