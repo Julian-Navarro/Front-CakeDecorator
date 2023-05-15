@@ -12,6 +12,7 @@ export default function Navbar () {
     const lightblue = "#84b6f4"
     const pink = "#ddc6da"
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    
     function handlerNavigateMyAccount(e) {
         e.preventDefault();
         console.log("HOla");
