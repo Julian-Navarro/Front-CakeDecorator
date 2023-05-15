@@ -3,7 +3,7 @@ import CourseListCard from "./CourseListCard";
 import { Div } from "../../utils/StyledComponents/StyledComponents";
 export default function CourseListCards({courses, handlerEditCourse, path}){
     return (
-        <Div flWr="wrap">
+        <Div flWr="wrap"mb="2rem">
             {
             courses.map((c) => <CourseListCard 
                 key={c.id} 
@@ -19,7 +19,6 @@ export default function CourseListCards({courses, handlerEditCourse, path}){
                 category={c.category} 
                 videos={c.videos}/> )
             }
-
         </Div>
     )
 }

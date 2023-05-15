@@ -1,19 +1,16 @@
 .container {
     background-color: aliceblue;
-    /* width: 320px; */
     display: flex;
     flex-direction: column;
-    /* margin: .2rem .2rem .2rem .2rem; */
     border-radius: 12px;
     width: 300px;
     height: 320px;
     margin: .8rem .8rem 0rem .8rem;
     box-shadow: .2rem .2rem 1rem .2rem gray;
     justify-content: space-between;
-    /* align-items: space-between; */
     transition: .8s;
     z-index: 1;
-    cursor: default
+    cursor: default;
 }
 .container:hover {
     background-color: #252525;
@@ -21,9 +18,7 @@
     transition: .8s;
 }
 .divBottom li {
-    /* box-shadow: .1rem .1rem 1rem .2rem gray; */
     list-style: none;
-    /* background-color: blue; */
     width: 35%;
     display: flex;
     justify-content: flex-start;
@@ -48,21 +43,14 @@
 }
 
 .card {
-    /* background-color: red; */
     width: 300px;
     height: 320px;
     border-radius: 12px 12px 0px 0px;
-    /* border: 8px solid #fff; */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    /* box-shadow: .1rem .1rem 1rem .2rem gray; */
-    /* margin-bottom: .8rem; */
-    /* margin: .8rem .8rem 0rem .8rem; */
-    /* padding: 30px; */
-    /* box-sizing: border-box; */
 }
 .card h1 {
     font-size: 1rem;
@@ -73,7 +61,6 @@
     transition: .8s ease-in-out;
 }
 h1 {
-    /* color: red */
     display: flex;
     flex-wrap: wrap;
 }
@@ -152,7 +139,6 @@ h1 {
     text-align: center;
 }
 .divBtns {
-    /* border-radius: 20px; */
     display: flex;
     width: 50%;
     justify-content: space-between;
@@ -188,10 +174,7 @@ h1 {
 
 /* ! ↓↓↓↓↓↓↓↓     PARA EL ARCHIVO LEFT SIDE BAR     ↓↓↓↓↓↓↓↓ */
 
-/* .icons:hover {
-    background: #252525;
-    box-shadow: 0.05rem 0.05rem 0.6rem 0rem #ffffff8f
-} */
+
 .color {
     color: rgb(240, 147, 186);
     background: #b691b67a
@@ -203,38 +186,5 @@ h1 {
     height: 100%;
     width: 100%;
     background: radial-gradient(circle at 20% 20%, #f5d7df 1%, #f8b5c5 100%);
-    /* background: #ddc6da7e; */
-}
-
-.containerSideBar {
-}
-.inputFormLogin {
-    background-color: transparent;
-    width: 90%;
-    height: 2.2rem;
-    border-bottom: 2px solid #333;
-    padding: 0 .2rem 0 .2rem;
-    outline: none;
-    -webkit-text-fill-color: #333;
-    -webkit-background-color: #333;
-    font-family: sans-serif;
-    /* -webkit-autofill:hover,
-    -webkit-autofill:focus {
-            -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-    } */
-}
-
-/* input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px rgb(240, 147, 186, 0.85) inset;
-} */
-.inputFormLoginDanger {
-    background-color: transparent;
-    width: 90%;
-    height: 2.2rem;
-    border-bottom: 2px solid red;
-    padding: 0 .2rem 0 .2rem;  
-    outline: none;
 }
 

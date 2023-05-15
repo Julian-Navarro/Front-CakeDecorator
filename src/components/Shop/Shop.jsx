@@ -2,12 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
-import Navbar from "../Navbar/Navbar";
-import { Div, Button, H1, Img, P } from "../../utils/StyledComponents/StyledComponents"; 
+import { Div, P } from "../../utils/StyledComponents/StyledComponents"; 
 import LeftSideBar from "./LifeSideBar/LeftSideBar";
-import { ShopNavbar } from "./ShopNavbar";
-import { IconButton } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, ArrowUpIcon } from "@chakra-ui/icons";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Navbar/Footer";
 
 export default function Shop() {
   const [isOpen, setIsOpen] = useState(false);
@@ -291,10 +289,13 @@ export default function Shop() {
   return (
     <Div flexDir="column" wd="100%"bg="transparent">
       <Navbar/>
-      <Div wd="100%"bg="transparent"
+      <Div>
+
+
+      <Div minHg="100vh"wd="100%"bg="transparent"
       jfCont="space-between"
       >
-        <Div mr="2rem"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}posTop="0px"mt="0px"alItems="flex-start">
+        <Div mr="3rem"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}posTop="0px"mt="0px"alItems="flex-start">
           <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/>
         </Div>
         { 
@@ -308,13 +309,13 @@ export default function Shop() {
           products={products}
           />
         </Div>
-        : <P wd="100%">No se encontraron productos</P>
+        : <P wd="100%">Cargando Productos</P>
       }
       </Div>
+      </Div>
       <br/>
-      <br/>
-      <br/>
-      <br/>
+      <Footer/>
+
     </Div>
   );
 }
