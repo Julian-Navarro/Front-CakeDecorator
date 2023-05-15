@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { GrPowerReset } from "react-icons/gr";
+import { FcSearch } from "react-icons/fc";
 
 export default function SearchBarPurchase({ getProductByName, resetProduct }) {
   const [input, setInput] = useState("");
@@ -24,15 +26,12 @@ export default function SearchBarPurchase({ getProductByName, resetProduct }) {
         placeholder="Buscar por nombre"
         onChange={(e) => handlerInputChange(e)}
       />
-      <button onClick={() => getProductByName(input)}>🔎</button>
+      <button onClick={() => getProductByName(input)}>
+        <FcSearch size={20} />
+      </button>
       <br />
       <button onClick={() => [resetProduct(), cleanInput()]}>
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/4140/4140789.png"
-          alt="Sin imagen"
-          height={"17"}
-          width={"17"}
-        />
+        <GrPowerReset />
       </button>
     </div>
   );
