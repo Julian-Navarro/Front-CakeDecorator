@@ -7,7 +7,7 @@ import Navbar from "../Navbar/Navbar";
 import { Button, Div, P} from "../../utils/StyledComponents/StyledComponents";
 import { HiMenu } from "react-icons/hi" 
 import s from "./CoursesList.module.css"
-
+import Footer from "../Navbar/Footer";
 export default function CourseLists ({ path, handlerEditCourse, componentCourseListFlag }) {
     const dispatch = useDispatch()
     const courses = useSelector((state) => state.courses)
@@ -29,17 +29,18 @@ export default function CourseLists ({ path, handlerEditCourse, componentCourseL
                         </IconButton>
                     </Div>
 
-                    <Div flexDir="column"pos="relative"bg="greenyellow"zInd="2"br="0 .5rem 0 0"hg="100%"wd="14rem"posLeft={isOpen?"0":"-14rem"}>
+                    <Div flexDir="column"pos="relative"zInd="2"br="0 .5rem 0 0"hg="100%"wd="14rem"posLeft={isOpen?"0":"-14rem"}>
                         <P wd="100%" jfCont="flex-start">Cosas de adentro</P>
                         <P wd="100%" jfCont="flex-start">Cosas de adentro</P>
                         <P wd="100%" jfCont="flex-start">Cosas de adentro</P>
                         <P wd="100%" jfCont="flex-start">Cosas de adentro</P>
                     </Div>
                 </div>
-                <Div ml="1rem">
+                <Div ml="1rem"mt="1rem">
                     <CourseListCards path={path} handlerEditCourse={handlerEditCourse} courses={courses}/>
                 </Div>
             </Div>
+            <Footer/>
         </Div>
     )
 }

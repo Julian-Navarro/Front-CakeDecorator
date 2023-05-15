@@ -24,9 +24,9 @@ export default function DashboardAdmin () {
     return (
         <div>
             <Navbar/>
-            <Div bg="green" alItems="flex-start">
+            <Div alItems="flex-start">
 
-              <Div flexDir="column"jfCont="slex-start"wd="20%"hg="100vh"bg="#dc4a61"pos="sticky"posTop="0px">
+              <Div flexDir="column"jfCont="slex-start"br="0 .5rem 0 0"wd="20%"hg="100vh"bg="#dc4a61"pos="sticky"posTop="0px">
                 <br />
                 <Div bg="#dc4a61"wd="95%"bd="#fff">
                     <RiDatabaseLine fontSize="3rem"color="#fff"/>

@@ -82,10 +82,13 @@ export const P = styled.p`
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   border-right: ${({ bdR }) => bdR};
+  border-left: ${({ bdL }) => bdL};
   border-bottom: ${({ brB }) => brB};
+  border-top: ${({ brT }) => brT};
   border-radius: ${({ br }) => br || "8px"};
   border: ${({ bd }) => bd};
   align-items: ${({ alItems }) => alItems || "center"};
+  text-align: ${({ txAlign }) => txAlign || "center"};
   align-self: ${({ alSelf }) => alSelf || "none"};
   color: ${({ color }) => color};
   margin-bottom: ${({ mb }) => mb || "none"};
@@ -95,7 +98,7 @@ export const P = styled.p`
   letter-spacing: ${({ letterSp }) => letterSp || "0px"};
   white-space: ${({ wSp }) => wSp || "pre-line"};
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
-  font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  font-family: ${({ fnFamily }) => fnFamily || "Roboto"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
   cursor: ${({ cursor }) => cursor};
@@ -190,6 +193,7 @@ export const Div = styled.div`
   border-right: ${({ bdR }) => bdR};
   border-left: ${({ bdL }) => bdL};
   border-bottom: ${({ bdB }) => bdB};
+  border-top: ${({ bdT }) => bdT};
   display: ${({ display }) => display || "flex"};
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
@@ -203,6 +207,12 @@ export const Div = styled.div`
   margin-right: ${({ mr }) => mr || "none"};
   box-shadow: ${({ boxSh }) => boxSh || "none"};
   background-image: url(${({ img }) => img || "none"});
+  clip-path: polygon(${({ clPath }) => clPath || "none"});
+  transform: rotateX(${({ rotX }) => rotX || "none"});
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+
   transition: ${({ trans }) => trans || ".4s ease"};
   position: ${({ pos }) => pos || "static"};
   top: ${({ posTop }) => posTop};
@@ -210,8 +220,6 @@ export const Div = styled.div`
   right: ${({ posRight }) => posRight};
   overflow: ${({ overflow }) => overflow};
   z-index: ${({ zInd }) => zInd};
-  background-repeat: no-repeat;
-  background-size: contain;
   cursor: ${({ cursor }) => cursor || "default"};
   backdrop-filter: ${({ blur }) => blur};
   overflow: ${({ ovFlow }) => ovFlow};
@@ -230,6 +238,7 @@ export const Div = styled.div`
     Div {
       display: ${({ _hovDivDis }) => _hovDivDis};
       height: ${({ _hovDivHg }) => _hovDivHg};
+      left: ${({ _hovPosLeftDiv }) => _hovPosLeftDiv};
     }
     Ul {
       display: ${({ _hovUlDis }) => _hovUlDis};
@@ -323,6 +332,23 @@ export const H1 = styled.h1`
   font-family: ${({ fnFamily }) => fnFamily || "cursive"};
   align-self: ${({ alSelf }) => alSelf || "none"};
 `;
+export const H2 = styled.h2`
+  background: ${({ bg }) => bg || "#fff"};
+  color: ${({ color }) => color || "#161616"};
+  border: 2px solid ${({ bd }) => bd || "none"};
+  border-radius: ${({ br }) => br || "8px"};
+  font-size: ${({ fSize }) => fSize || "30px"};
+  padding: ${({ pd }) => pd || "8px"};
+  display: ${({ display }) => display || "flex"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  justify-content: ${({ jfCont }) => jfCont || "center"};
+  align-items: ${({ alItems }) => alItems || "center"};
+  height: ${({ hg }) => hg || "auto"};
+  width: ${({ wd }) => wd || "auto"};
+  font-family: ${({ fnFamily }) => fnFamily || "Roboto"};
+  font-weight: ${({ fWeight }) => fWeight || "300"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
+`;
 export const Img = styled.img`
   height: ${({ hg }) => hg || "8rem"};
   min-height: ${({ minHg }) => minHg};
@@ -339,6 +365,7 @@ export const Img = styled.img`
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
   align-self: ${({ alSelf }) => alSelf || "none"};
+  box-shadow: ${({ boxSh }) => boxSh || "none"};
   object-fit: cover;
 `;
 export const Ul = styled.ul`

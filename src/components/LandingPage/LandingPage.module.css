@@ -12,7 +12,8 @@
 .containerBackground {
     width: 100%;
     height: 100vh;
-    background: url(https://www.freewebheaders.com/wp-content/gallery/artistic-abstract-hero-headers/colorful-watercolor-spots-full-screen-background-1920x1080.jpg);/*! TOTALMENTE OPCIONAL LA FOTO PAPÁ */
+    color: rgb(17, 136, 240);
+    /* background: url(https://www.freewebheaders.com/wp-content/gallery/artistic-abstract-hero-headers/colorful-watercolor-spots-full-screen-background-1920x1080.jpg);! TOTALMENTE OPCIONAL LA FOTO PAPÁ */
      
     /* background: url(https://thumbs.dreamstime.com/z/soft-rainbow-color-background-design-blades-grass-light-light-38528184.jpg); */
     background-repeat: no-repeat;
