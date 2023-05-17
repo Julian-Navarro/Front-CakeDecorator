@@ -358,6 +358,7 @@ export const Img = styled.img`
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
+  border: ${({ bd }) => bd};
   border-radius: ${({ br }) => br || "none"};
   padding: ${({ pd }) => pd || "none"};
   margin-bottom: ${({ mb }) => mb || "none"};
