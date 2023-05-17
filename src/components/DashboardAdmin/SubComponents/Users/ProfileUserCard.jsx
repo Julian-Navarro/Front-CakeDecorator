@@ -6,12 +6,11 @@ import { GiMagnifyingGlass } from "react-icons/gi"
 import { ImBlocked } from "react-icons/im"
 import { TbLockOpen } from "react-icons/tb"
 import { IoIosWarning } from "react-icons/io"
-import { IconButton } from "@chakra-ui/react"
 import { MdContentCopy } from "react-icons/md"
 import { FaPhoneAlt } from "react-icons/fa"
 
 
-export default function ProfileUserCard ({ user, handlerBlockOrUnlockUser, handlerViewUser }) {
+export default function ProfileUserCard ({ user, handlerBlockOrUnlockUser }) {
 const [view, setView] = useState(false)
 function copiarAlPortapapeles(texto) {
   const inputTemp = document.createElement("input");
@@ -22,7 +21,6 @@ function copiarAlPortapapeles(texto) {
   document.body.removeChild(inputTemp);
 }
     useEffect(()=>{
-        console.log("USER: ",user);
     },[user])
     return (
         <Div boxSh={view?"6px 6px .4rem .3rem rgb(0,0,0,0.5), inset 2px 2px 1rem .1rem #afafaf":"2px 2px .3rem .1rem rgb(0,0,0,0.5), inset 2px 2px 1rem .1rem #afafaf"}
@@ -69,7 +67,7 @@ function copiarAlPortapapeles(texto) {
 
 
           <Div wd={view?"4rem":"6.5rem"}hg={view?"8rem":"3.8rem"}>
-            <Button pos="relative"posTop={view?"1.6rem":"0"}posRight={view?"-1.5rem":".2rem"}fWeight="bold"boxSh="1px 1px .1rem .05rem gray"wd="2.5rem"hg="2.5rem"bg="#333"br="2rem"fSize=".7rem"pd="0 .5rem 0 .5rem" onClick={(e)=>{handlerBlockOrUnlockUser(e, user)}}>
+            <Button pos="relative"posTop={view?"1.6rem":"0"}posRight={view?"-1rem":".2rem"}fWeight="bold"boxSh="1px 1px .1rem .05rem gray"wd="2.5rem"hg="2.5rem"bg="#333"br="2rem"fSize=".7rem"pd="0 .5rem 0 .5rem" onClick={(e)=>{handlerBlockOrUnlockUser(e, user)}}>
               { user.status === "active" 
               ? <ImBlocked fontSize={"1.8rem"}color="#dc4a61"/> 
               :user.status ==="inactive"

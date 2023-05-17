@@ -16,7 +16,6 @@ import DashboardStats from "../SubComponents/DashboardStats"
 export default function DashboardAdmin () {
     const [render, setRender] = useState("dashboard")
     function handlerChangeRender(value) {
-        console.log("EJECUTANDO HANDLER!!!!!!!!!!!!!!!!!!!");
         setRender(value)
     }
 
