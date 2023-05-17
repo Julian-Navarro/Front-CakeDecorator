@@ -23,15 +23,17 @@ export const Input = styled.input`
   padding: ${({ pd }) => pd};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
+  margin-right: ${({ mr }) => mr};
   display: ${({ display }) => display || "flex"};
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "center"};
   align-items: ${({ alItems }) => alItems || "center"};
   color: ${({ color }) => color || "black"};
   border: 2px solid ${({ bd }) => bd || "black"};
+  box-shadow: ${({ boxSh }) => boxSh || "none"};
   border-radius: ${({ br }) => br || "8px"};
   text-align: ${({ txAlign }) => txAlign || "center"};
-  font-family: ${({ fnFamily }) => fnFamily || "cursive"};
+  font-family: ${({ fnFamily }) => fnFamily || "Roboto"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
 `;
@@ -150,6 +152,8 @@ export const Button = styled.button`
     box-shadow: ${({ _hovBSh }) => _hovBSh};
     text-shadow: ${({ txtSh }) =>
       `1px 1px 1px ${txtSh}, -2px -2px 4px ${txtSh}`};
+    top: ${({ _hovPosTop }) => _hovPosTop};
+    left: ${({ _hovPosLeft }) => _hovPosLeft};
   }
 `;
 export const Button2 = styled.button`
