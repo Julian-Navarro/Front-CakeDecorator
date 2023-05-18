@@ -15,6 +15,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
       type: "",
       videos: [1],//! El 1 es para que tenga algo y la validacion del formulario no se queje
     });
+    console.log(input)
     const [errors, setErrors] = useState({
       category: "",
       description: "",
