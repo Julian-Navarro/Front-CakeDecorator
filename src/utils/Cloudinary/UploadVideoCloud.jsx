@@ -13,13 +13,13 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
   const apiSecret = process.env.REACT_APP_CLOUDYNARY_API_SECRET;
   const videoName = `${input.title}`;
   const nameVideoUpdated = videoName.replace(/ /g, "_").toLowerCase();
-  const type_class = `${input.type}`.toLowerCase();
-  const category_class = `${input.category}`.toLowerCase();
+  const folders = `${input.type}`.toLowerCase()+ "/" + input.category.toLowerCase();
+  // const category_class = `${input.category}`.toLowerCase();
   const uploadPresetName = "signed_video_preset";
 
   const generateSignature = () => {
     const timestamp = Math.floor(Date.now() / 1000);
-    let paramsToSign = `folder=${type_class}&public_id=${nameVideoUpdated}&timestamp=${timestamp}&upload_preset=${uploadPresetName}${apiSecret}`;
+    let paramsToSign = `folder=${folders}&public_id=${nameVideoUpdated}&timestamp=${timestamp}&upload_preset=${uploadPresetName}${apiSecret}`;
     const signature = sha1(paramsToSign).toString();
 
     return {
@@ -35,12 +35,12 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("folder", type_class);
-    formData.append("subfolder", category_class);
+    formData.append("folder", folders);
     formData.append("public_id", nameVideoUpdated);
     formData.append("timestamp", timestamp);
     formData.append("signature", signature);
     formData.append("api_key", apiKey);
+    // formData.append("subfolder", category_class);
 
 
     let uploadVideoUrl = `https://api.cloudinary.com/v1_1/${cloudName}/video/upload?upload_preset=${uploadPresetName}&timestamp=${timestamp}&signature=${signature}&api_key=${apiKey}`;
@@ -54,8 +54,12 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
         console.log("DATA ", data);
         setIsUploading(false);
         const { secure_url } = data;
-        console.log("URL ", secure_url);
+        const arrayUrlSplit = secure_url.split()
         setVideoUrl(secure_url);
+        setInput({
+          ...input,
+          videos: arrayUrlSplit
+        })
       })
       .catch((error) => {
         console.error("ERR ", error);
