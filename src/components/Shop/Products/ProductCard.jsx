@@ -4,6 +4,8 @@ import { HOST } from "../../../utils";
 import s from "../../../utils/example.module.css"
 import { IconButton } from "@chakra-ui/react"
 import { MdOutlineAddShoppingCart, MdAddToPhotos, MdDelete, MdOutlineDriveFileRenameOutline } from "react-icons/md"
+import { AiFillSetting } from "react-icons/ai"
+
 import { Button, Div, Input } from "../../../utils/StyledComponents/StyledComponents";
 export default function ProductCard ({ handlerSetCart,handlerSetComponentProductListFlag, handlerEditProduct, path, brand, product, name,categories, description, id, img, price, stock}) {
 const newName = name.length > 72 ? name.slice(0, 72)+"...": name
@@ -106,11 +108,12 @@ function handlerDeleteProduct (id) {
                             _hovBg="#fff"
                             bd="#252525"
                             _hovCol="#252525"
-                            wd="7em"
+                            wd="2.6rem"
+                            hg="2.6rem"
+                            br="2rem"
                             pd="0 5px 0 5px"
                             fSize="1.1em">
-                            Editar
-                            <MdOutlineDriveFileRenameOutline fontSize="1.2em"/>
+                            <AiFillSetting fontSize="1.8rem"/>
                         </Button>
                     </div>
 
@@ -121,12 +124,13 @@ function handlerDeleteProduct (id) {
                             _hovBg="#fff"
                             bd="#252525"
                             _hovCol="#252525"
-                            wd="7em"
+                            wd="2.6rem"
+                            hg="2.6rem"
+                            br="2rem"
                             pd="0 5px 0 5px"
                             fSize="1.1em"
                         >
-                            Eliminar
-                            <MdDelete fontSize="1.2em"/>
+                            <MdDelete fontSize="1.8rem"/>
                         </Button>
                     </div>
                   </div> }
