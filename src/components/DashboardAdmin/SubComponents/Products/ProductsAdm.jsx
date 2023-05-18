@@ -34,7 +34,7 @@ export default function ProductsAdm ({ path }) {
         if(product !== undefined) {
             setProductToEdit({...product})
             setCreateProductFlag(false)
-            window.scroll(0, 400)
+            // window.scroll(0, 100)
         } else {
             setProductToEdit(false)
             setCreateProductFlag(false)            
@@ -68,6 +68,7 @@ useEffect(()=>{
 useEffect(()=>{},[allProducts, products])
     return (
         <Div flexDir="column"bg="gray"pd="5px">
+          <Div bg="#dc4a61"mb="1rem"br=".5rem"hg="10rem"boxSh="2px 2px .4rem .1rem rgb(0,0,0,0.35), inset 0 0 2.5rem .4rem #cc4357">
             {
             path==="adm" 
             ? <Button onClick={(e)=>{handlerSetCreateProductFlag(e)}}>
@@ -77,27 +78,32 @@ useEffect(()=>{},[allProducts, products])
               </Button>
             : null
             }
-            {
-                productToEdit !== false
-                ? <FormProductPostAndEdit 
-                    handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} 
-                    update={true} 
-                    product={productToEdit} 
-                    handlerEditProduct={handlerEditProduct}/>
-                : null
-            }
-            {
-                //! CASO HAY QUE CREAR UN CURSO Y NO EDITARLO
-                createProductFlag === true
-                ? <FormProductPostAndEdit 
-                    handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} />
-                : null
-            }
             <Div>
                 <Input type="text" onChange={(e)=>handlerSetInput(e)}/>
                 <Button onClick={(e)=>handlerSearchProducts(e)}>Buscar</Button>
             </Div>
-                <Button onClick={()=>setProducts(allProducts)}>Todos los productos</Button>
+            <Button onClick={()=>setProducts(allProducts)}>Todos los productos</Button>
+          </Div>
+          <Div bg="rgb(0,0,0,0.35)"blur="blur(3px)"pd="10px"pos="sticky"posTop="0px"alSelf="flex-end"zInd="2"
+            wd={productToEdit || createProductFlag ?"100%":"10%"}hg={productToEdit || createProductFlag ?"100vh":"1rem"}>
+            <Div bg="red"hg="1rem"wd="100%">
+            {
+                productToEdit !== false
+                ? <FormProductPostAndEdit 
+                handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} 
+                update={true} 
+                product={productToEdit} 
+                handlerEditProduct={handlerEditProduct}/>
+                : null
+            }
+            {
+            createProductFlag === true
+            ? <FormProductPostAndEdit 
+            handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} />
+            : null
+            }
+            </Div>
+          </Div>
           <ProductCards
             products={products}
             path="adm" 

@@ -6,6 +6,8 @@ import { HOST } from "../../../../utils";
 import { Div, P, Button, Label, Input } from "../../../../utils/StyledComponents/StyledComponents";
 import ProfileUserCards from "./ProfileUserCards";
 import { RxMagnifyingGlass } from "react-icons/rx"
+import { IoMdRefresh } from "react-icons/io"
+
 
 export default function Users () {
   
@@ -15,7 +17,9 @@ export default function Users () {
   const [flag, setFlag] = useState(false)
   const [inputValue, setInputValue] = useState("")
   const [searchValue, setSearchValue] = useState({es:"email", en: "email"})
-
+  function enter(e) {
+    if(e.keyCode===13) handlerSearchValue()
+  } 
   function handlerSetFlag() {
     if(flag) {
       setFlag(false)
@@ -58,8 +62,7 @@ function handlerSetSearchValue (e) {
 }
 
 
-function handlerSearchValue(e) {
-  e.preventDefault();
+function handlerSearchValue() {
   console.log("Ejecutando Funcion");
   const newUsers = allUsers.filter((user) => user[searchValue.en].toLowerCase().includes(inputValue.toLowerCase()))
   console.log(newUsers);
@@ -79,35 +82,31 @@ useEffect(()=>{
 
     return (
         <Div flexDir="column"wd="100%"pd=".1rem .5rem .5rem .5rem"> 
-        <Div bg="#dc4a61"mb="1rem"br=".5rem"boxSh="2px 2px .4rem .1rem rgb(0,0,0,0.35), inset 0 0 2.5rem .4rem #cc4357">
+          <Div hg="10rem"bg="#dc4a61"mb="1rem"br=".5rem"boxSh="2px 2px .4rem .1rem rgb(0,0,0,0.35), inset 0 0 2.5rem .4rem #cc4357">
             <Div ml="1rem"mt="1rem"mb="1rem"flexDir="column"alItems="flex-start">
-              <Button mb=".3rem"pd=".3rem .5rem .3rem 1rem"br="2rem"wd="14rem"bg="#eee"color="#333"jfCont="flex-start"
-                boxSh="0 0 .2rem .1rem #333, inset 0 0 .8rem .2rem gray"pos="relative"_hovPosTop="-2px" _hovPosLeft="2px"
-                onClick={(e)=>{handlerSetSearchValue(e)}}
-                >Búsqueda por {searchValue.es}
-              </Button>
-              {/* <Label>{`Búsqueda por ${searchValue.es}: `}</Label> */}
+              <Div jfCont="flex-start"mb=".5rem">
+                <Button mr=".5rem"mb=".3rem"pd=".3rem .5rem .3rem 1rem"br="2rem"wd="14rem"bg="#eee"color="#333"jfCont="flex-start"
+                  boxSh="0 0 .2rem .1rem #333, inset 0 0 .8rem .2rem gray"pos="relative"_hovPosTop="-2px" _hovPosLeft="2px"
+                  onClick={(e)=>{handlerSetSearchValue(e)}}
+                  >Búsqueda por {searchValue.es}
+                </Button>
+                <Button pd="0"br="2rem"wd="2rem"hg="2rem"bg="#333"onClick={(e)=>{setUsers(allUsers)}}
+                  boxSh="0 0 .2rem .1rem rgb(0,0,0,0.35)">
+                  <IoMdRefresh fontSize={"1.6rem"}/>
+                </Button>
+              </Div>
               <Div wd="22rem"jfCont="flex-start">
-                <Input onChange={(e)=> {setInputValue(e.target.value)} } type="text" br="2rem"txAlign="left"pd="0 .4rem 0 .4rem"mr=".5rem"
+                <Input onChange={(e)=> {setInputValue(e.target.value)} } type="text" br="2rem"txAlign="left"pd="0 .4rem 0 .4rem"
+                mr=".5rem"onKeyUp={(e)=>enter(e)}
                 hg="2rem"wd="14rem"fontSize="1.1rem"boxSh="0 0 .2rem .1rem rgb(0,0,0,0.35)"/>
-                <Button pd=".3rem .5rem .3rem .5rem"br="2rem"wd="2rem"hg="2rem"bg="#333"onClick={(e)=>{handlerSearchValue(e)}}
+                <Button pd="0"br="2rem"wd="2rem"hg="2rem"bg="#333"onClick={(e)=>{handlerSearchValue(e)}}
                   boxSh="0 0 .2rem .1rem rgb(0,0,0,0.35)">
                   <RxMagnifyingGlass fontSize={"1.3rem"}/>
                 </Button>
               </Div>
             </Div>
-        </Div>
-            {/* {
-              allUsers.length > 0 ? users.map((user) => {
-                return (
-                  <ProfileUserCard user={user}handlerBlockOrUnlockUser={handlerBlockOrUnlockUser}/>
-                )
-              }) : <P>Cargando usuarios</P>
-            } */}
-            <ProfileUserCards users={users}/>
-            {/* {
-              users.length===0?<P fWeight="bold"fSize="1.6rem">No se encontraron usuarios</P>:null
-            } */}
+          </Div>
+          <ProfileUserCards users={users}handlerBlockOrUnlockUser={handlerBlockOrUnlockUser}/>
         </Div>
     )
 }

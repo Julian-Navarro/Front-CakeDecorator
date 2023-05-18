@@ -175,16 +175,19 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
     const colorImg = errors.img !== "" ? "#FF8282" : "black";
 
     return (
-        <Div flexDir="column" wd="100%" hg="34rem" mt="1rem" mb="2rem">
-        {
-        update 
-          ? <H1 fSize="2rem" bg="none">Editando {`${product.name}`}</H1>
-          : <H1 fSize="2rem" bg="none">Crea un nuevo producto</H1> 
-        }
-          <Form flexDir="row" bd="#9AEFFF" wd="80%" hg="100%" pd="0rem 0rem 1rem 0rem">
+        <Div flexDir="column" bg="lightgray"wd="100%" hg="30rem" mt="1rem" mb="2rem">
+          <Form flexDir="column" bd="#333" wd="50%" hg="80%" pd="0rem 0rem 1rem 0rem">
+            <Div flexDir="column">
+            {
+              update 
+              ? <P fSize="1.5rem"color="#333" bg="none">Editando {`${product.name}`}</P>
+              : <P fSize="1.5rem" bg="none">Crea un nuevo producto</P> 
+            }
+            <P>Barra de progreso del formulario</P>
+            </Div>
             <Div flexDir="column" hg="100%" wd="100%" >
               <Div hg="100%" wd="100%">
-                <Div flexDir="column" hg="100%" wd="50%">
+                <Div flexDir="column">
                   <Div flexDir="column">
                     <Label color={colorName}>Nombre </Label>
                     <Input name="name" bd={colorName} onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.name}/>
@@ -197,17 +200,17 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                   {errors.price !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorPrice} color={colorPrice}>{errors.price}</P>:<p></p>}
                   <Div flexDir="column">
                     <Label color={colorImg}>Imagen </Label>
-                    <Input name="img" bd={colorImg} onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.img}/> //! img es un array
+                    <Input name="img" bd={colorImg} onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.img}/>
                   </Div>
                   {errors.img !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorImg} color={colorImg}>{errors.img}</P>:<p></p>}
+                </Div>
+             {/* 
                   <Div flexDir="column">
                     <Label color={colorStock}>Stock </Label>
                     <Input name="stock" bd={colorStock} onChange={(e)=>{handlerSetInput(e)}} type="number" defaultValue={input.stock}/>
                   </Div>
                   {errors.stock !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorStock} color={colorStock}>{errors.stock}</P>:<p></p>}
-                </Div>
-                <Div flexDir="column" hg="100%" wd="50%">
-                  <Div>
+                  <Div flexDir="column" hg="100%" wd="50%">
                     <Select 
                       name="categories" 
                       bd={colorCategory} 
@@ -217,7 +220,7 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                       // value={input.categories}
                       >
                       <Option name="default"value="default">Selecciona Categoría</Option>
-                  //! ACA IRIAN LAS CATEGORIAS EXISTENTES
+
                       {
                         categories.length === 0
                         ? null
@@ -231,7 +234,6 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                   <Div>
                     <Select name="brand" br="none" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.category}>
                       <Option value="default">Selecciona Marca</Option>
-                  //! ACA IRIAN LAS CATEGORIAS EXISTENTES
                       {
                         brands.length === 0
                         ? null
@@ -239,16 +241,18 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
                       }
 
                     </Select>
-                  </Div>
+                  </Div> 
 
 
                   {errors.categories !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorCategory} color={colorCategory}>{errors.categories}</P>:<p></p>}
+                */}
+                {/*
                   <Div flexDir="column">
                     <Label color={colorDescription}>Descripción </Label>
                     <Input name="description" bd={colorDescription} onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.description}/>
-                  </Div>  //! ESTE TIENE QUE SER UN TEXT-AREA
+                  </Div>
                     {errors.description !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorDescription} color={colorDescription}>{errors.description}</P>:<p></p>}
-                </Div>
+                */}
               </Div>
                   {
                   update 
