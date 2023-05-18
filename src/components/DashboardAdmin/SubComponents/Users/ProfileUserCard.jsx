@@ -34,8 +34,8 @@ function copiarAlPortapapeles(texto) {
               <P ml=".4rem"jfCont="flex-start"fSize=".9rem" pd="0"color="#333"fWeight="bold">{user.name} {user.surname}</P>
               <Div wd="14rem"jfCont="space-between">
                 <Div wd="9rem"jfCont="flex-start">
-                  <Button bg="#333"br="2rem"wd="1.4rem"hg="1.4rem">
-                    <FaPhoneAlt color="#fff"fontSize={"1.2rem"}/>
+                  <Button bg="#333"br="2rem"pd="0"wd="1.2rem"hg="1.2rem">
+                    <FaPhoneAlt color="#fff"fontSize={".75rem"}/>
                   </Button>
                   <P jfCont="flex-start"fSize=".9rem" pd="0"color="#333"fWeight="bold">{user.phone}</P>
                 </Div>
