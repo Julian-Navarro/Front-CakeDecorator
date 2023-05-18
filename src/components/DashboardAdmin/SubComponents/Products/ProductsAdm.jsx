@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { HOST } from "../../../../utils";
 import ProductCards from "../../../Shop/Products/ProductCards";
 import FormProductPostAndEdit from "./FormPostAndEditProducts";
-
+import { Div, Button, P, Input } from "../../../../utils/StyledComponents/StyledComponents";
 export default function ProductsAdm ({ path }) {
     const [createProductFlag, setCreateProductFlag] = useState(false);
     const [editFlag, setEditFlag] = useState(false)
@@ -67,12 +67,15 @@ useEffect(()=>{
 },[productToEdit, editFlag, componentProductListFlag])
 useEffect(()=>{},[allProducts, products])
     return (
-        <div>
-            <h2>ProductsAdm.jsx</h2>
+        <Div flexDir="column"bg="gray"pd="5px">
             {
             path==="adm" 
-            ? <button onClick={(e)=>{handlerSetCreateProductFlag(e)}}>{createProductFlag? "Cerrar Formulario":"Crear Nuevo Producto"}</button>
-            :null
+            ? <Button onClick={(e)=>{handlerSetCreateProductFlag(e)}}>
+                {createProductFlag 
+                ? "Cerrar Formulario" 
+                :"Crear Nuevo Producto"}
+              </Button>
+            : null
             }
             {
                 productToEdit !== false
@@ -90,11 +93,11 @@ useEffect(()=>{},[allProducts, products])
                     handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} />
                 : null
             }
-            <div>
-                <input type="text" onChange={(e)=>handlerSetInput(e)}/>
-                <button onClick={(e)=>handlerSearchProducts(e)}>Buscar</button>
-            </div>
-                <button onClick={()=>setProducts(allProducts)}>Todos los productos</button>
+            <Div>
+                <Input type="text" onChange={(e)=>handlerSetInput(e)}/>
+                <Button onClick={(e)=>handlerSearchProducts(e)}>Buscar</Button>
+            </Div>
+                <Button onClick={()=>setProducts(allProducts)}>Todos los productos</Button>
           <ProductCards
             products={products}
             path="adm" 
@@ -102,7 +105,7 @@ useEffect(()=>{},[allProducts, products])
             handlerSetEditFlag={handlerSetEditFlag}
             handlerSetComponentProductListFlag={handlerSetComponentProductListFlag}/>
             
-        </div>
+        </Div>
 
     )
 }
