@@ -82,7 +82,8 @@ useEffect(()=>{
 
     return (
         <Div flexDir="column"wd="100%"pd=".1rem .5rem .5rem .5rem"> 
-          <Div hg="10rem"bg="#dc4a61"mb="1rem"br=".5rem"boxSh="2px 2px .4rem .1rem rgb(0,0,0,0.35), inset 0 0 2.5rem .4rem #cc4357">
+          <Div hg="10rem"bg="#dc4a61"mb="1rem"br=".5rem"
+            boxSh="2px 2px .4rem .1rem rgb(0,0,0,0.35), inset 0 0 2.5rem .4rem #cc4357">
             <Div ml="1rem"mt="1rem"mb="1rem"flexDir="column"alItems="flex-start">
               <Div jfCont="flex-start"mb=".5rem">
                 <Button mr=".5rem"mb=".3rem"pd=".3rem .5rem .3rem 1rem"br="2rem"wd="14rem"bg="#eee"color="#333"jfCont="flex-start"
