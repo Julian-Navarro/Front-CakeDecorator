@@ -248,7 +248,6 @@ export const Div = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-
   transition: ${({ trans }) => trans || ".4s ease"};
   position: ${({ pos }) => pos || "static"};
   top: ${({ posTop }) => posTop};
