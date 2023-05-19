@@ -11,26 +11,25 @@ import UploadImage from "../../../../utils/Cloudinary/UploadImage";
 export default function ShowProfileData() {
   //HECHO CON REDUX STORE
 
-  const defaultImg = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+  const defaultImg =
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
   const [editing, setEditing] = useState(false);
   const dispatch = useDispatch();
   const userStorage = JSON.parse(localStorage.getItem("loggedUser"));
   const userInfo = useSelector((state) => state.user);
   // console.log("INFO", userInfo);
 
-  const [img2, setImg] = useState("");
-  // console.log("IMG", img2);
+  const [img2, setAvatarImg] = useState("");
+  console.log("IMG", img2);
 
   const [input, setInput] = useState({
     name: userInfo?.name,
     surname: userInfo?.surname,
     email: userInfo?.email,
     phone: userInfo?.phone,
-    img: userInfo
-      ? userInfo.img
-      : defaultImg,
+    img: userInfo ? userInfo.img : defaultImg,
   });
-  // console.log("INPUT", input);
+  console.log("INPUT", input);
 
   function handlerChange(e) {
     e.preventDefault();
@@ -51,19 +50,16 @@ export default function ShowProfileData() {
 
   useEffect(() => {
     if (!userInfo["id"]) {
-      // console.log("BUSCO EL USER");
       dispatch(findUserById(userStorage.id));
     }
   }, []);
 
   useEffect(() => {
-    if (input.img !== img2) {
-      setInput({
-        ...input,
-        img: img2,
-      });
-    }
-  });
+    setInput({
+      ...input,
+      img: img2,
+    });
+  }, [img2]);
 
   useEffect(() => {
     if (input.name === undefined && input.surname === undefined) {
@@ -73,12 +69,10 @@ export default function ShowProfileData() {
         surname: userInfo.surname,
         email: userInfo.email,
         phone: userInfo.phone,
-        img: img2
-          ? img2
-          : defaultImg,
+        img: img2 ? img2 : defaultImg,
       });
     }
-  }, [input]);
+  }, []);
 
   return (
     <div>
@@ -113,7 +107,7 @@ export default function ShowProfileData() {
           <label>Tel/Cel: {userInfo?.phone}</label>
           <br />
           <button onClick={() => setEditing(true)}>
-          <FaRegEdit size={25}/>
+            <FaRegEdit size={25} />
           </button>
         </div>
       ) : (
@@ -140,7 +134,10 @@ export default function ShowProfileData() {
               Avatar:{" "}
               <img src={userInfo.img} alt="Sin avatar" width={"120px"} />
             </label>
-            <UploadImage setImg={setImg} />
+            <UploadImage
+              setAvatarImg={setAvatarImg}
+              folder={`user_avatar/${userInfo.id}`}
+            />
             <br />
             {
               <Image

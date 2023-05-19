@@ -3,6 +3,7 @@ import axios from "axios";
 import { HOST } from "../../../../utils";
 import { Div, Form, Input, Label, Select, Option, P, Button, H1 } from "../../../../utils/StyledComponents/StyledComponents";
 import CloudinaryUploadVideo from "../../../../utils/Cloudinary/UploadVideoCloud";
+import CloudinaryUploader from "../../../../utils/Cloudinary/UploadImage"
 
 export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFlag, update, course, handlerEditCourse}) {
   //! ↓↓↓↓↓↓↓↓↓↓↓  *HANDLERS QUE ABREN LOS FORMS Y SETEAN EL CURSO EN CASO DE EDICIÓN* ↓↓↓↓↓↓↓↓↓↓↓
@@ -182,11 +183,12 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
                   {errors.price !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorPrice} color={colorPrice}>{errors.price}</P>:<p></p>}
                   <Div flexDir="column">
                     <Label color={colorImg}>Imagen </Label>
-                    <Input name="img" bd={colorImg} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.img}/>
+                    <CloudinaryUploader folder={"imagenes_de_cursos"} setInput={setInput}  input={input}/>
+                    {/* <Input name="img" bd={colorImg} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.img}/> */}
                   </Div>
                   {errors.img !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorImg} color={colorImg}>{errors.img}</P>:<p></p>}
                   <Div flexDir="column">
-                    <Label>Videos </Label> Proximamente
+                    <Label>Videos </Label> 
                     <CloudinaryUploadVideo input={input} setInput={setInput}/>
                     {/* <input name="videos" onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.videos}/> */}
                     {/* //! ↑↑↑↑↑↑↑↑↑↑↑↑   ****ACA ARRIBA ESTA EL INPUT DE LOS VIDEOS****   ↑↑↑↑↑↑↑↑↑↑↑↑ */}

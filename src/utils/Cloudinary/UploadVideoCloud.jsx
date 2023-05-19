@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ImCheckmark } from "react-icons/im";
 import { CloudinaryContext, Video, Transformation } from "cloudinary-react";
 import sha1 from "crypto-js/sha1";
-import sha256 from "js-sha256";
 
 export default function CloudinaryUploadVideo({ input, setInput }) {
   const [videoUrl, setVideoUrl] = useState("");
@@ -14,7 +13,6 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
   const videoName = `${input.title}`;
   const nameVideoUpdated = videoName.replace(/ /g, "_").toLowerCase();
   const folders = `${input.type}`.toLowerCase()+ "/" + input.category.toLowerCase();
-  // const category_class = `${input.category}`.toLowerCase();
   const uploadPresetName = "signed_video_preset";
 
   const generateSignature = () => {
@@ -63,6 +61,7 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
       })
       .catch((error) => {
         console.error("ERR ", error);
+        alert("Antes de cargar el video debes seleccionar titulo, categoría y tipo de dictacion.")
         setIsUploading(false);
       });
   };
