@@ -4,6 +4,11 @@ import { HOST } from "../../../../utils";
 import ProductCards from "../../../Shop/Products/ProductCards";
 import FormProductPostAndEdit from "./FormPostAndEditProducts";
 import { Div, Button, P, Input } from "../../../../utils/StyledComponents/StyledComponents";
+import { MdOutlineClose } from "react-icons/md"
+import { HiOutlineFolderAdd } from "react-icons/hi"
+import { IoMdRefresh } from "react-icons/io"
+import { RxMagnifyingGlass } from "react-icons/rx"
+
 export default function ProductsAdm ({ path }) {
     const [createProductFlag, setCreateProductFlag] = useState(false);
     const [editFlag, setEditFlag] = useState(false)
@@ -60,6 +65,9 @@ export default function ProductsAdm ({ path }) {
         e.preventDefault();
         setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(input.toLowerCase())))
     }
+    function enter(e) {
+        if(e.keyCode===13)handlerSearchProducts(e)
+    }
 useEffect(()=>{
     // console.log("RENDERING: PRODUCT ADM: ");
     getAllProducts()
@@ -67,42 +75,64 @@ useEffect(()=>{
 },[productToEdit, editFlag, componentProductListFlag])
 useEffect(()=>{},[allProducts, products])
     return (
-        <Div flexDir="column"bg="gray"pd="5px">
-          <Div bg="#dc4a61"mb="1rem"br=".5rem"hg="10rem"boxSh="2px 2px .4rem .1rem rgb(0,0,0,0.35), inset 0 0 2.5rem .4rem #cc4357">
-            {
-            path==="adm" 
-            ? <Button onClick={(e)=>{handlerSetCreateProductFlag(e)}}>
-                {createProductFlag 
-                ? "Cerrar Formulario" 
-                :"Crear Nuevo Producto"}
+        <Div flexDir="column"pd="5px">
+          <Div bg="#dc4a61"mb="1rem"br=".5rem"hg="10rem"flexDir="column"
+               boxSh="2px 2px .4rem .1rem rgb(0,0,0,0.35), inset 0 0 2.5rem .4rem #cc4357">
+            <Div ml=".5rem"mb=".5rem"flexDir="row"jfCont="flex-start">
+
+              {
+                path==="adm" 
+                ? <Button pd="0"wd="2.5rem" hg="2.5rem" br="3rem"ml=".5rem"bg="#333"
+                    boxSh="1px 1px .2rem .05rem rgb(0,0,0,0.35)"
+                    onClick={(e)=>{handlerSetCreateProductFlag(e)}}>
+                    <HiOutlineFolderAdd fontSize={"1.8rem"}/>
+                  </Button>
+              : null
+              }
+              <Button onClick={()=>setProducts(allProducts)}pd="0"wd="2.5rem" hg="2.5rem" br="3rem"ml=".5rem"bg="#333"
+                boxSh="1px 1px .2rem .05rem rgb(0,0,0,0.35)">
+                <IoMdRefresh fontSize={"1.8rem"}/>
               </Button>
-            : null
-            }
-            <Div>
-                <Input type="text" onChange={(e)=>handlerSetInput(e)}/>
-                <Button onClick={(e)=>handlerSearchProducts(e)}>Buscar</Button>
             </Div>
-            <Button onClick={()=>setProducts(allProducts)}>Todos los productos</Button>
+              <Div ml=".5rem" jfCont="flex-start">
+                <Input type="text" onChange={(e)=>handlerSetInput(e)}mr=".5rem"hg="2rem"txAlign="left"pd="0 0 0 .3rem"onKeyUp={(e)=>{enter(e)}}/>
+                <Button onClick={(e)=>handlerSearchProducts(e)}pd="0"wd="2.2rem" hg="2.2rem"br="2rem"bg="#333"
+                    boxSh="1px 1px .2rem .05rem rgb(0,0,0,0.35)"
+                    >
+                    <RxMagnifyingGlass fontSize={"1.8rem"}/>
+                </Button>
+              </Div>
           </Div>
-          <Div bg="rgb(0,0,0,0.35)"blur="blur(3px)"pd="10px"pos="sticky"posTop="0px"alSelf="flex-end"zInd="2"
-            wd={productToEdit || createProductFlag ?"100%":"10%"}hg={productToEdit || createProductFlag ?"100vh":"1rem"}>
-            <Div bg="red"hg="1rem"wd="100%">
+
+
+
+
+          <Div bg="transparent"br=".2rem .2rem 0 0"blur="blur(3px)"trans=".2s"pd="10px"pos="sticky"posTop="0px"alSelf="flex-end"zInd="2"
+            wd={productToEdit || createProductFlag ?"100%":"0px"}hg={productToEdit || createProductFlag ?"100vh":"1rem"}
+            >
+
+            <Div pos="absolute"pd="10px"posLeft={productToEdit || createProductFlag ?"0%":"20rem"}>
+            <Div flexDir="column"pos="relative"pd="10px"posLeft={productToEdit || createProductFlag ?"0%":"150%"}trans="1.2s">
             {
                 productToEdit !== false
                 ? <FormProductPostAndEdit 
                 handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} 
                 update={true} 
-                product={productToEdit} 
-                handlerEditProduct={handlerEditProduct}/>
+                setProductToEdit={setProductToEdit} 
+                setCreateProductFlag={setCreateProductFlag}
+                product={productToEdit}/>
                 : null
             }
             {
-            createProductFlag === true
-            ? <FormProductPostAndEdit 
-            handlerSetComponentProductListFlag={handlerSetComponentProductListFlag} />
-            : null
+                createProductFlag === true
+                ? <FormProductPostAndEdit 
+                handlerSetComponentProductListFlag={handlerSetComponentProductListFlag}
+                setProductToEdit={setProductToEdit} 
+                setCreateProductFlag={setCreateProductFlag} />
+                : null
             }
             </Div>
+          </Div>
           </Div>
           <ProductCards
             products={products}
