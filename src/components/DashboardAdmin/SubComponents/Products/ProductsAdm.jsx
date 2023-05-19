@@ -95,7 +95,9 @@ useEffect(()=>{},[allProducts, products])
               </Button>
             </Div>
               <Div ml=".5rem" jfCont="flex-start">
-                <Input type="text" onChange={(e)=>handlerSetInput(e)}mr=".5rem"hg="2rem"txAlign="left"pd="0 0 0 .3rem"onKeyUp={(e)=>{enter(e)}}/>
+                <Input onChange={(e)=>handlerSetInput(e)}type="text" br="2rem"txAlign="left"pd="0 .4rem 0 .4rem"
+                    mr=".5rem"onKeyUp={(e)=>enter(e)}
+                    hg="2rem"wd="14rem"fontSize="1.1rem"boxSh="0 0 .2rem .1rem rgb(0,0,0,0.35)"/>
                 <Button onClick={(e)=>handlerSearchProducts(e)}pd="0"wd="2.2rem" hg="2.2rem"br="2rem"bg="#333"
                     boxSh="1px 1px .2rem .05rem rgb(0,0,0,0.35)"
                     >
