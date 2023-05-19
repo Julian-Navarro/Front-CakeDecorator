@@ -109,11 +109,11 @@ useEffect(()=>{},[allProducts, products])
 
 
 
-          <Div bg="transparent"br=".2rem .2rem 0 0"blur="blur(3px)"trans=".2s"pd="10px"pos="sticky"posTop="0px"alSelf="flex-end"zInd="2"
+          <Div overflow="hidden"bg="rgb(0,0,0,0.35)"br=".2rem .2rem 0 0"blur="blur(3px)"trans=".2s"pd="10px"pos="sticky"posTop="0px"alSelf="flex-end"zInd="2"
             wd={productToEdit || createProductFlag ?"100%":"0px"}hg={productToEdit || createProductFlag ?"100vh":"1rem"}
             >
 
-            <Div pos="absolute"pd="10px"posLeft={productToEdit || createProductFlag ?"0%":"20rem"}>
+            <Div pos="absolute"bg="green"posLeft={productToEdit || createProductFlag ?"0%":"20rem"}>
             <Div flexDir="column"pos="relative"pd="10px"posLeft={productToEdit || createProductFlag ?"0%":"150%"}trans="1.2s">
             {
                 productToEdit !== false

@@ -204,8 +204,8 @@ export default function FormProductPostAndEdit({ handlerSetComponentProductListF
 console.log("USEEFFECT FORMFLAG");
   },[formPage, formFlag])
     return (
-        <Div flexDir="column" wd="100%" hg="30rem" mt="1rem" mb="2rem">
-          <Form flexDir="column" br=".4rem"bd="#333"bg="#fff" wd="30rem" hg="100%"
+        <Div flexDir="column"wd="100%" hg="30rem" mt="1rem" mb="2rem">
+          <Form flexDir="column" br=".4rem"bg="#fff" wd="30rem" hg="100%"
             boxSh="2px 2px .4rem .2rem rgb(0,0,0,0.4), inset 0 0 7rem .1rem gray">
             <Button alSelf="flex-end"wd="2.2rem" hg="2.2rem"br="1.5rem"pd="0"bg="#DC4A61"
               boxSh="1px 1px .2rem .1rem #333, inset 0 0 .5rem .2rem #a02c3e"mt=".5rem"mr=".5rem"
