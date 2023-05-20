@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HOST } from "../../../../utils";
 import { Div, Form, Input, Label, Select, Option, P, Button, H1 } from "../../../../utils/StyledComponents/StyledComponents";
-import CloudinaryUploadVideo from "../../../../utils/Cloudinary/UploadVideoCloud";
+import CloudinaryUploadVideo from "../../../../utils/Cloudinary/UploadVideos";
 import CloudinaryUploader from "../../../../utils/Cloudinary/UploadImage"
 
 export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFlag, update, course, handlerEditCourse}) {

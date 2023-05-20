@@ -28,7 +28,7 @@ export default function CloudinaryUploader({
         uploadImagesPreset +
         API_SECRET;
       let signature = sha256(paramsToSign); //SE CREA LA FIRMA USANDO TODOS LOS PARAMETROS DE paramsToSign
-      console.log(signature)
+      // console.log(signature)
       let uploadImageUrl = `https://api.cloudinary.com/v1_1/dcq2glrhg/image/upload?upload_preset=${uploadImagesPreset}&timestamp=${timestamp}&signature=${signature}&api_key=${API_KEY}`;
       setUploadUrl(uploadImageUrl)
     }
@@ -49,8 +49,8 @@ export default function CloudinaryUploader({
     });
     const data = await response.json();
 
-    console.log("DATA", data);
-    console.log(folder)
+    // console.log("DATA", data);
+    // console.log(folder)
     if (folder === "imagenes_de_cursos") {
       setInput({
         ...input,
@@ -59,7 +59,7 @@ export default function CloudinaryUploader({
     }
     if(folder) {
       console.log("SETEO?")
-      setAvatarImg(data.secure_url);
+      await setAvatarImg(data.secure_url);
     }
   };
 
