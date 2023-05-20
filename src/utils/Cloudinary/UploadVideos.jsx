@@ -6,7 +6,6 @@ import sha1 from "crypto-js/sha1";
 
 export default function CloudinaryUploadVideo({ input, setInput }) {
   const [videoUrls, setVideoUrls] = useState([]);
-  console.log("LOCAL STATE ", videoUrls);
   const [isUploading, setIsUploading] = useState(false);
 
   const cloudName = process.env.REACT_APP_CLOUDYNARY_NAME;
