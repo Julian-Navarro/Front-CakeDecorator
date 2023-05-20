@@ -19,7 +19,7 @@ export default function ShowProfileData() {
   const userInfo = useSelector((state) => state.user);
   // console.log("INFO", userInfo);
 
-  const [img2, setAvatarImg] = useState("");
+  const [img2, setImg] = useState("");
   console.log("IMG", img2);
 
   const [input, setInput] = useState({
@@ -135,7 +135,7 @@ export default function ShowProfileData() {
               <img src={userInfo.img} alt="Sin avatar" width={"120px"} />
             </label>
             <UploadImage
-              setAvatarImg={setAvatarImg}
+              setAvatarImg={setImg}
               folder={`user_avatar/${userInfo.id}`}
             />
             <br />
