@@ -14,7 +14,6 @@ import GenerateNewPass from "./components/ForgotPass/GenerateNewPass.jsx";
 import Shop from "./components/Shop/Shop.jsx";
 import "./App.css";
 import Cart from "./components/Shop/Cart/Cart.jsx";
-import UpdateMyInfo from "./components/MyAccount/ShowData/DataProfile/UpdateMyInfo.jsx";
 
 function App() {
   // console.log("APP LOG");
@@ -76,7 +75,6 @@ function App() {
         <Route exact path="/createAccount" element={<FormPostUser />} />
         <Route exact path="/shop" element={<Shop />} />
         <Route exact path="/shop/cart" element={<Cart />} />
-        <Route exact path="/updateUser" element={<UpdateMyInfo />} />
 
         {loggedUser !== null ? (
           loggedUser.role === "admin" ? (

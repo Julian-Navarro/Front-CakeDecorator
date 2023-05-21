@@ -1,4 +1,6 @@
-import s from "../DashboardAdmin/Dashboard/DashboardAdmin.module.css";
+// import s from "../DashboardAdmin/Dashboard/DashboardAdmin.module.css";
+// import t from "./MyAccount.module.css";
+import { Div, P, Button2 } from "../../utils/StyledComponents/StyledComponents";
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import ShowProfileData from "./ShowData/DataProfile/ProfileDataCard";
@@ -6,51 +8,128 @@ import ShowPurchasesData from "./ShowData/DataPurchase/ShowPurchasesData";
 import ShowMyCourses from "./ShowData/DataCourses/ShowCoursesData";
 import { AiOutlineDatabase } from "react-icons/ai";
 import { MdOutlineShoppingBag } from "react-icons/md";
-// import { SiCoursera } from "react-icons/si";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { GrUser } from "react-icons/gr";
 
 export default function MyAccount() {
   const [selection, setSelection] = useState(false);
+  const [activeButton, setActiveButton] = useState("");
+  console.log("SELECT ", selection);
+  console.log("ACTIVE ", activeButton);
 
-  function handlerChangeSelection(e) {
-    e.preventDefault();
-    setSelection(e.target.value);
+  function handlerChangeSelection(value) {
+    setSelection(value);
+    setActiveButton(value);
   }
 
   return (
     <div>
       <Navbar />
-      <br />
-      <div className={s.divContainer}>
-        <div className={s.divDashboardLeftContainer}>
-        <GrUser/><h2> Administrar cuenta</h2>
-          <button onClick={(e) => handlerChangeSelection(e)} value="my-data">
-            <AiOutlineDatabase /> Mis datos
-          </button>
-          <button
-            onClick={(e) => handlerChangeSelection(e)}
-            value="my-purchases"
+      <Div alItems="flex-start">
+        <Div
+          flexDir="column"
+          jfCont="slex-start"
+          br="0 .5rem 0 0"
+          wd="20%"
+          hg="100vh"
+          bg="#f687c7"
+          pos="sticky"
+          posTop="0px"
+        >
+          <br />
+          <Div bg="#f687c7" wd="95%" bd="#fff">
+            <GrUser fontSize="3rem" color="#fff" />
+            <P wd="80%" fSize="1.4rem" color="#fff" fWeight="bold">
+              Mi Cuenta
+            </P>
+          </Div>
+          <Div
+            flexDir="column"
+            alItems="flex-end"
+            bg="#f687c7"
+            alSelf="flex-end"
+            hg="40%"
+            jfCont="space-evenly"
+            wd="95%"
           >
-            <MdOutlineShoppingBag /> Compras
-          </button>
-          <button onClick={(e) => handlerChangeSelection(e)} value="my-courses">
-            <BsPersonWorkspace /> Cursos adquiridos
-          </button>
-        </div>
-        <div className={s.divDashboardRightContainer}>
-          <h2>CONTAINER INFO MY ACCOUNT</h2>
-          {selection === false ? (
-            <h2>Explorar información</h2>
-          ) : selection === "my-data" ? (
+            <Button2
+              onClick={() => handlerChangeSelection("my-data")}
+              pd=".5rem"
+              br="1rem 0 0 1rem"
+              hg="2rem"
+              bg={selection === "my-data" ? "#fff" : "#f687c7"}
+              wd="100%"
+            >
+              <AiOutlineDatabase
+                color={selection === "my-data" ? "#f687c7" : "#fff"}
+                fontSize="1.6rem"
+              />
+              <P
+                cursor="pointer"
+                ml=".5rem"
+                color={selection === "my-data" ? "#f687c7" : "#fff"}
+                fSize="1.1rem"
+              >
+                Perfil
+              </P>
+            </Button2>
+
+            <Button2
+              onClick={() => handlerChangeSelection("my-purchases")}
+              pd=".5rem"
+              br="1rem 0 0 1rem"
+              hg="2rem"
+              bg={selection === "my-purchases" ? "#fff" : "#f687c7"}
+              wd="100%"
+            >
+              <MdOutlineShoppingBag
+                color={selection === "my-purchases" ? "#f687c7" : "#fff"}
+                fontSize="1.5rem"
+              />
+              <P
+                cursor="pointer"
+                ml=".5rem"
+                color={selection === "my-purchases" ? "#f687c7" : "#fff"}
+                fSize="1.1rem"
+              >
+                Compras
+              </P>
+            </Button2>
+
+            <Button2
+              onClick={() => handlerChangeSelection("my-courses")}
+              pd=".5rem"
+              br="1rem 0 0 1rem"
+              hg="2rem"
+              bg={selection === "my-courses" ? "#fff" : "#f687c7"}
+              wd="100%"
+            >
+              <BsPersonWorkspace
+                color={selection === "my-courses" ? "#f687c7" : "#fff"}
+                fontSize="1.5rem"
+              />
+              <P
+                cursor="pointer"
+                ml=".5rem"
+                color={selection === "my-courses" ? "#f687c7" : "#fff"}
+                fSize="1.1rem"
+              >
+                Estudiar
+              </P>
+            </Button2>
+          </Div>
+        </Div>
+
+        <Div wd="80%">
+          {selection === "my-data" ? (
             <ShowProfileData />
           ) : selection === "my-purchases" ? (
             <ShowPurchasesData />
           ) : selection === "my-courses" ? (
             <ShowMyCourses />
           ) : null}
-        </div>
-      </div>
+        </Div>
+      </Div>
     </div>
   );
 }
