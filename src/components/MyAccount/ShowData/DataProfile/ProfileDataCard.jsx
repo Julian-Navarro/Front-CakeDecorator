@@ -1,4 +1,3 @@
-// import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { findUserById } from "../../../../redux/actions";
@@ -46,6 +45,13 @@ export default function ShowProfileData() {
     dispatch(findUserById(userInfo.id));
     alert("Actualizado de forma correcta");
     setEditing(false);
+    setInput({
+      name: userInfo.name,
+      surname: userInfo.surname,
+      email: userInfo.email,
+      phone: userInfo.phone,
+      img: img2 ? img2 : defaultImg,
+    });
   }
 
   useEffect(() => {
@@ -112,7 +118,7 @@ export default function ShowProfileData() {
         </div>
       ) : (
         <div>
-          <h1>Editar datos personales</h1>
+          <h1>Editando...</h1>
           <form onSubmit={(e) => handlerSubmit(e)}>
             <div>
               <label>Nombre: {userInfo.name}</label>
@@ -132,22 +138,24 @@ export default function ShowProfileData() {
             <br />
             <label>
               Avatar:{" "}
-              <img src={userInfo.img} alt="Sin avatar" width={"120px"} />
+              {img2 ? null : (
+                <img src={userInfo.img} alt="Sin avatar" width={"120px"} />
+              )}
             </label>
-            <UploadImage
-              setAvatarImg={setImg}
-              folder={`user_avatar/${userInfo.id}`}
-            />
             <br />
             {
               <Image
                 cloudName="dcq2glrhg"
                 publicId={img2}
-                width="300"
+                width="200"
                 crop="scale"
               />
             }
             <br />
+            <UploadImage
+              setAvatarImg={setImg}
+              folder={`user_avatar/${userInfo.id}`}
+            />
             <button type="submit">Guardar</button>
             <button onClick={() => setEditing(false)}>Cancelar</button>
           </form>
