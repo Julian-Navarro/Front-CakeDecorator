@@ -1,9 +1,7 @@
-// import s from "../DashboardAdmin/Dashboard/DashboardAdmin.module.css";
-// import t from "./MyAccount.module.css";
 import { Div, P, Button2 } from "../../utils/StyledComponents/StyledComponents";
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import ShowProfileData from "./ShowData/DataProfile/ProfileDataCard";
+import ShowProfileData from "./ShowData/DataProfile/Data&EditProfileCard";
 import ShowPurchasesData from "./ShowData/DataPurchase/ShowPurchasesData";
 import ShowMyCourses from "./ShowData/DataCourses/ShowCoursesData";
 import { AiOutlineDatabase } from "react-icons/ai";
@@ -13,13 +11,9 @@ import { GrUser } from "react-icons/gr";
 
 export default function MyAccount() {
   const [selection, setSelection] = useState(false);
-  const [activeButton, setActiveButton] = useState("");
-  console.log("SELECT ", selection);
-  console.log("ACTIVE ", activeButton);
 
   function handlerChangeSelection(value) {
     setSelection(value);
-    setActiveButton(value);
   }
 
   return (
