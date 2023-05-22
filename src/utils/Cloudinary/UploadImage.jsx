@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import sha256 from "js-sha256";
 
 export default function CloudinaryUploader({
-  setAvatarImg,
   folder,
+  inputProfile,
   inputCourse,
-  setInputCourse,
   inputProduct,
+  setAvatarImg,
+  setInputCourse,
   setInputProduct,
+  setViewNewAvatar
 }) {
   //Realizar aqui la configuracion de la imagen en la nube y conseguir la URL para
   //setearle a la propiedad "img" del objeto USER con el "setImg()"
@@ -64,7 +66,8 @@ export default function CloudinaryUploader({
       });
     }
     if (folder) {
-      setAvatarImg(data.secure_url);
+      setViewNewAvatar(data.secure_url)
+      setAvatarImg({ ...inputProfile, img: data.secure_url });
     }
   };
 
