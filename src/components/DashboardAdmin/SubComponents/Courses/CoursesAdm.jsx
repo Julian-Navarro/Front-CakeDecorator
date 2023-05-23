@@ -1,13 +1,38 @@
 import React, { useEffect, useState } from "react";
-import CourseLists from "../../../CourseList/CourseList";
+import CourseList from "../../../CourseList/CourseList";
 import FormCoursePostAndEdit from "./FormCoursePostAndEdit";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { getCoursesFromDB } from '../../../../redux/actions'
 export default function CoursesAdm ({ path }) {
     const [createCourseFlag, setCreateCourseFlag] = useState(false);
     const [editFlag, setEditFlag] = useState(false);
     const [courseToEdit, setCourseToEdit] = useState(false);
     const [componentCourseListFlag, setComponentCourseListFlag] = useState(false);
+
+
+    const dispatch = useDispatch()
+    const [isOpen, setIsOpen] = useState(false);
+    const allCourses = useSelector((state)=>state.courses)
+    const [courses, setCourses] = useState([])
+
+    function cb(){
+        setCourses(allCourses)
+    }
+
+    useEffect(()=>{
+        dispatch(getCoursesFromDB())
+        cb();
+        console.log("COURSES: courses: ", courses);
+    }, [componentCourseListFlag])
+
+    useEffect(()=>{
+        cb();
+        console.log("2 - US EFF, courses: ", courses);
+    },[courses, allCourses]) 
+
+
+
+
     function handlerSetComponentCourseListFlag () {
         setComponentCourseListFlag(!componentCourseListFlag)
     };
@@ -67,8 +92,9 @@ useEffect(()=>{
                     handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} />
                 : null
             }
-          <CourseLists 
+          <CourseList 
             componentCourseListFlag={componentCourseListFlag}
+            courses={courses}
             path="adm" 
             handlerEditCourse={handlerEditCourse}/>
         </div>
