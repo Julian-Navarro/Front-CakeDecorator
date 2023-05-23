@@ -183,7 +183,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
                   {errors.price !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorPrice} color={colorPrice}>{errors.price}</P>:<p></p>}
                   <Div flexDir="column">
                     <Label color={colorImg}>Imagen </Label>
-                    <CloudinaryUploader folder={"imagenes_de_cursos"} inputCourse={input} setInputCourse={setInput}/>
+                    <CloudinaryUploader name="img" folder={"imagenes_de_cursos"} inputCourse={input} setInputCourse={setInput}/>
                     {/* <Input name="img" bd={colorImg} onChange={(e)=>{handlerSetInput(e)}} type="text" value={input.img}/> */}
                   </Div>
                   {errors.img !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorImg} color={colorImg}>{errors.img}</P>:<p></p>}

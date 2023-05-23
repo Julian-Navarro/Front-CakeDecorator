@@ -133,6 +133,7 @@ export const P = styled.p`
   font-size: ${({ fSize }) => fSize || "22px"};
   cursor: ${({ cursor }) => cursor};
   filter: ${({ filter }) => filter};
+  z-index: ${({ zInd }) => zInd};
   transition: ${({ trans }) => trans || ".4s"};
   text-shadow: ${({ textSh }) =>
     `1px 1px 1px ${textSh}, -2px -2px 4px ${textSh}`};

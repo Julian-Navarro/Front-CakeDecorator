@@ -2,53 +2,51 @@ import React from "react";
 import { Div,DivGradient, P, Button, H1, Img } from "../../utils/StyledComponents/StyledComponents";
 export default function CourseListCard ({ course, handlerEditCourse, path, type, category, description, id, img, price, title, videos }) {
     const newTitle = title.length > 80 ? `${title.slice(0, 80)}...` : title
+    console.log(course);
     return (
-        // <DivGradient boxSh="10px 20px .3rem .2rem gray"bd="#161616b4"wd="18rem" hg="27rem" flexDir="column" jfCont="space-between" pd="0 0 .7rem 0"mt="1rem" mr="1rem">
-
-        //   <Div hg="15%" wd="85%" bg="none"pd="none">
-        //     <H1 hg="100%" fSize=".9rem" bg="transparent"pd="0 1rem 0 1rem">{newTitle}</H1>
-        //   </Div>
-        //   <Img src={img} wd="80%" br="12px" pd=".5rem 0rem 0 0rem"></Img>
-        //         <Div flexDir="column"hg="8rem"pd="none"  wd="85%"bg="transparent">
-        //           <Div hg="2rem" pd="none"wd="70%" jfCont="space-between">
-        //             <P fSize="18px" fWeight="700" hg="50%"bg="none"pd="none">Tipo: </P>
-        //             <P fSize="18px" hg="50%"bg="none"pd="none">{type}</P>
-        //           </Div>
-        //           <Div hg="2rem" bg="transparent"pd="none" wd="70%" jfCont="space-between">
-        //             <P fSize="18px" fWeight="700" pd="none">Categoria: </P>
-        //             <P fSize="18px" bg="none"pd="none">{category}</P>
-        //           </Div>
-        //           <Div hg="2rem" bg="transparent"pd="none" wd="70%" jfCont="space-between">
-        //             <P fSize="18px" pd="none"fWeight="700">Precio: </P>
-        //             <P fSize="18px" bg="none"pd="none">${price}</P>
-        //           </Div>
-        //         </Div>
-        //     <Div pd="none" hg="30%" wd="100%" bg="none"jfCont="space-around">
-        //       <Button bg="#FFBE6C" fWeight="700"color="#161616b4"_hovCol="#161616" _hovBg="#FFA033">Ver Detalles</Button>
-        //       {
-        //         path === "adm"
-        //       ?<Button bg="#FFBE6C" fWeight="700"color="#161616b4"_hovCol="#161616" _hovBg="#FFA033"onClick={(e)=>{handlerEditCourse(e, course)}}>Editar</Button>
-        //       :<Button bg="#FFBE6C" fWeight="700"color="#161616b4"_hovCol="#161616" _hovBg="#FFA033">Comprar Curso</Button>
-        //       }
-        //     </Div>
-        // </DivGradient>
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SAVE ↑↑↑
-        // course, handlerEditCourse, path, type, category, description, id, img, price, title, videos
-      <Div bg="green"wd="30rem"hg="18rem"mt="1rem"mr="1rem">
-        <Div wd="100%"overflow="hidden"hg="100%"_hovPosLeftDiv="0%"img={img}>
-          <Div bg="rgb(0,0,0,0.25)"blur="blur(4px)"hg="100%"flexDir="column"jfCont="space-between"pos="relative"posLeft="100%"trans="1s">
-            <P fWeight="bold">{title}</P>
-            <Div ml=".3rem"bg="red"jfCont="space-between">
-              <P fSize=".9rem"bg="green">Modalidad: </P>
-              <P fSize=".9rem"bg="green">{type==="Hibrido"?"Presencial y Online":type}</P>
+      <Div br=".4rem"bg="green"flexDir="column"wd="22rem"hg="15rem"
+          mt="1rem"mr="1rem"boxSh="2px 2px .4rem .2rem rgb(0,0,0,0.35)"
+          >
+        <Div bg={category==="Seminario"?"rgb(187, 161, 211)":"rgb(154, 209, 243)"}br=".3rem .3rem 0 0"hg="3.8rem"
+          // pd=".2rem .3rem .2rem .3rem"
+          boxSh="inset 0 0 1.5rem .1rem rgb(0,0,0,0.4)"
+        >
+          <P fSize={title.length>20?title.length>40?title.length>65?title.length>75?title.length>119?
+            ".82rem":".85rem":".98rem":"1.1rem":"1.2rem":"1.6rem"}
+          color="#333"letterSp=".05rem"zInd="1"
+          pd=".2rem .3rem .2rem .3rem" 
+          hg="2.8rem"
+          mt=".3rem"mb=".3rem"mr="2.1rem"
+          fWeight="bold">{title}</P>
+          <Div pos="absolute">
+            <Div pos="relative"wd="2rem"hg="3rem"posLeft="9.5rem"posTop="-.3rem"
+              br="0"clPath="0 0, 100% 0, 100% 80%, 50% 55%, 0 80%"
+              boxSh="inset 0 0 .4rem .2rem rgb(0,0,0,0.35)"bdR="2px solid #333"
+              bg={type==="Hibrido"?"rgb(77, 139, 233)":type==="Online"?"rgb(108, 216, 162)":"rgb(247, 110, 61)"}>
             </Div>
-            <P fWeight="bold">Tipo: {category}</P>
-            <P fWeight="bold">Precio: {price}</P>
+          </Div>
+        </Div>
+        <Div wd="100%"overflow="hidden"br="0 0 .3rem .3rem"
+            hg="80%"_hovPosLeftDiv="0%"img={img}>
+          <Div bg="rgb(0,0,0,0.55)"blur="blur(4px)"hg="100%"flexDir="column"
+          jfCont="space-between"pos="relative"posLeft="100%"trans="1s"
+          br="0 0 .3rem .3rem">
+            <Div ml=".3rem"alItems="flex-start"flexDir="column"hg="100%">
+              <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">
+                Modalidad: {type==="Hibrido"?"Presencial y Online":type}
+              </P>
+              <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">Tipo: {category}</P>
+              <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">Precio: ${price}</P>
+              <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">
+                {videos.length} {videos.length===1?"video":"videos"}
+              </P>
+              <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">Duracion del curso: ???</P>
+              <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">Cantidad de clases: ???</P>
+            </Div>
            </Div>
         </Div>
-        <Div bg="lightblue"pos="absolute"wd="30rem"hg="2rem"br=".3rem .3rem 0 0"mb="17rem">
-
-        </Div>
+        {/* <Div bg="lightblue"pos="absolute"wd="15rem"hg="2rem"br=".3rem .3rem 0 0"mb="16rem">
+        </Div> */}
       </Div>
     )
 }

@@ -31,7 +31,7 @@ export default function Courses ({ path, componentCourseListFlag }) {
 return (
     <Div flexDir="column" >
         <Navbar/>
-        <Div bg="orange"alItems="flex-start">
+        <Div alItems="flex-start">
           <div className={isOpen?s.divGradientOpen:s.divGradientClose}
               pos="sticky"posTop="0px"posLeft="0px"overflow="hidden"bg="#333"hg="100vh"wd={isOpen?"14rem":"3.2rem"}>
               <Div pos="relative"zInd={"3"}posTop="0px"posLeft="2px"mt={"1rem"}jfCont="flex-start">

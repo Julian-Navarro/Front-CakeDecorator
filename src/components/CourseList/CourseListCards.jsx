@@ -1,6 +1,6 @@
 import React from "react";
 import CourseListCard from "./CourseListCard";
-import { Div } from "../../utils/StyledComponents/StyledComponents";
+import { Div, P } from "../../utils/StyledComponents/StyledComponents";
 import { useEffect } from "react";
 export default function CourseListCards({courses, handlerEditCourse, path}){
     useEffect(()=>{
@@ -23,7 +23,7 @@ export default function CourseListCards({courses, handlerEditCourse, path}){
                     type={c.type} 
                     category={c.category} 
                     videos={c.videos}/> )
-                :"No se encontraron cursos"
+                : <P fSize="2rem">No se encontraron cursos</P>
             }
         </Div>
     )

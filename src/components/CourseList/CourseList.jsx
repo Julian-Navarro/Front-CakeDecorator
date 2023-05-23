@@ -18,7 +18,7 @@ export default function CourseList ({ path, handlerEditCourse, componentCourseLi
     }, [courses])
     
     return (
-        <Div flexDir="column"bg="lightgray">
+        <Div flexDir="column">
             {/* <Navbar /> */}
                 {/* <div className={isOpen?s.divGradientOpen:s.divGradientClose}
                     pos="sticky"posTop="0px"posLeft="0px"overflow="hidden"bg="#333"hg="100vh"wd={isOpen?"14rem":"3.2rem"}>
