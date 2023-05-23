@@ -1,3 +1,18 @@
+import {
+  StyledFormWrapper,
+  StyledForm,
+  StyledInput,
+  StyledButton,
+  StyledFieldSet,
+  StyledError,
+  StyledAvatar,
+  StyledAvatarWrapper,
+  H1Form,
+  Box,
+  BoxColumn,
+  BoxButton,
+  StyledArrowWrapper,
+} from "../../../../utils/StyledComponents/StyledMyAccount";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { findUserById } from "../../../../redux/actions";
@@ -9,10 +24,10 @@ import UploadImage from "../../../../utils/Cloudinary/UploadImage";
 
 export default function ShowProfileData() {
   //HECHO CON REDUX STORE
+  // const [editing, setEditing] = useState(false);
+  const userInfo = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const userStorage = JSON.parse(localStorage.getItem("loggedUser"));
-  const userInfo = useSelector((state) => state.user);
-  const [editing, setEditing] = useState(false);
   const [newAvatar, setViewNewAvatar] = useState("");
   const [input, setInput] = useState({
     name: userInfo?.name,
@@ -21,6 +36,8 @@ export default function ShowProfileData() {
     phone: userInfo?.phone,
     img: userInfo?.img,
   });
+
+  console.log("INPUT ", input);
 
   function handlerChange(e) {
     e.preventDefault();
@@ -35,7 +52,6 @@ export default function ShowProfileData() {
     const userId = userInfo.id;
     await axios.put(`${HOST}/users/updateMyAccountInfo?id=${userId}`, input);
     dispatch(findUserById(userInfo.id));
-    setEditing(false);
     setInput({
       name: userInfo?.name,
       surname: userInfo?.surname,
@@ -64,76 +80,96 @@ export default function ShowProfileData() {
   }, [userInfo]);
 
   return (
-    <div>
-      {editing === false ? (
-        <div>
-          <h1>Datos Personales</h1>
-          <label>
-            Foto de perfil:{" "}
-            <img
-              src={userInfo.img}
-              height={"80px"}
-              width={"80px"}
-              alt="Sin imagen"
-            />
-          </label>
-          <br />
-          <label>Nombre: {userInfo?.name}</label>
-          <br />
-          <label>Apellido: {userInfo?.surname}</label>
-          <br />
-          <label>Email: {userInfo?.email}</label>
-          <br />
-          <label>Tel/Cel: {userInfo?.phone}</label>
-          <br />
-          <button onClick={() => setEditing(true)}>
-            <FaRegEdit size={25} />
-          </button>
-        </div>
-      ) : (
-        <div>
-          <h1>Editar</h1>
-          <form onSubmit={(e) => handlerSubmit(e)}>
-            <div>
-              <label>Nombre: {userInfo.name}</label>
-            </div>
-            <div>
-              <label>Apellido: {userInfo.surname}</label>
-            </div>
-            <label>Email: {userInfo.email}</label>
-            <br />
-            <label>Tel/Cel: </label>
-            <input
+    <StyledFormWrapper>
+      <StyledForm onSubmit={(e) => handlerSubmit(e)}>
+        <Box>
+          <BoxColumn>
+            <H1Form>Información personal</H1Form>
+            <label>Nombre/s</label>
+            <StyledInput
               type="text"
-              name="phone"
+              name="name"
+              defaultValue={userInfo.name}
               onChange={(e) => handlerChange(e)}
+            />
+            <label>Apellido</label>
+            <StyledInput
+              type="text"
+              name="surname"
+              defaultValue={userInfo.surname}
+              onChange={(e) => handlerChange(e)}
+            />
+            <label>Email</label>
+            <StyledInput
+              type="email"
+              name="email"
+              value={userInfo.email}
+              disabled={true}
+            />
+            <label>Teléfono/Celular</label>
+            <StyledInput
+              type="number"
+              name="phone"
               defaultValue={userInfo.phone}
+              onChange={(e) => handlerChange(e)}
             />
-            <br />
-            <label>
-              Avatar:{" "}
-              <img src={userInfo.img} alt="Sin avatar" width={"120px"} />
-            </label>
-            <br />
-            {newAvatar !== "" ? (
-              <label htmlFor="">
-                <TfiExchangeVertical size={30} />
-                <br />
-                <img src={newAvatar} alt="" width="120px" />
+            <StyledFieldSet>
+              <legend>Género</legend>
+              <label>
+                <input type="radio" value="female" name="gender" />
+                Femenino
               </label>
-            ) : null}
-            <br />
-            <UploadImage
-              inputProfile={input}
-              setAvatarImg={setInput}
-              setViewNewAvatar={setViewNewAvatar}
-              folder={`user_avatar/${userInfo.id}`}
-            />
-            <button type="submit">Guardar</button>
-            <button onClick={() => setEditing(false)}>Cancelar</button>
-          </form>
-        </div>
-      )}
-    </div>
+              <label>
+                <input type="radio" value="male" name="gender" />
+                Masculino
+              </label>
+              <label>
+                <input type="radio" value="other" name="gender" />
+                Otro
+              </label>
+              <label>
+                <input type="radio" value="notSayIt" name="gender" />
+                Prefiero no decir
+              </label>
+            </StyledFieldSet>
+            <StyledError>
+              <p>Mensaje de error va acá</p>
+            </StyledError>
+            <Box>
+              <BoxButton>
+                <StyledButton type="submit">Guardar</StyledButton>
+              </BoxButton>
+            </Box>
+          </BoxColumn>
+          <BoxColumn>
+            <H1Form>Contraseña</H1Form>
+            <label>Contraseña actual</label>
+            <StyledInput />
+            <label>Nueva contraseña</label>
+            <StyledInput />
+            <label>Confirma nueva contraseña</label>
+            <StyledInput />
+            <H1Form margin={"10px 0 10px"}>Avatar</H1Form>
+            <StyledAvatarWrapper>
+              <StyledAvatar src={userInfo.img} />
+              {newAvatar !== "" && (
+                <StyledArrowWrapper>
+                  <TfiExchangeVertical size={30} style={{ margin: "0 10px" }} />
+                  <StyledAvatar src={newAvatar} />
+                </StyledArrowWrapper>
+              )}
+            </StyledAvatarWrapper>
+            <Box margin={"20px 0"}>
+              <UploadImage
+                inputProfile={input}
+                setAvatarImg={setInput}
+                setViewNewAvatar={setViewNewAvatar}
+                folder={`user_avatar/${userInfo.id}`}
+              />
+            </Box>
+          </BoxColumn>
+        </Box>
+      </StyledForm>
+    </StyledFormWrapper>
   );
 }
