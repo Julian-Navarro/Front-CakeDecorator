@@ -410,7 +410,7 @@ export default function FormProductPostAndEdit({
                 </P>
                 {/* <input className={s.formInput} name="img"br="0" pd="0 0 0 .3em"outline="none"bdB={`3px solid ${colorImg}`} 
                     onChange={(e)=>{handlerSetInput(e)}} type="text" defaultValue={input.img}/> */}
-                <CloudinaryUploader folder={"productos"} inputProduct={input} setInputProduct={setInput}/>
+                <CloudinaryUploader className={s.formInput}folder={"productos"} inputProduct={input} setInputProduct={setInput}/>
               </Div>
               {errors.img !== "" ? (
                 <P

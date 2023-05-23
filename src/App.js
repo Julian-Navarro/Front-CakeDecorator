@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home.jsx";
 import AboutUs from "./components/AboutUs/AboutUs";
 import LandingPage from "./components/LandingPage/LandingPage";
-import CourseList from "./components/CourseList/CourseList.jsx";
+import Courses from "./components/CourseList/Courses.jsx";
 import CourseDetailCard from "./components/MyAccount/Card/Course/CourseDetailCard.jsx";
 import PurchaseDetailCard from "./components/MyAccount/Card/Purchase/PurchaseDetailCard.jsx";
 import MyAccount from "./components/MyAccount/MyAccount";
@@ -31,8 +31,8 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("RENDERING APP ROUTES");
-    console.log(loggedUser);
+    // console.log("RENDERING APP ROUTES");
+    // console.log(loggedUser);
     userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
     setLoggedUser(userLocalStorage);
   }, [loggedUserFlagApp]);
@@ -59,7 +59,7 @@ function App() {
           element={<GenerateNewPass />}
         ></Route>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/courses" element={<CourseList path={false} />} />
+        <Route exact path="/courses" element={<Courses path={false} />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
         <Route
           exact
