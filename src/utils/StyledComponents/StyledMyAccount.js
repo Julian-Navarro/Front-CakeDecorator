@@ -1,4 +1,4 @@
-import styled, { css, createGlobalStyle, keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const sharedStyle = css`
   background-color: #eee;
@@ -38,7 +38,7 @@ export const H1Form = styled.h1`
 
 export const Box = styled.div`
   display: flex;
-  margin: ${({margin})=> margin || null};
+  margin: ${({ margin }) => margin || null};
 `;
 
 export const BoxColumn = styled.div`
@@ -46,14 +46,14 @@ export const BoxColumn = styled.div`
   margin-right: 10px;
 `;
 
-export const BoxButton = styled.div`
-  margin-right: 20px;
-`;
-
 export const StyledInput = styled.input`
   display: block;
   width: 100%;
-  ${sharedStyle}
+  cursor: ${(props) => console.log("CURS ", props.cr)} ${sharedStyle};
+`;
+export const StyledInputBlocked = styled(StyledInput)`
+  cursor: not-allowed;
+  opacity: 0.6;
 `;
 export const StyledTextArea = styled.textarea`
   background-color: #eee;
@@ -71,10 +71,57 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   height: 40px;
   margin: 0 0 10px 0;
+  margin-top: 25px;
   padding: 0 20px;
   cursor: pointer;
   box-sizing: border-box;
 `;
+export const BoxSaveButton = styled.div`
+display: flex;
+height: 125px;
+justify-content: flex-start;
+align-items: flex-end;
+`;
+
+export const StyledSaveButton = styled(StyledButton)`
+  ${({ haveChanges, errors }) => {
+    if (
+      haveChanges === false ||
+      Object.keys(errors).some((key) => errors[key] !== "") === true
+    ) {
+      return css`
+        opacity: 0.5;
+        &:hover {
+          cursor: not-allowed;
+        }
+      `;
+    } else {
+      return css`
+        opacity: 1;
+      `;
+    }
+  }}
+`;
+
+export const StyledAllowInputs = styled(StyledInput)`
+  ${(success) => {
+    let isSuccess = success.success.currentPassword;
+    console.log("SUC ", isSuccess);
+    if (isSuccess !== "success") {
+      return css`
+        opacity: 0.6;
+        &:hover {
+          cursor: not-allowed;
+        }
+      `;
+    } else {
+      return css`
+        opacity: 1;
+      `;
+    }
+  }}
+`;
+
 export const StyledFieldSet = styled.fieldset`
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -95,7 +142,13 @@ export const StyledFieldSet = styled.fieldset`
 export const StyledError = styled.div`
   color: red;
   font-weight: 800;
-  margin: 0 0 40px 0;
+  margin: 0 0 10px 0;
+`;
+
+export const StyledSuccess = styled.div`
+  color: green;
+  font-weight: 800;
+  margin: 0 0 10px 0;
 `;
 
 export const StyledAvatarWrapper = styled.div`
@@ -122,25 +175,13 @@ export const StyledAvatar = styled.img`
   border-radius: 100%;
   padding: 10px;
 
-  
-animation: ${fadeIn} 1s ease-out;
+  animation: ${fadeIn} 1s ease-out;
 `;
 
 export const StyledArrowWrapper = styled.div`
-display: flex;
-align-items:center;
-margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 
-animation: ${fadeIn} 2s ease-out;
+  animation: ${fadeIn} 2s ease-out;
 `;
-
-
-// export const FormProfile = styled.form`
-//   background-color: ${({ color }) => color || "#000"};
-//   animation: ${fadeIn} 0.5s ease-out;
-// `;
-
-// export const Box = styled.div`
-//     padding: 1rem;
-//     margin: 1rem;
-// `;
