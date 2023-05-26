@@ -1,0 +1,25 @@
+.formInput {
+    background-color: transparent;
+    height: 1.5rem;
+    border-bottom: 2px solid #00cc66;
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 0 .2rem 0 .2rem;
+    outline: none;
+    -webkit-text-fill-color: #333;
+    -webkit-background-color: #333;
+    font-family: 'Roboto';
+}
+
+.formInputDanger {
+    background-color: transparent;
+    height: 1.5rem;
+    border-bottom: 2px solid red;
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 0 .2rem 0 .2rem;
+    outline: none;
+    -webkit-text-fill-color: #333;
+    -webkit-background-color: #333;
+    font-family: 'Roboto';
+}

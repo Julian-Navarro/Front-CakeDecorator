@@ -1,8 +1,11 @@
-import React from "react";
-import { Div,DivGradient, P, Button, H1, Img } from "../../utils/StyledComponents/StyledComponents";
+import { Div, P, Button } from "../../utils/StyledComponents/StyledComponents";
+import { BsSuitHeartFill } from "react-icons/bs";
+import { MdDelete } from "react-icons/md"
+import { AiFillSetting } from "react-icons/ai"
+
 export default function CourseListCard ({ course, handlerEditCourse, path, type, category, description, id, img, price, title, videos }) {
-    const newTitle = title.length > 80 ? `${title.slice(0, 80)}...` : title
-    console.log(course);
+    // const newTitle = title.length > 80 ? `${title.slice(0, 80)}...` : title
+    // console.log(course);
     return (
       <Div br=".4rem"bg="green"flexDir="column"wd="22rem"hg="15rem"
           mt="1rem"mr="1rem"boxSh="2px 2px .4rem .2rem rgb(0,0,0,0.35)"
@@ -28,10 +31,10 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
         </Div>
         <Div wd="100%"overflow="hidden"br="0 0 .3rem .3rem"
             hg="80%"_hovPosLeftDiv="0%"img={img}>
-          <Div bg="rgb(0,0,0,0.55)"blur="blur(4px)"hg="100%"flexDir="column"
+          <Div bg="rgb(0,0,0,0.55)"blur="blur(4px)"hg="100%"
           jfCont="space-between"pos="relative"posLeft="100%"trans="1s"
           br="0 0 .3rem .3rem">
-            <Div ml=".3rem"alItems="flex-start"flexDir="column"hg="100%">
+            <Div ml=".3rem"alItems="flex-start"flexDir="column"wd="60%"hg="100%">
               <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">
                 Modalidad: {type==="Hibrido"?"Presencial y Online":type}
               </P>
@@ -42,6 +45,27 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
               </P>
               <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">Duracion del curso: ???</P>
               <P pd="0 0 0 .2rem"mb=".1rem"fSize=".8rem"color="#eeee"letterSp=".05rem">Cantidad de clases: ???</P>
+            </Div>
+            <Div wd="40%"hg="90%"br="0"bdL="4px solid lightgray"flexDir="column"jfCont="space-between">
+              <Button alSelf="flex-end"bg="#333"fSize="1.3rem"
+                br="2rem"wd="2rem" hg="2rem"mr=".5rem"boxSh="1px 1px .4rem .1rem rgb(0,0,0,0.35)">
+                  <BsSuitHeartFill color="#eeee"/>
+              </Button>
+
+              { path==="adm"
+              ? <Div jfCont="space-around">
+                  <Button mb="1rem"bg="#333"pd=".3rem .7rem .3rem .7rem"
+                    boxSh="1px 1px .4rem .1rem rgb(0,0,0,0.35)" onClick={(e)=>handlerEditCourse(e, course)}>
+                    <AiFillSetting/>
+                  </Button>
+                  <Button mb="1rem"bg="#333"pd=".3rem .7rem .3rem .7rem"
+                    boxSh="1px 1px .4rem .1rem rgb(0,0,0,0.35)" >
+                    <MdDelete/>
+                  </Button>
+                </Div>
+              : <Button mb="1rem"bg="#333"pd=".3rem .7rem .3rem .7rem"
+                  boxSh="1px 1px .4rem .1rem rgb(0,0,0,0.35)"> Ver detalles 
+                </Button>}
             </Div>
            </Div>
         </Div>

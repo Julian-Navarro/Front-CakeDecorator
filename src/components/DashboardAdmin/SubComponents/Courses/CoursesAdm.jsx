@@ -3,6 +3,7 @@ import CourseList from "../../../CourseList/CourseList";
 import FormCoursePostAndEdit from "./FormCoursePostAndEdit";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoursesFromDB } from '../../../../redux/actions'
+import { Div, P, Button } from "../../../../utils/StyledComponents/StyledComponents";
 export default function CoursesAdm ({ path }) {
     const [createCourseFlag, setCreateCourseFlag] = useState(false);
     const [editFlag, setEditFlag] = useState(false);
@@ -58,11 +59,7 @@ export default function CoursesAdm ({ path }) {
         }
     };
     function handlerSetEditFlag() {
-        if(editFlag) {
-            setEditFlag(false)
-        } else {
-            setEditFlag(true)
-        }
+        setEditFlag(!editFlag)
     };   
 
 useEffect(()=>{
@@ -70,12 +67,14 @@ useEffect(()=>{
 },[courseToEdit, editFlag, componentCourseListFlag])
     return (
         <div>
-          <h1>COURSES PADRE</h1>
-            {
-            path==="adm" 
-            ? <button onClick={(e)=>{handlerSetCreateCourseFlag(e)}}>{createCourseFlag? "Cerrar Formulario":"Crear Nuevo Curso"}</button>
-            :null
-            }
+          <P>COURSES ADM</P>
+            <Button onClick={(e)=>{handlerSetCreateCourseFlag(e)}}>
+                { createCourseFlag
+                ? "Cerrar Formulario"
+                : "Crear Nuevo Curso" }
+            </Button>
+            <Div>
+
             {
                 courseToEdit !== false
                 ? <FormCoursePostAndEdit
@@ -92,6 +91,7 @@ useEffect(()=>{
                     handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} />
                 : null
             }
+            </Div>
           <CourseList 
             componentCourseListFlag={componentCourseListFlag}
             courses={courses}

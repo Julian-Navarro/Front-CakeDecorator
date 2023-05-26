@@ -3,6 +3,7 @@ import { ImCheckmark } from "react-icons/im";
 import { CloudinaryContext, Video, Transformation } from "cloudinary-react";
 import { useDropzone } from "react-dropzone";
 import sha1 from "crypto-js/sha1";
+import { Div, P, Button } from "../StyledComponents/StyledComponents";
 
 export default function CloudinaryUploadVideo({ input, setInput }) {
   const [videoUrls, setVideoUrls] = useState([]);
@@ -113,33 +114,47 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
 
   return (
     <div>
-      <div {...getRootProps()}>
+      <Div {...getRootProps()} 
+        flexDir="column"alItems="flex-start">
         <input {...getInputProps()} />
+        <P ml="3rem">Selección de videos</P>
         {isDragActive ? (
-          <p>Suelta los videos aquí...</p>
+          <P bg="lightgray"_hovBg="#eeee"bd="2px solid gray"
+          boxSh="0 0 .5rem .2rem rgb(0,0,0,0.35), inset 0 0 1rem .2rem rgb(0,0,0,0.45)"mb=".5rem"
+          fSize="1rem"wd="22rem"ml="3.5rem"hg="3.2rem"cursor="pointer">
+            Suelta los videos aquí...</P>
         ) : (
-          <p>Arrastra y suelta los videos aquí, o haz click para seleccionar</p>
+          <P bg="lightgray"_hovBg="#eeee"bd="2px solid gray"
+          boxSh="0 0 .5rem .2rem rgb(0,0,0,0.35), inset 0 0 1rem .2rem rgb(0,0,0,0.45)"mb=".5rem"
+          fSize="1rem"wd="22rem"ml="3.5rem"hg="3.2rem"cursor="pointer">
+            Arrastra y suelta los videos aquí, o haz click para seleccionar</P>
         )}
-      </div>
+      </Div>
       {isUploading && <p>Subiendo, espere por favor...</p>}
       {videoUrls.length > 0 && (
-        <div>
-          <h3>
+        <Div flexDir="column" bg="#E5ADCA"pd="6px"
+          boxSh="1px 1px .4rem .1rem #333">
+          <P jfCont="flex-start"bg="orange">
             <ImCheckmark />
             Videos completados:
-          </h3>
+          </P>
           <CloudinaryContext cloudName={cloudName}>
-            {videoUrls.map((url) => {
-              return (
-                <div key={url}>
-                  <Video publicId={url} controls>
-                    <Transformation width="300" crop="scale" />
-                  </Video>
-                </div>
-              );
-            })}
+            <Div bg="lightgray"pd=".5rem 0 .5rem 0"
+            wd="28rem"flWr="wrap"jfCont="space-evenly"hg="12rem"overflowY="scroll"
+              bd="#333"boxSh="2px 2px .6rem .2rem rgb(0,0,0,0.35), inset 0 0 3rem .2rem rgb(0,0,0,0.45)"br="0"
+              >
+              {videoUrls.map((url) => {
+                return (
+                  <Div key={url}bg="gray"hg="6.8rem"wd="12rem"mb=".2rem">
+                    <Video publicId={url} controls>
+                      <Transformation width="400" crop="scale"/>
+                    </Video>
+                  </Div>
+                );
+              })}
+            </Div>
           </CloudinaryContext>
-        </div>
+        </Div>
       )}
     </div>
   );
