@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HOST } from "../../utils";
 import { useNavigate } from "react-router-dom";
-import bcryptjs from "bcryptjs"
 
 export default function FormPostUser() {
 const navigate = useNavigate()
@@ -18,13 +17,13 @@ let [errors, setErrors] = useState({
 
 function changeErrorsFlag () {
     if(errorsFlag === true) {
-        console.log("Seteando TRUE ");
+        // console.log("Seteando TRUE ");
         setErrorsFlag(false)
-        console.log(errorsFlag);
+        // console.log(errorsFlag);
     } else {
-        console.log("Seteando FALSE ");
+        // console.log("Seteando FALSE ");
         setErrorsFlag(true)
-        console.log(errorsFlag);
+        // console.log(errorsFlag);
     }
 }
 const [input, setInput] = useState({
@@ -36,28 +35,20 @@ const [input, setInput] = useState({
     confirmPassword: ""
 })
 
-// var errors = {
-//     email: "",
-//     name: "",
-//     surname: "",
-//     phone: "",
-//     password: "",
-//     confirmPassword: "",
-// }
-
 function handlerChange (e) {
     e.preventDefault();
     setInput({
         ...input,
         [e.target.name]: e.target.value
     })
-    console.log("INPUT HANDLER: ",input);
+    // console.log("INPUT HANDLER: ",input);
 }
 
 async function postUser(trimInput){
-        trimInput.password = await bcryptjs.hash(trimInput.password, 8)
-        await axios.post(`${HOST}/users`, {...trimInput, role: "user", availableCourses: [], status: "active"});
-        alert("Se ha creado tu cuenta con éxito")
+        // trimInput.password = await bcryptjs.hash(trimInput.password, 8)
+        console.log("TRIMINPUT",trimInput)
+        await axios.post(`${HOST}/users`, {...trimInput, role: "user", status: "inactive"});
+        alert("¡Revisá tu casilla de correo para verificar tu cuenta!")
         navigate("/")
 }
 async function validate() {
@@ -119,7 +110,7 @@ async function validate() {
         errors.confirmPassword = ""
     }
     changeErrorsFlag()
-    console.log("FN VALIDATE ERRORS: ", errors);
+    // console.log("FN VALIDATE ERRORS: ", errors);
     return errors
 }
 
@@ -149,12 +140,12 @@ async function validate() {
 }
 
 useEffect(()=>{
-    console.log("USEEFFECT------------------------------------");
-    console.log("Errors: ",errors);
+    // console.log("USEEFFECT------------------------------------");
+    // console.log("Errors: ",errors);
     // validate()
 },[])
     return (
-        <div>
+        <div >
             <h1>
             FORM POST USER
             </h1>

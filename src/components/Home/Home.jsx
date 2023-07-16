@@ -1,20 +1,14 @@
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getCoursesFromDB } from "../../redux/actions.js";
-// import CourseLists from "../CourseLists/CourseLists";
+import Navbar from "../Navbar/Navbar";
+import Carrusel from "../Carrusel/Carrusel"
 
 export default function Home () {
-    // const dispatch = useDispatch()
-    // const courses = useSelector((state) => state.courses)
-    
-    // useEffect(()=>{
-    //   dispatch(getCoursesFromDB())  
-    // }, [dispatch])
+
     return (
         <div>
-            <h2>HOME</h2>
-            {/* <CourseLists lists={courses}/> */}
+            <Navbar />
+            <br />
+            <Carrusel/>
         </div>
-
     )
 }

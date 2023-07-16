@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
-// import "./App.css";
-import {
-  Route,
-  Routes,
-} from "react-router-dom"; /*Switch se reemplaza ahora por Routes */
+import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home.jsx";
 import AboutUs from "./components/AboutUs/AboutUs";
 import LandingPage from "./components/LandingPage/LandingPage";
-import Navbar from "./components/Navbar/Navbar";
-import CourseList from "./components/CourseLists/CourseLists.jsx";
+import Courses from "./components/CourseList/Courses.jsx";
+import CourseDetailCard from "./components/MyAccount/Card/Course/CourseDetailCard.jsx";
+import PurchaseDetailCard from "./components/MyAccount/Card/Purchase/PurchaseDetailCard.jsx";
 import MyAccount from "./components/MyAccount/MyAccount";
 import FormPostUser from "./components/Login/FormPostUser";
 import DashboardAdmin from "./components/DashboardAdmin/Dashboard/DashboardAdmin.jsx";
+import ForgotPassword from "./components/ForgotPass/ForgotPassword.jsx";
+import GenerateNewPass from "./components/ForgotPass/GenerateNewPass.jsx";
+import Shop from "./components/Shop/Shop.jsx";
+import "./App.css";
+import Cart from "./components/Shop/Cart/Cart.jsx";
+import Editor from "./utils/Editor.jsx";
 
 function App() {
-  console.log("APP LOG");
-  const [loggedUser, setLoggedUser] = useState(
-    JSON.parse(localStorage.getItem("loggedUser"))
-  );
+  // console.log("APP LOG");
+  let userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
+  const [loggedUser, setLoggedUser] = useState(userLocalStorage);
   const [loggedUserFlagApp, setLoggedUserFlagApp] = useState(false);
+
   function handlerSetUserFlagApp() {
     // e.preventDefault();
     if (loggedUserFlagApp === false) {
@@ -28,11 +31,16 @@ function App() {
     }
   }
 
-  useEffect(() => {}, [loggedUserFlagApp]);
+  useEffect(() => {
+    // console.log("RENDERING APP ROUTES");
+    // console.log(loggedUser);
+    userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
+    setLoggedUser(userLocalStorage);
+  }, [loggedUserFlagApp]);
   return (
     <div>
       <div className="App"></div>
-      <Navbar />
+
       <Routes>
         <Route
           exact
@@ -41,14 +49,44 @@ function App() {
             <LandingPage handlerSetUserFlagApp={handlerSetUserFlagApp} />
           }
         />
+        <Route
+          exact
+          path="/forgotPassword"
+          element={<ForgotPassword />}
+        ></Route>
+        <Route
+          exact
+          path="/generateNewPass/:id"
+          element={<GenerateNewPass />}
+        ></Route>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/courses" element={<CourseList path={false} />} />
+        <Route exact path="/courses" element={<Courses path={false} />} />
         <Route exact path="/myAccount" element={<MyAccount />} />
+        <Route
+          exact
+          path="/myAccount/courseDetail/:id"
+          element={<CourseDetailCard />}
+        />
+        <Route
+          exact
+          path="/myAccount/purchaseDetail/:id"
+          element={<PurchaseDetailCard />}
+        />
         <Route exact path="/aboutUs" element={<AboutUs />} />
         <Route exact path="/createAccount" element={<FormPostUser />} />
+        <Route exact path="/shop" element={<Shop />} />
+        <Route exact path="/shop/cart" element={<Cart />} />
+        <Route exact path="/editorDeFotos" element={<Editor />} />
+
         {loggedUser !== null ? (
           loggedUser.role === "admin" ? (
-            <Route exact path="/dashboardAdmin" element={<DashboardAdmin />} />
+            <>
+              <Route
+                exact
+                path="/dashboardAdmin"
+                element={<DashboardAdmin />}
+              />
+            </>
           ) : null
         ) : null}
       </Routes>
