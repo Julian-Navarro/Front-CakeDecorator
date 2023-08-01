@@ -180,9 +180,10 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
                     {errors.password!== ""? errors.password :""}
                 </P>
     
-                <Button type="submit"_hovCol="#fff"color="#eee"
-                    boxSh="2px 2px .2rem .1rem rgb(0,0,0,0.2)"wd="90%"hg="1.8rem"fWeight="bold"fSize="1.2rem"
-                    pd="0"fnFamily="Roboto"bg="linear-gradient(to right, #F6C5F5 60%, #eee 100%)"br="2rem"
+                <Button type="submit"_hovCol="#fff"color="#fff"
+                    boxSh="2px 2px .2rem .1rem rgb(0,0,0,0.2)"wd="90%"hg="1.8rem"fSize="1.2rem"
+                    pd="0"bg="linear-gradient(20deg, #EABCE9 50%, #F8D4F7 100%)"br="2rem"fWeight="bold"
+                    _hovBg="blue"
                     >
                     Ingresar
                 </Button>

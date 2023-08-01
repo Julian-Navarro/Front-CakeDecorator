@@ -92,7 +92,7 @@ export default function CaptionCarousel({ path }) {
 
   return (
     <Box position={"relative"}
-      height={"24rem"}
+      height={"26rem"}
       width={path!== "landing" ? "full" : "16rem"}
       overflow={"hidden"}
       className={s.widthCarrusel}
@@ -191,19 +191,16 @@ export default function CaptionCarousel({ path }) {
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
             backgroundImage={`url(${card.image})`}
-            // boxSize={"600px"}
-            h="22rem"
-            width="16rem"
+            h="24em"
             borderRadius={".5rem"}
+            border={"2px solid pink"}
           >
 
             <Container w="16rem"
-            //  size="container.lg"
              height="600px" position="relative">
               <Stack
                 spacing={6}
                 w={"10rem"}
-                // maxW={"lg"}
                 position="absolute"
                 top="50%"
                 transform="translate(0, -50%)"
