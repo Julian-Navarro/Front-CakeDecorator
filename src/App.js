@@ -12,17 +12,19 @@ import DashboardAdmin from "./components/DashboardAdmin/Dashboard/DashboardAdmin
 import ForgotPassword from "./components/ForgotPass/ForgotPassword.jsx";
 import GenerateNewPass from "./components/ForgotPass/GenerateNewPass.jsx";
 import Shop from "./components/Shop/Shop.jsx";
-import "./App.css";
 import Cart from "./components/Shop/Cart/Cart.jsx";
-
+import { useBreakpointValue } from "@chakra-ui/media-query";
+import { Box } from "@chakra-ui/layout";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Footer from "./components/Navbar/Footer.jsx";
 function App() {
-  // console.log("APP LOG");
   let userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
   const [loggedUser, setLoggedUser] = useState(userLocalStorage);
   const [loggedUserFlagApp, setLoggedUserFlagApp] = useState(false);
+  const width = useBreakpointValue({ base: "100%", md: "100%", lg: "1240px" });
+  const breakPoint = useBreakpointValue({ base: "1", md: "2", lg: "3" });
 
   function handlerSetUserFlagApp() {
-    // e.preventDefault();
     if (loggedUserFlagApp === false) {
       setLoggedUserFlagApp(true);
     } else {
@@ -31,64 +33,60 @@ function App() {
   }
 
   useEffect(() => {
-    // console.log("RENDERING APP ROUTES");
-    // console.log(loggedUser);
     userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
     setLoggedUser(userLocalStorage);
   }, [loggedUserFlagApp]);
+
   return (
-    <div>
-      <div className="App"></div>
-
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <LandingPage handlerSetUserFlagApp={handlerSetUserFlagApp} />
-          }
-        />
-        <Route
-          exact
-          path="/forgotPassword"
-          element={<ForgotPassword />}
-        ></Route>
-        <Route
-          exact
-          path="/generateNewPass/:id"
-          element={<GenerateNewPass />}
-        ></Route>
-        <Route exact path="/home" element={<Home />} />
-        <Route exact path="/courses" element={<Courses path={false} />} />
-        <Route exact path="/myAccount" element={<MyAccount />} />
-        <Route
-          exact
-          path="/myAccount/courseDetail/:id"
-          element={<CourseDetailCard />}
-        />
-        <Route
-          exact
-          path="/myAccount/purchaseDetail/:id"
-          element={<PurchaseDetailCard />}
-        />
-        <Route exact path="/aboutUs" element={<AboutUs />} />
-        <Route exact path="/createAccount" element={<FormPostUser />} />
-        <Route exact path="/shop" element={<Shop />} />
-        <Route exact path="/shop/cart" element={<Cart />} />
-
-        {loggedUser !== null ? (
-          loggedUser.role === "admin" ? (
-            <>
-              <Route
-                exact
-                path="/dashboardAdmin"
-                element={<DashboardAdmin />}
+    <Box w={"100vw"} display={"flex"} justifyContent={"center"} bg="#F6DBF5">
+      <Box padding={0} w={width} overflow={"hidden"}>
+        <Navbar />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <LandingPage
+                handlerSetUserFlagApp={handlerSetUserFlagApp}
+                breakPoint={breakPoint}
               />
-            </>
-          ) : null
-        ) : null}
-      </Routes>
-    </div>
+            }
+          />
+          <Route
+            exact
+            path="/forgotPassword"
+            element={<ForgotPassword />}
+          ></Route>
+          <Route
+            exact
+            path="/generateNewPass/:id"
+            element={<GenerateNewPass />}
+          ></Route>
+          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/courses" element={<Courses path={false} />} />
+          <Route exact path="/myAccount" element={<MyAccount />} />
+          <Route
+            exact
+            path="/myAccount/courseDetail/:id"
+            element={<CourseDetailCard />}
+          />
+          <Route
+            exact
+            path="/myAccount/purchaseDetail/:id"
+            element={<PurchaseDetailCard />}
+          />
+          <Route exact path="/aboutUs" element={<AboutUs />} />
+          <Route exact path="/createAccount" element={<FormPostUser />} />
+          <Route exact path="/shop" element={<Shop />} />
+          <Route exact path="/shop/cart" element={<Cart />} />
+
+          {loggedUser !== null && loggedUser.role === "admin" ? (
+            <Route exact path="/dashboardAdmin" element={<DashboardAdmin />} />
+          ) : null}
+        </Routes>
+        <Footer />
+      </Box>
+    </Box>
   );
 }
 

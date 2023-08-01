@@ -5,11 +5,11 @@ import { RiDatabaseLine, RiCake3Line } from "react-icons/ri"
 import { AiTwotoneHome } from "react-icons/ai"
 import { VscAccount } from "react-icons/vsc"
 import s from "./Navbar.module.css"
-
+import { useLocation } from "react-router-dom";
 export default function Navbar () {
+    const location = useLocation();
     const navigate = useNavigate();
     const [account, setAccount] = useState(false)
-    const lightblue = "#84b6f4"
     const pink = "#ddc6da"
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     
@@ -35,14 +35,12 @@ export default function Navbar () {
     // const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     useEffect(()=>{},[account])
     return (
-        <div className={s.container}
-            // bg="linear-gradient(#e66465, #9198e5)"
-            // br="0"wd="100%"jfCont="space-between"hg="3rem"boxSh={`0 0 .8rem .2rem #252525`}
-            >
-          <Div wd="30%"jfCont="flex-start"ml="2rem">
+        location.pathname !== "/" ?
+        <div className={s.container}>
+          <Div wd="30%"jfCont="flex-start"ml=".5rem">
             <RiCake3Line fontSize={"2rem"}/>
           </Div>
-          <Div wd="70%"hg="100%" jfCont="space-between">
+          <Div wd="70%"hg="100%" jfCont="space-between"mr=".5rem">
             <Button 
                 pd="0px 10px 0 10px"br="6px"color="#252525"
                 bg={"transparent"}fSize="1.2rem"fWeight="bold"_hovCol={"#fff"}
@@ -100,8 +98,7 @@ export default function Navbar () {
                     </Div>    
                 </Div>
             </Div>
-            </Div>
-
-        </div>
+          </Div>
+        </div> : null
     )
 }

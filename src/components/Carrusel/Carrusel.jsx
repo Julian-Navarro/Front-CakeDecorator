@@ -17,6 +17,12 @@ import img1 from "../../assets/Carousel/cactus.jpeg";
 import img2 from "../../assets/Carousel/tortasfloresrosas.png";
 import img3 from "../../assets/Carousel/mangadecolores2.jpg";
 
+import img4 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220409_131024.jpg"
+import img5 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220603_154712.jpg"
+import img6 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220615_152157.jpg"
+import img7 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220620_123629.jpg"
+import img8 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220628_174248.jpg"
+import s from "./Carrusel.module.css"
 // Settings for the slider
 const settings = {
   dots: true,
@@ -30,7 +36,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function CaptionCarousel() {
+export default function CaptionCarousel({ path }) {
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = useState();
@@ -59,23 +65,45 @@ export default function CaptionCarousel() {
       image: img3,
     },
   ];
+  const cardsLanding = [
+    {
+      number: 1,
+      image: img4,
+    },
+    {
+      number: 2,
+      image: img5,
+    },
+    {
+      number: 3,
+      image: img6,
+    },
+    {
+      number: 4,
+      image: img7,
+    },
+    {
+      number: 5,
+      image: img8,
+    },
+    
+
+  ]
 
   return (
-    <Box
-      position={"relative"}
-      height={"550px"}
-      width={"full"}
+    <Box position={"relative"}
+      height={"24rem"}
+      width={path!== "landing" ? "full" : "16rem"}
       overflow={"hidden"}
+      className={s.widthCarrusel}
     >
       {/* CSS files for react-slick */}
-      <link
-        rel="stylesheet"
+      <link rel="stylesheet"
         type="text/css"
         charSet="UTF-8"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
       />
-      <link
-        rel="stylesheet"
+      <link rel="stylesheet"
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
@@ -119,11 +147,9 @@ export default function CaptionCarousel() {
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((card, index) => (
+        { path !== "landing" ? cards.map((card, index) => (
           <Box
             key={index}
-            // height={"7x1"}
-            // position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
@@ -144,7 +170,6 @@ export default function CaptionCarousel() {
               </Button>
             )}
 
-            {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack
                 spacing={6}
@@ -154,16 +179,41 @@ export default function CaptionCarousel() {
                 top="50%"
                 transform="translate(0, -50%)"
               >
-                {/* <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
-                  {card.title}
-                </Heading>F
-                <Text fontSize={{ base: "md", lg: "lg" }} color="GrayText">
-                  {card.text}
-                </Text> */}
+
               </Stack>
             </Container>
           </Box>
-        ))}
+        )) 
+        : cardsLanding.map((card, index) => (
+          <Box
+            key={index}
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            backgroundImage={`url(${card.image})`}
+            // boxSize={"600px"}
+            h="22rem"
+            width="16rem"
+            borderRadius={".5rem"}
+          >
+
+            <Container w="16rem"
+            //  size="container.lg"
+             height="600px" position="relative">
+              <Stack
+                spacing={6}
+                w={"10rem"}
+                // maxW={"lg"}
+                position="absolute"
+                top="50%"
+                transform="translate(0, -50%)"
+              >
+
+              </Stack>
+            </Container>
+          </Box>
+        )) 
+        }
       </Slider>
     </Box>
   );

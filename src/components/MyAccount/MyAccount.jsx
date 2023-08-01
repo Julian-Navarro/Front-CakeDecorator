@@ -1,6 +1,5 @@
 import { Div, P, Button2 } from "../../utils/StyledComponents/StyledComponents";
 import React, { useState } from "react";
-import Navbar from "../Navbar/Navbar";
 import ShowProfileData from "./ShowData/DataProfile/Data&EditProfileCard";
 import ShowPurchasesData from "./ShowData/DataPurchase/ShowPurchasesData";
 import ShowMyCourses from "./ShowData/DataCourses/ShowCoursesData";
@@ -18,7 +17,6 @@ export default function MyAccount() {
 
   return (
     <div>
-      <Navbar />
       <Div alItems="flex-start">
         <Div
           flexDir="column"

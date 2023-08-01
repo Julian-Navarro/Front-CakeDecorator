@@ -1,0 +1,19 @@
+@media (max-width: 550px) {
+    .titleCourses {
+        font-size: 2.2rem;
+    }
+
+    .coursesDescription {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .containerCarruselTitle {
+        flex-direction: column;
+    }
+
+    .coursesDescription {
+        width: 80%
+    }
+}

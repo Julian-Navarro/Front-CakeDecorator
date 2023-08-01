@@ -1,25 +1,36 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { HOST } from "../../../utils";
-import s from "../../../utils/example.module.css"
+import s from "./ProductCard.module.css"
 import { IconButton } from "@chakra-ui/react"
-import { MdOutlineAddShoppingCart, MdAddToPhotos, MdDelete, MdOutlineDriveFileRenameOutline } from "react-icons/md"
+import { MdOutlineAddShoppingCart, MdAddToPhotos, MdDelete } from "react-icons/md"
 import { AiFillSetting } from "react-icons/ai"
 
-import { Button, Div, Input } from "../../../utils/StyledComponents/StyledComponents";
-export default function ProductCard ({ handlerSetCart,handlerSetComponentProductListFlag, handlerEditProduct, path, brand, product, name,categories, description, id, img, price, stock}) {
-const newName = name.length > 72 ? name.slice(0, 72)+"...": name
+import { Button, Input } from "../../../utils/StyledComponents/StyledComponents";
+export default function ProductCard ({ 
+    handlerSetCart,
+    handlerSetComponentProductListFlag, 
+    handlerEditProduct, 
+    path, 
+    brand, 
+    product, 
+    name,
+    categories, 
+    description, 
+    id, 
+    img, 
+    price, 
+    stock
+}) {
+
+const newName = name.length > 72 ? name.slice(0, 72) + "..." : name
 const [amountToAdd, setAmountToAdd] = useState(1);
 function handlerSetAmountToAdd (e) {
     e.preventDefault()
-    console.log("ETARGET VALUE", Number(e.target.value));
     if((/^\d+$/).test(e.target.value)) { //? Si es un numero positivo
         if(Number(e.target.value) < 1000 && Number(e.target.value) !== 0) {
-            console.log("A");
             setAmountToAdd(Number(e.target.value))
         } else {
-    console.log("ETARGET VALUEeeeeeeeeeeeee", e.target.value);
-
             if(Number(e.target.value) === 0) {
                 setAmountToAdd(1)
             } else {
@@ -27,28 +38,25 @@ function handlerSetAmountToAdd (e) {
             }
         }
     } else {
-        console.log("No: ", e.target.value);
         setAmountToAdd(1)
     }
 }
-function addOne(){
+function addOne() {
     if(amountToAdd<999) {
         setAmountToAdd(`${Number(amountToAdd)+1}`)
     }
 }
-function subtractOne(){
+function subtractOne() {
     if(amountToAdd != 1) {
         setAmountToAdd(`${Number(amountToAdd)-1}`)
     }
 }
-function handlerBtnAdd(e){
+function handlerBtnAdd(e) {
     if(amountToAdd >= 1) {
         if(amountToAdd <= stock) {
-            console.log("CASO AMOUNT MENOR O IGUAL AL STOCK");
             handlerSetCart(e, {...product, amountToAdd: Number(amountToAdd), img: product.img[0]})
             setAmountToAdd(1);  
         } else {
-            // setAmountToAdd(stock);   
             handlerSetCart(e, {...product, amountToAdd: stock, img: product.img[0]})
         }
     }

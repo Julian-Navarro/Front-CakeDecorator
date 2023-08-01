@@ -6,7 +6,6 @@ import { HiMenu } from "react-icons/hi"
 import { Div, P } from "../../utils/StyledComponents/StyledComponents";
 import CourseList from "./CourseList";
 import s from "./CoursesList.module.css";
-import Navbar from "../Navbar/Navbar";
 
 export default function Courses ({ path, componentCourseListFlag }) {
     const dispatch = useDispatch()
@@ -30,7 +29,6 @@ export default function Courses ({ path, componentCourseListFlag }) {
     },[courses, allCourses]) 
 return (
     <Div flexDir="column" >
-        <Navbar/>
         <Div alItems="flex-start">
           <div className={isOpen?s.divGradientOpen:s.divGradientClose}
               pos="sticky"posTop="0px"posLeft="0px"overflow="hidden"bg="#333"hg="100vh"wd={isOpen?"14rem":"3.2rem"}>
