@@ -147,7 +147,8 @@ export default function CaptionCarousel({ path }) {
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        { path !== "landing" ? cards.map((card, index) => (
+        { path !== "landing" 
+        ? cards.map((card, index) => (
           <Box
             key={index}
             backgroundPosition="center"

@@ -45,7 +45,7 @@ export default function LinkShop () {
               </P>
             </Div>
             <Div wd="auto"mt="2rem"className={s.containerCarrousel}>
-              <Carrousel path="landing"/>
+              {/* <Carrousel path="landing"/> */}
             </Div>
           </Div>
 
