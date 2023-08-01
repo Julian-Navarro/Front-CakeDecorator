@@ -21,12 +21,12 @@ export default function CirclesBackground ({ right }) {
             >
             </Div>
             <Div bg={purple}br="100%"wd="16rem" hg="16rem"
-              pos="relative"posRight="2rem"posBot="6rem"
+              pos="relative"posRight={right===true?"10rem":"2rem"}posBot="6rem"
               boxSh={`12px 12px 1.5rem .1rem ${shadow}, inset -1.3rem -1.3rem 5rem ${"#9A6799"}`}
               >
             </Div>
             <Div bg={violet}br="100%"wd="8rem" hg="8rem"
-              pos="relative"posRight="6rem"
+              pos="relative"posRight={right===true?"28rem":"6rem"}
               boxSh={`12px 12px 1.5rem .1rem ${shadow}, inset -.6rem -.6rem 3.5rem ${"#83679A"}`}
               >
             </Div>
