@@ -17,6 +17,7 @@ import { useBreakpointValue } from "@chakra-ui/media-query";
 import { Box } from "@chakra-ui/layout";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Navbar/Footer.jsx";
+import s from "./App.module.css";
 function App() {
   let userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
   const [loggedUser, setLoggedUser] = useState(userLocalStorage);
@@ -38,7 +39,13 @@ function App() {
   }, [loggedUserFlagApp]);
 
   return (
-    <Box w={"100vw"} display={"flex"} justifyContent={"center"} bg="#F6DBF5">
+    <Box
+      w={"100vw"}
+      display={"flex"}
+      justifyContent={"center"}
+      bg="#F6DBF5"
+      className={s.boxContainer}
+    >
       <Box padding={0} w={width} overflow={"hidden"}>
         <Navbar />
         <Routes>
