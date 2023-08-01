@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { MdShoppingCart } from "react-icons/md"
 import { ArrowRightIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import s from "../../../utils/example.module.css"
+import s from "./LeftSideBar.module.css"
 
 
 export default function LeftSideBar({ handlerSetFilters, isOpen ,setIsOpen, filters }) {

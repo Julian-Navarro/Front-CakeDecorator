@@ -1,0 +1,13 @@
+.color {
+    color: rgb(240, 147, 186);
+    background: #b691b67a
+}
+
+.divGradient {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(circle at 20% 20%, #f5d7df 1%, #f8b5c5 100%);
+}

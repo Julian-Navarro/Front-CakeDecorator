@@ -4,8 +4,6 @@ import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
 import { Div, P } from "../../utils/StyledComponents/StyledComponents"; 
 import LeftSideBar from "./LifeSideBar/LeftSideBar";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Navbar/Footer";
 
 export default function Shop() {
   const [isOpen, setIsOpen] = useState(false);
@@ -288,7 +286,6 @@ export default function Shop() {
 
   return (
     <Div flexDir="column" wd="100%"bg="transparent">
-      <Navbar/>
       <Div>
 
 
@@ -314,7 +311,6 @@ export default function Shop() {
       </Div>
       </Div>
       <br/>
-      <Footer/>
 
     </Div>
   );

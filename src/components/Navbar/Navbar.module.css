@@ -1,17 +1,8 @@
 .container {
-    background: radial-gradient(#398ff8 10% , #84b6f4 90%);
-    background: radial-gradient(#a7ceff 10%, #7bb4fa 160%);
-    background: radial-gradient(circle at 40% -1700%, #ffa0b8 1%, #f5d7df 100%);
-/* f5d7df */
-    
+    background: #fff;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-radius: 0 0 .5rem .3rem;
-
-    border: 2px solid #f5d7df;
-    box-shadow: 0 0 .3rem .2rem #333c43;
-    margin-bottom: .4rem;
     margin-top: .1rem;
 
 }

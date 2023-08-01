@@ -10,7 +10,7 @@
     background-color: transparent;
     width: 90%;
     height: 2.2rem;
-    border-bottom: 2px solid #333;
+    /* border-bottom: 2px solid #333; */
     padding: 0 .2rem 0 .2rem;
     outline: none;
     -webkit-text-fill-color: #333;
@@ -23,8 +23,14 @@
     background-color: transparent;
     width: 90%;
     height: 2.2rem;
-    border-bottom: 2px solid red;
+    /* border-bottom: 2px solid red; */
     padding: 0 .2rem 0 .2rem;
     outline: none;
     font-family: 'Roboto';
+}
+@media (max-width: 550px) {
+    .title {
+        display: none !important;
+    }
+
 }

@@ -4,7 +4,6 @@ import Users from "../SubComponents/Users/Users";
 import CoursesAdm from "../SubComponents/Courses/CoursesAdm";
 import Products from "../SubComponents/Products/ProductsAdm";
 import CreateCategoriesAndBrands from "../SubComponents/Products/EditCategoriesAndBrands";
-import Navbar from "../../Navbar/Navbar";
 import { Div, Button, P, Button2 } from "../../../utils/StyledComponents/StyledComponents";
 import { FaUsers, FaProductHunt, FaEdit } from "react-icons/fa"
 import { MdQueryStats } from "react-icons/md"
@@ -22,7 +21,6 @@ export default function DashboardAdmin () {
     useEffect(()=>{}, [render])
     return (
         <div>
-            <Navbar/>
             <Div alItems="flex-start">
 
               <Div flexDir="column"jfCont="slex-start"br="0 .5rem 0 0"wd="20%"hg="100vh"bg="#dc4a61"pos="sticky"posTop="0px">
