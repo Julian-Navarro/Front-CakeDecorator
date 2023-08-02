@@ -182,6 +182,7 @@ export const Button = styled.button`
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
+  box-shadow: ${({ boxSh }) => boxSh};
   &:hover {
     background: ${({ bg, _hovBg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};

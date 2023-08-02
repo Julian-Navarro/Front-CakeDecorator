@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Carrousel from "../../Carrusel/Carrusel";
 export default function LinkShop () {
   const navigate = useNavigate()
-  const shadow = "rgb(0, 0, 0, 0.3)" 
 
   return (
       <Div mt="2rem"pd=".5rem"hg="70rem"flexDir="column"jfCont="flex-start">
@@ -34,7 +33,7 @@ export default function LinkShop () {
               <Button bg="#60C72F"
                 fSize="1.2rem"fWeight="100"letterSp=".15rem"
                 pd=".1rem 2rem .1rem 2rem"br="4rem"
-                boxSh={`4px 4px .3rem .1rem ${shadow}`}
+                boxSh="2px 2px .3rem .1rem rgb(0, 0, 0, 0.35), inset -8px -6px 25px #44752C"
                 onClick={()=>{navigate("/shop")}}fnFamily="Shrikhand"_hovBg="#80E252"
                 >
                 Productos
@@ -45,7 +44,7 @@ export default function LinkShop () {
               </P>
             </Div>
             <Div wd="auto"mt="2rem"className={s.containerCarrousel}>
-              {/* <Carrousel path="landing"/> */}
+              <Carrousel path="shop"/>
             </Div>
           </Div>
 
