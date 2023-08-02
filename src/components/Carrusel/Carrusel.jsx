@@ -22,6 +22,11 @@ import img5 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220603_154712.jpg"
 import img6 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220615_152157.jpg"
 import img7 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220620_123629.jpg"
 import img8 from "../../utils/IMAGES/imgsCoursesLanding/IMG_20220628_174248.jpg"
+
+import img9 from "../../utils/IMAGES/imgsShopLanding/61aaqFxR9WSACUF8941000QL80.jpg"
+import img10 from "../../utils/IMAGES/imgsShopLanding/Cake-Decorating-Tools-Review.jpg"
+import img11 from "../../utils/IMAGES/imgsShopLanding/rBVapGHNgP2AasooAAQ71wAkPyg933.jpg"
+
 import s from "./Carrusel.module.css"
 // Settings for the slider
 const settings = {
@@ -89,11 +94,25 @@ export default function CaptionCarousel({ path }) {
     
 
   ]
+  const cardsShop = [
+    {
+      number: 2,
+      image: img9,
+    },
+    {
+      number: 3,
+      image: img10,
+    },
+    {
+      number: 4,
+      image: img11,
+    }
+  ]
 
   return (
     <Box position={"relative"}
-      height={"26rem"}
-      width={path!== "landing" ? "full" : "16rem"}
+      height={path === "landing" ? "26rem" : path === "shop" ? "18rem" : "26rem"}
+      width={path === "landing" ? "16rem" : path === "shop" ? "15rem" : "full"}
       overflow={"hidden"}
       className={s.widthCarrusel}
     >
@@ -147,8 +166,62 @@ export default function CaptionCarousel({ path }) {
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        { path !== "landing" 
-        ? cards.map((card, index) => (
+        { path === "landing" 
+        ? cardsLanding.map((card, index) => (
+          <Box
+          key={index}
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            backgroundImage={`url(${card.image})`}
+            h="24em"
+            borderRadius={".5rem"}
+            border={"2px solid pink"}
+            >
+
+            <Container w="16rem"
+             height="600px" position="relative">
+              <Stack
+                spacing={6}
+                w={"10rem"}
+                position="absolute"
+                top="50%"
+                transform="translate(0, -50%)"
+              >
+
+              </Stack>
+            </Container>
+          </Box>
+        )) 
+        : path === "shop" 
+        ? cardsShop.map((card, index) => (
+          <Box
+            key={index}
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            backgroundImage={`url(${card.image})`}
+            h="16rem"
+            width="10rem"
+            borderRadius={".5rem"}
+            border={"2px solid pink"}
+            >
+            {/* <img src={card.image} alt="" /> */}
+            <Container w="16rem" 
+              height="600px" position="relative">
+              <Stack
+                spacing={6}
+                w={"10rem"}
+                position="absolute"
+                top="50%"
+                transform="translate(0, -50%)"
+              >
+
+              </Stack>
+            </Container>
+          </Box>
+        )) 
+        : cards.map((card, index) => (
           <Box
             key={index}
             backgroundPosition="center"
@@ -185,32 +258,7 @@ export default function CaptionCarousel({ path }) {
             </Container>
           </Box>
         )) 
-        : cardsLanding.map((card, index) => (
-          <Box
-            key={index}
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            backgroundSize="cover"
-            backgroundImage={`url(${card.image})`}
-            h="24em"
-            borderRadius={".5rem"}
-            border={"2px solid pink"}
-          >
 
-            <Container w="16rem"
-             height="600px" position="relative">
-              <Stack
-                spacing={6}
-                w={"10rem"}
-                position="absolute"
-                top="50%"
-                transform="translate(0, -50%)"
-              >
-
-              </Stack>
-            </Container>
-          </Box>
-        )) 
         }
       </Slider>
     </Box>
