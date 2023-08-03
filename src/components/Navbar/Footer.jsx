@@ -1,18 +1,49 @@
 import { Div, P } from "../../utils/StyledComponents/StyledComponents";
 import igIcon from "../../utils/IMAGES/imgsFooter/skill-icons_instagram.png"
 import fbIcon from "../../utils/IMAGES/imgsFooter/devicon_facebook.png"
+import arrow  from "../../utils/IMAGES/imgsFooter/Maskgroup.png"
+import logo from "../../utils/IMAGES/Logo.png"
+import s from "./Footer.module.css"
+import { useNavigate } from "react-router-dom";
 export default function Footer () {
+  const violet = "#DBB5FA";
+  const navigate = useNavigate()
     return (
-        <Div br="0"bg="#C7CAD6" wd="100%"minHg="14rem"zInd="-1"color="#fff">
-          <Div flexDir="column"bg="cyan"alItems="flex-start"hg="12rem"jfCont="flex-start"pd="2px">
-            <Div jfCont="flex-start"bg="orange">
-              <img src={igIcon} alt="" />
-              <P fWeight="bold">Instagram</P>
+        <Div br="0"bg="#C7CAD6" wd="100%"minHg="9rem"zInd="-1"alItems="flex-start"pd=".5rem"
+          className={s.divContainer}>
+          <Div flexDir="column"alItems="flex-start"jfCont="flex-start"pd="2px">
+            <Div wd="8rem" hg="6rem">
+              <img src={logo} alt="" />
             </Div>
-            <Div jfCont="flex-start"bg="orange">
-              <img src={fbIcon} alt="" />
-              <P fWeight="bold">Facebook</P>
+            <Div jfCont="flex-start">
+              <img src={igIcon} alt=""className={s.icons}/>
+              <P fWeight="bold"fSize=".9rem">Instagram</P>
             </Div>
+            <Div jfCont="flex-start">
+              <img src={fbIcon} alt=""className={s.icons}/>
+              <P fWeight="bold"fSize=".9rem">Facebook</P>
+            </Div>
+          </Div>
+          <Div flexDir="column"alItems="flex-start">
+            <Div jfCont="flex-start">
+              <img src={arrow}alt="" className={s.arrowRight}/>
+              <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/home")}>Home</P>
+            </Div>
+            <Div jfCont="flex-start">
+              <img src={arrow}alt="" className={s.arrowRight}/>
+              <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/courses")}>Cursos</P>
+            </Div>
+            <Div jfCont="flex-start">
+              <img src={arrow}alt="" className={s.arrowRight}/>
+              <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/shop")}>Tienda</P>
+            </Div>
+            <Div jfCont="flex-start">
+              <img src={arrow}alt="" className={s.arrowRight}/>
+              <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/aboutUs")}>Nosotros</P>
+            </Div>
+          </Div>
+          <Div>
+            <P fWeight="bold"fSize=".9rem">Contactanos</P>
           </Div>
         </Div>
     )

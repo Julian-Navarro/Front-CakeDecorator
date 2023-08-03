@@ -36,7 +36,7 @@ export default function LinkShop () {
                 boxSh="2px 2px .3rem .1rem rgb(0, 0, 0, 0.35), inset -8px -6px 25px #44752C"
                 onClick={()=>{navigate("/shop")}}fnFamily="Shrikhand"_hovBg="#80E252"
                 >
-                Productos
+                Tienda
               </Button>
               <P fSize="2.2rem" fWeight="bold"wd="30rem"pd="1rem"color="#fff"
                 className={s.coursesDescription}textSh="#333">
