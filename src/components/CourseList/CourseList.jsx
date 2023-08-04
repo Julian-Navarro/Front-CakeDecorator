@@ -12,7 +12,7 @@ export default function CourseList ({ path, handlerEditCourse, componentCourseLi
     
     return (
         <Div flexDir="column">
-            <CourseListCards path={path} handlerEditCourse={handlerEditCourse} courses={courses}/>
+          <CourseListCards path={path} handlerEditCourse={handlerEditCourse} courses={courses}/>
         </Div>
     )
 }
