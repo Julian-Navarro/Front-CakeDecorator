@@ -1,0 +1,36 @@
+.img {
+    height: 12rem;
+    width: 14rem;
+    object-fit: cover;
+    border-radius: .4rem 0 0 .4rem;
+}
+@media (max-width: 880px) {
+    .divContainer {
+        flex-direction: column;
+        height: 27.5rem;
+        width: 15rem;
+    }
+    .description {
+        display: none;
+    }
+    .divDescriptionAndButton {
+        border-left: 0;
+        width: 100%;
+        margin-right: 0;
+    }
+    .divButton {
+        padding: 0;
+        justify-content: center;
+    }
+    .divInfo {
+        width: 100%;
+    }
+    .divImg {
+        width: 15rem;
+    }
+    .img {
+        width: 15rem;
+        border-radius: .4rem .4rem 0 0;
+    }
+
+}
