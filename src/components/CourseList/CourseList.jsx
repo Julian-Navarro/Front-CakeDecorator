@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import CourseListCards from "./CourseListCards";
-import { Button, Div, P} from "../../utils/StyledComponents/StyledComponents";
+import { Div } from "../../utils/StyledComponents/StyledComponents";
+import FilterCourses from "./FiltersCourses";
 
-export default function CourseList ({ path, handlerEditCourse, componentCourseListFlag, courses }) {
-
-
+export default function CourseList ({ path, handlerEditCourse, componentCourseListFlag, allCourses, courses, setCourses, handlerFilterValue }) {
     useEffect(()=>{
-    //   dispatch(getCoursesFromDB()) 
-    console.log("COURSE LISTS: courses", courses); 
+      console.log("COURSELIST! \n ");
     }, [courses])
     
     return (
         <Div flexDir="column">
-          <CourseListCards path={path} handlerEditCourse={handlerEditCourse} courses={courses}/>
+          <FilterCourses courses={courses}allCourses={allCourses}
+            setCourses={setCourses}handlerFilterValue={handlerFilterValue}/>
+          <CourseListCards path={path} handlerEditCourse={handlerEditCourse} 
+            courses={courses}allCourses={allCourses}/>
         </Div>
     )
 }

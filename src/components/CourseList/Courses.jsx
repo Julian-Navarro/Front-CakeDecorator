@@ -12,7 +12,27 @@ export default function Courses ({ path, componentCourseListFlag }) {
     const [isOpen, setIsOpen] = useState(false);
     const allCourses = useSelector((state)=>state.courses)
     const [courses, setCourses] = useState([])
-
+  function handlerFilterValue(e) {
+    e.preventDefault()
+    console.log(e.target.name, e.target.value);
+    let newCourses = allCourses.filter((course) => {
+      if(e.target.name == "category") {
+        if(course.category === e.target.value) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        if(course.type === e.target.value) {
+          return true
+        } else {
+          return false
+        }
+      }
+      })
+    console.log("__NEW COURSES",newCourses);
+    setCourses(newCourses)
+  }
     function cb(){
         setCourses(allCourses)
     }
@@ -26,12 +46,11 @@ export default function Courses ({ path, componentCourseListFlag }) {
     useEffect(()=>{
         cb();
         console.log("2 - US EFF, courses: ", courses);
-    },[courses, allCourses]) 
+    },[allCourses]) 
 return (
-    <Div flexDir="column"bg="#fff"br="0" >
-      <Div alItems="flex-start">
-        <CourseList courses={courses}path={path}/>
-      </Div>
+    <Div flexDir="column"bg="#fff"br="0">
+      <CourseList handlerFilterValue={handlerFilterValue}
+        courses={courses}path={path}setCourses={setCourses}/>
     </Div>
     )
 } 

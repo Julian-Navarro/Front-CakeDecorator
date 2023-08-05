@@ -101,8 +101,29 @@ export const Select = styled.select`
   font-family: ${({ fnFamily }) => fnFamily || "Roboto"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
+  cursor: ${({ cursor }) => cursor || "pointer"};
+  letter-spacing: ${({ letterSp }) => letterSp};
 `;
-export const Option = styled.option``;
+export const Option = styled.option`
+  letter-spacing: ${({ letterSp }) => letterSp};
+  background: ${({ bg }) => bg || "#fff"};
+  padding: ${({ pd }) => pd};
+  height: ${({ hg }) => hg || "auto"};
+  width: ${({ wd }) => wd || "auto"};
+  margin-left: ${({ ml }) => ml};
+  display: ${({ display }) => display || "flex"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  justify-content: ${({ jfCont }) => jfCont || "center"};
+  align-items: ${({ alItems }) => alItems || "center"};
+  color: ${({ color }) => color || "black"};
+  border: 2px solid ${({ bd }) => bd || "black"};
+  border-radius: ${({ br }) => br || "8px"};
+  font-family: ${({ fnFamily }) => fnFamily || "Roboto"};
+  font-weight: ${({ fWeight }) => fWeight || "300"};
+  font-size: ${({ fSize }) => fSize || "22px"};
+  cursor: ${({ cursor }) => cursor || "pointer"};
+`;
+
 export const P = styled.p`
   text-decoration: ${({ txtD }) => txtD};
   background: ${({ bg }) => bg || "transparent"};
@@ -134,7 +155,7 @@ export const P = styled.p`
   font-family: ${({ fnFamily }) => fnFamily || "Roboto"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
-  cursor: ${({ cursor }) => cursor};
+  cursor: ${({ cursor }) => cursor || "pointer"};
   filter: ${({ filter }) => filter};
   z-index: ${({ zInd }) => zInd};
   transition: ${({ trans }) => trans || ".4s"};
@@ -183,6 +204,7 @@ export const Button = styled.button`
   margin-left: ${({ ml }) => ml || "none"};
   margin-right: ${({ mr }) => mr || "none"};
   box-shadow: ${({ boxSh }) => boxSh};
+  letter-spacing: ${({ letterSp }) => letterSp};
   &:hover {
     background: ${({ bg, _hovBg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};
