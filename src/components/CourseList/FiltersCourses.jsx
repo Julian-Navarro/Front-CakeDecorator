@@ -1,9 +1,9 @@
 import { Div, Select, Option, Button } from "../../utils/StyledComponents/StyledComponents";
 import s from "./FilterCourses.module.css"
 import { useEffect, useState } from "react";
-export default function FilterCourses ({ allCourses, courses, setCourses, handlerFilterValue }){
+export default function FilterCourses ({ allCourses, courses, setCourses, handlerFilterValue, categoryFilter, typeFilter }){
 
-  useEffect(()=>{console.log("FILTER COURSES")},[])
+  useEffect(()=>{},[])
   return (
       <Div>
         <Div bg="#fff"br="0"jfCont="space-between"
@@ -16,16 +16,18 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
 
           <Select bg="#E9A0E7"br="0"fnFamily="Shrikhand"fSize="1rem"color="#fff"
             letterSp=".05rem"bd="#eee"name="category"onChange={(e)=>handlerFilterValue(e)}>
+              <Option value=""fnFamily="Shrikhand">{categoryFilter?"Todos":"Categoría"}</Option>
             <Option value="Curso"fnFamily="Shrikhand"
               >Cursos</Option>
             <Option value="Seminario"fnFamily="Shrikhand"
               >Seminarios</Option>
           </Select>
           <Select bg="#E9A0E7"br="0"fnFamily="Shrikhand"fSize="1rem"color="#fff"
-            letterSp=".05rem"bd="#eee">
-            <Option fnFamily="Shrikhand">Presencial</Option>
-            <Option fnFamily="Shrikhand">Online</Option>
-            <Option fnFamily="Shrikhand">Híbrido</Option>
+            letterSp=".05rem"bd="#eee"name="type"onChange={(e)=>handlerFilterValue(e)}>
+            <Option value=""fnFamily="Shrikhand">{typeFilter?"Todos":"Tipo"}</Option>
+            <Option value="Presencial"fnFamily="Shrikhand">Presencial</Option>
+            <Option value="Online"fnFamily="Shrikhand">Online</Option>
+            <Option value="Hibrido"fnFamily="Shrikhand">Híbrido</Option>
           </Select>
           <Button bg="#E9A0E7" br="0"pd="0 .5rem 0 .5rem"letterSp=".05rem"
             bd="#eee"color="#fff"fnFamily="Shrikhand"fSize="1rem">

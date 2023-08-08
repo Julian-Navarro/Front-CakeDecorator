@@ -4,7 +4,7 @@ import { Div, P } from "../../utils/StyledComponents/StyledComponents";
 import { useEffect } from "react";
 export default function CourseListCards({ allCourses, courses, handlerEditCourse, path}){
     useEffect(()=>{
-        console.log("COURSES: ",courses);
+        // console.log("COURSES: ",courses);
     },[courses])
     return (
         <Div flWr="wrap"mb="2rem"mt="5rem">
