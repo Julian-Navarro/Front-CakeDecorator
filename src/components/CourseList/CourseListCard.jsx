@@ -32,12 +32,12 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
           </Div>
           <Div flexDir="column">
             <Div jfCont="flex-start">
-              <P fSize=".85rem"fWeight="bold">Tipo:</P>
+              <P fSize=".85rem"fWeight="bold">Categoría:</P>
               <P fSize=".85rem">{category}</P>
             </Div>
             
             <Div jfCont="flex-start">
-              <P fSize=".85rem"fWeight="bold">Modalidad: </P>
+              <P fSize=".85rem"fWeight="bold">Tipo: </P>
               <P fSize=".85rem">{type}</P>
             </Div>
             
