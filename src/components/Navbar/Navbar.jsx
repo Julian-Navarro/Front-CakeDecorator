@@ -10,6 +10,7 @@ export default function Navbar () {
     const location = useLocation();
     const navigate = useNavigate();
     const [account, setAccount] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     const pink = "#ddc6da"
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     
@@ -36,11 +37,23 @@ export default function Navbar () {
     useEffect(()=>{},[account])
     return (
         location.pathname !== "/" ?
-        <div className={s.container}>
-          <Div wd="30%"jfCont="flex-start"ml=".5rem">
+      <Div className={s.container}br="0"wd="100%"pos="fixed">
+
+          <Button pd="4px 8px 4px 12px"pos="absolute"posRight="0"mr="12px"zInd="4"
+            posTop="0px"
+            display="none" className={s.btnBurguer}  onClick={()=>setIsOpen(!isOpen)}
+            >
+              X
+          </Button>
+
+        <Div bg="#fff"className={s.divContainer}zInd="2"br="0"
+            posRight={isOpen?"0":"-100%"}>
+
+          <Div wd="30%"jfCont="flex-start"ml=".5rem"className={s.cakeIcon}>
             <RiCake3Line fontSize={"2rem"}/>
           </Div>
-          <Div wd="70%"hg="100%" jfCont="space-between"mr=".5rem">
+
+          <Div wd="70%"hg="100%" jfCont="space-between"mr=".5rem"className={s.divBtns}>
             <Button 
                 pd="0px 10px 0 10px"br="6px"color="#252525"
                 bg={"transparent"}fSize="1.2rem"fWeight="bold"_hovCol={"#fff"}
@@ -99,6 +112,8 @@ export default function Navbar () {
                 </Div>
             </Div>
           </Div>
-        </div> : null
+        </Div>
+
+      </Div> : null
     )
 }

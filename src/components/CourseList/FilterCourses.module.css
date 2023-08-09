@@ -3,3 +3,21 @@
         width: 100% !important;
     }
 }
+@media (max-width: 700px) {
+    .container {
+        background: lightgray !important;
+        flex-direction: column !important;
+        border-bottom: none !important;
+        height: 14rem !important;
+        position: relative !important;
+        top: 3.5rem;
+        z-index: -1 !important;
+        justify-content: space-evenly !important;
+    }
+    .container Select {
+        width: 70%;
+    }
+    .btnBurguer {
+        display: inline-block !important;
+    }
+}
