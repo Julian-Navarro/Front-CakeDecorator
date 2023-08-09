@@ -47,7 +47,7 @@ export default function Navbar () {
           </Button>
 
         <Div bg="#fff"className={s.divContainer}zInd="2"br="0"
-            posRight={isOpen?"0":"-100%"}>
+            posBot={isOpen?"0":"14rem"}>
 
           <Div wd="30%"jfCont="flex-start"ml=".5rem"className={s.cakeIcon}>
             <RiCake3Line fontSize={"2rem"}/>
