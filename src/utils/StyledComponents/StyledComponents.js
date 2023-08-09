@@ -205,6 +205,7 @@ export const Button = styled.button`
   margin-right: ${({ mr }) => mr || "none"};
   box-shadow: ${({ boxSh }) => boxSh};
   letter-spacing: ${({ letterSp }) => letterSp};
+  z-index: ${({ zInd }) => zInd};
   &:hover {
     background: ${({ bg, _hovBg }) => _hovBg || bg};
     color: ${({ _hovCol }) => _hovCol};

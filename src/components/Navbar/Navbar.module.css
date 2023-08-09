@@ -1,15 +1,22 @@
-.container {
-    background: #fff;
-    /* width: 100%; */
-    width: 1240px;
-    display: flex;
-    justify-content: space-between;
-    /* margin-top: .1rem; */
-    position: fixed;
-    
-}
-@media (max-width: 1240px) {
+@media (max-width: 700px) {
     .container {
-        width: 100% !important;
+      /* background: blue !important; */
+    }
+    .btnBurguer {
+        display: inline-block !important;
+    }
+    .divContainer {
+        background: #E9A0E7 !important;
+        position: relative !important;
+        flex-direction: column !important;
+        height: 14rem !important;
+        z-index: 2 !important;
+    }
+    .divBtns {
+        flex-direction: column-reverse !important;
+        justify-content: space-evenly !important;
+    }
+    .cakeIcon {
+        display: none !important;
     }
 }
