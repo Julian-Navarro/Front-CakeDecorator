@@ -4,6 +4,7 @@ import { Div, Button, P } from "../../utils/StyledComponents/StyledComponents";
 import { RiDatabaseLine, RiCake3Line } from "react-icons/ri"
 import { AiTwotoneHome } from "react-icons/ai"
 import homeIcon from "../../utils/IMAGES/bxs_home-heart.png"
+import xIcon from "../../utils/IMAGES/octicon_x-12.png"
 import { VscAccount } from "react-icons/vsc"
 import s from "./Navbar.module.css"
 import { useLocation } from "react-router-dom";
@@ -45,11 +46,11 @@ export default function Navbar () {
         location.pathname !== "/" ?
       <Div className={s.container}br="0"wd="100%"pos="fixed"hg="2rem">
 
-          <Div pd="4px 8px 4px 12px"pos="absolute"posRight="0"mr="12px"zInd="4"mt=".5rem"
+          <Div pos="absolute"posRight="0"mr="12px"zInd="4"mt=".5rem"
             posTop="0px"wd="2.8rem" hg="2.8rem"br="50%"bg={isOpen?"#9A6799":"#E9A0E7"}
             display="none"className={s.btnBurguer}onClick={()=>setIsOpen(!isOpen)}
             >
-              <img src={homeIcon} alt=""className={s.iconHome} />
+              <img src={isOpen?xIcon:homeIcon} alt=""className={s.iconHome} />
           </Div>
 
         <Div bg="#fff"className={s.divContainer}zInd="2"br="0"

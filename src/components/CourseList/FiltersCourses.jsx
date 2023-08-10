@@ -1,17 +1,19 @@
 import { Div, Select, Option, Button } from "../../utils/StyledComponents/StyledComponents";
 import s from "./FilterCourses.module.css"
 import { useEffect, useState } from "react";
+import filterIcon from "../../utils/IMAGES/ri_filter-fill.png"
+import xIcon from "../../utils/IMAGES/octicon_x-12.png" 
 export default function FilterCourses ({ allCourses, courses, setCourses, handlerFilterValue, categoryFilter, typeFilter }){
  let [isOpen, setIsOpen] = useState(false);
   useEffect(()=>{console.log("1");},[isOpen])
   return (
-      <Div wd="100%"hg="3rem"pos="fixed"posTop="3.7rem">
+      <Div wd="100%"hg="3rem"pos="fixed"posTop="2rem"className={s.divContainer}>
 
         <Div pos="absolute"posRight="0px"zInd="2"bg={isOpen?"#9A6799":"#E9A0E7"}
-          mr=".5rem"wd="2.8rem" hg="2.8rem"br="50%"color="#fff"
+          mr=".5rem"wd="2.8rem" hg="2.8rem"br="50%"
           display="none"className={s.btnBurguer}onClick={()=>setIsOpen(!isOpen)}
           >
-            X
+            <img src={isOpen?xIcon:filterIcon} alt="" className={s.imgIcon}/>
         </Div>
 
         <Div bg="#fff"br="0"jfCont="space-between"

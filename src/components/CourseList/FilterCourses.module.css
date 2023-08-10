@@ -15,10 +15,16 @@
         justify-content: space-evenly !important;
         align-items: flex-start !important;
     }
+    .divContainer {
+        top: 3.7rem !important;
+    }
     .container Select {
         width: 8rem !important;
     }
     .btnBurguer {
         display: flex !important;
+    }
+    .imgIcon {
+        width: 2.2rem !important;
     }
 }
