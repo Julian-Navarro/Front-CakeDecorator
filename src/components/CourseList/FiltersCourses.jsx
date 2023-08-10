@@ -26,19 +26,23 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
 
           <Select bg="#E9A0E7"br="0"fnFamily="Shrikhand"fSize="1rem"color="#fff"
             letterSp=".05rem"bd="#eee"name="category"onChange={(e)=>handlerFilterValue(e)}>
-              <Option value=""fnFamily="Shrikhand">{categoryFilter?"Todos":"Categoría"}</Option>
+            <Option value=""fnFamily="Shrikhand">
+              {categoryFilter?"Todos":"Categoría"}
+            </Option>
             <Option value="Curso"fnFamily="Shrikhand"
+              color={categoryFilter==="Curso"?"#E9A0E7":"#333"}
               >Cursos</Option>
             <Option value="Seminario"fnFamily="Shrikhand"
+              color={categoryFilter==="Seminario"?"#E9A0E7":"#333"}
               >Seminarios</Option>
           </Select>
 
           <Select bg="#E9A0E7"br="0"fnFamily="Shrikhand"fSize="1rem"color="#fff"
             letterSp=".05rem"bd="#eee"name="type"onChange={(e)=>handlerFilterValue(e)}>
             <Option value=""fnFamily="Shrikhand">{typeFilter?"Todos":"Tipo"}</Option>
-            <Option value="Presencial"fnFamily="Shrikhand">Presencial</Option>
-            <Option value="Online"fnFamily="Shrikhand">Online</Option>
-            <Option value="Hibrido"fnFamily="Shrikhand">Híbrido</Option>
+            <Option value="Presencial"fnFamily="Shrikhand"color={typeFilter==="Presencial"?"#E9A0E7":"#333"}>Presencial</Option>
+            <Option value="Online"fnFamily="Shrikhand"color={typeFilter==="Online"?"#E9A0E7":"#333"}>Online</Option>
+            <Option value="Hibrido"fnFamily="Shrikhand"color={typeFilter==="Hibrido"?"#E9A0E7":"#333"}>Híbrido</Option>
           </Select>
 
           <Button bg="#E9A0E7" br="0"pd="0 .5rem 0 .5rem"letterSp=".05rem"
