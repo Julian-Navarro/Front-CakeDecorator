@@ -1,9 +1,11 @@
 @media (max-width: 700px) {
     .container {
       /* background: blue !important; */
+      z-index: 3 !important;
     }
     .btnBurguer {
-        display: inline-block !important;
+        display: flex !important;
+        justify-content: center !important;
     }
     .divContainer {
         background: #E9A0E7 !important;
@@ -18,5 +20,10 @@
     }
     .cakeIcon {
         display: none !important;
+    }
+    .iconHome {
+        width: 3rem !important;
+        /* background: red; */
+        /* height: 2rem !important; */
     }
 }

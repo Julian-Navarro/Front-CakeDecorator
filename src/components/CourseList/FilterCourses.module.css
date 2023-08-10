@@ -5,19 +5,20 @@
 }
 @media (max-width: 700px) {
     .container {
-        background: lightgray !important;
+        background: #D8EAFF !important;
         flex-direction: column !important;
         border-bottom: none !important;
         height: 14rem !important;
         position: relative !important;
-        top: 3.5rem;
+        top: 1.8rem !important;
         z-index: -1 !important;
         justify-content: space-evenly !important;
+        align-items: flex-start !important;
     }
     .container Select {
-        width: 70%;
+        width: 8rem !important;
     }
     .btnBurguer {
-        display: inline-block !important;
+        display: flex !important;
     }
 }

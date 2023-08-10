@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Div, Button, P } from "../../utils/StyledComponents/StyledComponents";
 import { RiDatabaseLine, RiCake3Line } from "react-icons/ri"
 import { AiTwotoneHome } from "react-icons/ai"
+import homeIcon from "../../utils/IMAGES/bxs_home-heart.png"
 import { VscAccount } from "react-icons/vsc"
 import s from "./Navbar.module.css"
 import { useLocation } from "react-router-dom";
@@ -13,12 +14,16 @@ export default function Navbar () {
     const [isOpen, setIsOpen] = useState(false)
     const pink = "#ddc6da"
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    
+    function handlerNavigate(path) {
+        setIsOpen(false)
+        navigate(path)
+    }
     function handlerNavigateMyAccount(e) {
         e.preventDefault();
         console.log("HOla");
         console.log(loggedUser);
         if(loggedUser !== null) {
+            setIsOpen(false)
             navigate("/myAccount")
         } else {
             alert("Ingresa a tu cuenta")
@@ -31,23 +36,24 @@ export default function Navbar () {
         localStorage.setItem("cart", cart)
         setAccount(false)
         alert("Cerraste sesión")
+        setIsOpen(false)
         navigate("/")
     }
     // const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     useEffect(()=>{},[account])
     return (
         location.pathname !== "/" ?
-      <Div className={s.container}br="0"wd="100%"pos="fixed">
+      <Div className={s.container}br="0"wd="100%"pos="fixed"hg="2rem">
 
-          <Button pd="4px 8px 4px 12px"pos="absolute"posRight="0"mr="12px"zInd="4"
-            posTop="0px"
-            display="none" className={s.btnBurguer}  onClick={()=>setIsOpen(!isOpen)}
+          <Div pd="4px 8px 4px 12px"pos="absolute"posRight="0"mr="12px"zInd="4"mt=".5rem"
+            posTop="0px"wd="2.8rem" hg="2.8rem"br="50%"bg={isOpen?"#9A6799":"#E9A0E7"}
+            display="none"className={s.btnBurguer}onClick={()=>setIsOpen(!isOpen)}
             >
-              X
-          </Button>
+              <img src={homeIcon} alt=""className={s.iconHome} />
+          </Div>
 
         <Div bg="#fff"className={s.divContainer}zInd="2"br="0"
-            posBot={isOpen?"0":"14rem"}>
+            posBot={isOpen?"-6rem":"8rem"}>
 
           <Div wd="30%"jfCont="flex-start"ml=".5rem"className={s.cakeIcon}>
             <RiCake3Line fontSize={"2rem"}/>
@@ -57,7 +63,7 @@ export default function Navbar () {
             <Button 
                 pd="0px 10px 0 10px"br="6px"color="#252525"
                 bg={"transparent"}fSize="1.2rem"fWeight="bold"_hovCol={"#fff"}
-                onClick={()=>navigate("/home")}>
+                onClick={()=>handlerNavigate("/home")}>
                 <AiTwotoneHome fontSize={"1.8rem"}
                 />
             </Button>
@@ -65,21 +71,21 @@ export default function Navbar () {
             <Button 
                 pd="0px 10px 0 10px"br="6px"color="#252525"
                 bg={"transparent"}fSize="1.2rem"fWeight="bold"_hovCol={"#fff"}
-                onClick={()=>navigate("/courses")}>
+                onClick={()=>handlerNavigate("/courses")}>
                     <P letterSp=".1em" fWeight="bold"filter="drop-shadow(1px 1px 2px #25252575)">Cursos</P>
             </Button>
             
             <Button 
                 pd="0px 10px 0 10px"br="6px"color="#252525"
                 bg={"transparent"}fSize="1.2rem"fWeight="bold"_hovCol={"#fff"}
-                onClick={()=>navigate("/shop")}>
+                onClick={()=>handlerNavigate("/shop")}>
                     <P letterSp=".1em" fWeight="bold"filter="drop-shadow(1px 1px 2px #25252575)">Tienda</P>
             </Button>
             
             <Button 
                 pd="0px 10px 0 10px"br="6px"color="#252525"
                 bg={"transparent"}fSize="1.2rem"fWeight="bold"_hovCol={"#fff"}
-                onClick={()=>navigate("/aboutUs")}>
+                onClick={()=>handlerNavigate("/aboutUs")}>
                 <P letterSp=".1em" fWeight="bold"filter={`drop-shadow(1px 1px 1px #25252575)`}>Nosotros</P>
             </Button>
             <Div mr=".5rem"wd="auto"br="6px"color="#252525"

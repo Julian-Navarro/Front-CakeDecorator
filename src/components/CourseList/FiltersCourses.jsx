@@ -5,10 +5,15 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
  let [isOpen, setIsOpen] = useState(false);
   useEffect(()=>{console.log("1");},[isOpen])
   return (
-      <Div wd="100%"hg="3rem"pos="fixed"posTop="2rem">
-        <Button pd="4px 8px 4px 12px"pos="absolute"posRight="0"mr="12px"zInd="2"
-          display="none" className={s.btnBurguer}  onClick={()=>setIsOpen(!isOpen)}
-          >X</Button>
+      <Div wd="100%"hg="3rem"pos="fixed"posTop="3.7rem">
+
+        <Div pos="absolute"posRight="0px"zInd="2"bg={isOpen?"#9A6799":"#E9A0E7"}
+          mr=".5rem"wd="2.8rem" hg="2.8rem"br="50%"color="#fff"
+          display="none"className={s.btnBurguer}onClick={()=>setIsOpen(!isOpen)}
+          >
+            X
+        </Div>
+
         <Div bg="#fff"br="0"jfCont="space-between"
           pd="0 1rem 0 1rem"bdB="3px solid #E9A0E7"
           hg="3rem"
