@@ -44,17 +44,18 @@ export default function Navbar () {
     useEffect(()=>{},[account])
     return (
         location.pathname !== "/" ?
-      <Div className={s.container}br="0"wd="100%"pos="fixed"hg="2rem">
+      <Div className={s.container}br="0"wd="100%"pos="fixed"jfCont="flex-start"hg="2rem">
 
-          <Div pos="absolute"posRight="0"mr="12px"zInd="4"mt=".5rem"
-            posTop="0px"wd="2.8rem" hg="2.8rem"br="50%"bg={isOpen?"#9A6799":"#E9A0E7"}
-            display="none"className={s.btnBurguer}onClick={()=>setIsOpen(!isOpen)}
-            >
-              <img src={isOpen?xIcon:homeIcon} alt=""className={s.iconHome} />
-          </Div>
+        <Div pos="absolute"posRight="0"mr="12px"zInd="4"mt=".5rem"
+          posTop="0px"wd="2.8rem" hg="2.8rem"br="50%"bg={isOpen?"#9A6799":"#E9A0E7"}
+          display="none"className={s.btnBurguer}onClick={()=>setIsOpen(!isOpen)}
+          >
+            <img src={isOpen?xIcon:homeIcon} alt=""className={s.iconHome} />
+        </Div>
 
         <Div bg="#fff"className={s.divContainer}zInd="2"br="0"
-            posBot={isOpen?"-6rem":"8rem"}>
+            posBot={isOpen?"-6rem":"8rem"}wd="1240px"
+            >
 
           <Div wd="30%"jfCont="flex-start"ml=".5rem"className={s.cakeIcon}>
             <RiCake3Line fontSize={"2rem"}/>
