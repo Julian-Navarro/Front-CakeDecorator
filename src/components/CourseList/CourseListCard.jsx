@@ -5,7 +5,7 @@ import { AiFillSetting } from "react-icons/ai"
 import s from "./CourseListCard.module.css"
 import { useBreakpointValue } from "@chakra-ui/react";
 
-export default function CourseListCard ({ course, handlerEditCourse, path, type, category, description, id, img, price, title, videos }) {
+export default function CourseListCard ({ course, handlerEditCourse, path, type, category, description, duration, startDate, id, img, price, title, videos }) {
     const newTitle = title.length > 80 ? title.slice(0, 80) + "..." : title;
     const breakPoint = useBreakpointValue({ base: "1", md: "2", lg: "3" });
     
@@ -43,12 +43,12 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
             
             <Div jfCont="flex-start">
               <P fSize=".85rem"fWeight="bold">Duración:</P>
-              <P fSize=".85rem">2 Meses (8 clases)</P>
+              <P fSize=".85rem">{duration}</P>
             </Div>
             
-            <Div jfCont="flex-start">
-              <P fSize=".85rem"fWeight="bold">Precio:</P>
-              <P fSize=".85rem">${price}</P>
+            <Div jfCont="flex-start"display={type==="Grabado"?"none":"flex"}>
+              <P fSize=".85rem"fWeight="bold">Fecha de inicio:</P>
+              <P fSize=".85rem">{startDate}</P>
             </Div>
           </Div>
           

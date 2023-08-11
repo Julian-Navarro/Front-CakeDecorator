@@ -7,7 +7,7 @@ export default function CourseListCards({ allCourses, courses, handlerEditCourse
         // console.log("COURSES: ",courses);
     },[courses])
     return (
-        <Div flWr="wrap"mb="2rem"mt="5rem">
+        <Div flWr="wrap"mb="2rem"mt="2rem">
             {
                 courses.length>0
                 ? courses.map((c) => <CourseListCard 
@@ -22,7 +22,9 @@ export default function CourseListCards({ allCourses, courses, handlerEditCourse
                     title={c.title} 
                     type={c.type} 
                     category={c.category} 
-                    videos={c.videos}/> )
+                    videos={c.videos}
+                    duration={c.duration}
+                    startDate={c.startDate}/> )
                 : <P fSize="2rem">No se encontraron cursos</P>
             }
         </Div>

@@ -7,7 +7,7 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
  let [isOpen, setIsOpen] = useState(false);
   useEffect(()=>{console.log("1");},[isOpen])
   return (
-      <Div wd="100%"hg="3rem"pos="fixed"posTop="2rem"className={s.divContainer}>
+      <Div wd="100%"hg="3rem"pos="fixed"posTop="2rem"className={s.divContainer}zInd="2">
 
         <Div pos="absolute"posRight="0px"zInd="2"bg={isOpen?"#9A6799":"#E9A0E7"}
           mr=".5rem"wd="2.8rem" hg="2.8rem"br="50%"
@@ -16,7 +16,7 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
             <img src={isOpen?xIcon:filterIcon} alt="" className={s.imgIcon}/>
         </Div>
 
-        <Div bg="#fff"br="0"jfCont="space-between"
+        <Div bg="#fff"br="0"jfCont="space-around"
           pd="0 1rem 0 1rem"bdB="3px solid #E9A0E7"
           hg="3rem"
           wd="1240px"
@@ -41,14 +41,8 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
             letterSp=".05rem"bd="#eee"name="type"onChange={(e)=>handlerFilterValue(e)}>
             <Option value=""fnFamily="Shrikhand">{typeFilter?"Todos":"Tipo"}</Option>
             <Option value="Presencial"fnFamily="Shrikhand"color={typeFilter==="Presencial"?"#E9A0E7":"#333"}>Presencial</Option>
-            <Option value="Online"fnFamily="Shrikhand"color={typeFilter==="Online"?"#E9A0E7":"#333"}>Online</Option>
-            <Option value="Hibrido"fnFamily="Shrikhand"color={typeFilter==="Hibrido"?"#E9A0E7":"#333"}>Híbrido</Option>
+            <Option value="Grabado"fnFamily="Shrikhand"color={typeFilter==="Grabado"?"#E9A0E7":"#333"}>Grabado</Option>
           </Select>
-
-          <Button bg="#E9A0E7" br="0"pd="0 .5rem 0 .5rem"letterSp=".05rem"
-            bd="#eee"color="#fff"fnFamily="Shrikhand"fSize="1rem">
-            Más populares
-          </Button>
 
         </Div>
       </Div>
