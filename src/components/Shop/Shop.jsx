@@ -287,31 +287,26 @@ export default function Shop() {
   return (
     <Div flexDir="column" wd="100%"bg="#fff"br="0">
       <Div>
-
-
-      <Div minHg="100vh"wd="100%"bg="transparent"
-      jfCont="space-between"
-      >
-        {/* <Div mr="3rem"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}posTop="0px"mt="0px"alItems="flex-start"> */}
-          {/* <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/> */}
-        {/* </Div> */}
-        { 
-        products.length 
-        ? 
-        <Div posTop="-53px"wd="100%"bg="transparent">
-          <br /><br /><br />
-          <ProductCards
-          handlerSetCart={handlerSetCart}
-          handleRemoveItemCart={handleRemoveItemCart}
-          products={products}
-          />
+        <Div minHg="100vh"wd="100%"
+          jfCont="space-between"
+        >
+          {/* <Div mr="3rem"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}posTop="0px"mt="0px"alItems="flex-start"> */}
+            {/* <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/> */}
+          {/* </Div> */}
+          { 
+          products.length 
+          ? 
+          <Div wd="100%"mb="2rem"mt="4rem">
+            <ProductCards
+              handlerSetCart={handlerSetCart}
+              handleRemoveItemCart={handleRemoveItemCart}
+              products={products}
+            />
+          </Div>
+          : <P wd="100%">Cargando Productos</P>
+        }
         </Div>
-        : <P wd="100%">Cargando Productos</P>
-      }
       </Div>
-      </Div>
-      <br/>
-
     </Div>
   );
 }
