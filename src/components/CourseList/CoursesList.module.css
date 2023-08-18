@@ -1,10 +1,9 @@
 .donuts {
-    width: 40rem;
+    width: 40rem !important;
     /* background-color: rgba(242, 255, 0, 0.685); */
 }
 .logo {
-    width: 22rem;
-    /* margin-right: 4rem; */
+    width: 22rem !important;
     filter: drop-shadow(2px 2px .4rem rgb(0,0,0,0.35));
 }
 @media (max-width: 700px) {   
@@ -25,11 +24,9 @@
 }
 @media (max-width: 450px) {
     .title {
-        /* width: 90% !important; */
-        font-size: 1.5rem;
+        font-size: 1.5rem !important;
     }
     .text {
-        /* width: 90% !important; */
-        font-size: 1.1rem;
+        font-size: 1.1rem !important;
     }    
 }

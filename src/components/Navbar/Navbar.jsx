@@ -44,7 +44,7 @@ export default function Navbar () {
     useEffect(()=>{},[account])
     return (
         location.pathname !== "/" ?
-      <Div className={s.container}br="0"wd="100%"pos="fixed"jfCont="flex-start"hg="2rem"zInd="2">
+      <Div className={s.container}br="0"wd="100%"pos="fixed"jfCont="flex-start"hg="2rem"zInd="10">
 
         <Div pos="absolute"posRight="0"mr="12px"zInd="4"mt=".5rem"
           posTop="0px"wd="2.8rem" hg="2.8rem"br="50%"bg={isOpen?"#9A6799":"#E9A0E7"}

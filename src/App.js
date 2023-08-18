@@ -18,6 +18,7 @@ import { Box } from "@chakra-ui/layout";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Navbar/Footer.jsx";
 import s from "./App.module.css";
+import DetailCourses from "./components/CourseList/DetailCourses/DetailCourses.jsx";
 function App() {
   let userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
   const [loggedUser, setLoggedUser] = useState(userLocalStorage);
@@ -64,6 +65,7 @@ function App() {
             path="/forgotPassword"
             element={<ForgotPassword />}
           ></Route>
+          <Route exact path="/courses/:id" element={<DetailCourses />}></Route>
           <Route
             exact
             path="/generateNewPass/:id"
