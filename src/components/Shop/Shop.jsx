@@ -285,16 +285,16 @@ export default function Shop() {
   }, [flag, filters]);
 
   return (
-    <Div flexDir="column" wd="100%"bg="transparent">
+    <Div flexDir="column" wd="100%"bg="#fff"br="0">
       <Div>
 
 
       <Div minHg="100vh"wd="100%"bg="transparent"
       jfCont="space-between"
       >
-        <Div mr="3rem"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}posTop="0px"mt="0px"alItems="flex-start">
-          <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/>
-        </Div>
+        {/* <Div mr="3rem"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}posTop="0px"mt="0px"alItems="flex-start"> */}
+          {/* <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/> */}
+        {/* </Div> */}
         { 
         products.length 
         ? 

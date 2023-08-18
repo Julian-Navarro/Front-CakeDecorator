@@ -4,11 +4,12 @@ import { MdDelete } from "react-icons/md"
 import { AiFillSetting } from "react-icons/ai"
 import s from "./CourseListCard.module.css"
 import { useBreakpointValue } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export default function CourseListCard ({ course, handlerEditCourse, path, type, category, description, duration, startDate, id, img, price, title, videos }) {
     const newTitle = title.length > 80 ? title.slice(0, 80) + "..." : title;
     const breakPoint = useBreakpointValue({ base: "1", md: "2", lg: "3" });
-    
+    const navigate = useNavigate()
     let newDescription = 
     description.length >= 330 
     ? description.slice(0, 330) + "..."
@@ -64,7 +65,7 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
               fSize=".9rem"fWeight="100"letterSp=".15rem"
               pd=".1rem 2rem .1rem 2rem"br="4rem"
               boxSh="2px 2px .3rem .1rem rgb(0, 0, 0, 0.35), inset -8px -6px 25px #BF97DF"
-              onClick={()=>{}}fnFamily="Shrikhand"_hovBg="#C8DCFB"
+              onClick={()=>{navigate(`/courses/${id}`)}}fnFamily="Shrikhand"_hovBg="#C8DCFB"
               >
               Ver Curso
             </Button>
