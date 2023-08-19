@@ -206,9 +206,10 @@ function handlerDeleteProduct (id) {
                      color={"#333"}
                      onClick={(e)=>handlerBtnAdd(e)}
                      borderRadius={"2rem"}
+                     transition={".4s"}
                      border={"2px solid #fff"}
                      _hover={{background: "#4FCF54"}}
-                     className={s.icon}
+                     className={s.iconBuy}
                      />                   
                 </Div>
               </Div>
