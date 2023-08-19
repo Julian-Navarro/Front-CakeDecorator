@@ -203,15 +203,13 @@ h1 {
 .iconRight {
     border-radius: 2rem !important;
     font-size: 1.4rem !important;
-    /* background: red !important; */
     border-radius: 0rem 2rem 2rem 0rem !important;
 }
 .iconLeft {
     border-radius: 2rem !important;
     font-size: 1.4rem !important;
-    /* background: red !important; */
     border-radius: 2rem 0rem 0rem 2rem !important;
 }
-.icon {
+.iconBuy {
     box-shadow: 1px 1px 4px 1.5px rgb(0,0,0,0.35);
 }
