@@ -12,6 +12,7 @@ import IconAdd from "../../../utils/IMAGES/icons8_buy.png"
 
 
 import { Button, Div, Input, P } from "../../../utils/StyledComponents/StyledComponents";
+import { useEffect } from "react";
 export default function ProductCard ({ 
     handlerSetCart,
     handlerSetComponentProductListFlag, 
@@ -175,7 +176,7 @@ function handlerDeleteProduct (id) {
               </P>
               <Div jfCont="space-between"mb=".3rem">
                 <Div flexDir="column"wd="12rem"alItems="flex-start">
-                  <P fWeight="bold"fSize="1rem"color="#525252">Marca: {brand}</P>
+                  {brand!=false?<P fWeight="bold"fSize="1rem"color="#525252">Marca: {brand}</P>:null}
                   <P fWeight="bold"fSize="1rem"color="#525252">Precio: ${price}</P>
                 </Div>
                 <Div className={s.divBtnsContainer}pd="0">
