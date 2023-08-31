@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
 import { Div, P } from "../../utils/StyledComponents/StyledComponents"; 
-import LeftSideBar from "./LifeSideBar/LeftSideBar";
+import Filters from "./Filters/Filters";
 
 export default function Shop() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +15,7 @@ export default function Shop() {
     brands: ["all"]
   });
   function handlerSetFilters(e) {
+    console.log("FFFFFF: event : ", e);
     if(e.target.value === "all") {
       console.log(`Caso value All en key: ${e.target.name}`);
       setFilters({
@@ -106,7 +107,8 @@ export default function Shop() {
   }
 
   function handlerSearchProducts (value) {
-    setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(value.toLowerCase())))
+    if(value.trim()==="") return alert("Debes escribir el nombre del producto para buscarlo")
+    setProducts(allProducts.filter((pr)=>pr.name.toLowerCase().includes(value.trim().toLowerCase())))
   }
   function handlerSetProductsCategory(value) {
 
@@ -184,7 +186,7 @@ export default function Shop() {
         //? Recorro oldcart y busco si en el carrito existe el producto que se quiere agregar, guardo su index
         let index = false;
         oldCart.forEach((pr, i) => {
-          if (pr.id === product.id) { //? Se puede sacar "product."
+          if (pr.id === product.id) { 
             index = i;
           }
         });
@@ -287,16 +289,16 @@ export default function Shop() {
   return (
     <Div flexDir="column" wd="100%"bg="#fff"br="0">
       <Div>
-        <Div minHg="100vh"wd="100%"
-          jfCont="space-between"
-        >
-          {/* <Div mr="3rem"flexDir="column"alSelf="flex-start"pos="sticky"wd={isOpen?"14rem":"3rem"}posTop="0px"mt="0px"alItems="flex-start"> */}
-            {/* <LeftSideBar handlerSetFilters={handlerSetFilters} handlerSetProductsCategory={handlerSetProductsCategory}handlerSetProductsBrands={handlerSetProductsBrands} setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}/> */}
-          {/* </Div> */}
+        <Div minHg="100vh"wd="100%"jfCont="space-between"flexDir="column">
+          <Filters handlerSetFilters={handlerSetFilters}
+            handlerSetProductsCategory={handlerSetProductsCategory}
+            handlerSetProductsBrands={handlerSetProductsBrands}
+            setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}
+            handlerSearchProducts={handlerSearchProducts}/>
           { 
           products.length 
           ? 
-          <Div wd="100%"mb="2rem"mt="4rem">
+          <Div wd="100%"mb="2rem"mt="5rem">
             <ProductCards
               handlerSetCart={handlerSetCart}
               handleRemoveItemCart={handleRemoveItemCart}
