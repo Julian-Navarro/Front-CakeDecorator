@@ -4,6 +4,7 @@ import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
 import { Div, P } from "../../utils/StyledComponents/StyledComponents"; 
 import Filters from "./Filters/Filters";
+import loading from "../../utils/IMAGES/loading-loading-gif.gif"
 
 export default function Shop() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,8 +38,8 @@ export default function Shop() {
           } else {
             console.log("Caso borrar y length no es 1");
             let index = filters[e.target.name].indexOf(e.target.value)
-            let firstPart = filters[e.target.name].slice(0, index);  //? Se puede poner directamente el resultado de .slice() en el setFilters
-            let secondPart = filters[e.target.name].slice(index + 1);//? Se puede poner directamente el resultado de .slice() en el setFilters
+            let firstPart = filters[e.target.name].slice(0, index);  
+            let secondPart = filters[e.target.name].slice(index + 1);
             setFilters({
               ...filters,
               [e.target.name]: [...firstPart, ...secondPart]
@@ -61,6 +62,7 @@ export default function Shop() {
         }); 
       };
     };
+    e.target.value = "default"
   };
   function applyFilters() {
     const filteredProducts = [];
@@ -279,6 +281,11 @@ export default function Shop() {
     getProductsDB();
     // console.log("PRODUCTS: ", products);
   }, []);
+  // useEffect(() => {
+  //   console.log("PRODUCTS: ", products);
+  //   console.log("PRODUCTS: ", products);
+  //   console.log("ALL PRODUCTS: ", allProducts);
+  // }, [products]);
 
   useEffect(() => {
     console.log("RENDERING SHOP!");
@@ -296,17 +303,18 @@ export default function Shop() {
             setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}
             handlerSearchProducts={handlerSearchProducts}/>
           { 
-          products.length 
-          ? 
-          <Div wd="100%"mb="2rem"mt="5rem">
-            <ProductCards
-              handlerSetCart={handlerSetCart}
-              handleRemoveItemCart={handleRemoveItemCart}
-              products={products}
-            />
-          </Div>
-          : <P wd="100%">Cargando Productos</P>
-        }
+          allProducts.length !== 0
+          ? <Div wd="100%"mb="2rem"mt="5rem">
+              <ProductCards
+                handlerSetCart={handlerSetCart}
+                handleRemoveItemCart={handleRemoveItemCart}
+                products={products}
+              />
+            </Div>
+          : <Div mt="7rem">
+              <img src={loading} alt=""/>
+            </Div> 
+          }
         </Div>
       </Div>
     </Div>

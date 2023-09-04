@@ -121,6 +121,7 @@ export const Option = styled.option`
   font-family: ${({ fnFamily }) => fnFamily || "Roboto"};
   font-weight: ${({ fWeight }) => fWeight || "300"};
   font-size: ${({ fSize }) => fSize || "22px"};
+  letter-spacing: ${({ letterSp }) => letterSp};
   cursor: ${({ cursor }) => cursor || "pointer"};
 `;
 

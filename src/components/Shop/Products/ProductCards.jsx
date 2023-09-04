@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { HOST } from "../../../utils";
 import ProductCard from "./ProductCard";
-import { Div } from "../../../utils/StyledComponents/StyledComponents";
+import { Div, P } from "../../../utils/StyledComponents/StyledComponents";
 export default function ProductCards ({ path, handlerEditProduct, handlerSetComponentProductListFlag, handlerSetEditFlag, products, handleRemoveItemCart, handlerSetCart}) {
-    // console.log("PRODUCTS: ", products);
+    useEffect(()=>{
+        console.log("RENDERING PRODUCTS CARDS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    },[products])
     return (
-        <Div flWr="wrap" wd="100%"bg="#F8F0F6"pd="1rem 0 1rem 0"br="0">
+        <Div flWr="wrap" wd="100%"bg="#F8F0F6"pd="4rem 0 1rem 0"br="0">
             {
                 products?.length > 0 
                 ? products.map((pr) => (<ProductCard 
@@ -26,7 +28,10 @@ export default function ProductCards ({ path, handlerEditProduct, handlerSetComp
                     id={pr.id} 
                     img={pr.img} 
                     description={pr.description}/>) )
-                : null
+                : <P mt="3rem"hg="10rem"fWeight="bold"fSize="1.8rem"color="#525252"
+                    letterSp=".1rem">
+                    No se encontraron productos que coincidan con los filtros seleccionados
+                  </P>
             } 
         </Div>
     )
