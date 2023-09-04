@@ -156,30 +156,50 @@ function handlerDeleteProduct (id) {
         //     </div>
         // </div>
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        <Div bg="#fff"hg="10rem"ml=".5rem"mr=".5rem"
+        <Div bg="#fff"hg="10rem"ml=".5rem"mr=".5rem"bg="violet"
             boxSh=".1rem .1rem .3rem .1rem rgb(0,0,0,0.35)"
-            mb="1rem"jfCont="space-between">
+            mb="1rem"jfCont="space-between"className={s.cardContainer}>
             <Div wd="10rem"hg="10rem"br=".4rem 0 0 .4rem">
-              <img src={img} alt=""className={s.img}/>
+              <img src={img}className={s.img}/>
             </Div>
-            <Div wd="40%"hg="10rem"
+            <Div wd="43%"hg="10rem"bg="yellow"className={s.divDetails}
                 alItems="flex-start"jfCont="space-between"flexDir="column"
                 >
               <P color="#252525"fWeight="bold"fSize="1rem"
-                pd="4px"txAlign="left">
+                pd="4px"txAlign="left"letterSp="1px">
                 {name}
               </P>
               
-              <P color={stock===0?"#F38080":"#4FCF54"}
-                fWeight="bold"fSize="1rem">
-                Stock: {stock===0?"No disponible":"Disponible"}
-              </P>
-              <Div jfCont="space-between"mb=".3rem">
+              <Div jfCont="space-between"mb=".3rem"hg="8rem">
                 <Div flexDir="column"wd="12rem"alItems="flex-start">
-                  {brand!=false?<P fWeight="bold"fSize="1rem"color="#525252">Marca: {brand}</P>:null}
-                  <P fWeight="bold"fSize="1rem"color="#525252">Precio: ${price}</P>
+                  <P color={stock===0?"#F38080":"#4FCF54"}
+                      fWeight="bold"fSize="1rem"letterSp="1px">
+                      Stock: {stock===0?"No disponible":"Disponible"}
+                  </P>
+                  {
+                  brand!=false 
+                  ? <P fWeight="bold"fSize="1rem"color="#525252"letterSp="1px">
+                      Marca: {brand}
+                    </P>
+                  : null
+                  }
+                  <P fWeight="bold"fSize="1rem"color="#525252"letterSp="1px">
+                    Precio: ${price}
+                  </P>
                 </Div>
-                <Div className={s.divBtnsContainer}pd="0">
+                <Div flexDir="column"wd="auto">
+                  <Div wd="12rem"pd="2px"hg="3rem"flWr="wrap"jfCont="space-around"mb=".3rem">
+                    { categories && categories.length !== 0
+                     ? categories.map((cat) => <P 
+                        fSize=".8rem"fWeight="bold"br="2rem"letterSp="1px"
+                        pd="0 10px 0 10px"bg="#F8F0F6"color="#848CD9"
+                        boxSh="1px 1px .1rem .02rem rgb(0,0,0,0.35)">
+                            {cat}
+                        </P>)
+                     : null
+                    }
+                  </Div>
+                  <Div className={s.divBtnsContainer}pd="0">
                   <Div bg="#edf2f7"wd="8rem"br="2rem"jfCont="space-between"className={s.divBtns}>
                     <IconButton
                     onClick={subtractOne}
@@ -203,20 +223,22 @@ function handlerDeleteProduct (id) {
                      alignSelf={"flex-start"}
                      marginLeft={".3rem"}
                      marginBottom={".3rem"}
-                     bg="orange"
+                     bg="#F1B444"
                      color={"#333"}
                      onClick={(e)=>handlerBtnAdd(e)}
                      borderRadius={"2rem"}
                      transition={".4s"}
                      border={"2px solid #fff"}
-                     _hover={{background: "#4FCF54"}}
+                     _hover={{background: "#F6C5F5"}}
                      className={s.iconBuy}
                      />                   
+                  </Div>
                 </Div>
               </Div>
             </Div>
 
-            <Div hg="9.6rem"br="0"wd="40%"bdL="2px solid #525252">
+            <Div hg="9.6rem"br="0"wd="40%"bdL="2px solid #525252"
+                className={s.divDescription}bg="red">
                 <P color="#525252"hg="10rem"wd="100%"pd="6px 6px 6px 12px"
                   fWeight="bold"fSize=".9rem"letterSp="1px"                 txAlign="left"jfCont="flex-start"alItems="flex-start"
                   >
