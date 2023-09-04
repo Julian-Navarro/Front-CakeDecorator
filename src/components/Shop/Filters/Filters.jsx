@@ -8,6 +8,8 @@ import { MdShoppingCart } from "react-icons/md"
 import { IconButton } from "@chakra-ui/react"
 import { ArrowRightIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 import iconGlass from "../../../utils/IMAGES/fluent-emoji-high-contrast_magnifying-glass-tilted-right.png"
+import xIcon from "../../../utils/IMAGES/octicon_x-12.png"
+import filterIcon from "../../../utils/IMAGES/ri_filter-fill.png"
 import axios from "axios";
 import s from "./Filters.module.css"
 import { BsCheckSquare } from "react-icons/bs"
@@ -40,14 +42,30 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
         console.log("productsCategories!!!: ", productsCategories);
     },[productsCategories])
     return (
-        <Div bg="#fff"bg="yellow"alItems="flex-start"jfCont="flex-start"
-            hg="5rem"mt="2rem"br="0"pos="fixed"zInd="2"wd="1240px"
-            pd=".5rem .5rem 0 .5rem"flexDir="column"bdB="2px solid #525252"
-            className={s.container}>
-         <Div jfCont="space-between">
+        <Div br="0"wd="100%"jfCont="center"hg="0"zInd="3"pos="fixed"posTop="3.5rem"> 
 
+          <Div posRight="0"zInd="6"className={s.btnBurguer}
+            pos="absolute"
+            posTop="0rem"wd="2.8rem" hg="2.8rem"br="50%"
+            display="none"
+            bg={isOpen?"#8B5C8A":"#B39BE5"}
+            onClick={()=>setIsOpen(!isOpen)}mr="12px"mt=".5rem"
+            >
+              <img src={isOpen?xIcon:filterIcon} alt=""className={s.iconHome} />
+          </Div>
 
-          <Div wd="auto"jfCont="center"bg="#fff"br="2rem"bd="1px solid #333"
+          <Div bg="#fff"bg="yellow"alItems="flex-start"jfCont="flex-start"
+              hg="5rem"mt="2rem"br="0"zInd="2"wd="1240px"
+              pd=".5rem .5rem 0 .5rem"flexDir="column"bdB="2px solid #525252"
+              // posBot={isOpen?"-10rem":"17rem"}
+              posTop={isOpen?"4rem":"-14rem"}
+              className={s.container}>
+                  
+  
+  
+           <Div jfCont="space-between"className={s.selectsXcartIcon} bg="red">
+  
+            <Div wd="auto"jfCont="center"bg="#fff"br="2rem"bd="1px solid #333"
             >
             <Input br="2rem 0 0 2rem"wd="15rem"hg="2rem"placeholder="Buscar un producto.."
                 value={input}onChange={(e)=>setInput(e.target.value)}txAlign="left"pd="25px"
@@ -60,9 +78,9 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
                 >
               <img src={iconGlass} className={s.iconGlass}/>  
             </IconButton>
-          </Div>
-
-          <Select pd="2px 12px 2px 12px"br="0"cursor="pointer"bg="lightskyblue"
+            </Div>
+  
+            <Select pd="2px 12px 2px 12px"br="0"cursor="pointer"bg="lightskyblue"
             boxSh="2px 2px .3rem .1rem rgb(0,0,0,0.35)"color="#fff"letterSp=".1rem"
             onChange={(e) => handlerSetFilters(e)}name="categories"fWeight="bold">
 
@@ -96,9 +114,9 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
                     : null
                 }
 
-          </Select>
-
-          <Select pd="2px 12px 2px 12px"br="0"cursor="pointer"bg="lightskyblue"
+            </Select>
+  
+            <Select pd="2px 12px 2px 12px"br="0"cursor="pointer"bg="lightskyblue"
             boxSh="2px 2px .3rem .1rem rgb(0,0,0,0.35)"color="#fff"letterSp=".1rem"
             onChange={(e) => handlerSetFilters(e)}name="brands"fWeight="bold">
 
@@ -123,40 +141,42 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
                     </Option>))
                     : null
                 }
-          </Select>
+            </Select>
+  
+            <Button 
+                onClick={()=>navigate("/shop/cart")}
+                wd="2.7rem"
+                hg="2.7rem"
+                br="100%"
+                cursor={"pointer"}
+                ml={".3rem"}
+                bg={"#F1B444"}
+                boxSh="2px 2px .2rem .05rem #333"
+                bd={"#fff"}
+                _hovBg="#F6C5F5"
+                > 
+                <Img src={cartLogo}wd="2.7rem"hg="2.7rem"/>
+            </Button>
+  
+  
+  
+           </Div> 
+  
+  
+            <Div mt="4px" bg="blue"className={s.applyFilters}> {/* filtros aplicados */}
+              {filters.categories.concat(filters.brands).map((el)=>{
+                  if(el!== "all") {
+                    return <P 
+                    fSize=".8rem"fWeight="bold"mr="8px"mb=".2rem"letterSp="1px"
+                    pd="0 10px 0 10px"bg="#F8F0F6"color="#848CD9"
+                    boxSh="1px 1px .1rem .02rem rgb(0,0,0,0.35)"br="2rem">
+                        {el}
+                    </P>
+                  }
+              })}
+           </Div>
+          </Div>
 
-          <Button 
-              onClick={()=>navigate("/shop/cart")}
-              wd="2.7rem"
-              hg="2.7rem"
-              br="100%"
-              cursor={"pointer"}
-              ml={".3rem"}
-              bg={"#F1B444"}
-              boxSh="2px 2px .2rem .05rem #333"
-              bd={"#fff"}
-              _hovBg="#F6C5F5"
-              > 
-              <Img src={cartLogo}wd="2.7rem"hg="2.7rem"/>
-          </Button>
-
-
-
-         </Div> 
-
-
-         <Div mt="4px">
-            {filters.categories.concat(filters.brands).map((el)=>{
-                if(el!== "all") {
-                  return <P 
-                  fSize=".8rem"fWeight="bold"mr="8px"mb=".2rem"letterSp="1px"
-                  pd="0 10px 0 10px"bg="#F8F0F6"color="#848CD9"
-                  boxSh="1px 1px .1rem .02rem rgb(0,0,0,0.35)"br="2rem">
-                      {el}
-                  </P>
-                }
-            })}
-         </Div>
         </Div>
     )
 }
