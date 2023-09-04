@@ -3,7 +3,7 @@
         width: 100% !important;
     }
 }
-@media (max-width: 700px) {
+@media (max-width: 830px) {
     .container {
         background: #D8EAFF !important;
         flex-direction: column !important;
