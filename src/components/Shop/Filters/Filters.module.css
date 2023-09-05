@@ -10,7 +10,7 @@
 }
 @media (min-width: 830px) {
     .container {
-        top: 0 !important
+        top: 0 !important;
     }
 }
 
@@ -23,7 +23,8 @@
 @media (max-width: 830px) {
     .container {
         position: relative !important;
-        /* bottom: 7rem !important; */
+        margin-top: 10rem !important;
+        background: #D8EAFF !important;
         height: 17rem !important;
     }
     .btnBurguer {
