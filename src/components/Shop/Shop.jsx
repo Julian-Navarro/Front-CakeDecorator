@@ -5,7 +5,7 @@ import { HOST } from "../../utils";
 import { Div, P } from "../../utils/StyledComponents/StyledComponents"; 
 import Filters from "./Filters/Filters";
 import loading from "../../utils/IMAGES/loading-loading-gif.gif"
-
+import s from "./Shop.module.css"
 export default function Shop() {
   const [isOpen, setIsOpen] = useState(false);
   const [flag, setFlag] = useState(false);
@@ -304,7 +304,7 @@ export default function Shop() {
             handlerSearchProducts={handlerSearchProducts}/>
           { 
           allProducts.length !== 0
-          ? <Div wd="100%"mb="2rem"mt="5rem">
+          ? <Div wd="100%"mb="2rem"mt="5rem"className={s.divProductsCards}>
               <ProductCards
                 handlerSetCart={handlerSetCart}
                 handleRemoveItemCart={handleRemoveItemCart}
@@ -312,7 +312,7 @@ export default function Shop() {
               />
             </Div>
           : <Div mt="7rem">
-              <img src={loading} alt=""/>
+              <img src={loading}/>
             </Div> 
           }
         </Div>

@@ -54,16 +54,16 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
               <img src={isOpen?xIcon:filterIcon} alt=""className={s.iconHome} />
           </Div>
 
-          <Div bg="#fff"bg="yellow"alItems="flex-start"jfCont="flex-start"
+          <Div bg="#fff"alItems="flex-start"jfCont="flex-start"
               hg="5rem"mt="2rem"br="0"zInd="2"wd="1240px"
-              pd=".5rem .5rem 0 .5rem"flexDir="column"bdB="2px solid #525252"
-              // posBot={isOpen?"-10rem":"17rem"}
-              posTop={isOpen?"4rem":"-14rem"}
+              pd=".5rem .5rem 0 .5rem"flexDir="column"bdB="2px solid #92B3DA"
+            //!   posTop={isOpen?"4rem":"-14rem"}
+               posRight={isOpen?"0":"-100%"}
               className={s.container}>
                   
   
   
-           <Div jfCont="space-between"className={s.selectsXcartIcon} bg="red">
+           <Div jfCont="space-between"className={s.selectsXcartIcon}>
   
             <Div wd="auto"jfCont="center"bg="#fff"br="2rem"bd="1px solid #333"
             >
@@ -163,7 +163,7 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
            </Div> 
   
   
-            <Div mt="4px" bg="blue"className={s.applyFilters}> {/* filtros aplicados */}
+            <Div mt="4px"className={s.applyFilters}> {/* filtros aplicados */}
               {filters.categories.concat(filters.brands).map((el)=>{
                   if(el!== "all") {
                     return <P 

@@ -156,13 +156,13 @@ function handlerDeleteProduct (id) {
         //     </div>
         // </div>
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        <Div bg="#fff"hg="10rem"ml=".5rem"mr=".5rem"bg="violet"
+        <Div bg="#fff"hg="10rem"ml=".5rem"mr=".5rem"
             boxSh=".1rem .1rem .3rem .1rem rgb(0,0,0,0.35)"
             mb="1rem"jfCont="space-between"className={s.cardContainer}>
             <Div wd="10rem"hg="10rem"br=".4rem 0 0 .4rem">
               <img src={img}className={s.img}/>
             </Div>
-            <Div wd="43%"hg="10rem"bg="yellow"className={s.divDetails}
+            <Div wd="43%"hg="10rem"className={s.divDetails}
                 alItems="flex-start"jfCont="space-between"flexDir="column"
                 >
               <P color="#252525"fWeight="bold"fSize="1rem"
@@ -238,7 +238,7 @@ function handlerDeleteProduct (id) {
             </Div>
 
             <Div hg="9.6rem"br="0"wd="40%"bdL="2px solid #525252"
-                className={s.divDescription}bg="red">
+                className={s.divDescription}>
                 <P color="#525252"hg="10rem"wd="100%"pd="6px 6px 6px 12px"
                   fWeight="bold"fSize=".9rem"letterSp="1px"                 txAlign="left"jfCont="flex-start"alItems="flex-start"
                   >
