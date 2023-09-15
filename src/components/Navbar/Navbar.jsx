@@ -12,7 +12,7 @@ export default function Navbar () {
     const location = useLocation();
     const navigate = useNavigate();
     const [account, setAccount] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(true)
     const pink = "#ddc6da"
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     function handlerNavigate(path) {
@@ -60,13 +60,14 @@ export default function Navbar () {
 
         <Div pos="absolute"posRight="0"mr="12px"zInd="4"mt=".5rem"
           posTop="0px"wd="2.8rem" hg="2.8rem"br="50%"bg={isOpen?"#8B5C8A":"#B39BE5"}
-          display="none"className={s.btnBurguer}onClick={()=>handlerCloseBarAccount()}
+          display="none"className={s.btnBurguer}
+          onClick={()=>handlerCloseBarAccount()}
           >
             <img src={isOpen?xIcon:homeIcon} alt=""className={s.iconHome} />
         </Div>
 
         <Div bg="#fff"className={s.divContainer}zInd="2"br="0"
-            posBot={isOpen?"-6rem":"8rem"}wd="1240px"
+            posBot={isOpen?"-10rem":"12rem"}wd="1240px"
             >
 
           {/* <Div wd="30%"jfCont="flex-start"ml=".5rem"className={s.cakeIcon}>

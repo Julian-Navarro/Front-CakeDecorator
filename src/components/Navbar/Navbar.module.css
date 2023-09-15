@@ -46,7 +46,8 @@
         position: relative !important;
         flex-direction: column !important;
         /* flex-wrap: wrap !important; */
-        height: 14rem !important;
+        height: 22rem !important;
+        /* top: 10rem; */
         z-index: 2 !important;
         
     }
@@ -59,8 +60,8 @@
         /* padding-right: 20px !important; */
     }
     .divBtnsNavbar {
-        background-color: red;
-        height: 7rem !important;
+        /* background-color: red !important; */
+        height: 14rem !important;
         display: flex !important;
         flex-wrap: wrap !important;
         /* justify-content: space-between !important; */
