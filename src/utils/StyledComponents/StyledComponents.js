@@ -171,8 +171,8 @@ export const P = styled.p`
   }
 `;
 export const Button = styled.button`
-  background: ${({ bg }) => bg || "lightblue"};
-  padding: ${({ pd }) => pd || "8px"};
+  background: ${({ bg }) => bg || "#5260DC"};
+  padding: ${({ pd }) => pd || "4px"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
   display: ${({ display }) => display || "flex"};
@@ -181,12 +181,12 @@ export const Button = styled.button`
   align-items: ${({ alItems }) => alItems || "center"};
   align-self: ${({ alSelf }) => alSelf || "none"};
   color: ${({ color }) => color || "#fff"};
-  border: 2px solid ${({ bd }) => bd || "none"};
+  border: ${({ bd }) => bd || "2px solid #686B86"};
   border-right: ${({ bdR }) => bdR};
   border-left: ${({ bdL }) => bdL};
   border-bottom: ${({ bdB }) => bdB};
   border-top: ${({ bdT }) => bdT};
-  border-radius: ${({ br }) => br || "8px"};
+  border-radius: ${({ br }) => br || "4px"};
   cursor: ${({ cursor }) => cursor || "pointer"};
   transition: ${({ trans }) => trans || ".4s ease"};
   letter-spacing: ${({ letterSp }) => letterSp || ".1rem"};
@@ -203,9 +203,9 @@ export const Button = styled.button`
   margin-top: ${({ mt }) => mt || "none"};
   margin-bottom: ${({ mb }) => mb || "none"};
   margin-left: ${({ ml }) => ml || "none"};
-  margin-right: ${({ mr }) => mr || "none"};
-  box-shadow: ${({ boxSh }) => boxSh};
-  letter-spacing: ${({ letterSp }) => letterSp};
+  margin-right: ${({ mr }) => mr};
+  box-shadow: ${({ boxSh }) => boxSh || "2px 2px .3rem .1rem rgb(0,0,0,0.35)"};
+  letter-spacing: ${({ letterSp }) => letterSp || ".15rem"};
   z-index: ${({ zInd }) => zInd};
   &:hover {
     background: ${({ bg, _hovBg }) => _hovBg || bg};
@@ -250,8 +250,93 @@ export const Div = styled.div`
   color: ${({ color }) => color || "black"};
   padding: ${({ pd }) => pd || "0"};
   height: ${({ hg }) => hg || "auto"};
+  width: ${({ wd }) => wd || ""};
   min-height: ${({ minHg }) => minHg};
-  width: ${({ wd }) => wd || "100%"};
+  border-radius: ${({ br }) => br || "8px"};
+  border: ${({ bd }) => bd || "none"};
+  border-right: ${({ bdR }) => bdR};
+  border-left: ${({ bdL }) => bdL};
+  border-bottom: ${({ bdB }) => bdB};
+  border-top: ${({ bdT }) => bdT};
+  display: ${({ display }) => display || "flex"};
+  flex-direction: ${({ flexDir }) => flexDir || "row"};
+  flex-wrap: ${({ flWr }) => flWr || "no-wrap"};
+  justify-content: ${({ jfCont }) => jfCont || "center"};
+  align-items: ${({ alItems }) => alItems || "center"};
+  align-self: ${({ alSelf }) => alSelf || "none"};
+  margin: ${({ margin }) => margin || "none"};
+  margin-bottom: ${({ mb }) => mb || "none"};
+  margin-top: ${({ mt }) => mt || "none"};
+  margin-left: ${({ ml }) => ml || "none"};
+  margin-right: ${({ mr }) => mr || "none"};
+  box-shadow: ${({ boxSh }) => boxSh || "none"};
+  background-image: url(${({ img }) => img || "none"});
+  clip-path: polygon(${({ clPath }) => clPath || "none"});
+  transform: rotateX(${({ rotX }) => rotX || "none"});
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  transition: ${({ trans }) => trans || ".4s ease"};
+  position: ${({ pos }) => pos || "static"};
+  top: ${({ posTop }) => posTop};
+  bottom: ${({ posBot }) => posBot};
+  left: ${({ posLeft }) => posLeft};
+  right: ${({ posRight }) => posRight};
+  overflow: ${({ overflow }) => overflow};
+  overflow-y: ${({ overflowY }) => overflowY};
+  z-index: ${({ zInd }) => zInd};
+  cursor: ${({ cursor }) => cursor || "default"};
+  backdrop-filter: ${({ blur }) => blur};
+  overflow: ${({ ovFlow }) => ovFlow};
+
+  &:hover {
+    background: ${({ _hovBg }) => _hovBg};
+    color: ${({ _hovCol, color }) => _hovCol};
+    box-shadow: ${({ _hovBSh }) => _hovBSh};
+    display: ${({ _hovDis }) => _hovDis};
+    height: ${({ _hovHg }) => _hovHg};
+    color: ${({ _hovColIm }) => _hovColIm} !important;
+    Img {
+      transition: 0.3s;
+      // height: ${({ _hovImgHg }) => _hovImgHg};
+    }
+    Div {
+      display: ${({ _hovDivDis }) => _hovDivDis};
+      height: ${({ _hovDivHg }) => _hovDivHg};
+      left: ${({ _hovPosLeftDiv }) => _hovPosLeftDiv};
+    }
+    Ul {
+      display: ${({ _hovUlDis }) => _hovUlDis};
+      background-color: ${({ _hovUlBg }) => _hovUlBg};
+      box-shadow: ${({ _hovBShUl }) => _hovBShUl};
+    }
+    Span {
+      transition: 0.6s;
+      display: ${({ _hovSpanDis }) => _hovSpanDis};
+      justify-content: center;
+      position: absolute;
+      width: 180px;
+      font-family: cursive;
+      transform: translate(100px, -10px);
+      font-size: 18px;
+      top: 30px;
+      font-weight: 700;
+    }
+  }
+  Span {
+    display: ${({ dis }) => dis || "inline"};
+    transition: background 0.6s;
+  }
+  //
+`;
+// width: ${({ wd }) => wd || "100%"};
+export const DivAccountBar = styled.div`
+  background: ${({ bg }) => bg || "transparent"};
+  background-color: ${({ bgC }) => bgC};
+  color: ${({ color }) => color || "black"};
+  padding: ${({ pd }) => pd || "0"};
+  height: ${({ hg }) => hg || "auto"};
+  min-height: ${({ minHg }) => minHg};
   border-radius: ${({ br }) => br || "8px"};
   border: ${({ bd }) => bd || "none"};
   border-right: ${({ bdR }) => bdR};
