@@ -19,21 +19,6 @@ export default function CoursesAdm ({ path }) {
     function cb(){
         setCourses(allCourses)
     }
-
-    useEffect(()=>{
-        dispatch(getCoursesFromDB())
-        cb();
-        console.log("COURSES: courses: ", courses);
-    }, [componentCourseListFlag])
-
-    useEffect(()=>{
-        cb();
-        console.log("2 - US EFF, courses: ", courses);
-    },[courses, allCourses]) 
-
-
-
-
     function handlerSetComponentCourseListFlag () {
         setComponentCourseListFlag(!componentCourseListFlag)
     };
@@ -62,9 +47,19 @@ export default function CoursesAdm ({ path }) {
         setEditFlag(!editFlag)
     };   
 
-useEffect(()=>{
-    console.log("RENDERING: COURSE STATE: ", courseToEdit);
-},[courseToEdit, editFlag, componentCourseListFlag])
+    useEffect(()=>{
+        dispatch(getCoursesFromDB())
+        cb();
+        // console.log("COURSES: courses: ", courses);
+    }, [componentCourseListFlag])
+    useEffect(()=>{
+        cb();
+        // console.log("2 - US EFF, courses: ", courses);
+    }, [courses, allCourses]) 
+
+    useEffect(()=>{
+        // console.log("RENDERING: COURSE STATE: ", courseToEdit);
+    }, [courseToEdit, editFlag, componentCourseListFlag])
     return (
         <div>
           <P>COURSES ADM</P>

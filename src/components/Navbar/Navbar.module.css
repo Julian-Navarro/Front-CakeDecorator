@@ -1,7 +1,41 @@
+.accountBarContainer {
+    width: 1240px; 
+    /* min-height: 17.5rem; */
+    /* right: -1240px */
+    margin-right: 1080px;
+}
+.accountBarContainerClose {
+    width: 0vw;
+    min-height: 30rem;
+}
+.divBtnsNavbar {
+    margin-right: 1rem;
+}
+
+/* @media (max-width: 720px) {
+    .accountBarContainer {
+            background-color: red !important;
+            width: 120vw !important;
+            margin-right: -540px !important;
+        }
+} */
+
 @media (max-width: 830px) {
+    .accountBarContainer {
+        /* background-color: #fbff00 !important; */
+        width: 125vw !important;
+        margin-right: 0px;
+        margin-left: 125%;
+    }
+    
+    .accountBarContainerClose {
+        background-color: green;
+        width: 0vw;
+        margin-right: 92.5% !important;
+    }
     .container {
-      /* background: blue !important; */
-      z-index: 3 !important;
+        /* background: blue !important; */
+        z-index: 3 !important;
     }
     .btnBurguer {
         display: flex !important;
@@ -11,12 +45,29 @@
         background: #E9A0E7 !important;
         position: relative !important;
         flex-direction: column !important;
+        /* flex-wrap: wrap !important; */
         height: 14rem !important;
         z-index: 2 !important;
+        
     }
     .divBtns {
-        flex-direction: column-reverse !important;
-        justify-content: space-evenly !important;
+        /* flex-direction: column-reverse !important; */
+        /* justify-content: space-evenly !important; */
+        flex-wrap: wrap-reverse;
+        /* margin: 20px; */
+        padding: 12px !important;
+        /* padding-right: 20px !important; */
+    }
+    .divBtnsNavbar {
+        background-color: red;
+        height: 7rem !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        /* justify-content: space-between !important; */
+        /* width: 100% !important; */
+    }
+    .btnMyAccount {
+        order: -1 !important
     }
     .cakeIcon {
         display: none !important;
@@ -25,5 +76,18 @@
         width: 2.1rem !important;
         /* background: red; */
         /* height: 2rem !important; */
+    }
+}
+
+@media (max-width: 1240px) {
+    .accountBarContainer {
+        background-color: #fbff00;
+        width: 110vw;
+        margin-right: 75vw;
+    }
+    .accountBarContainerClose {
+        background-color: red;
+        width: 0vw;
+        margin-right: 92.5%;
     }
 }
