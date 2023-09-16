@@ -172,7 +172,7 @@ export const P = styled.p`
 `;
 export const Button = styled.button`
   background: ${({ bg }) => bg || "#5260DC"};
-  padding: ${({ pd }) => pd || "4px"};
+  padding: ${({ pd }) => pd || "2px"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
   display: ${({ display }) => display || "flex"};

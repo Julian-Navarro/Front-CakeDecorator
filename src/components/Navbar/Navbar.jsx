@@ -53,7 +53,7 @@ export default function Navbar () {
         location.pathname !== "/" ?
       <Div className={s.container}
         wd="100%"
-        hg="2rem"
+        hg="1.8rem"
         pos="fixed"
         jfCont="flex-start"br="0"
         zInd="10">
@@ -79,7 +79,7 @@ export default function Navbar () {
             // mr=".5rem"
             br="0"
             className={s.divBtns}
-            bg="#333"
+            // bg="#333"
             >
             <Div className={s.divBtnsNavbar}
                 wd="100%"
@@ -87,7 +87,7 @@ export default function Navbar () {
 
             
             <Button onClick={()=>handlerNavigate("/home")}
-                wd="8rem"hg="2.8rem"
+                // wd="8rem"hg="2rem"
                 // pd="0px 10px 0 10px"
                 // br="6px"
                 // color="#252525"
@@ -101,7 +101,7 @@ export default function Navbar () {
             </Button>
             
             <Button onClick={()=>handlerNavigate("/courses")}
-                wd="8rem"
+                // wd="8rem"
                 // pd="0px 10px 0 10px"
                 // br="6px"
                 // color="#252525"
@@ -115,7 +115,7 @@ export default function Navbar () {
             </Button>
             
             <Button onClick={()=>handlerNavigate("/shop")}
-                wd="8rem"
+                // wd="8rem"
                 // pd="0px 10px 0 10px"
                 // br="6px"
                 // color="#252525"
@@ -129,7 +129,7 @@ export default function Navbar () {
             </Button>
             
             <Button onClick={()=>handlerNavigate("/aboutUs")}
-                wd="8rem"
+                // wd="8rem"
                 // pd="0px 10px 0 10px"
                 // br="6px"
                 // color="#252525"
@@ -143,15 +143,13 @@ export default function Navbar () {
             </Button>
             </Div>
             <Div wd="auto"
-                color="#252525"
-                bg={"transparent"}
-                bg="greenyellow"
                 >
-                <Button _hovCol={"#fff"}cursor="pointer"
+                <Button className={s.btnCuenta}
+                    _hovCol={"#fff"}cursor="pointer"
                     onClick={()=>setAccount(!account)}
-                    wd="8rem"
                     bg={account?"#A281D8":"#5260DC"}
                     zInd="11"
+                    // mr="2.9rem"
                     >
                     {/* <VscAccount filter="drop-shadow(2px 2px 2px black)"
                         fontSize={"1.8rem"}
@@ -167,7 +165,7 @@ export default function Navbar () {
                     overflow="hidden"
                     flexDir="column"
                     pos="absolute"
-                    posTop="2.2rem"
+                    posTop="2rem"
                     // posRight="0"
                     // posRight="none"
                     // mr="522px"

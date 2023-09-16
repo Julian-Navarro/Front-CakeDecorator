@@ -7,7 +7,14 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
  let [isOpen, setIsOpen] = useState(false);
   useEffect(()=>{console.log("1");},[isOpen])
   return (
-      <Div wd="100%"hg="3rem"pos="fixed"posTop="2rem"className={s.divContainer}zInd="2">
+      <Div className={s.divContainer}
+        wd="100%"
+        hg="3rem"
+        pos="fixed"
+        posTop="1.8rem"
+        zInd="2"
+        bg="red"
+      >
 
         <Div pos="absolute"posRight="0px"zInd="2"bg={isOpen?"#8B5C8A":"#B39BE5"}
           mr=".5rem"wd="2.8rem" hg="2.8rem"br="50%"

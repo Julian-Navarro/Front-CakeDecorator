@@ -42,7 +42,13 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
         console.log("productsCategories!!!: ", productsCategories);
     },[productsCategories])
     return (
-        <Div br="0"wd="100%"jfCont="center"hg="0"zInd="3"pos="fixed"posTop="3.5rem"> 
+        <Div br="0"
+            wd="100%"
+            jfCont="center"
+            hg="0"
+            zInd="3"
+            pos="fixed"
+            posTop="3.3rem"> 
 
           <Div posRight="0"zInd="6"className={s.btnBurguer}
             pos="absolute"
