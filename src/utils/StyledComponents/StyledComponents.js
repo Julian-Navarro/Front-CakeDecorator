@@ -172,7 +172,7 @@ export const P = styled.p`
 `;
 export const Button = styled.button`
   background: ${({ bg }) => bg || "#5260DC"};
-  padding: ${({ pd }) => pd || "4px"};
+  padding: ${({ pd }) => pd || "2px"};
   height: ${({ hg }) => hg || "auto"};
   width: ${({ wd }) => wd || "auto"};
   display: ${({ display }) => display || "flex"};
@@ -218,32 +218,30 @@ export const Button = styled.button`
 `;
 export const Button2 = styled.button`
   display: ${({ display }) => display || "flex"};
-  border: ${({ bd }) => bd || "none"};
-  border-radius: ${({ br }) => br || "8px"};
+  border: ${({ bd }) => bd};
+  border-radius: ${({ br }) => br};
   cursor: ${({ cursor }) => cursor || "pointer"};
   transition: ${({ trans }) => trans || ".4s ease"};
-  padding: ${({ pd }) => pd || "0"};
-  margin-bottom: ${({ mb }) => mb || "none"};
-  margin-top: ${({ mt }) => mt || "none"};
-  margin-left: ${({ ml }) => ml || "none"};
-  margin-right: ${({ mr }) => mr || "none"};
-  color: ${({ color }) => color || "#fff"};
-  background-color: ${({ bg }) => bg || "green"};
-  position: ${({ pos }) => pos || "static"};
+  padding: ${({ pd }) => pd};
+  margin-bottom: ${({ mb }) => mb};
+  margin-top: ${({ mt }) => mt};
+  margin-left: ${({ ml }) => ml};
+  margin-right: ${({ mr }) => mr};
+  color: ${({ color }) => color};
+  background-color: ${({ bg }) => bg};
+  position: ${({ pos }) => pos};
   top: ${({ posTop }) => posTop};
   left: ${({ posLeft }) => posLeft};
   right: ${({ posRight }) => posRight};
   overflow: ${({ overflow }) => overflow};
   z-index: ${({ zInd }) => zInd};
-  width: ${({ wd }) => wd || "100%"};
-  height: ${({ hg }) => hg || "100%"};
+  width: ${({ wd }) => wd};
+  height: ${({ hg }) => hg};
   flex-direction: ${({ flexDir }) => flexDir || "row"};
   justify-content: ${({ jfCont }) => jfCont || "flex-start"};
   align-items: ${({ alItems }) => alItems || "center"};
-  align-self: ${({ alSelf }) => alSelf || "none"};
+  align-self: ${({ alSelf }) => alSelf};
 `;
-// border-top-left-radius: Xpx;
-// border-top-right-radius: Xpx;
 export const Div = styled.div`
   background: ${({ bg }) => bg || "transparent"};
   background-color: ${({ bgC }) => bgC};

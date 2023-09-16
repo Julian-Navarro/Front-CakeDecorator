@@ -1,3 +1,17 @@
+.divBtnsNavbar Button {
+    height: 1.8rem;
+    width: 6rem;
+    margin-right: .6rem;
+}
+.divBtnsNavbar {
+    margin-right: 4rem;
+}
+
+.btnCuenta {
+    height: 1.8rem !important;
+    width: 8rem;
+    margin-right: 2.9rem;
+}
 .accountBarContainer {
     width: 1240px; 
     /* min-height: 17.5rem; */
@@ -8,9 +22,6 @@
     width: 0vw;
     min-height: 30rem;
 }
-.divBtnsNavbar {
-    margin-right: 1rem;
-}
 
 /* @media (max-width: 720px) {
     .accountBarContainer {
@@ -19,7 +30,11 @@
             margin-right: -540px !important;
         }
 } */
-
+@media (max-width: 450px) {
+    .btnCuenta {
+        margin-right: 2rem !important;
+    }
+}
 @media (max-width: 830px) {
     .accountBarContainer {
         /* background-color: #fbff00 !important; */
@@ -29,7 +44,7 @@
     }
     
     .accountBarContainerClose {
-        background-color: green;
+        /* background-color: green; */
         width: 0vw;
         margin-right: 92.5% !important;
     }
@@ -59,13 +74,21 @@
         padding: 12px !important;
         /* padding-right: 20px !important; */
     }
+    .btnCuenta {
+        margin-right: 8rem;
+    }
     .divBtnsNavbar {
         /* background-color: red !important; */
-        height: 14rem !important;
+        height: 10rem !important;
         display: flex !important;
         flex-wrap: wrap !important;
         /* justify-content: space-between !important; */
         /* width: 100% !important; */
+        margin-right: .4rem;
+    }
+    .divBtnsNavbar Button p {
+        font-size: .9rem;
+        letter-spacing: .2rem;
     }
     .btnMyAccount {
         order: -1 !important
@@ -82,9 +105,9 @@
 
 @media (max-width: 1240px) {
     .accountBarContainer {
-        background-color: #fbff00;
+        /* background-color: #fbff00; */
         width: 110vw;
-        margin-right: 75vw;
+        margin-right: 78vw;
     }
     .accountBarContainerClose {
         background-color: red;

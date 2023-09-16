@@ -12,7 +12,7 @@ export default function Navbar () {
     const location = useLocation();
     const navigate = useNavigate();
     const [account, setAccount] = useState(false)
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
     const pink = "#ddc6da"
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     function handlerNavigate(path) {
@@ -53,7 +53,7 @@ export default function Navbar () {
         location.pathname !== "/" ?
       <Div className={s.container}
         wd="100%"
-        hg="2rem"
+        hg="1.8rem"
         pos="fixed"
         jfCont="flex-start"br="0"
         zInd="10">
@@ -70,16 +70,11 @@ export default function Navbar () {
             posBot={isOpen?"-10rem":"12rem"}wd="1240px"
             >
 
-          {/* <Div wd="30%"jfCont="flex-start"ml=".5rem"className={s.cakeIcon}>
-            <RiCake3Line fontSize={"2rem"}/>
-          </Div> */}
-
           <Div wd="100%"hg="100%"
             jfCont="space-between"
-            // mr=".5rem"
             br="0"
             className={s.divBtns}
-            bg="#333"
+            // bg="#333"
             >
             <Div className={s.divBtnsNavbar}
                 wd="100%"
@@ -87,71 +82,37 @@ export default function Navbar () {
 
             
             <Button onClick={()=>handlerNavigate("/home")}
-                wd="8rem"hg="2.8rem"
-                // pd="0px 10px 0 10px"
-                // br="6px"
-                // color="#252525"
-                // bg={"transparent"}
-                // fSize="1.2rem"
-                // fWeight="bold"
-                // _hovCol={"#fff"}
                 >
                 <AiTwotoneHome fontSize={"1.8rem"}
                 />
             </Button>
             
             <Button onClick={()=>handlerNavigate("/courses")}
-                wd="8rem"
-                // pd="0px 10px 0 10px"
-                // br="6px"
-                // color="#252525"
-                // bg={"transparent"}
-                // fSize="1.2rem"
-                // fWeight="bold"
-                // _hovCol={"#fff"}
                 >
-                    <P letterSp=".1em" fWeight="bold"
-                        filter="drop-shadow(1px 1px 2px #25252575)">Cursos</P>
+                <P letterSp=".1em" fWeight="bold"
+                    filter="drop-shadow(1px 1px 2px #25252575)">Cursos</P>
             </Button>
             
             <Button onClick={()=>handlerNavigate("/shop")}
-                wd="8rem"
-                // pd="0px 10px 0 10px"
-                // br="6px"
-                // color="#252525"
-                // bg={"transparent"}
-                // fSize="1.2rem"
-                // fWeight="bold"
-                // _hovCol={"#fff"}
                 >
-                    <P letterSp=".1em" fWeight="bold"
-                        filter="drop-shadow(1px 1px 2px #25252575)">Tienda</P>
+                <P letterSp=".1em" fWeight="bold"
+                    filter="drop-shadow(1px 1px 2px #25252575)">Tienda</P>
             </Button>
             
             <Button onClick={()=>handlerNavigate("/aboutUs")}
-                wd="8rem"
-                // pd="0px 10px 0 10px"
-                // br="6px"
-                // color="#252525"
-                // bg={"transparent"}
-                // fSize="1.2rem"
-                // fWeight="bold"
-                // _hovCol={"#fff"}
                 >
                 <P letterSp=".1em" fWeight="bold"
                     filter={`drop-shadow(1px 1px 1px #25252575)`}>Nosotros</P>
             </Button>
             </Div>
             <Div wd="auto"
-                color="#252525"
-                bg={"transparent"}
-                bg="greenyellow"
                 >
-                <Button _hovCol={"#fff"}cursor="pointer"
+                <Button className={s.btnCuenta}
+                    _hovCol={"#fff"}cursor="pointer"
                     onClick={()=>setAccount(!account)}
-                    wd="8rem"
                     bg={account?"#A281D8":"#5260DC"}
                     zInd="11"
+                    // mr="2.9rem"
                     >
                     {/* <VscAccount filter="drop-shadow(2px 2px 2px black)"
                         fontSize={"1.8rem"}
@@ -166,8 +127,9 @@ export default function Navbar () {
                     display={"flex"}
                     overflow="hidden"
                     flexDir="column"
+                    alItems="flex-start"
                     pos="absolute"
-                    posTop="2.2rem"
+                    posTop="2rem"
                     // posRight="0"
                     // posRight="none"
                     // mr="522px"
@@ -184,7 +146,6 @@ export default function Navbar () {
                         blur="blur(5px)"br="0"
                         bg={"#25252586"}
                         // jfCont="center"
-                        // mt="1rem"mr="-1rem" //! DELETE THIS LINE!
                         // bg="yellow !important"
                         >
                         <Button onClick={(e)=>handlerNavigateMyAccount(e)}

@@ -8,6 +8,7 @@ import { TbLockOpen } from "react-icons/tb"
 import { IoIosWarning } from "react-icons/io"
 import { MdContentCopy } from "react-icons/md"
 import { FaPhoneAlt } from "react-icons/fa"
+import s from "./ProfileUserCard.module.css"
 
 
 export default function ProfileUserCard ({ user, handlerBlockOrUnlockUser }) {
@@ -23,9 +24,14 @@ function copiarAlPortapapeles(texto) {
     useEffect(()=>{
     },[user])
     return (
-        <Div boxSh={view?"6px 6px .4rem .3rem rgb(0,0,0,0.5), inset 2px 2px 1rem .1rem #afafaf":"2px 2px .3rem .1rem rgb(0,0,0,0.5), inset 2px 2px 1rem .1rem #afafaf"}
-          hg={view?"8rem":"3.8rem"}mb={view?"1.5rem":"1rem"}br={view?"4rem":"2rem"}
-          pd="0 .5rem 0 .5rem"jfCont="space-between"bg="#eeee">
+      <Div boxSh={ view 
+        ? "6px 6px .4rem .3rem rgb(0,0,0,0.5), inset 2px 2px 1rem .1rem #afafaf"
+        : "2px 2px .3rem .1rem rgb(0,0,0,0.5), inset 2px 2px 1rem .1rem #afafaf"
+        }
+        hg={view?"8rem":"3.8rem"}mb={view?"1.5rem":"1rem"}br={view?"4rem":"2rem"}
+        pd="0 .5rem 0 .5rem"jfCont="space-between"bg="#eeee"
+        className={s.cardContainer}
+        >
           <Img bd={`3px solid ${user.status==="active"?"#00d386":user.status==="inactive"?"#fcbd11":"#dc4a61"}`}
             wd={view?"7rem":"3.2rem"}hg={view?"7rem":"3.2rem"}br={view?"4rem":"2rem"}src={user.img?user.img:userIcon}
             boxSh="0 0 .2rem .1rem gray"/>

@@ -7,10 +7,17 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
  let [isOpen, setIsOpen] = useState(false);
   useEffect(()=>{console.log("1");},[isOpen])
   return (
-      <Div wd="100%"hg="3rem"pos="fixed"posTop="2rem"className={s.divContainer}zInd="2">
+      <Div className={s.divContainer}
+        wd="100%"
+        hg="3rem"
+        pos="fixed"
+        posTop="1.7rem"
+        zInd="2"
+      >
 
         <Div pos="absolute"posRight="0px"zInd="2"bg={isOpen?"#8B5C8A":"#B39BE5"}
-          mr=".5rem"wd="2.8rem" hg="2.8rem"br="50%"
+          mr=".9rem"
+          wd="2.8rem" hg="2.8rem"br="50%"
           display="none"className={s.btnBurguer}onClick={()=>setIsOpen(!isOpen)}
           >
             <img src={isOpen?xIcon:filterIcon} alt="" className={s.imgIcon}/>
@@ -20,7 +27,7 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
           pd="0 1rem 0 1rem"bdB="3px solid #E9A0E7"
           hg="3rem"
           wd="1240px"
-          posRight={isOpen?"0":"-100%"}
+          posRight={isOpen?"1%":"-100%"}
           className={s.container}
           >
 

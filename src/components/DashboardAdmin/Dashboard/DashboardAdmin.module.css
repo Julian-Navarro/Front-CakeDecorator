@@ -1,25 +1,33 @@
-.divContainer {
-    background-color: rgba(0, 0, 255, 0.24);
+.container {
+    background-color: beige;
     width: 100%;
-    display: flex;
-
 }
-.divDashboardLeftContainer {
-    background-color: gray;
-    width: 15%;
-    display: flex;
+.divContainer {
+    width: 100%;
+    background: #fff;
     flex-direction: column;
+    border-radius: 0;
 }
-.divDashboardLeftContainer  button{
-    background-color: rgb(202, 28, 28);
+.btnsContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    /* background-color: blueviolet; */
+    margin-top: 2.5rem;
+    justify-content: space-between;
+    padding: 0 .5rem 1rem 1rem;
+}
+.btn {
+    width: 8rem;
+    margin-right: .5rem;
     height: 2rem;
-    font-size: 22px;
-    cursor: pointer;
+    padding: 4px 0 0 4px;
+    border-radius: .1rem;
 }
-.divDashboardRightContainer {
-    width: 85%;
-    background-color: rgba(255, 0, 0, 0.196);
+.iconSelectBtn {
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
 }
+/* .pSelectBtn {
+    font-size: .9rem;
+} */
