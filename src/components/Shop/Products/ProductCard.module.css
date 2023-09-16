@@ -184,6 +184,9 @@ h1 {
     background-color: #fff;
     box-shadow: 0.05rem 0.05rem 0.6rem 0rem #ffffff8f
 } */
+.cardContainer {
+    width: 100%;
+}
 .divBtns {
     box-shadow: 1px 1px 6px 1px rgb(0,0,0,0.35);
     border: 2px solid #fff;

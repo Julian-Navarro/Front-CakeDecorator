@@ -28,7 +28,7 @@ export function ShopNavbar ({ isOpen, setIsOpen, handlerSearchProducts }) {
             </Div>
             <Div wd="12rem"pos="relative"bg="orange">Icono Mundo dulce</Div>
             <Div wd="2.6rem"hg="2.6rem"onClick={()=>navigate("/shop/cart")}blur="blur(5px)"bg="orange"br="50%"mr="10px">
-                <Img wd="36px" hg="36px"bg="red" src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="" />
+                <Img wd="36px" hg="36px"src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="" />
             </Div>
         </Div>
     )
