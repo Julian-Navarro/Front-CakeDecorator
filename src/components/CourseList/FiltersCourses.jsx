@@ -13,6 +13,7 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
         pos="fixed"
         posTop="1.7rem"
         zInd="2"
+        // bg="#333"
       >
 
         <Div pos="absolute"posRight="0px"zInd="2"bg={isOpen?"#8B5C8A":"#B39BE5"}

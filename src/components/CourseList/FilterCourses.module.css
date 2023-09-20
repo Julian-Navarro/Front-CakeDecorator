@@ -19,12 +19,17 @@
     .divContainer {
         top: 3.7rem !important;
         /* right: 0rem */
+        /* background: green; */
+        z-index: 4 !important;
     }
     .container Select {
         width: 8rem !important;
+        z-index: 2;
     }
     .btnBurguer {
         display: flex !important;
+        margin-right: 8vw !important;
+        margin-top: .5rem !important;
     }
     .imgIcon {
         width: 2.2rem !important;

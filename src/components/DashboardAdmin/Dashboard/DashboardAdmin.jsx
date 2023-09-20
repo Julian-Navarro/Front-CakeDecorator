@@ -21,9 +21,7 @@ export default function DashboardAdmin () {
 
     useEffect(()=>{}, [render])
     return (
-      <Div className={s.divContainer}
-        bg="#fff"
-        br="0">
+      <div className={s.divContainer}br="0">
 
         <div className={s.btnsContainer}
           wd="100%"
@@ -93,24 +91,24 @@ export default function DashboardAdmin () {
 
 
 
-        {/* <Div className={s.container}>
-        {
-            render === "dashboard" ? <DashboardStats/> : null
-        }
-        {
-            render === "users" ? <Users/> : null
-        }
-        {
-            render === "courses" ? <CoursesAdm path={"adm"}/> : null
-        }
-        {
-            render === "products" ? <Products path={"adm"}/> : null
-        }
-        {
-            render === "editCategoriesAndBrands" ? <CreateCategoriesAndBrands/> : null
-        }
-        </Div> */}
+        <div className={s.container}>
+          {
+              render === "users" ? <Users/> : null
+          }
+          {
+              render === "dashboard" ? <DashboardStats/> : null
+          }
+          {
+              render === "courses" ? <CoursesAdm path={"adm"}/> : null
+          }
+          {
+              render === "products" ? <Products path={"adm"}/> : null
+          }
+          {
+              render === "editCategoriesAndBrands" ? <CreateCategoriesAndBrands/> : null
+          }
+        </div>
 
-      </Div>
+      </div>
     )
 }

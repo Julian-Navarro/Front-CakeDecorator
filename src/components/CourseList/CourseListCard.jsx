@@ -29,9 +29,9 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
         <Div wd="39.8%"hg="12rem"flexDir="column"jfCont="space-between"pd="0 0 .3rem 0"
           className={s.divInfo}>
           <Div >
-            <P fSize=".9rem"fnFamily="Shrikhand"color="#AE35B0">{newTitle}</P>
+            <P fnFamily="Shrikhand"color="#AE35B0"className={s.title}>{newTitle}</P>
           </Div>
-          <Div flexDir="column">
+          <Div flexDir="column"className={s.divInfoContainer}>
             <Div jfCont="flex-start">
               <P fSize=".85rem"fWeight="bold">Categoría:</P>
               <P fSize=".85rem">{category}</P>
@@ -60,15 +60,27 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
             className={s.description}>
             {newDescription}
           </P>
-          <Div jfCont="flex-end"pd="0 20px 10px 0"className={s.divButton}>
+          <Div className={s.divButton}>
             <Button bg="#DBB5FA"
-              fSize=".9rem"fWeight="100"letterSp=".15rem"
+              fSize=".9rem"
+              fWeight="100"
+              letterSp=".15rem"
               pd=".1rem 2rem .1rem 2rem"br="4rem"
               boxSh="2px 2px .3rem .1rem rgb(0, 0, 0, 0.35), inset -8px -6px 25px #BF97DF"
-              onClick={()=>{navigate(`/courses/${id}`)}}fnFamily="Shrikhand"_hovBg="#C8DCFB"
+              onClick={()=>{navigate(`/courses/${id}`)}}
+              fnFamily="Shrikhand"
+              _hovBg="#C8DCFB"
+              bd="none"
               >
-              Ver Curso
+              Ver {path === "adm" ? null : "Curso"}
             </Button>
+            {
+              path === "adm"
+              ? <button className={s.btnEdit}>
+                  Editar
+                </button>
+              : null
+            }
           </Div>
         </Div>
       </Div>

@@ -62,13 +62,12 @@ export default function CoursesAdm ({ path }) {
     }, [courseToEdit, editFlag, componentCourseListFlag])
     return (
         <div>
-          <P>COURSES ADM</P>
-            <Button onClick={(e)=>{handlerSetCreateCourseFlag(e)}}>
-                { createCourseFlag
-                ? "Cerrar Formulario"
-                : "Crear Nuevo Curso" }
-            </Button>
-            <Div>
+          <button onClick={(e)=>{handlerSetCreateCourseFlag(e)}}>
+              { createCourseFlag
+              ? "Cerrar Formulario"
+              : "Crear Nuevo Curso" }
+          </button>
+          {/* <Div>
 
             {
                 courseToEdit !== false
@@ -86,7 +85,7 @@ export default function CoursesAdm ({ path }) {
                     handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} />
                 : null
             }
-            </Div>
+          </Div> */}
           <CourseList 
             componentCourseListFlag={componentCourseListFlag}
             courses={courses}

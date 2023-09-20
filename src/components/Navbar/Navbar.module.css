@@ -49,12 +49,16 @@
         margin-right: 92.5% !important;
     }
     .container {
-        /* background: blue !important; */
+        background: blue !important;
         z-index: 3 !important;
     }
     .btnBurguer {
         display: flex !important;
         justify-content: center !important;
+        /* background: red !important; */
+        margin-right: 8vw !important;
+        margin-top: 1rem !important;
+        z-index: 6 !important;
     }
     .divContainer {
         background: #E9A0E7 !important;
@@ -63,8 +67,7 @@
         /* flex-wrap: wrap !important; */
         height: 22rem !important;
         /* top: 10rem; */
-        z-index: 2 !important;
-        
+        z-index: 5 !important;
     }
     .divBtns {
         /* flex-direction: column-reverse !important; */
@@ -110,7 +113,7 @@
         margin-right: 78vw;
     }
     .accountBarContainerClose {
-        background-color: red;
+        /* background-color: red; */
         width: 0vw;
         margin-right: 92.5%;
     }

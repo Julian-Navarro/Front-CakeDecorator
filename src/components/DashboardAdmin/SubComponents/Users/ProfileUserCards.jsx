@@ -1,15 +1,19 @@
 import { Div, P } from "../../../../utils/StyledComponents/StyledComponents";
 import ProfileUserCard from "./ProfileUserCard";
+import s from "./ProfileUserCard.module.css"
 export default function ProfileUserCards({ users, handlerBlockOrUnlockUser }) {
+
   return users.length ? (
-    users.map((user, id) => (
-      <ProfileUserCard
-        key={id}
-        user={user}
-        handlerBlockOrUnlockUser={handlerBlockOrUnlockUser}
-      />
-    ))
+    <div className={s.cardsContainerAll}>
+    {users.map((user, id) => (
+        <ProfileUserCard
+          key={id}
+          user={user}
+          handlerBlockOrUnlockUser={handlerBlockOrUnlockUser}
+          />
+    ))}
+    </div>
   ) : (
-    <P>No se encontraron usuariosss</P>
+    <p>No se encontraron usuariosss</p>
   );
 }
