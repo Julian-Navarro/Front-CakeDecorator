@@ -1,3 +1,204 @@
-.cardContainer {
+.cardsContainerAll {
+    /* background-color: red; */
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 800px) {
+    .cardsContainerAll {
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* background-color: #00d386; */
+        justify-content: space-evenly;
+    }
+}
+
+.containerUserCard {
+    /* background: rgb(252, 76, 76); */
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 4px;
+    box-shadow: 2px 2px .2rem .1rem rgb(0,0,0,0.35);
+    display: flex;
+}
+.p {
+    /* background: #d41330; */
+    font-size: .85rem;
+    font-weight: bold;
+    font-family: Roboto
+}
+.pEmail {
+    font-size: .9rem;
+    font-weight: bold;
+    font-family: Roboto;
+    /* display: flex; */
+    /* background-color: #00d386; */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 20rem;
+    /* height: 2.6rem; */
+}
+.pStatus {
+    font-size: .9rem;
+    font-weight: bold;
+    font-family: Roboto;
+    color: #00d386;
+}
+.pStatusBanned {
+    color: #dc4a61;
+}
+.pStatusInactive {
+    color: #fcbd11;
+}
+.divImg {
+    /* background-color: lightgreen; */
+    width: 4.3rem;
+    height: 4.3rem;
+    margin-right: .5rem;
+}
+.userImgActive {
+    width: 4.3rem;
+    height: 4.3rem;
+    object-fit: cover;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #61db61
+}
+.bannedUser {
+    border: 2px solid #dc4a61
+}
+.inactiveUser {
+    border: 2px solid #FCBD11
+}
+.divInfoContainer {
+    width: 100%;    
+    /* background-color: orange; */
+    display: flex;
+    justify-content: space-between;
+}
+.divInfoContainer p {
+    /* background-color: coral; */
+    margin-right: .5rem;
+}
+.divBtns {
+    width: 3rem;
+    /* background: lightskyblue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.divBtns button {
+    background: #545454;
+    color: #fff;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 4px 1px rgb(0,0,0,0.35);
+}
+.divBtns button:nth-child(1) {
+    /* margin-bottom: 6px; */
+}
+.divPhone {
+    display: flex;
+    /* background-color: gray; */
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.iconPhone {
+    background: #61ce61;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 1rem;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.divNamesEmail {
+    /* background-color: rgb(122, 33, 173); */
+    display: flex;
+    padding: 4px;
+    flex-direction: column;
+    /* height: 100%; */
+    justify-content: space-between;
+}
+.divNameSurname {
+    /* background-color: yellow; */
+    display: flex;
+    /* height: 100%; */
+
+}
+.divStatusAndPhonexBtns {
+    /* background-color: red; */
+    display: flex;
+}
+.divSatusPhone {
+    /* background-color: blueviolet; */
+    width: 10rem;
+    display: flex;
+    padding: 4px 4px 4px 0;
+    flex-direction: column;
+    justify-content: space-between;
+    /* height: 100%; */
+}
+.divDisabledP {
+    display: none;
+}
+@media (max-width: 800px) {
+    .containerUserCard {
+        width: 14rem;
+        height: 15rem;
+        /* background: #86dad3; */
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .divInfoContainer {
+        flex-direction: column;
+        height: 10rem;
+        /* background-color: blue; */
+        padding: 4px;
+
+    }
+    .pEmail {
+        width: 100%;
+        font-size: .85rem;
+    }
+    .divImg {
+        /* background-color: blue; */
+        width: 100%;
+        height: 7rem;
+        display: flex;
+    }
+    .userImgActive {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 4px;
+    }
+    .divDisabledP {
+        display: flex;
+    }
+    .divDisabledP p {
+        /* background-color: red; */
+        font-size: .85rem;
+        font-weight: bold;
+        font-family: Roboto;
+        width: 7rem;
+        padding: 4px;
+
+    }
+    .divNameSurname {
+        display: none;
+    }
+    .divBtns button{
+        /* background-color: #fcbd11; */
+        margin-bottom: .3rem;
+    }
+
 }
