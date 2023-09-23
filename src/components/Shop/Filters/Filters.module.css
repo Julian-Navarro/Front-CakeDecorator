@@ -1,0 +1,40 @@
+.iconGlass {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+.divSearchBar {
+    text-decoration: none;
+}
+.applyFilters {
+    flex-wrap: wrap;
+}
+@media (min-width: 830px) {
+    .container {
+        top: 0 !important;
+    }
+}
+
+@media (max-width: 1240px) {
+    .container {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 830px) {
+    .container {
+        position: relative !important;
+        margin-top: 10rem !important;
+        background: #D8EAFF !important;
+        height: 17rem !important;
+    }
+    .btnBurguer {
+        display: flex !important;
+        justify-content: center !important;
+    }
+    .selectsXcartIcon {
+        height: 12rem !important;
+        flex-direction: column-reverse !important;
+        align-items: flex-start !important;
+    }
+
+}

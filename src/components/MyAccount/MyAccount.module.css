@@ -1,0 +1,18 @@
+.leftbar {
+    background-color: white;
+    width: 200px;
+    padding: 20px;
+
+}
+.leftbar{
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    cursor: pointer;
+}
+.leftbar button.active {
+    color: greenyellow;
+}

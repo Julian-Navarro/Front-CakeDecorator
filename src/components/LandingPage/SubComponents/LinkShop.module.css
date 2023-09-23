@@ -1,0 +1,29 @@
+.containerCarrousel {
+    align-self: flex-end;
+}
+
+@media (max-width: 959px) {
+    .containerCarruselTitle {
+        flex-direction: column !important;
+    }
+
+    .coursesDescription {
+        width: 80% !important;
+        font-size: 1.6rem !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .titleCourses {
+        font-size: 2.2rem !important;
+    }
+
+    .coursesDescription {
+        width: 100% !important;
+        font-size: 1.3rem !important;
+    }
+
+    .containerCarrousel {
+        align-self: center !important;
+    }
+}

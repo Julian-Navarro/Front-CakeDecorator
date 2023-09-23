@@ -1,0 +1,99 @@
+.containerSearchBar {
+    /* background-color: brown; */
+    display: flex;
+    width: 100%;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+}
+.containerDivsSearch {
+    display: flex;
+}
+.divSearchBar {
+    /* background-color: greenyellow; */
+    display: flex;
+    margin-right: .5rem;
+}
+.divSearchBarInput {
+    display: flex;
+    margin-right: .5rem;
+}
+
+/*ToDo  pd="0"br="2rem"wd="2rem"hg="2rem"bg="#333" */
+.btnsSearch {
+    border-radius: 2rem;
+    width: 2rem;
+    height: 2rem;
+    background: #333;
+    color: #fff;
+    box-shadow: 2px 2px .2rem .1rem rgb(0,0,0,0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.btnSearchValue {
+    width: 13rem;
+    background: #333;
+    color: #fff;
+    letter-spacing: .1rem;
+    margin-right: .5rem;
+    font-family: Roboto;
+    border-radius: 4px;
+    box-shadow: 2px 2px .2rem .1rem rgb(0, 0, 0, 0.35);
+}
+.divBtnsUserStatus {
+    /* background-color: aqua; */
+    display: flex;
+    padding: 0 1rem 0 .5rem;
+}
+.btnUserStatusValue {
+    background-color: #333;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 2px 1px rgb(0, 0, 0, 0.35);
+    margin-left: .5rem;
+}
+.btnUserStatusValue img {
+    width: 1.6rem;
+}
+
+@media (max-width: 900px) {
+    .containerSearchBar {
+        /* background: yellow; */
+        flex-direction: column;
+    }
+    .containerDivsSearch {
+        flex-direction: column;
+    }
+    .divSearchBar {
+        padding-bottom: 1rem;
+    }
+    .divSearchBarInput {
+        margin-bottom: .5rem;
+    }
+    .divBtnsUserStatus {
+        padding: 0;
+        /* background-color: aqua; */
+    }
+    .divBtnsUserStatus button:nth-child(1){
+        margin-left: 0;
+    }
+}
+@media (max-width: 400px) {
+    .containerSearchBar {
+        /* background: red; */
+    }
+    .divSearchBarInput {
+        display: flex;
+        flex-direction: column;
+        margin-right: 0;
+    }
+    .divSearchBarInput input {
+        margin-right: 0;
+        margin-bottom: .5rem;
+    }
+}

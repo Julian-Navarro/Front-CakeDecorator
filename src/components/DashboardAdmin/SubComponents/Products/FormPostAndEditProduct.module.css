@@ -1,0 +1,53 @@
+.formInput {
+    background-color: transparent;
+    height: 1.5rem;
+    border-bottom: 2px solid #00cc66;
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 0 .2rem 0 .2rem;
+    outline: none;
+    -webkit-text-fill-color: #333;
+    -webkit-background-color: #333;
+    font-family: 'Roboto';
+}
+
+.formInputDanger {
+    background-color: transparent;
+    height: 1.5rem;
+    border-bottom: 2px solid red;
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 0 .2rem 0 .2rem;
+    outline: none;
+    -webkit-text-fill-color: #333;
+    -webkit-background-color: #333;
+    font-family: 'Roboto';
+}
+.divGradient {
+    margin-top: 1rem;
+    background: linear-gradient(90deg, #00cc66 0%, rgb(113, 255, 47) 100%);
+    width: 100%;
+}
+.divGradientEsfera {
+  background: linear-gradient(45deg, #00cc4ef5 10%, yellow 100%) !important;
+  width: 2rem;
+  height: 2rem;
+}
+.divGradientEsferaNull {
+    background: linear-gradient(45deg, lightgray 10%, rgb(243, 243, 243) 100%) !important;
+    width: 2rem;
+    height: 2rem;
+}
+
+    /*          <div className= { */
+                 /* s.divgradientEsfera */
+    /*          } */
+    /*          boxSh= { */
+                 /* `1px 1px .2rem .05rem #333, */
+                 /* inset 0 0 .7rem .0125rem ${formPage>1?"#009e4f":"gray"}` */
+    /*          } */
+    /*          pos="relative" posLeft="-.2rem" zInd="2" */
+    /*          bg= { */
+                 /* formPage>1?"#00cc66": "lightgray" */
+    /*          } */
+    /*          wd="2rem" hg="2rem" br="1rem"></div> */
