@@ -19,6 +19,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Navbar/Footer.jsx";
 import s from "./App.module.css";
 import DetailCourses from "./components/CourseList/DetailCourses/DetailCourses.jsx";
+import FormCoursePostAndEdit2 from "./components/DashboardAdmin/SubComponents/Courses/FormCoursePostAndEdit2.jsx";
 function App() {
   let userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
   const [loggedUser, setLoggedUser] = useState(userLocalStorage);
@@ -90,7 +91,18 @@ function App() {
           <Route exact path="/shop/cart" element={<Cart />} />
 
           {loggedUser !== null && loggedUser.role === "admin" ? (
-            <Route exact path="/dashboardAdmin" element={<DashboardAdmin />} />
+            <>
+              <Route
+                exact
+                path="/dashboardAdmin"
+                element={<DashboardAdmin />}
+              />
+              <Route
+                exact
+                path="/createCourse"
+                element={<FormCoursePostAndEdit2 />}
+              />
+            </>
           ) : null}
         </Routes>
         <Footer />

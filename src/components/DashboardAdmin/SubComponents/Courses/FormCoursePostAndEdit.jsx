@@ -274,7 +274,12 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
               <CloudinaryUploadVideo input={input}name="videos" setInput={setInput}/>
             </Div>
           </Div>
-          {errors.videos !== ""?<P pd="2px 14px 2px 14px" bg="#FFDCDC" bd={colorVideos} color={colorVideos}>{errors.videos}</P>:<p></p>}
+          { errors.videos !== ""
+          ? <P pd="2px 14px 2px 14px"
+           bg="#FFDCDC"
+           bd={colorVideos}
+           color={colorVideos}>
+           {errors.videos}</P>:<p></p>}
           <Div bg="red"jfCont="space-evenly">
             <Button onClick={(e)=>{handlerBackStep(e)}}>Atrás</Button>
             <Button onClick={(e)=>{handlerThirdStep(e)}}>Siguiente</Button>
@@ -314,9 +319,6 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
             {formPage>1?<Button onClick={(e)=>handlerSubtractFormPage(e)}>Atrás</Button>:null }
             <Button onClick={(e)=>handlerAddFormPage(e)}>Siguiente</Button>
           </Div> */}
-
-
-
            
             {/* {
               update 
@@ -324,8 +326,12 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
               <Button value={true} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} bgColor="#0172AF">Guardar</Button>
               <Button onClick={(e)=>{handlerEditCourse(e)}} bgColor="#0172AF">Cerrar edición</Button>
               </Div>
-              : <Button value={false} type="submit" onClick={(e)=>{handlerPostOrEdit(e)}} color="#161616" bg="#9AEFFF" pd="6px 4rem 6px 4rem" _hovBg="lightblue">Crear</Button> 
-            } */}
+              : <Button value={false} type="submit" 
+                 onClick={(e)=>{handlerPostOrEdit(e)}} color="#161616" bg="#9AEFFF"
+                 pd="6px 4rem 6px 4rem" _hovBg="lightblue">
+                   Crear
+                </Button> 
+             } */}
       </Div>
       </Div>
     </Form>
