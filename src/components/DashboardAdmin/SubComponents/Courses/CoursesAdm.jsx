@@ -4,12 +4,14 @@ import FormCoursePostAndEdit from "./FormCoursePostAndEdit";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoursesFromDB } from '../../../../redux/actions'
 import { Div, P, Button } from "../../../../utils/StyledComponents/StyledComponents";
+import s from "./CoursesAdm.module.css"
+import { useNavigate } from "react-router-dom";
 export default function CoursesAdm ({ path }) {
-    const [createCourseFlag, setCreateCourseFlag] = useState(false);
-    const [editFlag, setEditFlag] = useState(false);
-    const [courseToEdit, setCourseToEdit] = useState(false);
+    // const [createCourseFlag, setCreateCourseFlag] = useState(false);
+    // const [editFlag, setEditFlag] = useState(false);
+    // const [courseToEdit, setCourseToEdit] = useState(false);
     const [componentCourseListFlag, setComponentCourseListFlag] = useState(false);
-
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState(false);
@@ -22,30 +24,30 @@ export default function CoursesAdm ({ path }) {
     function handlerSetComponentCourseListFlag () {
         setComponentCourseListFlag(!componentCourseListFlag)
     };
-    function handlerSetCreateCourseFlag(e) {
-        e.preventDefault();
-        if(createCourseFlag) {
-            setCreateCourseFlag(false)
-        } else {
-            setCreateCourseFlag(true)
-            setCourseToEdit(false)
-        }
-    };
-     function handlerEditCourse(e, course) {
-        e.preventDefault();
-        handlerSetEditFlag()
-        if(course !== undefined) {
-            setCourseToEdit({...course})
-            setCreateCourseFlag(false)
-            window.scroll(0, 400)
-        } else {
-            setCourseToEdit(false)
-            setCreateCourseFlag(false)            
-        }
-    };
-    function handlerSetEditFlag() {
-        setEditFlag(!editFlag)
-    };   
+    // function handlerSetCreateCourseFlag(e) {
+    //     e.preventDefault();
+    //     if(createCourseFlag) {
+    //         setCreateCourseFlag(false)
+    //     } else {
+    //         setCreateCourseFlag(true)
+    //         setCourseToEdit(false)
+    //     }
+    // };
+    //  function handlerEditCourse(e, course) {
+    //     e.preventDefault();
+    //     handlerSetEditFlag()
+    //     if(course !== undefined) {
+    //         setCourseToEdit({...course})
+    //         setCreateCourseFlag(false)
+    //         window.scroll(0, 400)
+    //     } else {
+    //         setCourseToEdit(false)
+    //         setCreateCourseFlag(false)            
+    //     }
+    // };
+    // function handlerSetEditFlag() {
+    //     setEditFlag(!editFlag)
+    // };   
 
     useEffect(()=>{
         dispatch(getCoursesFromDB())
@@ -59,14 +61,17 @@ export default function CoursesAdm ({ path }) {
 
     useEffect(()=>{
         // console.log("RENDERING: COURSE STATE: ", courseToEdit);
-    }, [courseToEdit, editFlag, componentCourseListFlag])
+    }, [
+        // courseToEdit, editFlag, 
+        componentCourseListFlag])
     return (
         <div>
-          <button onClick={(e)=>{handlerSetCreateCourseFlag(e)}}>
+          {/* <button onClick={(e)=>{handlerSetCreateCourseFlag(e)}}>
               { createCourseFlag
               ? "Cerrar Formulario"
               : "Crear Nuevo Curso" }
-          </button>
+          </button> */}
+          <button className={s.btnCreate}onClick={()=>navigate("/createCourse")}>Crear Curso o Seminario</button>
           {/* <Div>
 
             {
@@ -90,7 +95,8 @@ export default function CoursesAdm ({ path }) {
             componentCourseListFlag={componentCourseListFlag}
             courses={courses}
             path="adm" 
-            handlerEditCourse={handlerEditCourse}/>
+            // handlerEditCourse={handlerEditCourse}
+            />
         </div>
 
     )
