@@ -8,7 +8,29 @@
 .applyFilters {
     flex-wrap: wrap;
 }
-@media (min-width: 830px) {
+.selectsXcartIcon {
+    width: 100%;
+}
+.divBtnsShow {
+    /* background-color: violet; */
+    display: flex;
+    width: 4.2rem;
+    justify-content: space-between;
+}
+.btnBurguer {
+    margin-right: 1rem; 
+    margin-top: .5rem;   
+}
+.divBtnsShow button {
+    background-color: #494949;
+    border-radius: 4px;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+.divBtnsShowDis {
+    display: none;
+}
+@media (min-width: 910px) {
     .container {
         top: 0 !important;
     }
@@ -20,7 +42,7 @@
     }
 }
 
-@media (max-width: 830px) {
+@media (max-width: 910px) {
     .container {
         position: relative !important;
         margin-top: 10rem !important;

@@ -58,9 +58,10 @@ export default function Navbar () {
         jfCont="flex-start"br="0"
         zInd="10">
 
-        <Div pos="absolute"posRight="0"mr="12px"zInd="4"mt=".5rem"
+        <Div pos="absolute"posRight="0"mr="1rem"zInd="4"mt=".5rem"
           posTop="0px"wd="2.8rem" hg="2.8rem"br="50%"bg={isOpen?"#8B5C8A":"#B39BE5"}
           display="none"className={s.btnBurguer}
+        //   bg="orange"
           onClick={()=>handlerCloseBarAccount()}
           >
             <img src={isOpen?xIcon:homeIcon} alt=""className={s.iconHome} />

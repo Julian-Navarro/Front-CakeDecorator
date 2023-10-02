@@ -1,3 +1,12 @@
 .btnCreate {
-    background: aqua;
+    background: rgb(222, 158, 41);
+    border-radius: 8px;
+    padding: 0 12px 0 12px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1.5px;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    box-shadow: 2px 2px 3px 1px rgb(0,0,0,0.35);
 }

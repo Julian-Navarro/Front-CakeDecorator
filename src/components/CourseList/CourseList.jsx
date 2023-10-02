@@ -12,10 +12,6 @@ export default function CourseList ({ path, handlerEditCourse, componentCourseLi
     
     return (
         <Div flexDir="column">
-          <FilterCourses courses={courses}allCourses={allCourses}
-            setCourses={setCourses}handlerFilterValue={handlerFilterValue}
-            categoryFilter={categoryFilter}typeFilter={typeFilter}/>
-
           <Div hg="41rem"mt="5rem"pos="relative"zInd="1"bg=""display={path==="adm"?"none":"flex"}>
             <Div wd="40rem"pos="absolute"posLeft="-7rem"zInd="1">
               <img src={Donuts} alt="" className={s.donuts}/>
@@ -46,6 +42,9 @@ export default function CourseList ({ path, handlerEditCourse, componentCourseLi
 
           </Div>
 
+          <FilterCourses courses={courses}allCourses={allCourses}
+            setCourses={setCourses}handlerFilterValue={handlerFilterValue}
+            categoryFilter={categoryFilter}typeFilter={typeFilter}/>
           <CourseListCards path={path} handlerEditCourse={handlerEditCourse} 
             courses={courses}allCourses={allCourses}/>
         </Div>

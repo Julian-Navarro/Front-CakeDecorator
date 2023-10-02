@@ -11,15 +11,26 @@ import { RiDatabaseLine } from "react-icons/ri"
 import { BsClipboard2DataFill } from "react-icons/bs"
 import DashboardStats from "../SubComponents/DashboardStats/DashboardStats.jsx"
 import s from "./DashboardAdmin.module.css"
+import { useParams, useLocation } from "react-router-dom";
 
 
 export default function DashboardAdmin () {
     const [render, setRender] = useState("dashboard")
+    const location = useLocation()
     function handlerChangeRender(value) {
         setRender(value)
     }
-
-    useEffect(()=>{}, [render])
+    useEffect(()=>{
+      console.log(location.search);
+      if(location?.search) {
+        console.log(location.search);
+        setRender(location.search.split("=")[1])
+      } else {
+        console.log("No location: ", location);
+      }
+    }, [])
+    useEffect(()=>{
+    }, [render])
     return (
       <div className={s.divContainer}br="0">
 

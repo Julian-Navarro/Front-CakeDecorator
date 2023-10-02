@@ -1,37 +1,64 @@
+.divContainer {
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    /* position: fixed; */
+    margin-top: 2.7rem;
+    /* background: #333; */
+    padding: 2px;
+}
+.container {
+    display: flex;
+    width: 100%;
+    /* background: peru; */
+    padding: 2px;
+    height: 2.2rem;
+    justify-content: space-around;
+}
+.containerClose {
+    display: flex;
+    /* background: rgb(87, 205, 63); */
+    padding: 2px;
+    justify-content: space-around;
+    height: 10rem;
+
+}
 @media (max-width: 1240px) {
-    .container {
+    .divContainer {
         width: 100% !important;
     }
 }
 @media (max-width: 830px) {
     .container {
-        background: #D8EAFF !important;
-        flex-direction: column !important;
-        border-bottom: none !important;
-        height: 14rem !important;
-        position: relative !important;
-        top: 1.8rem !important;
-        /* width: 50rem !important; */
-        z-index: -1 !important;
-        justify-content: space-evenly !important;
-        align-items: flex-start !important;
+        /* background-color: red; */
+        width: 100%;
     }
     .divContainer {
         top: 3.7rem !important;
+        width: 100% !important;
         /* right: 0rem */
-        /* background: green; */
-        z-index: 4 !important;
+        /* background: green !important; */
     }
     .container Select {
         width: 8rem !important;
         z-index: 2;
     }
     .btnBurguer {
+        z-index: 10 !important;
         display: flex !important;
-        margin-right: 8vw !important;
+        margin-right: 1rem !important;
         margin-top: .5rem !important;
     }
     .imgIcon {
         width: 2.2rem !important;
+    }
+}
+@media (max-width: 380px) {
+    .container {
+        /* background-color: green; */
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        height: 4.5rem;
     }
 }
