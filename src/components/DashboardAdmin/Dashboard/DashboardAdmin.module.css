@@ -1,5 +1,5 @@
 .container {
-    /* background-color: rgb(224, 224, 25); */
+    /* background: yellow */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -15,10 +15,11 @@
 .btnsContainer {
     display: flex;
     width: 100%;
-    /* background-color: blueviolet; */
+    /* background-color: rgb(140, 140, 140); */
     margin-top: 5rem;
     justify-content: space-between;
-    padding: 0 .5rem 1rem 1rem;
+    padding: 1rem .5rem 1rem 1rem;
+    /* z-index: 5; */
 }
 .btn {
     width: 8rem;

@@ -87,7 +87,11 @@ function App() {
           />
           <Route exact path="/aboutUs" element={<AboutUs />} />
           <Route exact path="/createAccount" element={<FormPostUser />} />
-          <Route exact path="/shop" element={<Shop />} />
+          <Route
+            exact
+            path="/shop"
+            element={<Shop breakPoint={breakPoint} />}
+          />
           <Route exact path="/shop/cart" element={<Cart />} />
 
           {loggedUser !== null && loggedUser.role === "admin" ? (
@@ -100,7 +104,12 @@ function App() {
               <Route
                 exact
                 path="/createCourse"
-                element={<FormCoursePostAndEdit2 />}
+                element={<FormCoursePostAndEdit2 isPost={true} />}
+              />
+              <Route
+                exact
+                path="/dashboardAdmin/editCourse/:id"
+                element={<FormCoursePostAndEdit2 isPost={false} />}
               />
             </>
           ) : null}

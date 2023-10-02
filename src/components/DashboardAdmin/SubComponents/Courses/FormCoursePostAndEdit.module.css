@@ -1,46 +1,213 @@
-/* .formInput {
-    background-color: transparent;
-    height: 1.5rem;
-    border-bottom: 2px solid #00cc66;
-    font-size: 1.3rem;
-    width: 100%;
-    padding: 0 .2rem 0 .2rem;
-    outline: none;
-    -webkit-text-fill-color: #333;
-    -webkit-background-color: #333;
-    font-family: 'Roboto';
-}
-
-.formInputDanger {
-    background-color: transparent;
-    height: 1.5rem;
-    border-bottom: 2px solid red;
-    font-size: 1.3rem;
-    width: 100%;
-    padding: 0 .2rem 0 .2rem;
-    outline: none;
-    -webkit-text-fill-color: #333;
-    -webkit-background-color: #333;
-    font-family: 'Roboto';
-} */
 .container {
-    background-color: #f06d6d;
+    background-color: #fff;
     width: 100%;
     /* height: 4rem; */
     margin-top: 1.8rem;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
-.div {
-    width: 90%;
+.btnBack {
+    background-color: #f6a936;
+    color: #fff;
+    letter-spacing: 1.5px;
+    width: 6rem;
+    font-family: Roboto;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    align-self: flex-start;
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+    box-shadow: 2px 2px 3px 1px rgb(0, 0, 0, 0.35);
+}
+.formContainer {
+    width: 95%;
     min-height: 20rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    background: #6994c5;
-    box-shadow: 2px 2px 3px 2px rgb(0,0,0,0.35);
+    background: #fff;
+    padding: 10px;
+    box-shadow: 2px 2px 3px 2px rgb(0, 0, 0, 0.35);
+    border: 2px solid #BCE0F4;
     border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
-.div input {
-    background: greenyellow;
-    border-radius: 12px;
+.formContainer input {
+    background: #BCE0F4;
+    width: 100%;
+    border-radius: 4px;
+    padding: 3px;
+    box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.35);
+    font-family: Roboto;
+}
+.formContainer select {
+    background: #BCE0F4;
+    width: 100%;
+    border-radius: 4px;
+    padding: 3px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.35);
+    font-family: Roboto;
+}
+.option {
+    background: #8cb8d0;
+}
+.option1 {
+    background: #BCE0F4;
+}
+.dateInput {
+    /* background-color: red; */
+    margin: .5rem;
+    width: 14rem;
+    font-family: Roboto;
+}  
+.dateInput p {
+    /* background-color: red; */
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #63b9e7;
+    font-family: Roboto;
+}
+.dateInput input {
+    width: 100%;
+    border-radius: 4px;
+    background: #BCE0F4;
+    padding: 3px;
+    box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.35);
+    font-family: Roboto;
+}
+
+.divDescription {
+    margin: .5rem;
+    width: 100%;
+}
+.divDescription textarea {
+    background: #BCE0F4;
+    width: 100%;
+    height: 10rem;
+    border-radius:4px;
+    display: flex;
+    padding: 4px;
+    flex-wrap: wrap;
+    box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.35);
+    font-family: Roboto;
+}
+.divDescription p {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #63b9e7;
+    font-family: Roboto;
+}
+.containerLearnDescription {
+    width: 100%;
+    /* background-color: green; */
+}
+.containerLearnDescription p {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #63b9e7;
+    font-family: Roboto;
+}
+.divLearnDescription {
+    display: flex;
+    width: 100%;
+    /* background: orange; */
+    margin-bottom: .5rem;
+    align-items: center;
+    justify-content: center;
+    height: 2.2rem;
+}
+.divLearnDescription input {
+    width: 100%;
+    padding: 4px;
+    box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.35);
+    font-family: Roboto;
+}
+.divLearnDescription button {
+    font-weight: bold;
+    background: rgb(224, 85, 85);
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: .4rem;
+    color: #eee;
+    box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.35);
+    font-family: Roboto;
+}
+.btnAdd {
+    cursor: pointer;
+    background: #ffa462;
+    color: #414141;
+    border-radius: 8px;
+    padding: 0 12px 0 12px;
+    font-family: Roboto;
+    font-weight: bold;
+    box-shadow: 2px 2px 3px 1px rgb(0,0,0,0.35);
+    transition: .4s;
+}
+.btnAdd:hover {
+    background: #ffbc8d;
+    
+}
+.div {
+    /* background-color: red; */
+    margin: .5rem;
+    width: 14rem;
+}
+.div p {
+    /* background-color: red; */
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: Roboto;
+    color: #63b9e7;
+}
+.divBtns {
+    /* background: #333; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btnSubmit {
+    cursor: pointer;
+    background: #54f07b;
+    color: #414141;
+    border-radius: 8px;
+    padding: 0 12px 0 12px;
+    font-family: Roboto;
+    font-weight: bold;
+    box-shadow: 2px 2px 3px 1px rgb(0, 0, 0, 0.35);
+    transition: .4s;
+}
+.btnSubmit:hover {
+    background: #84ffa2;
+}
+.imgCourse {
+    margin-top: 1rem;
+    border-radius: 4px;
+    object-fit: cover;
+    height: 12rem;
+    width: 14rem;
+}
+@media (max-width: 600px) {
+    .pLearnDescription {
+        display: none;
+    }
+    .divLearnDescription button {
+        /* width: 1.8rem; */
+        /* height: 1.8rem; */
+        margin-left: .25rem;
+    }
+    .formContainer {
+        padding: 4px;
+    }
 }

@@ -6,11 +6,12 @@ import { Div, P } from "../../utils/StyledComponents/StyledComponents";
 import Filters from "./Filters/Filters";
 import loading from "../../utils/IMAGES/loading-loading-gif.gif"
 import s from "./Shop.module.css"
-export default function Shop() {
+export default function Shop({ breakPoint }) {
   const [isOpen, setIsOpen] = useState(false);
   const [flag, setFlag] = useState(false);
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
+  const [displayOption, setDisplayOption] = useState("line")
   const [filters, setFilters] = useState({
     categories: ["all"],
     brands: ["all"]
@@ -277,31 +278,26 @@ export default function Shop() {
 
   //!  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ LOGICAS SETEADO DE CARRITO LOCALSTORAGE ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
   useEffect(() => {
-    // console.log("RENDERING SHOP!");
     getProductsDB();
-    // console.log("PRODUCTS: ", products);
   }, []);
-  // useEffect(() => {
-  //   console.log("PRODUCTS: ", products);
-  //   console.log("PRODUCTS: ", products);
-  //   console.log("ALL PRODUCTS: ", allProducts);
-  // }, [products]);
 
   useEffect(() => {
-    console.log("RENDERING SHOP!");
-    console.log("FILTERS {}: ", filters);
     applyFilters()
   }, [flag, filters]);
 
   return (
     <Div flexDir="column" wd="100%"bg="#fff"br="0">
-      <Div>
+      <Div wd="100%">
         <Div minHg="100vh"wd="100%"jfCont="space-between"flexDir="column">
           <Filters handlerSetFilters={handlerSetFilters}
             handlerSetProductsCategory={handlerSetProductsCategory}
             handlerSetProductsBrands={handlerSetProductsBrands}
             setIsOpen={setIsOpen}isOpen={isOpen}filters={filters}
-            handlerSearchProducts={handlerSearchProducts}/>
+            handlerSearchProducts={handlerSearchProducts}
+            displayOption={displayOption}
+            setDisplayOption={setDisplayOption}
+            breakPoint={breakPoint}
+            />
           { 
           allProducts.length !== 0
           ? <Div wd="100%"mb="2rem"mt="5rem"className={s.divProductsCards}>
@@ -309,6 +305,8 @@ export default function Shop() {
                 handlerSetCart={handlerSetCart}
                 handleRemoveItemCart={handleRemoveItemCart}
                 products={products}
+                displayOption={displayOption}
+                breakPoint={breakPoint}
               />
             </Div>
           : <Div mt="7rem">

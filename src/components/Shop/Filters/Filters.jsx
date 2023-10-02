@@ -14,7 +14,12 @@ import axios from "axios";
 import s from "./Filters.module.css"
 import { BsCheckSquare } from "react-icons/bs"
 import cartLogo from "../../../utils/IMAGES/bi_cart4.png"
-export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filters, handlerSearchProducts}) {
+import iconMenuLine from "../../../utils/IMAGES/imgsCardProduct/healthicons_ui-menu-line.png"
+import iconMenuGrid from "../../../utils/IMAGES/imgsCardProduct/healthicons_ui-menu-grid.png"
+import iconMenuLineBlue from "../../../utils/IMAGES/imgsCardProduct/healthicons_ui-menu-line-blue.png"
+import iconMenuGridBlue from "../../../utils/IMAGES/imgsCardProduct/healthicons_ui-menu-grid-blue.png"
+
+export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filters, handlerSearchProducts, displayOption, setDisplayOption, breakPoint }) {
     let navigate = useNavigate()
     let [productsCategories, setProductsCategories] = useState([]);
     let [brands, setBrands] = useState([]);
@@ -36,11 +41,10 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
     useEffect(() => {
         getCategories()
         getBrands()
-        console.log("FILTERS: ", filters);
     },[])
     useEffect(() => {
-        console.log("productsCategories!!!: ", productsCategories);
-    },[productsCategories])
+        
+    },[productsCategories, breakPoint])
     return (
         <Div br="0"
             wd="100%"
@@ -48,28 +52,35 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
             hg="0"
             zInd="3"
             pos="fixed"
-            posTop="3.3rem"> 
+            posTop="3.3rem"
+            > 
 
           <Div posRight="0"zInd="6"className={s.btnBurguer}
             pos="absolute"
-            posTop="0rem"wd="2.8rem" hg="2.8rem"br="50%"
+            posTop=".2rem"
+            wd="2.8rem"
+            hg="2.8rem"
+            br="50%"
             display="none"
             bg={isOpen?"#8B5C8A":"#B39BE5"}
-            onClick={()=>setIsOpen(!isOpen)}mr="12px"mt=".5rem"
+            // bg="red"
+            onClick={()=>setIsOpen(!isOpen)}
             >
               <img src={isOpen?xIcon:filterIcon} alt=""className={s.iconHome} />
           </Div>
 
-          <Div bg="#fff"alItems="flex-start"jfCont="flex-start"
-              hg="5rem"mt="2rem"br="0"zInd="2"wd="1240px"
-              pd=".5rem .5rem 0 .5rem"flexDir="column"bdB="2px solid #92B3DA"
+          <Div bg="#fff"flexDir="column"
+            alItems="flex-start"jfCont="flex-start"
+            hg="5rem"mt="2rem"br="0"zInd="2"wd="1240px"
+            pd=".5rem .5rem 0 .5rem"bdB="2px solid #92B3DA"
             //!   posTop={isOpen?"4rem":"-14rem"}
-               posRight={isOpen?"0":"-100%"}
-              className={s.container}>
-                  
-  
-  
-           <Div jfCont="space-between"className={s.selectsXcartIcon}>
+            posRight={isOpen?"0":"-100%"}
+            className={s.container}
+          >
+
+           <Div jfCont="space-between"className={s.selectsXcartIcon}
+            // bg="green"
+           >
   
             <Div wd="auto"jfCont="center"bg="#fff"br="2rem"bd="1px solid #333"
             >
@@ -148,7 +159,16 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
                     : null
                 }
             </Select>
-  
+        
+            <div className={breakPoint!="1"?s.divBtnsShow:s.divBtnsShowDis}>
+                <button onClick={()=>setDisplayOption('grid')}>
+                    <img src={displayOption==="grid"?iconMenuGridBlue:iconMenuGrid}/>
+                </button>
+                <button onClick={()=>setDisplayOption('line')}>
+                    <img src={displayOption==="line"?iconMenuLineBlue:iconMenuLine}/>
+                </button>
+            </div>
+
             <Button 
                 onClick={()=>navigate("/shop/cart")}
                 wd="2.7rem"
@@ -163,13 +183,11 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
                 > 
                 <Img src={cartLogo}wd="2.7rem"hg="2.7rem"/>
             </Button>
-  
-  
-  
+
            </Div> 
   
   
-            <Div mt="4px"className={s.applyFilters}> {/* filtros aplicados */}
+            <Div mt="4px"className={s.applyFilters}bg="pink"> {/* filtros aplicados */}
               {filters.categories.concat(filters.brands).map((el)=>{
                   if(el!== "all") {
                     return <P 

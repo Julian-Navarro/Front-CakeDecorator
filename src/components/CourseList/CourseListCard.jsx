@@ -10,6 +10,9 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
     const newTitle = title.length > 80 ? title.slice(0, 80) + "..." : title;
     const breakPoint = useBreakpointValue({ base: "1", md: "2", lg: "3" });
     const navigate = useNavigate()
+    function handleNavEditCourse(){
+      navigate(`editCourse/${id}`)
+    }
     let newDescription = 
     description.length >= 330 
     ? description.slice(0, 330) + "..."
@@ -76,7 +79,7 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
             </Button>
             {
               path === "adm"
-              ? <button className={s.btnEdit}>
+              ? <button className={s.btnEdit}onClick={()=>handleNavEditCourse()}>
                   Editar
                 </button>
               : null

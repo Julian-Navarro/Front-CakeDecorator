@@ -9,7 +9,7 @@ import { IoMdAddCircleOutline } from "react-icons/io"
 import { GrSubtractCircle } from "react-icons/gr"
 import { FaCartArrowDown } from "react-icons/fa"
 import IconAdd from "../../../utils/IMAGES/icons8_buy.png"
-
+import iconAdd from "../../../utils/IMAGES/imgsCardProduct/icon-park-outline_buy.png"
 
 import { Button, Div, Input, P } from "../../../utils/StyledComponents/StyledComponents";
 import { useEffect } from "react";
@@ -26,7 +26,9 @@ export default function ProductCard ({
     id, 
     img, 
     price, 
-    stock
+    stock,
+    displayOption,
+    breakPoint
 }) {
 
 const newName = name.length > 72 ? name.slice(0, 72) + "..." : name
@@ -67,184 +69,134 @@ function handlerBtnAdd(e) {
         }
     }
 }
+
 function handlerDeleteProduct (id) {
     axios.delete(`${HOST}/products/${id}`)
     handlerSetComponentProductListFlag()
     alert(`Eliminaste el producto "${name}" de tu tienda`)
 }
-        return (
-        // <div className={s.container}>
-        //     <div className={s.card}>
-        //         <img src={img} alt="" />
-        //         <div className={s.body}>
-        //             <h1>{newName}</h1>
 
-        //             <p className={s.p}>Stock: {stock}</p>
-        //             {brand?<p className={s.p}>Marca: {brand}</p>:null}
-        //         {path !== "adm"
-        //         ? <div className={s.divBtnsContainer}>
-        //             <div className={s.divBtns}>
-        //                 <IconButton
-        //                 onClick={subtractOne}
-        //                 className={s.icons}
-        //                 icon={<MdDelete/>}/>
-        //                 <Input 
-        //                 wd="2.2em"hg="1.7em"fnFamily="Open Sans"
-        //                 value={amountToAdd} 
-        //                 onChange={(e)=>handlerSetAmountToAdd(e)}/>
-        //                 <IconButton
-        //                 onClick={addOne}
-        //                 className={s.icons}
-        //                 icon={<MdAddToPhotos/>}/>
-                        
-        //             </div>
-        //             <IconButton 
-        //             icon={<MdOutlineAddShoppingCart/>}
-        //             w="3.4rem"
-        //             h="2.2rem"
-        //             fontSize="1.6rem"
-        //             cursor={"pointer"}
-        //             alignSelf={"flex-start"}
-        //             marginLeft={".3rem"}
-        //             marginBottom={".3rem"}
-        //             bg="#252525"
-        //             color={"rgb(149, 255, 62)"}
-        //             onClick={(e)=>handlerBtnAdd(e)}
-        //             className={s.icon}
-        //             borderRadius={".6rem"}
-        //             /> 
-        //           </div>
-        //         : <div className={s.divBtnsContainer}>
-        //             <div 
-        //             onClick={(e)=>{handlerEditProduct(e, product)}}>
-        //                 <Button
-        //                     bg="#252525"
-        //                     _hovBg="#fff"
-        //                     bd="#252525"
-        //                     _hovCol="#252525"
-        //                     wd="2.6rem"
-        //                     hg="2.6rem"
-        //                     br="2rem"
-        //                     pd="0 5px 0 5px"
-        //                     fSize="1.1em">
-        //                     <AiFillSetting fontSize="1.8rem"/>
-        //                 </Button>
-        //             </div>
-
-        //             <div 
-        //             onClick={()=>{handlerDeleteProduct(id)}}>
-        //                 <Button 
-        //                     bg="#252525"
-        //                     _hovBg="#fff"
-        //                     bd="#252525"
-        //                     _hovCol="#252525"
-        //                     wd="2.6rem"
-        //                     hg="2.6rem"
-        //                     br="2rem"
-        //                     pd="0 5px 0 5px"
-        //                     fSize="1.1em"
-        //                 >
-        //                     <MdDelete fontSize="1.8rem"/>
-        //                 </Button>
-        //             </div>
-        //           </div> }
-        //         </div>
-        //     </div>
-        //     <div className={s.divBottom}>
-        //         <li>${price}</li>
-        //         <button className={s.btn}>Ver detalles</button>
-        //     </div>
-        // </div>
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        <Div bg="#fff"hg="10rem"ml=".5rem"mr=".5rem"
+useEffect(() => {
+console.log(breakPoint);
+},[displayOption, breakPoint])
+return (
+    <div className={breakPoint!="1"?displayOption==="line"?s.containerAllLine:s.containerAllGrid:s.containerAllGrid}>
+        <Div bg="#fff"hg="10rem"ml=".5rem"mr=".5rem" 
             boxSh=".1rem .1rem .3rem .1rem rgb(0,0,0,0.35)"
-            mb="1rem"jfCont="space-between"className={s.cardContainer}>
+            mb="1rem"jfCont="space-between"className={s.cardContainer2}
+            display={breakPoint!="1"?displayOption==="line"?"flex":"none":"none"}
+        >
+
             <Div wd="10rem"hg="10rem"br=".4rem 0 0 .4rem">
-              <img src={img}className={s.img}/>
+              <img src={img}className={s.img2}/>
             </Div>
             <Div wd="43%"hg="10rem"className={s.divDetails}
                 alItems="flex-start"jfCont="space-between"flexDir="column"
-                >
-              <P color="#252525"fWeight="bold"fSize="1rem"
+            >
+                <P color="#252525"fWeight="bold"fSize="1rem"
                 pd="4px"txAlign="left"letterSp="1px">
-                {name}
-              </P>
-              
-              <Div jfCont="space-between"mb=".3rem"hg="8rem">
-                <Div flexDir="column"wd="12rem"alItems="flex-start">
-                  <P color={stock===0?"#F38080":"#4FCF54"}
-                      fWeight="bold"fSize="1rem"letterSp="1px">
-                      Stock: {stock===0?"No disponible":"Disponible"}
-                  </P>
-                  {
-                  brand!=false 
-                  ? <P fWeight="bold"fSize="1rem"color="#525252"letterSp="1px">
-                      Marca: {brand}
-                    </P>
-                  : null
-                  }
-                  <P fWeight="bold"fSize="1rem"color="#525252"letterSp="1px">
-                    Precio: ${price}
-                  </P>
-                </Div>
-                <Div flexDir="column"wd="auto">
-                  <Div wd="12rem"pd="2px"hg="3rem"flWr="wrap"jfCont="space-around"mb=".3rem">
-                    { categories && categories.length !== 0
-                     ? categories.map((cat) => <P 
-                        fSize=".8rem"fWeight="bold"br="2rem"letterSp="1px"
-                        pd="0 10px 0 10px"bg="#F8F0F6"color="#848CD9"
-                        boxSh="1px 1px .1rem .02rem rgb(0,0,0,0.35)">
-                            {cat}
-                        </P>)
-                     : null
-                    }
-                  </Div>
-                  <Div className={s.divBtnsContainer}pd="0">
-                  <Div bg="#edf2f7"wd="8rem"br="2rem"jfCont="space-between"className={s.divBtns}>
-                    <IconButton
-                    onClick={subtractOne}
-                    className={s.iconLeft}
-                    icon={<GrSubtractCircle/>}/>
-                    <Input wd="2rem"hg="2rem"bg="#edf2f7"fnFamily="Open Sans"
-                    value={amountToAdd} fWeight="bold"
-                    onChange={(e)=>handlerSetAmountToAdd(e)}/>
-                    <IconButton
-                    onClick={addOne}
-                    className={s.iconRight}
-                    icon={<IoMdAddCircleOutline/>}/>
-                  </Div> 
+                    {name}
+                </P>
+           
+                <Div jfCont="space-between"mb=".3rem"hg="8rem">
+                    <Div flexDir="column"wd="12rem"alItems="flex-start">
+                        <P color={stock===0?"#F38080":"#4FCF54"}
+                            fWeight="bold"fSize="1rem"letterSp="1px"
+                        >
+                        Stock: {stock===0?"No disponible":"Disponible"}
+                        </P>
+                        { 
+                        brand != false 
+                        ? <P fWeight="bold"fSize="1rem"color="#525252"letterSp="1px">
+                            Marca: {brand}
+                          </P>
+                        : null
+                        }
+                        <P fWeight="bold"fSize="1rem"color="#525252"letterSp="1px">
+                            Precio: ${price}
+                        </P>
+                    </Div>
+                    <Div flexDir="column"wd="auto">
+                        <Div wd="12rem"pd="2px"hg="3rem"flWr="wrap"jfCont="space-around"mb=".3rem">
+                            { categories && categories.length !== 0
+                            ? categories.map((cat) => <P 
+                                fSize=".8rem"fWeight="bold"br="2rem"letterSp="1px"
+                                pd="0 10px 0 10px"bg="#F8F0F6"color="#848CD9"
+                                boxSh="1px 1px .1rem .02rem rgb(0,0,0,0.35)">
+                                    {cat}
+                                </P>)
+                            : null
+                            }
+                        </Div>
+                        <Div className={s.divBtnsContainer}pd="0">
+                            <Div bg="#edf2f7"wd="8rem"br="2rem"jfCont="space-between"className={s.divBtns}>
+                                <IconButton
+                                    onClick={subtractOne}
+                                    className={s.iconLeft}
+                                    icon={<GrSubtractCircle/>}
+                                />
+                                <Input wd="2rem"hg="2rem"bg="#edf2f7"fnFamily="Open Sans"
+                                    value={amountToAdd} fWeight="bold"
+                                    onChange={(e)=>handlerSetAmountToAdd(e)}
+                                />
+                                <IconButton
+                                    onClick={addOne}
+                                    className={s.iconRight}
+                                    icon={<IoMdAddCircleOutline/>}
+                                />
+                            </Div> 
 
-                  <IconButton 
-                     icon={<FaCartArrowDown/>}
-                     w="2.7rem"
-                     h="2.7rem"
-                     fontSize="1.6rem"
-                     cursor={"pointer"}
-                     alignSelf={"flex-start"}
-                     marginLeft={".3rem"}
-                     marginBottom={".3rem"}
-                     bg="#F1B444"
-                     color={"#333"}
-                     onClick={(e)=>handlerBtnAdd(e)}
-                     borderRadius={"2rem"}
-                     transition={".4s"}
-                     border={"2px solid #fff"}
-                     _hover={{background: "#F6C5F5"}}
-                     className={s.iconBuy}
-                     />                   
-                  </Div>
+                            <IconButton 
+                                icon={<FaCartArrowDown/>}
+                                w="2.7rem"
+                                h="2.7rem"
+                                fontSize="1.6rem"
+                                cursor={"pointer"}
+                                alignSelf={"flex-start"}
+                                marginLeft={".3rem"}
+                                marginBottom={".3rem"}
+                                bg="#F1B444"
+                                color={"#333"}
+                                onClick={(e)=>handlerBtnAdd(e)}
+                                borderRadius={"2rem"}
+                                transition={".4s"}
+                                border={"2px solid #fff"}
+                                _hover={{background: "#F6C5F5"}}
+                                className={s.iconBuy}
+                            />                   
+                        </Div>
+                    </Div>
                 </Div>
-              </Div>
             </Div>
 
             <Div hg="9.6rem"br="0"wd="40%"bdL="2px solid #525252"
-                className={s.divDescription}>
+                className={s.divDescription}
+                >
                 <P color="#525252"hg="10rem"wd="100%"pd="6px 6px 6px 12px"
-                  fWeight="bold"fSize=".9rem"letterSp="1px"                 txAlign="left"jfCont="flex-start"alItems="flex-start"
-                  >
-                  {description}
+                fWeight="bold"fSize=".9rem"letterSp="1px"
+                txAlign="left"jfCont="flex-start"alItems="flex-start"
+                >
+                    {description}
                 </P>
             </Div>
         </Div>
+
+
+        <div className={breakPoint!=="1"?displayOption==="grid"?s.cardContainer:s.carContainerDisabled:s.cardContainer}>
+            <div className={s.container}>
+                <div className={s.divPrice}>
+                    <p className={s.price}>${price}</p>
+                </div>
+                <div className={s.containerIconAdd}>
+                  <div className={s.divIconAdd}onClick={(e)=>handlerBtnAdd(e)}>
+                    <img src={iconAdd} className={s.iconAdd}/>
+                  </div>
+                </div>
+                <img src={img} alt=""className={s.img} />
+            </div>
+            <p className={s.name}>{name}</p>
+        </div>
+    </div>
+
     )
 }

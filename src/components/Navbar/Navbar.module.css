@@ -56,7 +56,7 @@
         display: flex !important;
         justify-content: center !important;
         /* background: red !important; */
-        margin-right: 8vw !important;
+        margin-right: 1rem !important;
         margin-top: 1rem !important;
         z-index: 6 !important;
     }
