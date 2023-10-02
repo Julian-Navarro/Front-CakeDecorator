@@ -6,7 +6,7 @@ import { Div, P } from "../../utils/StyledComponents/StyledComponents";
 import Filters from "./Filters/Filters";
 import loading from "../../utils/IMAGES/loading-loading-gif.gif"
 import s from "./Shop.module.css"
-export default function Shop({ breakPoint }) {
+export default function Shop({ breakPoint, path }) {
   const [isOpen, setIsOpen] = useState(false);
   const [flag, setFlag] = useState(false);
   const [allProducts, setAllProducts] = useState([]);

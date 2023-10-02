@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CourseList from "../../../CourseList/CourseList";
+import Courses from "../../../CourseList/Courses";
 import FormCoursePostAndEdit from "./FormCoursePostAndEdit";
 import { useDispatch, useSelector } from "react-redux";
 import { getCoursesFromDB } from '../../../../redux/actions'
@@ -23,31 +24,7 @@ export default function CoursesAdm ({ path }) {
     }
     function handlerSetComponentCourseListFlag () {
         setComponentCourseListFlag(!componentCourseListFlag)
-    };
-    // function handlerSetCreateCourseFlag(e) {
-    //     e.preventDefault();
-    //     if(createCourseFlag) {
-    //         setCreateCourseFlag(false)
-    //     } else {
-    //         setCreateCourseFlag(true)
-    //         setCourseToEdit(false)
-    //     }
-    // };
-    //  function handlerEditCourse(e, course) {
-    //     e.preventDefault();
-    //     handlerSetEditFlag()
-    //     if(course !== undefined) {
-    //         setCourseToEdit({...course})
-    //         setCreateCourseFlag(false)
-    //         window.scroll(0, 400)
-    //     } else {
-    //         setCourseToEdit(false)
-    //         setCreateCourseFlag(false)            
-    //     }
-    // };
-    // function handlerSetEditFlag() {
-    //     setEditFlag(!editFlag)
-    // };   
+    };   
 
     useEffect(()=>{
         dispatch(getCoursesFromDB())
@@ -72,31 +49,15 @@ export default function CoursesAdm ({ path }) {
               : "Crear Nuevo Curso" }
           </button> */}
           <button className={s.btnCreate}onClick={()=>navigate("/createCourse")}>Crear Curso o Seminario</button>
-          {/* <Div>
 
-            {
-                courseToEdit !== false
-                ? <FormCoursePostAndEdit
-                    handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag}
-                    update={true}
-                    course={courseToEdit}
-                    handlerEditCourse={handlerEditCourse}/>
-                : null
-            }
-            {
-                //! CASO HAY QUE CREAR UN CURSO Y NO EDITARLO
-                createCourseFlag === true
-                ? <FormCoursePostAndEdit 
-                    handlerSetComponentCourseListFlag={handlerSetComponentCourseListFlag} />
-                : null
-            }
-          </Div> */}
-          <CourseList 
+          <Courses
+            path="adm"
+          />
+          {/* <CourseList 
             componentCourseListFlag={componentCourseListFlag}
             courses={courses}
-            path="adm" 
-            // handlerEditCourse={handlerEditCourse}
-            />
+            path="adm"
+            /> */}
         </div>
 
     )

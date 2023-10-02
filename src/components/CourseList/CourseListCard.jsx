@@ -6,7 +6,7 @@ import s from "./CourseListCard.module.css"
 import { useBreakpointValue } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-export default function CourseListCard ({ course, handlerEditCourse, path, type, category, description, duration, startDate, id, img, price, title, videos }) {
+export default function CourseListCard ({ course, handlerEditCourse, path, type, category, description, duration, startDate, id, img, price, title, videos, limit }) {
     const newTitle = title.length > 80 ? title.slice(0, 80) + "..." : title;
     const breakPoint = useBreakpointValue({ base: "1", md: "2", lg: "3" });
     const navigate = useNavigate()
@@ -51,18 +51,23 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
             </Div>
             
             <Div jfCont="flex-start"display={type==="Grabado"?"none":"flex"}>
-              <P fSize=".85rem"fWeight="bold">Fecha de inicio:</P>
-              <P fSize=".85rem">{startDate}</P>
+              <P fWeight="bold">Fecha de inicio:</P>
+              <P >{startDate}</P>
             </Div>
           </Div>
           
         </Div>
         <Div wd="39.8%"hg="11.4rem"bdL="2px solid gray"br="0"mr=".3rem"flexDir="column"
           className={s.divDescriptionAndButton}>
-          <P wd="100%"hg="100%"fSize=".8rem"fWeight="bold"
-            className={s.description}>
+          <P wd="100%"hg="100%"fSize={path==="adm"?"1rem":".8rem"}fWeight="bold"
+            className={s.description}
+            display={path==="adm"?"none":"flex"}
+            >
             {newDescription}
           </P>
+          <p className={s.limit}>
+            Limite de personas: {limit}
+          </p>
           <Div className={s.divButton}>
             <Button bg="#DBB5FA"
               fSize=".9rem"
@@ -75,7 +80,7 @@ export default function CourseListCard ({ course, handlerEditCourse, path, type,
               _hovBg="#C8DCFB"
               bd="none"
               >
-              Ver {path === "adm" ? null : "Curso"}
+              Ver {path === "adm" ? null : category}
             </Button>
             {
               path === "adm"
