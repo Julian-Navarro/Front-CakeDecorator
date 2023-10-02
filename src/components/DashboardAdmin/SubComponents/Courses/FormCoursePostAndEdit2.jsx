@@ -27,7 +27,8 @@ export default function FormCoursePostAndEdit2 ({isPost}) {
     videos: [],
     duration: "",
     startDate: "Seleccione una fecha",
-    learnDescriptions: ["", "", ""]
+    learnDescriptions: ["", "", ""],
+    limit: "20"
   })
   let errors = {
     category: "",
@@ -38,18 +39,20 @@ export default function FormCoursePostAndEdit2 ({isPost}) {
     type: "",
     duration: "",
     startDate: "",
-    learnDescriptions: "" 
+    learnDescriptions: "",
+    limit: ""
   }
   const durations = [
     "1 Clase",
-    "1 Mes (2 clases)",
-    "2 Meses (4 clases)",
-    "3 Meses (6 clases)",
-    "4 Meses (8 clases)",
-    "5 Meses (10 clases)",
-    "6 Meses (12 clases)",
-    "7 Meses (14 clases)"
-    
+    "1 Mes (2 Clases)",
+    "2 Meses (4 Clases)",
+    "3 Meses (6 Clases)",
+    "4 Meses (8 Clases)",
+    "5 Meses (10 Clases)",
+    "6 Meses (12 Clases)",
+    "7 Meses (14 Clases)",
+    "8 Meses (16 Clases)",
+    "9 Meses (18 Clases)"
   ]
   function handlerSetInput(e){
       e.preventDefault();
@@ -132,7 +135,8 @@ export default function FormCoursePostAndEdit2 ({isPost}) {
       type: "",
       duration: "",
       startDate: "",
-      learnDescriptions: "" 
+      learnDescriptions: "",
+      limit: ""
     }
     if(input.title.trim() === ""){
       newErrors.title = "Falta ingresar el nombre"
@@ -183,6 +187,12 @@ export default function FormCoursePostAndEdit2 ({isPost}) {
     } else {
       newErrors.learnDescriptions = ""
     }
+    if(input.limit > 40 || input.limit < 1) {
+      newErrors.limit = "El limite debe ser entre 1 y 40"
+    } else {
+      newErrors.limit = ""
+    }
+    console.log("NEW ERRORS: ",newErrors);
     errors = newErrors
   }
   async function handlePostOrEdit(isPost) {
@@ -227,6 +237,7 @@ return (
     >Volver</button>
 
     <div className={s.formContainer}>
+
       <div className={s.div}> {/* title */}
           <p>Nombre</p>
           <input onChange={(e)=>handlerSetInput(e)}
@@ -313,6 +324,15 @@ return (
 
       </div>
 
+      <div className={s.div}> {/* limit */}
+       <p>Limite</p>
+       <input onChange={(e)=>handlerSetInput(e)}
+         type="number"
+         name="limit"
+         value={input.limit}
+       />
+      </div>
+
       <div className={s.divDescription}>
         <p>Descripción</p>
         <textarea onChange={(e)=>handlerSetInput(e)}
@@ -336,12 +356,14 @@ return (
         </div>
         ))}
       </div>
+
       <div className={s.divBtns}>
         <button onClick={addInput}className={s.btnAdd}>Agregar Input</button>
         <button onClick={()=>{handlePostOrEdit(isPost)}}className={s.btnSubmit}>
           {isPost?`Postear ${input.category}`:`Editar ${input.category}`}  
         </button>
       </div>
+
 
     </div>
   </div>

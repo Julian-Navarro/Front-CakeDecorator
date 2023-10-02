@@ -24,7 +24,9 @@ export default function CourseListCards({ allCourses, courses, handlerEditCourse
                     category={c.category} 
                     videos={c.videos}
                     duration={c.duration}
-                    startDate={c.startDate}/> )
+                    startDate={c.startDate}
+                    limit={c.limit}
+                    /> )
                 : <P fSize="2rem">No se encontraron cursos</P>
             }
         </Div>

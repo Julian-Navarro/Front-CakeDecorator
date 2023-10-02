@@ -11,10 +11,11 @@ import { RiDatabaseLine } from "react-icons/ri"
 import { BsClipboard2DataFill } from "react-icons/bs"
 import DashboardStats from "../SubComponents/DashboardStats/DashboardStats.jsx"
 import s from "./DashboardAdmin.module.css"
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 
 export default function DashboardAdmin () {
+    const navigate = useNavigate();
     const [render, setRender] = useState("dashboard")
     const location = useLocation()
     function handlerChangeRender(value) {
@@ -37,7 +38,7 @@ export default function DashboardAdmin () {
         <div className={s.btnsContainer}
           wd="100%"
           >
-          <Button2 onClick={()=>handlerChangeRender("dashboard")}
+          <Button2 onClick={()=>{handlerChangeRender("dashboard");navigate('/dashboardAdmin?render=dashboard')}}
             className={s.btn}
             bg={render==="dashboard"?"#A281D8":"#fff"}
             >
@@ -49,7 +50,7 @@ export default function DashboardAdmin () {
                >Estadisticas</P>
           </Button2>
 
-          <Button2 onClick={()=>handlerChangeRender("users")}
+          <Button2 onClick={()=>{handlerChangeRender("users");navigate('/dashboardAdmin?render=users')}}
             className={s.btn}
             bg={render==="users"?"#A281D8":"#fff"}
             value="users"
@@ -62,7 +63,7 @@ export default function DashboardAdmin () {
               >Usuarios</P>
           </Button2>
 
-          <Button2 onClick={()=>handlerChangeRender("courses")}
+          <Button2 onClick={()=>{handlerChangeRender("courses");navigate('/dashboardAdmin?render=courses')}}
             className={s.btn}
             bg={render==="courses"?"#A281D8":"#fff"}
             >
@@ -74,7 +75,7 @@ export default function DashboardAdmin () {
               >Cursos</P>
           </Button2>
 
-          <Button2 onClick={()=>handlerChangeRender("products")}
+          <Button2 onClick={()=>{handlerChangeRender("products");navigate('/dashboardAdmin?render=products')}}
             bg={render==="products"?"#A281D8":"#fff"}
             className={s.btn}
             >
@@ -86,7 +87,7 @@ export default function DashboardAdmin () {
                 >Productos</P>
           </Button2>
 
-          <Button2 onClick={()=>handlerChangeRender("editCategoriesAndBrands")}
+          <Button2 onClick={()=>{handlerChangeRender("editCategoriesAndBrands");navigate('/dashboardAdmin?render=editCategoriesAndBrands')}}
             bg={render==="editCategoriesAndBrands"?"#A281D8":"#fff"}
             className={s.btn}
             >

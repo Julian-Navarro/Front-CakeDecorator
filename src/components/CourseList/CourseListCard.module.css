@@ -24,6 +24,11 @@
     border-radius: 1rem;
     box-shadow: 2px 2px .3rem .1rem rgb(0, 0, 0, 0.35), inset -8px -6px 25px #4f5b9b;
 }
+.limit {
+    font-family: Roboto;
+    font-weight: bold;
+    padding-bottom: .4rem;
+}
 .divInfoContainer div p{
     font-size: 1rem;
     /* background: red; */
@@ -32,11 +37,18 @@
     /* background: green; */
     width: 100%;
 }
+
 @media (max-width: 880px) {
     .divContainer {
         flex-direction: column !important;
         height: 27.5rem !important;
         width: 15rem !important;
+    }
+    .divInfoContainer div p {
+        font-size: .9rem !important;
+    }
+    .limit {
+        font-size: .9rem !important;
     }
     .description {
         display: none !important;
@@ -60,5 +72,4 @@
         width: 15rem !important;
         border-radius: .4rem .4rem 0 0 !important;
     }
-
 }
