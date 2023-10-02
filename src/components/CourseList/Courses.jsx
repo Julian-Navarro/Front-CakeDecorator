@@ -16,15 +16,13 @@ export default function Courses ({ path, componentCourseListFlag }) {
 
   function handlerFilterValue(e) {
     e.preventDefault()
-    if(e.target.name === "category") {
+    if(e.target.name === "category") {  
       setCategoryFilter(e.target.value)
     }
     if(e.target.name === "type") {
       setTypeFilter(e.target.value)
     }
   }
-
-
   function handlerSetCourses(){
     if(!categoryFilter && !typeFilter) {
       return setCourses(allCourses)
