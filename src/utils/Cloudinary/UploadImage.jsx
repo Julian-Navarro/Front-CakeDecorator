@@ -40,8 +40,8 @@ export default function CloudinaryUploader({
   }, [folder]);
 
   const handleUpload = async (e) => {
+    if (e.target.files[0] == undefined) return
     const file = e.target.files[0];
-
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "signed_images_preset");
@@ -62,7 +62,7 @@ export default function CloudinaryUploader({
     if (folder === "productos") {
       setInputProduct({
         ...inputProduct,
-        img: [data.secure_url],
+        img: [...inputProduct.img ,data.secure_url],
       });
     }
     if (folder) {
