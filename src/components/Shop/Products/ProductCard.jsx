@@ -10,9 +10,11 @@ import { GrSubtractCircle } from "react-icons/gr"
 import { FaCartArrowDown } from "react-icons/fa"
 import IconAdd from "../../../utils/IMAGES/icons8_buy.png"
 import iconAdd from "../../../utils/IMAGES/imgsCardProduct/icon-park-outline_buy.png"
+import iconGlass from "../../../utils/IMAGES/fluent-emoji-high-contrast_magnifying-glass-tilted-right-white.png"
 
 import { Button, Div, Input, P } from "../../../utils/StyledComponents/StyledComponents";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function ProductCard ({ 
     handlerSetCart,
     handlerSetComponentProductListFlag, 
@@ -30,7 +32,7 @@ export default function ProductCard ({
     displayOption,
     breakPoint
 }) {
-
+const navigate = useNavigate()
 const newName = name.length > 72 ? name.slice(0, 72) + "..." : name
 const [amountToAdd, setAmountToAdd] = useState(1);
 function handlerSetAmountToAdd (e) {
@@ -84,12 +86,16 @@ return (
         <Div bg="#fff"hg="10rem"ml=".5rem"mr=".5rem" 
             boxSh=".1rem .1rem .3rem .1rem rgb(0,0,0,0.35)"
             mb="1rem"jfCont="space-between"className={s.cardContainer2}
+            pos="relative"
             display={breakPoint!="1"?displayOption==="line"?"flex":"none":"none"}
         >
-
+            <div className={s.divIconGlass2}onClick={()=>navigate(`/products/${id}`)}>
+                <img src={iconGlass}/>
+            </div>      
             <Div wd="10rem"hg="10rem"br=".4rem 0 0 .4rem">
-              <img src={img}className={s.img2}/>
+              <img src={img[0]}className={s.img2}/>
             </Div>
+
             <Div wd="43%"hg="10rem"className={s.divDetails}
                 alItems="flex-start"jfCont="space-between"flexDir="column"
             >
@@ -163,22 +169,23 @@ return (
                                 border={"2px solid #fff"}
                                 _hover={{background: "#F6C5F5"}}
                                 className={s.iconBuy}
-                            />                   
+                            />             
                         </Div>
                     </Div>
                 </Div>
             </Div>
 
             <Div hg="9.6rem"br="0"wd="40%"bdL="2px solid #525252"
-                className={s.divDescription}
+                className={s.divDescription}jfCont="flex-start"
                 >
-                <P color="#525252"hg="10rem"wd="100%"pd="6px 6px 6px 12px"
+                <P color="#525252"hg="10rem"wd="89%"pd="6px 6px 6px 12px"
                 fWeight="bold"fSize=".9rem"letterSp="1px"
                 txAlign="left"jfCont="flex-start"alItems="flex-start"
                 >
                     {description}
                 </P>
             </Div>
+
         </Div>
 
 
@@ -191,8 +198,11 @@ return (
                   <div className={s.divIconAdd}onClick={(e)=>handlerBtnAdd(e)}>
                     <img src={iconAdd} className={s.iconAdd}/>
                   </div>
+                  <div className={s.divIconGlass}onClick={()=>navigate(`/products/${id}`)}>
+                    <img src={iconGlass} alt="" />
+                  </div>
                 </div>
-                <img src={img} alt=""className={s.img} />
+                <img src={img[0]} alt=""className={s.img} />
             </div>
             <p className={s.name}>{name}</p>
         </div>

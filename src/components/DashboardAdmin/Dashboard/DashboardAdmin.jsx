@@ -14,7 +14,7 @@ import s from "./DashboardAdmin.module.css"
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 
-export default function DashboardAdmin () {
+export default function DashboardAdmin ({ breakPoint }) {
     const navigate = useNavigate();
     const [render, setRender] = useState("dashboard")
     const location = useLocation()
@@ -114,7 +114,7 @@ export default function DashboardAdmin () {
               render === "courses" ? <CoursesAdm path={"adm"}/> : null
           }
           {
-              render === "products" ? <Products path={"adm"}/> : null
+              render === "products" ? <Products path={"adm"}breakPoint={breakPoint}/> : null
           }
           {
               render === "editCategoriesAndBrands" ? <CreateCategoriesAndBrands/> : null

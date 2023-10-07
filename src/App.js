@@ -20,6 +20,7 @@ import Footer from "./components/Navbar/Footer.jsx";
 import s from "./App.module.css";
 import DetailCourses from "./components/CourseList/DetailCourses/DetailCourses.jsx";
 import FormCoursePostAndEdit2 from "./components/DashboardAdmin/SubComponents/Courses/FormCoursePostAndEdit2.jsx";
+import FormProductPostAndEdit from "./components/DashboardAdmin/SubComponents/Products/FormPostAndEditProducts.jsx";
 function App() {
   let userLocalStorage = JSON.parse(localStorage.getItem("loggedUser"));
   const [loggedUser, setLoggedUser] = useState(userLocalStorage);
@@ -99,7 +100,7 @@ function App() {
               <Route
                 exact
                 path="/dashboardAdmin"
-                element={<DashboardAdmin />}
+                element={<DashboardAdmin breakPoint={breakPoint} />}
               />
               <Route
                 exact
@@ -110,6 +111,11 @@ function App() {
                 exact
                 path="/dashboardAdmin/editCourse/:id"
                 element={<FormCoursePostAndEdit2 isPost={false} />}
+              />
+              <Route
+                exact
+                path="/createProduct"
+                element={<FormProductPostAndEdit isPost={true} />}
               />
             </>
           ) : null}

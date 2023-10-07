@@ -43,14 +43,15 @@
 .iconBuy {
     box-shadow: 1px 1px 4px 1.5px rgb(0,0,0,0.35);
 }
-
-@media (max-width: 700px) {
+.divDescription {
+    /* background: blue !important; */
+    display: flex !important;
     
 }
-
 @media (max-width: 1240px) {
     .divDescription {
         display: none !important
+
     }
     .divDetails {
         width: 75% !important;
@@ -127,7 +128,35 @@
     top: .2rem;
     left: 7.8rem;
     padding: 3px;
+    cursor: pointer
 }
 .iconAdd {
     width: 1.6rem;
+}
+.divIconGlass {
+    background: #393939a7;
+    border-radius:1rem;
+    width: 1.7rem;
+    padding: 3px;
+    position: absolute;
+    right: 6px;
+    top: 160px;
+    cursor: pointer
+}
+
+
+
+
+
+.divIconGlass2 {
+    background: #333333c2;
+    border-radius: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 4px;
+    box-shadow: 2px 2px 3px 1px rgb(0,0,0,0.35);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
 }
