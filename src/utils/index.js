@@ -26,6 +26,15 @@ export async function getCourse(id) {
     console.log(error);
   }
 }
+export async function getProduct(id) {
+  try {
+    if (!id) throw new Error("Missing ID to get product info");
+    const product = await axios.get(`${HOST}/products/findOne/${id}`);
+    return product.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 export async function postProduct(input) {
   try {
     const product = await axios.post(`${HOST}/products`, input);
@@ -37,7 +46,10 @@ export async function postProduct(input) {
 }
 export async function editProduct(input) {
   try {
-    const product = await axios.put(`${HOST}/products`, input);
+    console.log("111111111111", input);
+    let product = await axios.put(`${HOST}/products/${input.id}`, input);
+    console.log("22222222222");
+
     return product.data;
   } catch (error) {
     console.log(error);

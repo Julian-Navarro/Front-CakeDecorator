@@ -14,7 +14,7 @@ export default function FormCoursePostAndEdit2 ({isPost}) {
   const navigate = useNavigate()
 
   registerLocale('es', es)
-  let {id} = useParams()
+  let { id } = useParams()
   const [date, setDate] = useState(null)
   const [courseToEdit, setCourseToEdit] = useState(false)
   const [input, setInput] = useState({
@@ -360,7 +360,7 @@ return (
       <div className={s.divBtns}>
         <button onClick={addInput}className={s.btnAdd}>Agregar Input</button>
         <button onClick={()=>{handlePostOrEdit(isPost)}}className={s.btnSubmit}>
-          {isPost?`Postear ${input.category}`:`Editar ${input.category}`}  
+          {isPost?`Postear ${input.category}`:`Guardar Cambios`}  
         </button>
       </div>
 

@@ -109,9 +109,9 @@ export default function Navbar () {
             <Div wd="auto"
                 >
                 <Button className={s.btnCuenta}
-                    _hovCol={"#fff"}cursor="pointer"
+                    cursor="pointer"
                     onClick={()=>setAccount(!account)}
-                    bg={account?"#A281D8":"#5260DC"}
+                    bg={account?"#f6dbf5":"transparent"}
                     zInd="11"
                     // mr="2.9rem"
                     >

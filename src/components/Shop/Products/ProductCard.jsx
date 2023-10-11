@@ -89,8 +89,16 @@ return (
             pos="relative"
             display={breakPoint!="1"?displayOption==="line"?"flex":"none":"none"}
         >
-            <div className={s.divIconGlass2}onClick={()=>navigate(`/products/${id}`)}>
-                <img src={iconGlass}/>
+            <div className={s.divIconGlass2}>
+                <img src={iconGlass}
+                    onClick={()=>navigate(`/products/${id}`)}
+                />
+
+                <button className={s.btnEdit}
+                    onClick={()=>navigate(`/dashboardAdmin/editProduct/${id}`)}
+                    >
+                    <AiFillSetting fontSize={"2rem"}/>
+                </button>
             </div>      
             <Div wd="10rem"hg="10rem"br=".4rem 0 0 .4rem">
               <img src={img[0]}className={s.img2}/>
@@ -189,7 +197,12 @@ return (
         </Div>
 
 
-        <div className={breakPoint!=="1"?displayOption==="grid"?s.cardContainer:s.carContainerDisabled:s.cardContainer}>
+        <div className={ breakPoint!=="1"
+            ? displayOption==="grid"
+            ? s.cardContainer
+            : s.carContainerDisabled
+            : s.cardContainer }
+        >
             <div className={s.container}>
                 <div className={s.divPrice}>
                     <p className={s.price}>${price}</p>
@@ -198,8 +211,13 @@ return (
                   <div className={s.divIconAdd}onClick={(e)=>handlerBtnAdd(e)}>
                     <img src={iconAdd} className={s.iconAdd}/>
                   </div>
-                  <div className={s.divIconGlass}onClick={()=>navigate(`/products/${id}`)}>
-                    <img src={iconGlass} alt="" />
+                  <div className={s.divIconGlass}>
+                    <img src={iconGlass} onClick={()=>navigate(`/products/${id}`)}className={s.iconGlass}/>
+                    <button className={s.btnEdit2}
+                        onClick={()=>{navigate(`/dashboardAdmin/editProduct/${id}`)}}
+                    >
+                        <AiFillSetting/>
+                    </button>
                   </div>
                 </div>
                 <img src={img[0]} alt=""className={s.img} />
