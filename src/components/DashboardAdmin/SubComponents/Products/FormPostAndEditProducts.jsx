@@ -626,15 +626,16 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import s from "./FormPostAndEditProduct.module.css"
 import { useState, useEffect } from "react";
-import { getBrands, getCategories } from "../../../../utils";
+import { getBrands, getCategories, getProduct } from "../../../../utils";
 import CloudinaryUploader from "../../../../utils/Cloudinary/UploadImage";
 import { postProduct, editProduct } from "../../../../utils";
 import { RiErrorWarningFill } from "react-icons/ri"
 export default function FormProductPostAndEdit ({ isPost }) {
   const navigate = useNavigate();
+  let { id } = useParams()
   const [input, setInput] = useState({
     categories: [],
     description: "",
@@ -644,6 +645,9 @@ export default function FormProductPostAndEdit ({ isPost }) {
     stock: "",
     brand: "",
   });
+  const [productToEdit, setProductToEdit] = useState(false)
+  const [brands, setBrands] = useState([])
+  const [categories, setCategories] = useState([]);
   const errors = {
     categories: "",
     description: "",
@@ -676,8 +680,6 @@ export default function FormProductPostAndEdit ({ isPost }) {
       }
     }
   }
-  const [brands, setBrands] = useState([])
-  const [categories, setCategories] = useState([]);
   function handlerDeleteImg(value){
     setInput({
       ...input,
@@ -744,12 +746,20 @@ export default function FormProductPostAndEdit ({ isPost }) {
     setBrands(await getBrands())
     setCategories(await getCategories())
   }
+  async function handleSetProductToEdit(){
+    if(!id) return
+    const product = await getProduct(id)
+    setProductToEdit(product)
+    setInput(product)
+  }
   useEffect(() => {
     handlerReadDb()
+    handleSetProductToEdit()
   }, [])
   useEffect(()=>{
     console.log("INPUT: ", input);
-  },[input, brands, categories])
+    console.log("productToEdit: ", productToEdit);
+  },[input, brands, categories, productToEdit])
   return (
   <div className={s.container}>
 
@@ -793,6 +803,7 @@ export default function FormProductPostAndEdit ({ isPost }) {
           <select onChange={(e)=>handlerSetInput(e)}
             type="text"
             name="brands"
+            value={input.brand}
           >
             <option value="default"key="default1777">Selecciona Marca</option>
             {

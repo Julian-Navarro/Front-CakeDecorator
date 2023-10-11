@@ -117,6 +117,11 @@ function App() {
                 path="/createProduct"
                 element={<FormProductPostAndEdit isPost={true} />}
               />
+              <Route
+                exact
+                path="/dashboardAdmin/editProduct/:id"
+                element={<FormProductPostAndEdit isPost={false} />}
+              />
             </>
           ) : null}
         </Routes>
