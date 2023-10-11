@@ -93,12 +93,15 @@ return (
                 <img src={iconGlass}
                     onClick={()=>navigate(`/products/${id}`)}
                 />
-
-                <button className={s.btnEdit}
+                {
+                path==="adm"
+                ? <button className={s.btnEdit}
                     onClick={()=>navigate(`/dashboardAdmin/editProduct/${id}`)}
                     >
                     <AiFillSetting fontSize={"2rem"}/>
                 </button>
+                : null
+                }
             </div>      
             <Div wd="10rem"hg="10rem"br=".4rem 0 0 .4rem">
               <img src={img[0]}className={s.img2}/>
@@ -213,11 +216,15 @@ return (
                   </div>
                   <div className={s.divIconGlass}>
                     <img src={iconGlass} onClick={()=>navigate(`/products/${id}`)}className={s.iconGlass}/>
-                    <button className={s.btnEdit2}
+                    { path === "adm"?
+
+                        <button className={s.btnEdit2}
                         onClick={()=>{navigate(`/dashboardAdmin/editProduct/${id}`)}}
-                    >
+                        >
                         <AiFillSetting/>
                     </button>
+                    : null
+                    }
                   </div>
                 </div>
                 <img src={img[0]} alt=""className={s.img} />

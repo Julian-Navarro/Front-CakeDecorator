@@ -307,6 +307,7 @@ export default function Shop({ breakPoint, path }) {
                 products={products}
                 displayOption={displayOption}
                 breakPoint={breakPoint}
+                path={path}
               />
             </Div>
           : <Div mt="7rem">

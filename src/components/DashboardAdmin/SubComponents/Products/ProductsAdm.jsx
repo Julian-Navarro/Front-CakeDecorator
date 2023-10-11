@@ -161,7 +161,7 @@ export default function ProductsAdm({ path, breakPoint }) {
             >
                 Crear un Producto
             </button>
-            <Shop breakPoint={breakPoint}/>
+            <Shop breakPoint={breakPoint}path={path}/>
         </div>
     )
 }
