@@ -1,6 +1,162 @@
 .container {
-    background: lightskyblue;
+    /* background: lightskyblue; */
+    font-family: Roboto;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 12px;
+}
+.categoriesTitle {
+    background: #a281d8;
+    color: #fff;
 }
 .divCategories {
-    background: orange;
+    background: #a281d8;
+    padding: 6px;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 2px 2px 3px 2px rgb(0, 0, 0, 0.35);
+}
+.divInputCategories {
+    background: #fff;
+    padding: 1rem 0 .5rem 1rem;
+    border-radius: 4px 4px 0 0;
+}
+.divInputCategories input {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px 2px rgb(0, 0, 0, 0.35);
+    padding: 0 4px 0 4px;
+
+}
+.divInputCategories button {
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left: 1rem;
+    background: linear-gradient(45deg, #a281d8 50%, #7c58b6 100%);
+    color: #fff;
+    padding: 0 6px 0 6px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 3px 1px rgb(0, 0, 0, 0.35);
+    width: 4rem;
+}
+.currentCategories {
+    background: #fff;
+    padding: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0 0 4px 4px;
+}
+.currentCategories div {
+    background: linear-gradient(45deg, #f6dbf5 40%, #d3b6d2 100%);
+    width: 11rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    margin-top: 8px;
+    padding: 0 0 0 6px;
+    box-shadow: 2px 2px 3px 1px rgb(0,0,0,0.35);
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.currentCategories div img {
+    background: rgb(182, 126, 214);
+    border-radius: 0 8px 8px 0;
+    font-weight: bold;
+    width: 2rem;
+    height: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .4s;
+}
+.currentCategories div img:hover {
+    background: rgb(201, 69, 69);
+}
+.brandsTitle {
+    background: #a281d8;
+    color: #fff;
+}
+.divBrands {
+    background: #a281d8;
+    padding: 6px;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 2px 2px 3px 2px rgb(0, 0, 0, 0.35);
+}
+.divInputBrands {
+    background: #fff;
+    padding: 1rem 0 .5rem 1rem;
+    border-radius: 4px 4px 0 0;
+}
+.divInputBrands input {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px 2px rgb(0, 0, 0, 0.35);
+    padding: 0 4px 0 4px;
+}
+.divInputBrands button {
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left: 1rem;
+    background: linear-gradient(45deg, #a281d8 50%, #7c58b6 100%);
+    color: #fff;
+    padding: 0 6px 0 6px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 3px 1px rgb(0, 0, 0, 0.35);
+    width: 4rem;
+}
+.currentBrands {
+    background: #fff;
+    padding: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0 0 4px 4px;
+}
+.currentBrands div {
+    background: linear-gradient(45deg, #f6dbf5 40%, #d3b6d2 100%);
+    width: 11rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    margin-top: 8px;
+    padding: 0 0 0 6px;
+    box-shadow: 2px 2px 3px 1px rgb(0, 0, 0, 0.35);
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.currentBrands div img {
+    background: rgb(182, 126, 214);
+    border-radius: 0 8px 8px 0;
+    font-weight: bold;
+    width: 2rem;
+    height: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .4s;
+    cursor: pointer;
+}
+.currentBrands div img:hover {
+    background: rgb(201, 69, 69);
+}
+.imgDelete {
+    /* background-color: red; */
+}
+@media (max-width: 400px) {
+    .divInputBrands {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 4px 4px 4px;
+    }
+    .divInputBrands button {
+        margin: 10px 0 0 0;
+    }
+    .divInputCategories {
+        display: flex;
+        flex-direction: column; 
+        padding: 8px 4px 4px 4px;
+    }
+    .divInputCategories button {
+        margin: 10px 0 0 0;
+    }
 }
