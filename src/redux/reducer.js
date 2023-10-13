@@ -20,10 +20,10 @@ export default function rootReducer(state = initialState, action) {
         users: action.payload,
       };
     case GET_USER:
-      return{
+      return {
         ...state,
-        user: action.payload
-      }
+        user: action.payload,
+      };
     default:
       return {
         ...state,

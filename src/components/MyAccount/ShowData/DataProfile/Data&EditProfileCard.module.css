@@ -1,0 +1,50 @@
+.container {
+    /* background: #fff; */
+}
+.containerForm {
+    display: flex;
+    /* flex-direction: column-reverse; */
+    /* background-color: red; */
+    /* width: 1000px; */
+}
+.genresContainer label {
+    /* background-color: aqua; */
+    display: flex;
+}
+.boxColumn1 {
+    /* background: greenyellow; */
+    width: 50%;
+}
+.boxColumn2 {
+    /* background: green; */
+    width: 50%;
+}
+.StyledForm {
+    /* background: blue !important; */
+    padding: 30px !important;
+    width: 1200px !important;
+}
+.imgAvatar img {
+    object-fit: cover;
+}
+@media (max-width: 1240px) {
+    .StyledForm {
+        width: 98vw !important;
+    }
+}
+@media (max-width: 750px) {
+    .containerForm {
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+    .StyledForm {
+        padding: 10px !important;
+    }
+    .boxColumn1 {
+        width: 100%;
+    }
+    .boxColumn2 {
+        width: 100%;
+    }
+
+}

@@ -60,13 +60,13 @@ export default function CreateCategoriesAndBrands () {
     async function handleCreateCategory() {
         if(input.category.trim() === "") return notify("warning", "Categoría vacía")
         try {
-        await axios.post(`${HOST}/categories`, {category: input.category.trim()});
-        notify('success', `Creaste la categoría ${input.category}`);
-        setInput({
-            ...input,
-            category: ""
-        });
-        setFlag(!flag);            
+            await axios.post(`${HOST}/categories`, {category: input.category.trim()});
+            notify('success', `Creaste la categoría ${input.category}`);
+            setInput({
+                ...input,
+                category: ""
+            });
+            setFlag(!flag);            
         } catch (error) {
             error.response?.data?.parent?.detail
             ? notify('error', error.response?.data?.parent?.detail)
@@ -75,7 +75,7 @@ export default function CreateCategoriesAndBrands () {
         }
 
     };
-async function handleCreateBrand() {
+    async function handleCreateBrand() {
     try {
         if(input.brand.trim() === "") return notify('warning', 'Marca vacía')  
         await axios.post(`${HOST}/brands`, { name: input.brand.trim() })
@@ -91,7 +91,7 @@ async function handleCreateBrand() {
         ? notify('error', error.response?.data?.parent?.detail)
         : notify('error', "Error creando categoría")
     }
-}
+    }
 
 
 useEffect(()=>{
