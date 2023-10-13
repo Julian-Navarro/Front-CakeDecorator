@@ -44,7 +44,7 @@ useEffect(()=>{
             jfCont="space-between"
             className={s.containerImgName}
           >
-            <Div bg={"lightgray"}pd={user?.img?"2px":"8px"}br="2rem"wd="3.3rem">
+            <Div bg={"lightgray"}pd={user?.img?"2px":"8px"}br="2rem"wd="3.3rem"mt=".2rem">
               {
                 user?.img 
                 ? <img src={user.img} className={s.imgAvatar} />

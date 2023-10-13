@@ -26,12 +26,15 @@
     .btnsSuccessContainer {
         flex-direction: column !important;
     }
+    .btnsSuccessContainer button {
+        border-radius: 0 !important;
+    }
 }
 @media (max-width: 620px) {
     .containerTopBar {
         flex-direction: column !important;
         align-items: flex-start !important;
-        height: 13rem !important;
+        height: 13.5rem !important;
     }
     .containerImgName {
         flex-direction: column !important;
