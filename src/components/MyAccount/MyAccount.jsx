@@ -6,48 +6,68 @@ import ShowMyCourses from "./ShowData/DataCourses/ShowCoursesData";
 import { AiOutlineDatabase } from "react-icons/ai";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { BsPersonWorkspace } from "react-icons/bs";
-import { GrUser } from "react-icons/gr";
-
+import { FaUser } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { findUserById } from "../../redux/actions";
+import s from "./MyAccount.module.css"
 export default function MyAccount() {
+  const dispatch = useDispatch()
   const [selection, setSelection] = useState(false);
-
+  const user = useSelector((state)=>state.user)
+  const userStorage = JSON.parse(window.localStorage.getItem("loggedUser"))
   function handlerChangeSelection(value) {
     setSelection(value);
   }
-
+  useEffect(() => {
+  dispatch(findUserById(userStorage.id));
+},[])
+useEffect(()=>{
+  console.log(user);
+},[user])
   return (
     <div>
-      <Div alItems="flex-start">
+      <Div alItems="flex-start"flexDir="column">
         <Div
-          flexDir="column"
-          jfCont="slex-start"
-          br="0 .5rem 0 0"
-          wd="20%"
-          hg="100vh"
+          wd="100%"
           bg="#f687c7"
-          pos="sticky"
-          posTop="0px"
+          mt="1.8rem"
+          hg="6rem"
+          br="0"
+          pd="0"
+          alItems="flex-end"
+          className={s.containerTopBar}
         >
-          <br />
-          <Div bg="#f687c7" wd="95%" bd="#fff">
-            <GrUser fontSize="3rem" color="#fff" />
-            <P wd="80%" fSize="1.4rem" color="#fff" fWeight="bold">
-              Mi Cuenta
+          <Div bg="#f687c7"wd="380px" 
+            bd="#fff"
+            alItems="center"pd="0 0 0 12px"hg="100%"
+            jfCont="space-between"
+            className={s.containerImgName}
+          >
+            <Div bg={"lightgray"}pd={user?.img?"2px":"8px"}br="2rem"wd="3.3rem">
+              {
+                user?.img 
+                ? <img src={user.img} className={s.imgAvatar} />
+                : <FaUser fontSize="1.5rem" color="#fff" />
+              }
+            </Div>
+
+            <P color="#fff"fWeight="bold"fSize=".9rem"hg="100%"wd="300px">
+              {`${user?.name} ${user?.surname}`}
             </P>
           </Div>
-          <Div
-            flexDir="column"
-            alItems="flex-end"
-            bg="#f687c7"
-            alSelf="flex-end"
-            hg="40%"
+
+          <Div bg="#f687c7"
+            hg="100%"
             jfCont="space-evenly"
-            wd="95%"
+            alItems="flex-end"
+            wd="70%"
+            className={s.btnsSuccessContainer}
           >
             <Button2
               onClick={() => handlerChangeSelection("my-data")}
               pd=".5rem"
-              br="1rem 0 0 1rem"
+              br="8px 8px 0 0"
               hg="2rem"
               bg={selection === "my-data" ? "#fff" : "#f687c7"}
               wd="100%"
@@ -69,7 +89,7 @@ export default function MyAccount() {
             <Button2
               onClick={() => handlerChangeSelection("my-purchases")}
               pd=".5rem"
-              br="1rem 0 0 1rem"
+              br="8px 8px 0 0"
               hg="2rem"
               bg={selection === "my-purchases" ? "#fff" : "#f687c7"}
               wd="100%"
@@ -91,7 +111,7 @@ export default function MyAccount() {
             <Button2
               onClick={() => handlerChangeSelection("my-courses")}
               pd=".5rem"
-              br="1rem 0 0 1rem"
+              br="8px 8px 0 0"
               hg="2rem"
               bg={selection === "my-courses" ? "#fff" : "#f687c7"}
               wd="100%"
@@ -112,7 +132,7 @@ export default function MyAccount() {
           </Div>
         </Div>
 
-        <Div wd="80%">
+        <Div wd="100%"bg="#fff"br="0">
           {selection === "my-data" ? (
             <ShowProfileData />
           ) : selection === "my-purchases" ? (

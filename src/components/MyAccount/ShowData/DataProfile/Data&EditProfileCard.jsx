@@ -26,6 +26,9 @@ import axios from "axios";
 import { HOST } from "../../../../utils";
 import UploadImage from "../../../../utils/Cloudinary/UploadImage";
 import bcryptjs from "bcryptjs";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import s from "./Data&EditProfileCard.module.css"
 
 export default function ShowProfileData() {
   //HECHO CON REDUX STORE
@@ -61,6 +64,9 @@ export default function ShowProfileData() {
     newPassword: "",
     confirmPassword: "",
   });
+  function notify (succes, msg) {
+      toast[succes](msg);
+  };
   // console.log("HAVE CHAN: ", haveChanges);
   // console.log("ERRORS: ", errors);
   // console.log("INPUT: ", input);
@@ -131,9 +137,10 @@ export default function ShowProfileData() {
   }
 
   async function handlerSubmit(e) {
+    try {
     e.preventDefault();
     const userId = userInfo?.id;
-    await axios.put(`${HOST}/users/updateMyAccountInfo?id=${userId}`, input);
+    await axios.put(`${HOST}/users/updateMyAccount?id=${userId}`, input);
     dispatch(findUserById(userInfo.id));
     setInput({
       name: userInfo?.name,
@@ -150,7 +157,15 @@ export default function ShowProfileData() {
     ) {
       success.currentPassword = "";
     }
-    alert("Actualizado de forma correcta");
+    setTimeout(()=>{
+      notify('success', "Se han guardado los cambios")
+    }, 1200
+    )
+    } catch (error) {
+      console.log(error);
+      notify('error', 'Error actualizando la información')
+    }
+    
   }
 
   function resetInputsPasswords() {
@@ -305,12 +320,24 @@ export default function ShowProfileData() {
   }, [input, confirmPassword]);
 
   return (
-    <StyledFormWrapper>
+    <StyledFormWrapper className={s.container}>
+      <ToastContainer position="bottom-right"
+        autoClose={8000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <StyledForm
         onSubmit={(e) => [handlerSubmit(e), handlerSetNewPassword(e)]}
+        className={s.StyledForm}
       >
-        <Box>
-          <BoxColumn>
+        <div className={s.containerForm}>
+          <BoxColumn className={s.boxColumn1}>
             <H1Form>Información personal</H1Form>
             <label>Nombre/s</label>
             <StyledInput
@@ -355,7 +382,7 @@ export default function ShowProfileData() {
                 <p>{errors.phone}</p>
               </StyledError>
             )}
-            <StyledFieldSet>
+            {/* <StyledFieldSet className={s.genresContainer}>
               <legend>Género</legend>
               <label>
                 <input type="radio" value="female" name="gender" />
@@ -373,7 +400,7 @@ export default function ShowProfileData() {
                 <input type="radio" value="notSayIt" name="gender" />
                 Prefiero no decir
               </label>
-            </StyledFieldSet>
+            </StyledFieldSet> */}
             <BoxSaveButton>
               <StyledSaveButton
                 type="submit"
@@ -390,7 +417,7 @@ export default function ShowProfileData() {
               </StyledSaveButton>
             </BoxSaveButton>
           </BoxColumn>
-          <BoxColumn>
+          <BoxColumn className={s.boxColumn2}>
             <H1Form>Contraseña</H1Form>
             <label>Contraseña actual</label>
             <StyledInput
@@ -466,12 +493,12 @@ export default function ShowProfileData() {
             )}
 
             <H1Form margin={"10px 0 10px"}>Avatar</H1Form>
-            <StyledAvatarWrapper>
+            <StyledAvatarWrapper className={s.imgAvatar}> 
               <StyledAvatar src={userInfo.img} />
               {newAvatar !== "" && (
                 <StyledArrowWrapper>
                   <TfiExchangeVertical size={30} style={{ margin: "0 10px" }} />
-                  <StyledAvatar src={newAvatar} />
+                  <StyledAvatar src={newAvatar}className={s.imgAvatar} />
                 </StyledArrowWrapper>
               )}
             </StyledAvatarWrapper>
@@ -484,7 +511,7 @@ export default function ShowProfileData() {
               />
             </Box>
           </BoxColumn>
-        </Box>
+        </div>
       </StyledForm>
     </StyledFormWrapper>
   );

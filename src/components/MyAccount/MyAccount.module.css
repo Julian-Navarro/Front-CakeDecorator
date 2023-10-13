@@ -1,5 +1,5 @@
-.leftbar {
-    background-color: white;
+/* .leftbar {
+    background-color: #6ddd62;
     width: 200px;
     padding: 20px;
 
@@ -15,4 +15,29 @@
 }
 .leftbar button.active {
     color: greenyellow;
+} */
+.imgAvatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+    object-fit: cover;
+}
+@media (max-width: 900px) {   
+    .btnsSuccessContainer {
+        flex-direction: column !important;
+    }
+}
+@media (max-width: 620px) {
+    .containerTopBar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        height: 13rem !important;
+    }
+    .containerImgName {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .containerImgName p {
+        width: 250px !important;
+    }
 }

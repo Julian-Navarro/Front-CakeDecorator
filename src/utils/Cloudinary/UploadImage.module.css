@@ -1,0 +1,6 @@
+.a {
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+    width: 9.3rem;
+}

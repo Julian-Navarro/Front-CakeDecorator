@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import sha256 from "js-sha256";
-
+import s from "./UploadImage.module.css"
 export default function CloudinaryUploader({
   folder,
   inputProfile,
@@ -72,7 +72,7 @@ export default function CloudinaryUploader({
   };
 
   return (
-    <div>
+    <div className={s.a}>
       <input type="file" onChange={handleUpload} />
     </div>
   );
