@@ -22,7 +22,7 @@
 }
 .accountBarContainer {
     width: 1240px; 
-    margin-right: 1080px;
+    margin-right: 1084px;
 }
 .accountBarContainerClose {
     width: 0vw;
@@ -46,8 +46,8 @@
     .accountBarContainer {
         /* background-color: #fbff00 !important; */
         width: 125vw !important;
-        margin-right: 0px;
-        margin-left: 125%;
+        margin-right: 0px !important;
+        margin-left: 50% !important;
     }
     
     .accountBarContainerClose {

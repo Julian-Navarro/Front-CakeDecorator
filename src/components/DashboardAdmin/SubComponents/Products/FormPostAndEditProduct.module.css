@@ -248,9 +248,10 @@
 
 } 
 .divImgsProducts {
-    background: #c4c4c4;
+    background: #fff;
     padding: 6px;
     margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
@@ -264,6 +265,8 @@
     margin-top: 10px;
     margin-right: 10px;
     position: relative;
+    box-shadow: 2px 2px 3px 1px rgb(0, 0, 0, 0.35);
+    border-radius: 8px;
 }
 .btnDeleteImg {
     background: rgba(230, 65, 65, 0.822);
