@@ -30,7 +30,7 @@ export default function LinkShop () {
             jfCont="space-between"
             className={s.containerCarruselTitle}>
             <Div flexDir="column">
-              <Button bg="#60C72F"
+              <Button bg="#60C72F"bd="none"
                 fSize="1.2rem"fWeight="100"letterSp=".15rem"
                 pd=".1rem 2rem .1rem 2rem"br="4rem"
                 boxSh="2px 2px .3rem .1rem rgb(0, 0, 0, 0.35), inset -8px -6px 25px #44752C"
