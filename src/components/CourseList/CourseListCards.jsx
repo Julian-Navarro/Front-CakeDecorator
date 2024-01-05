@@ -7,8 +7,8 @@ export default function CourseListCards({ allCourses, courses, handlerEditCourse
         // console.log("COURSES: ",courses);
     },[courses])
     return (
-        <Div flWr="wrap"mb="2rem"mt="2rem">
-            {
+        <Div flWr="wrap"mb="2rem"mt="2rem"wd="100%">
+            { 
                 courses.length>0
                 ? courses.map((c) => <CourseListCard 
                     key={c.id} 
