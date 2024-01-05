@@ -29,7 +29,7 @@ export default function FilterCourses ({ allCourses, courses, setCourses, handle
             letterSp=".05rem"bd="#eee"name="type"onChange={(e)=>handlerFilterValue(e)}>
             <Option value=""fnFamily="Shrikhand">{typeFilter?"Todos":"Tipo"}</Option>
             <Option value="Presencial"fnFamily="Shrikhand"color={typeFilter==="Presencial"?"#E9A0E7":"#333"}>Presencial</Option>
-            <Option value="Grabado"fnFamily="Shrikhand"color={typeFilter==="Grabado"?"#E9A0E7":"#333"}disabled={true}>Grabado</Option>
+            <Option value="Grabado"fnFamily="Shrikhand"color={typeFilter==="Grabado"?"#E9A0E7":"#333"}>Grabado</Option>
           </Select>
         </div>
       </div>

@@ -15,8 +15,8 @@ export default function Cart () {
         // console.log("CART FLAG: ", cartFlag);
     },[cartFlag])
     return (
-        <Div flexDir="column"wd="100%">
-            <Div hg="10rem"jfCont="space-between"pd="0 0 0 1rem"alItems="center">
+        <Div flexDir="column"wd="100%"mt="1.8rem"bg="#fff"br="0"> 
+            <Div hg="10rem"wd="100%"jfCont="space-between"pd="0 0 0 1rem"alItems="center">
               <Button wd="20%"onClick={()=>navigate("/shop")}bg="#333">Seguir comprando</Button>
               <Div wd="20%"hg="100%"brL=""flexDir="column"jfCont="space-between"bdL="2px solid #333"br="0">
                 <P bg="#333"color="#fff"wd="100%"br="0">Total del carrito</P>

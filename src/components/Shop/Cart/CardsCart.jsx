@@ -5,7 +5,7 @@ export default function CardsCart({ handlerSetCartFlag, cart}){
 
     return (
         <Div flexDir="column"jfCont="flex-start"wd="100%">
-            <Div bg="#333" jfCont="space-between"br="none">
+            <Div bg="#333" wd="100%"jfCont="space-between"br="none">
                 <P wd="20%"color="#fff">Producto</P>
                 <P wd="20%"color="#fff">Nombre</P>
                 <P wd="20%"color="#fff">Cantidad</P>
@@ -14,7 +14,9 @@ export default function CardsCart({ handlerSetCartFlag, cart}){
             </Div>
 
             { cart?.length 
-            ? cart.map((pr, i)=> <CardCart
+            ? cart.map((pr, i)=> 
+            // <p>{pr.name}</p>
+            <CardCart
             key={pr.id}
             handlerSetCartFlag={handlerSetCartFlag}
             index={i}
@@ -25,7 +27,8 @@ export default function CardsCart({ handlerSetCartFlag, cart}){
             stock={pr.stock}
             amount={pr.amount}
             img={pr.img}
-            />)
+            />
+            )
             : null 
             }
         </Div>

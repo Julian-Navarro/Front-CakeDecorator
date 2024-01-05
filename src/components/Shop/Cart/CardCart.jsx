@@ -25,7 +25,7 @@ export default function CardCart ({ handlerSetCartFlag, img, amount, price, stoc
         }
     }
     return (
-        <Div  jfCont="space-between" hg="8rem"br="0"mb=".4rem"pd=".2rem"bdB="2px solid #333">
+        <Div  jfCont="space-between" wd="100%"hg="8rem"br="0"mb=".4rem"pd=".2rem"bdB="2px solid #333">
             <Div wd="20%"br="0"bdR="2px solid #333">
                 <Img wd="8rem"hg="7.6rem"br="12px"src={img} alt="not found"/>
             </Div>

@@ -79,14 +79,14 @@ export default function Navbar () {
             >
             <Div className={s.divBtnsNavbar}
                 wd="100%"
-                jfCont="space-between">
+                jfCont="space-evenly">
 
             
-            <Button onClick={()=>handlerNavigate("/home")}
+            {/* <Button onClick={()=>handlerNavigate("/home")}
                 >
                 <AiTwotoneHome fontSize={"1.8rem"}
                 />
-            </Button>
+            </Button> */}
             
             <Button onClick={()=>handlerNavigate("/courses")}
                 >
@@ -100,11 +100,11 @@ export default function Navbar () {
                     filter="drop-shadow(1px 1px 2px #25252575)">Tienda</P>
             </Button>
             
-            <Button onClick={()=>handlerNavigate("/aboutUs")}
+            {/* <Button onClick={()=>handlerNavigate("/aboutUs")}
                 >
                 <P letterSp=".1em" fWeight="bold"
                     filter={`drop-shadow(1px 1px 1px #25252575)`}>Nosotros</P>
-            </Button>
+            </Button> */}
             </Div>
             <Div wd="auto"
                 >
@@ -145,7 +145,7 @@ export default function Navbar () {
                         jfCont="space-evenly"
                         zInd="4"
                         blur="blur(5px)"br="0"
-                        bg={"#25252586"}
+                        bg={"#fff"}
                         // jfCont="center"
                         // bg="yellow !important"
                         >

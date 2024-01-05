@@ -187,7 +187,7 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
            </Div> 
   
   
-            <Div mt="4px"className={s.applyFilters}bg="pink"> {/* filtros aplicados */}
+            <Div mt="4px"className={s.applyFilters}> {/* filtros aplicados */}
               {filters.categories.concat(filters.brands).map((el)=>{
                   if(el!== "all") {
                     return <P 
