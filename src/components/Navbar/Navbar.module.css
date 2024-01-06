@@ -10,15 +10,46 @@
 .divBtnsNavbar {
     margin-right: 4rem;
 }
-
+.divBtnsMenu > button {
+    letter-spacing: .075rem;
+}
 .btnCuenta {
     height: 1.8rem !important;
-    width: 8rem;
+    /* width: 8rem; */
     margin-right: 2.9rem;
     /* background: transparent !important; */
     color: #333 !important;
-    border: none !important;
+    border: none;
     box-shadow: none !important;
+    cursor: pointer;
+    z-index: 11;
+    border-radius: 2rem;
+}
+.btnCuentaMove {
+    height: 1.8rem !important;
+    /* width: 8rem; */
+    margin-right: 2.9rem;
+    /* background: transparent !important; */
+    color: #333 !important;
+    border: none;
+    box-shadow: none !important;
+    cursor: pointer;
+    z-index: 11;
+    border-radius: 2rem;
+}
+.btnCuentaMove>p {
+    /* background: green; */
+    padding: 0 .3rem 0 .3rem;
+    font-size: 1rem;
+    color: #404040;
+    font-weight: bold;
+}
+.btnCuenta > p {
+    /* background: green; */
+    padding: 0 .3rem 0 .3rem;
+    font-size: 1rem;
+    color: #404040;
+    font-weight: bold;
 }
 .accountBarContainer {
     width: 1240px; 
@@ -64,36 +95,26 @@
         justify-content: center !important;
         /* background: red !important; */
         margin-right: 1rem !important;
-        margin-top: 1rem !important;
+        margin-top: .5rem !important;
         z-index: 6 !important;
+        border: .1rem solid #B39BE5 !important;
     }
     .divContainer {
-        background: #E9A0E7 !important;
+        background: #B39BE5 !important;
         position: relative !important;
         flex-direction: column !important;
-        /* flex-wrap: wrap !important; */
-        height: 22rem !important;
-        /* top: 10rem; */
+        height: 102vh !important;
         z-index: 5 !important;
     }
     .divBtns {
-        /* flex-direction: column-reverse !important; */
-        /* justify-content: space-evenly !important; */
+
         flex-wrap: wrap-reverse;
-        /* margin: 20px; */
         padding: 12px !important;
-        /* padding-right: 20px !important; */
-    }
-    .btnCuenta {
-        margin-right: 8rem;
     }
     .divBtnsNavbar {
-        /* background-color: red !important; */
         height: 10rem !important;
         display: flex !important;
         flex-wrap: wrap !important;
-        /* justify-content: space-between !important; */
-        /* width: 100% !important; */
         margin-right: .4rem;
     }
     .divBtnsNavbar Button p {
@@ -111,9 +132,21 @@
         /* background: red; */
         /* height: 2rem !important; */
     }
+    .btnCuenta {
+        /* background: lightgray !important; */
+    }
+    .btnCuentaMove {
+        top: -2.5rem;
+    }
 }
 @media (max-width: 450px) {
     .btnCuenta {
         margin-right: 2rem !important;
+    }
+    .divBtnsMenu > button {
+        /* background: green !important; */
+        width: 11.5rem !important;
+        font-size: .85rem;
+        
     }
 }

@@ -1,0 +1,118 @@
+.container {
+    /* background: greenyellow; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 1rem 0;
+}
+.name {
+    /* background: orange; */
+    width: 14rem;
+    color: #404040;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+    text-shadow:#25252586;
+}
+.divPrice {
+    /* background: red; */
+    width: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.divPrice > div {
+    /* background: violet; */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.divPrice > :nth-child(1) {
+    /* background: yellow; */
+    color: #404040;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.icon {
+    background: lightgray;
+    box-shadow: .05rem .05rem .1rem .025rem #25252586;
+    border-radius: 1rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    cursor: pointer;
+}
+.iconBlock {
+    background: lightgray;
+    box-shadow: .05rem .05rem .1rem .025rem #25252586;
+    border-radius: 1rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    cursor: pointer;
+    color: #DC4949;
+}
+.img {
+    width: 6.5rem;
+    height: 6.5rem;
+    object-fit: cover;
+    border-radius: .2rem;
+}
+.containerSubTotal {
+    /* background: green; */
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+}
+.divSubtotal {
+    /* background: red; */
+    width: 50%;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+.divSubtotal > button {
+    background: orange;
+    border-radius: 1rem;
+    padding: 0 2rem 0 2rem;
+    font-weight: bold;
+    color: #404040;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.divSubtotal > div {
+    /* background-color: #25252586; */
+    padding-bottom: 1rem;
+    display: flex;
+    width: 15rem;
+    align-self: flex-end;
+    justify-content: space-between;
+
+}
+.divSubtotal > div > div :nth-child(1) {
+    /* background: blue; */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1rem;
+}
+.divSubtotal>div>div :nth-child(2) {
+    /* background: green; */
+    font-size: .85rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.line {
+    background: lightgray;
+    width: 75%;
+    height: .2rem;
+    border-radius: 1rem;
+    align-self: flex-end;
+}
+.total {
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    color: #404040;
+}
