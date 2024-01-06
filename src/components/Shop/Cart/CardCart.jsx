@@ -1,6 +1,8 @@
 import { Div, H1, Button, Img, P } from "../../../utils/StyledComponents/StyledComponents"
 import { IoMdAdd } from "react-icons/io"
 import { RiSubtractFill } from "react-icons/ri"
+import { MdBlock } from "react-icons/md";
+import s from "./CardCart.module.css"
 
 export default function CardCart ({ handlerSetCartFlag, img, amount, price, stock, name, total, id, index }) {
     const cart = JSON.parse(localStorage.getItem("cart"));
@@ -25,23 +27,48 @@ export default function CardCart ({ handlerSetCartFlag, img, amount, price, stoc
         }
     }
     return (
-        <Div  jfCont="space-between" wd="100%"hg="8rem"br="0"mb=".4rem"pd=".2rem"bdB="2px solid #333">
-            <Div wd="20%"br="0"bdR="2px solid #333">
-                <Img wd="8rem"hg="7.6rem"br="12px"src={img} alt="not found"/>
-            </Div>
-            <P hg="100%"wd="20%"br="0"bdR="2px solid #333" jfCont="flex-start"alItems="flex-start">{name}</P>
-            <Div flexDir="column"hg="100%"wd="20%"br="0"bdR="2px solid #333">
-                <P wd="30%">{amount}</P>
-                <Div wd="50%"jfCont="space-evenly">
-                    <Button wd="2rem"hg="40px"bg="#333" onClick={()=>handlerCartSubstract()}><RiSubtractFill /></Button>
-                    <Button wd="2rem"hg="40px"bg="#333" onClick={()=>handlerCartAdd()}><IoMdAdd color="#fff"/></Button>
-                </Div>
-                <Div overflow="hidden"pos="relative"wd="8rem"mt=".2rem"hg="1.4rem">
-                    <Div pos="relative"posLeft={stock===amount?"0rem":"-8rem"}>Limite de Stock</Div>
-                </Div>
-            </Div>
-            <P hg="100%"wd="20%"br="0"bdR="2px solid #333">${price}</P>
-            <P hg="100%"wd="20%">${total}</P>
-        </Div>
+        // <Div  jfCont="space-between" wd="100%"hg="8rem"br="0"mb=".4rem"pd=".2rem"bdB="2px solid #333">
+        //     <Div wd="20%"br="0"bdR="2px solid #333">
+        //         <Img wd="8rem"hg="7.6rem"br="12px"src={img} alt="not found"/>
+        //     </Div>
+        //     <P hg="100%"wd="20%"br="0"bdR="2px solid #333" jfCont="flex-start"alItems="flex-start">{name}</P>
+        //     <Div flexDir="column"hg="100%"wd="20%"br="0"bdR="2px solid #333">
+        //         <P wd="30%">{amount}</P>
+        //         <Div wd="50%"jfCont="space-evenly">
+        //             <Button wd="2rem"hg="40px"bg="#333" onClick={()=>handlerCartSubstract()}><RiSubtractFill /></Button>
+        //             <Button wd="2rem"hg="40px"bg="#333" onClick={()=>handlerCartAdd()}><IoMdAdd color="#fff"/></Button>
+        //         </Div>
+        //         <Div overflow="hidden"pos="relative"wd="8rem"mt=".2rem"hg="1.4rem">
+        //             <Div pos="relative"posLeft={stock===amount?"0rem":"-8rem"}>Limite de Stock</Div>
+        //         </Div>
+        //     </Div>
+        //     <P hg="100%"wd="20%"br="0"bdR="2px solid #333">${price}</P>
+        //     <P hg="100%"wd="20%">${total}</P>
+        // </Div>
+        //! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        <div className={s.container}>
+          <img src={img}
+            className={s.img}/>
+          <p className={s.name}>
+            {name}
+          </p>
+          <div 
+            className={s.divPrice}>
+            <p>${price}</p>
+            <div>
+              <RiSubtractFill onClick={()=>handlerCartSubstract()}
+              className={s.icon}/>
+              <p>{amount}</p>
+              { stock !== amount
+              ?
+              <IoMdAdd onClick={()=>handlerCartAdd()}
+              className={s.icon}/>
+              : <MdBlock className={s.iconBlock}
+              onClick={()=>alert("No hay mas stock disponible")}/>
+              }
+            </div>
+            <p>${total}</p>
+          </div>
+        </div>
     )
 }

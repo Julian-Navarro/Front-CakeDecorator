@@ -18,6 +18,8 @@ import iconMenuLine from "../../../utils/IMAGES/imgsCardProduct/healthicons_ui-m
 import iconMenuGrid from "../../../utils/IMAGES/imgsCardProduct/healthicons_ui-menu-grid.png"
 import iconMenuLineBlue from "../../../utils/IMAGES/imgsCardProduct/healthicons_ui-menu-line-blue.png"
 import iconMenuGridBlue from "../../../utils/IMAGES/imgsCardProduct/healthicons_ui-menu-grid-blue.png"
+import { CiFilter } from "react-icons/ci";
+
 
 export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filters, handlerSearchProducts, displayOption, setDisplayOption, breakPoint }) {
     let navigate = useNavigate()
@@ -55,18 +57,19 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
             posTop="3.3rem"
             > 
 
-          <Div posRight="0"zInd="6"className={s.btnBurguer}
+          <Div posRight=".4rem"zInd="6"className={s.btnBurguer}
             pos="absolute"
-            posTop=".2rem"
-            wd="2.8rem"
-            hg="2.8rem"
+            posTop="0"
+            wd="2.4rem"
+            hg="2.4rem"
             br="50%"
             display="none"
-            bg={isOpen?"#8B5C8A":"#B39BE5"}
+            bd=".1rem solid #B39BE5"
+            bg={"#fff"}
             // bg="red"
             onClick={()=>setIsOpen(!isOpen)}
             >
-              <img src={isOpen?xIcon:filterIcon} alt=""className={s.iconHome} />
+                <CiFilter fontSize={"1.8rem"}color="#B39BE5"className={s.iconHome}/>
           </Div>
 
           <Div bg="#fff"flexDir="column"
@@ -74,7 +77,7 @@ export default function FilterBar({ handlerSetFilters, isOpen, setIsOpen, filter
             hg="5rem"mt="2rem"br="0"zInd="2"wd="1240px"
             pd=".5rem .5rem 0 .5rem"bdB="2px solid #92B3DA"
             //!   posTop={isOpen?"4rem":"-14rem"}
-            posRight={isOpen?"0":"-100%"}
+            posRight={isOpen?".45rem":"-100%"}
             className={s.container}
           >
 

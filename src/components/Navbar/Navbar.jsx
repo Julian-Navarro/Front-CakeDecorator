@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Div, DivAccountBar, Button, P } from "../../utils/StyledComponents/StyledComponents";
-import { RiDatabaseLine, RiCake3Line } from "react-icons/ri"
-import { AiTwotoneHome } from "react-icons/ai"
-import homeIcon from "../../utils/IMAGES/bxs_home-heart.png"
-import xIcon from "../../utils/IMAGES/octicon_x-12.png"
-import { VscAccount } from "react-icons/vsc"
+import { Div, DivAccountBar, Button, Button2, P } from "../../utils/StyledComponents/StyledComponents";
 import s from "./Navbar.module.css"
 import { useLocation } from "react-router-dom";
+import { IoMenu } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
+
 export default function Navbar () {
     const location = useLocation();
     const navigate = useNavigate();
@@ -47,161 +45,168 @@ export default function Navbar () {
         setIsOpen(!isOpen)
         setAccount(false)
     }
-    // const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-    useEffect(()=>{},[account])
-    return (
-        location.pathname !== "/" ?
-      <Div className={s.container}
-        wd="100%"
-        hg="1.8rem"
-        pos="fixed"
-        jfCont="flex-start"br="0"
-        zInd="10">
 
-        <Div pos="absolute"posRight="0"mr="1rem"zInd="4"mt=".5rem"
-          posTop="0px"wd="2.8rem" hg="2.8rem"br="50%"bg={isOpen?"#8B5C8A":"#B39BE5"}
-          display="none"className={s.btnBurguer}
-        //   bg="orange"
-          onClick={()=>handlerCloseBarAccount()}
-          >
-            <img src={isOpen?xIcon:homeIcon} alt=""className={s.iconHome} />
+
+  const [currentPos, setCurrentPos] = useState(0)
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    if (currentPos > currentScrollPos) {
+      // El usuario está scrollando hacia arriba
+      // console.log('Scroll hacia arriba');
+    } else {
+      // El usuario está scrollando hacia abajo o se encuentra en la parte superior
+      // console.log('Scroll hacia abajo o en la parte superior');
+    }
+    setCurrentPos(currentScrollPos);
+  };
+  window.addEventListener("scroll", handleScroll)
+  useEffect(()=>{},[])
+
+
+
+
+
+
+
+// const loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+useEffect(()=>{},[account])
+useEffect(()=>{},[isOpen])
+return (
+    location.pathname !== "/" ?
+  <Div className={s.container}
+    wd="100%"
+    hg="1.8rem"
+    pos="fixed"
+    jfCont="flex-start"br="0"
+    zInd="10">
+
+    <Div pos="absolute"posRight="0"mr="1rem"zInd="4"mt=".5rem"
+      posTop="0px"wd="2.4rem" hg="2.4rem"br="50%"bg={"#fff"}
+      display="none"className={s.btnBurguer}
+      onClick={()=>handlerCloseBarAccount()}
+      >
+        {isOpen
+        ? <IoCloseOutline color="#B39BE5"fontSize={"2rem"}/>
+        : <IoMenu color="#B39BE5"fontSize={"1.4rem"}/>
+        }
+    </Div>
+
+    <Div bg="#fff"className={s.divContainer}zInd="2"br="0"
+        posTop={isOpen?"46vh":"-46vh"}wd="1240px"
+        >
+
+      <Div wd="100%"hg="100%"
+        jfCont="space-between"
+        br="0"
+        className={s.divBtns}
+        // bg="red !important"
+        >
+        <Div className={s.divBtnsNavbar}
+            wd="100%"
+            jfCont="space-evenly"
+            // bg="green !important"
+            hg="fit-content !important">
+        
+        <Button onClick={()=>handlerNavigate("/courses")}
+            >
+            <P letterSp=".1em" fWeight="bold"fSize="1rem"
+                filter="drop-shadow(1px 1px 2px #25252575)">Cursos</P>
+        </Button>
+        
+        <Button onClick={()=>handlerNavigate("/shop")}
+            >
+            <P letterSp=".1em" fWeight="bold"fSize="1rem"
+                filter="drop-shadow(1px 1px 2px #25252575)">Tienda</P>
+        </Button>
         </Div>
-
-        <Div bg="#fff"className={s.divContainer}zInd="2"br="0"
-            posBot={isOpen?"-10rem":"12rem"}wd="1240px"
-            >
-
-          <Div wd="100%"hg="100%"
-            jfCont="space-between"
-            br="0"
-            className={s.divBtns}
-            // bg="#333"
-            >
-            <Div className={s.divBtnsNavbar}
-                wd="100%"
-                jfCont="space-evenly">
-
-            
-            {/* <Button onClick={()=>handlerNavigate("/home")}
+        <Div wd="auto"
+        // bg="yellow !important"
+        >
+            <Button2 className={account?s.btnCuentaMove:s.btnCuenta}
+                onClick={()=>setAccount(!account)}
+                bg={account?"#fff":"transparent"}
+                bd={account?".1rem solid #f6dbf5":".1rem solid #fff"}
+                pos={"relative"}
+                pd="0 .25rem 0 .25rem"
+                // posTop={account?"-2.5rem":"0rem"}
                 >
-                <AiTwotoneHome fontSize={"1.8rem"}
-                />
-            </Button> */}
-            
-            <Button onClick={()=>handlerNavigate("/courses")}
-                >
-                <P letterSp=".1em" fWeight="bold"
-                    filter="drop-shadow(1px 1px 2px #25252575)">Cursos</P>
-            </Button>
-            
-            <Button onClick={()=>handlerNavigate("/shop")}
-                >
-                <P letterSp=".1em" fWeight="bold"
-                    filter="drop-shadow(1px 1px 2px #25252575)">Tienda</P>
-            </Button>
-            
-            {/* <Button onClick={()=>handlerNavigate("/aboutUs")}
-                >
-                <P letterSp=".1em" fWeight="bold"
-                    filter={`drop-shadow(1px 1px 1px #25252575)`}>Nosotros</P>
-            </Button> */}
-            </Div>
-            <Div wd="auto"
-                >
-                <Button className={s.btnCuenta}
-                    cursor="pointer"
-                    onClick={()=>setAccount(!account)}
-                    bg={account?"#f6dbf5":"transparent"}
-                    zInd="11"
-                    // mr="2.9rem"
-                    >
-                    {/* <VscAccount filter="drop-shadow(2px 2px 2px black)"
-                        fontSize={"1.8rem"}
-                    > */}
-                    <P letterSp=".1em" fWeight="bold"
-                        filter={`drop-shadow(1px 1px 1px #25252575)`}>Cuenta</P>
-                </Button>
-                <DivAccountBar hg="100vh"
-                    // wd={account?"10rem":".1rem"}
-                    // wd={account?"1242px":".0rem"}
-                    trans=".4s"
-                    display={"flex"}
-                    overflow="hidden"
-                    flexDir="column"
-                    alItems="flex-start"
+                <P letterSp=".1rem"
+                    filter={`drop-shadow(1px 1px 1px #25252575)`}>
+                        Cuenta
+                </P>
+            </Button2>
+            <DivAccountBar hg="100vh"
+                trans=".4s"
+                display={"flex"}
+                overflow="hidden"
+                flexDir="column"
+                alItems="flex-start"
+                pos="absolute"
+                posTop="1.8rem"
+                zInd="4"br="0"
+                className={account?s.accountBarContainer : s.accountBarContainerClose}>
+                <Div wd="100%"hg="100%"
                     pos="absolute"
-                    posTop="2rem"
-                    // posRight="0"
-                    // posRight="none"
-                    // mr="522px"
-                    zInd="4"br="0"
-                    className={account?s.accountBarContainer : s.accountBarContainerClose}
-                    // bg="red"
+                    posRight={account?"0rem":"0"} //! ???????????
+                    flexDir="column"
+                    jfCont="space-evenly"
+                    zInd="4"
+                    blur="blur(5px)"br="0"
+                    bg={"#fff"}
+                    className={s.divBtnsMenu}
                     >
-                    <Div wd="100%"hg="100%"
-                        pos="absolute"
-                        posRight={account?"0rem":"0"} //! ???????????
-                        flexDir="column"
-                        jfCont="space-evenly"
-                        zInd="4"
-                        blur="blur(5px)"br="0"
-                        bg={"#fff"}
-                        // jfCont="center"
-                        // bg="yellow !important"
+                    <Button2 onClick={(e)=>handlerNavigateMyAccount(e)}
+                        wd="16rem"
+                        bd=".1rem solid #B39BE5"
+                        fSize=".9rem"
+                        br="2rem"
+                        jfCont="center"
+                        color="#B39BE5"
+                        fWeight="bold"
+                        className={s.btnMyAccount}
+                        >Mi Cuenta</Button2>
+                    {
+                    loggedUser
+                    ? <Button2 onClick={()=>handlerCloseSesion()}
+                        wd="16rem"
+                        bd=".1rem solid #B39BE5"
+                        fSize=".9rem"
+                        br="2rem"
+                        jfCont="center"
+                        color="#B39BE5"
+                        fWeight="bold"
+                        >Cerrar Sesión</Button2>
+                    : <Button2 onClick={()=>navigate("/")}
+                        wd="16rem"
+                        bd=".1rem solid #B39BE5"
+                        fSize=".9rem"
+                        br="2rem"
+                        jfCont="center"
+                        color="#B39BE5"
+                        fWeight="bold"
+                        >Ingresar</Button2>
+                    }
+                    {
+                    loggedUser !== null ? loggedUser.role === "admin" 
+                    ? <Button2 onClick={()=>handlerNavigate("/dashboardAdmin")}
+                        wd="16rem"
+                        bd=".1rem solid #B39BE5"
+                        fSize=".9rem"
+                        br="2rem"
+                        jfCont="center"
+                        color="#B39BE5"
+                        fWeight="bold"
                         >
-                        <Button onClick={(e)=>handlerNavigateMyAccount(e)}
-                            wd="50%"
-                            fSize=".9rem"
-                            mb="1rem"
-                            // letterSp=".1rem"
-                            // bd="#fff"
-                            // bg={pink}
-                            className={s.btnMyAccount}
-                            >Mi Cuenta</Button>
-                        {
-                        loggedUser
-                        ? <Button onClick={()=>handlerCloseSesion()}
-                            wd="50%"
-                            fSize=".9rem"
-                            mb="1rem"
-                            // bd="#fff"
-                            // bg={pink}
-                            // letterSp=".1rem"
-                            >Cerrar Sesión</Button>
-                        : <Button onClick={()=>navigate("/")}
-                            wd="50%"
-                            fSize=".9rem"
-                            mb="1rem"
-                            // bd="#fff"
-                            // bg={pink}
-                            // letterSp=".1rem"
-                            >Ingresar</Button>
-                        }
-                        {
-                        loggedUser !== null ? loggedUser.role === "admin" 
-                        ? <Button onClick={()=>handlerNavigate("/dashboardAdmin")}
-                            wd="50%"
-                            fSize=".9rem"
-                            mb="2rem"
-                            // pd="0px 10px 0 10px"
-                            // br="6px"
-                            // color="#252525"
-                            // bg={pink}
-                            // bd="#fff"
-                            // fWeight="bold"
-                            // _hovCol={"#fff"}
-                            >
-                                Panel de Administrador
-                            {/* <RiDatabaseLine filter="drop-shadow(1px 1px 2px black)"fontSize="2em"/> */}
-                          </Button>
-                            : null :null
-                        }
-                    </Div>    
-                </DivAccountBar>
-            </Div>
-          </Div>
+                            Panel de Administrador
+                      </Button2>
+                        : null : null
+                    }
+                </Div>    
+            </DivAccountBar>
         </Div>
+      </Div>
+    </Div>
 
-      </Div> : null
-    )
+  </Div> : null
+)
 }

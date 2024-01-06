@@ -1,17 +1,14 @@
 import CardCart from "./CardCart"
 import { Div, P } from "../../../utils/StyledComponents/StyledComponents"
 import { useEffect } from "react";
-export default function CardsCart({ handlerSetCartFlag, cart}){
+import s from "./CardCart.module.css"
+export default function CardsCart({ handlerSetCartFlag, cart, total}){
 
     return (
-        <Div flexDir="column"jfCont="flex-start"wd="100%">
-            <Div bg="#333" wd="100%"jfCont="space-between"br="none">
-                <P wd="20%"color="#fff">Producto</P>
-                <P wd="20%"color="#fff">Nombre</P>
-                <P wd="20%"color="#fff">Cantidad</P>
-                <P wd="20%"color="#fff">Precio</P>
-                <P wd="20%"color="#fff">Subtotal</P>
-            </Div>
+        <Div flexDir="column"jfCont="flex-start"wd="100%"
+            bg="#fff"pd="1rem"
+            boxSh=".1rem .1rem .3rem .1rem #25252586"
+        >
 
             { cart?.length 
             ? cart.map((pr, i)=> 
@@ -31,6 +28,19 @@ export default function CardsCart({ handlerSetCartFlag, cart}){
             )
             : null 
             }
+            <div className={s.containerSubTotal}>
+              <div className={s.line}></div>
+              <div className={s.divSubtotal}>
+                <div>
+                  <div>
+                    <p>Sub-Total</p>
+                    <p>2 items</p>
+                  </div>
+                  <p className={s.total}>${total}</p>
+                </div>
+                <button>Hacer el pago</button>
+              </div>
+            </div>
         </Div>
     )
 }
