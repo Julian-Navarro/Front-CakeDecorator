@@ -157,11 +157,11 @@
 
 .divIconGlass2 {
     background: #333333c2;
-    border-radius: 1rem;
-    width: 2.2rem;
-    height: 2.2rem;
-    padding: 4px;
-    box-shadow: 2px 2px 3px 1px rgb(0,0,0,0.35);
+    /* border-radius: 1rem; */
+    /* width: 2.2rem; */
+    /* height: 2.2rem; */
+    /* padding: 4px; */
+    /* box-shadow: 2px 2px 3px 1px rgb(0,0,0,0.35); */
     position: absolute;
     right: 10px;
     top: 10px;

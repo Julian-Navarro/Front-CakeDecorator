@@ -16,7 +16,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 export default function DashboardAdmin ({ breakPoint }) {
     const navigate = useNavigate();
-    const [render, setRender] = useState("dashboard")
+    const [render, setRender] = useState("users")
     const location = useLocation()
     function handlerChangeRender(value) {
         setRender(value)
@@ -38,7 +38,7 @@ export default function DashboardAdmin ({ breakPoint }) {
         <div className={s.btnsContainer}
           wd="100%"
           >
-          <Button2 onClick={()=>{handlerChangeRender("dashboard");navigate('/dashboardAdmin?render=dashboard')}}
+          {/* <Button2 onClick={()=>{handlerChangeRender("dashboard");navigate('/dashboardAdmin?render=dashboard')}}
             className={s.btn}
             bg={render==="dashboard"?"#A281D8":"#fff"}
             >
@@ -48,7 +48,7 @@ export default function DashboardAdmin ({ breakPoint }) {
              <P 
                color={render==="dashboard"?"#fff":"#A281D8"}
                >Estadisticas</P>
-          </Button2>
+          </Button2> */}
 
           <Button2 onClick={()=>{handlerChangeRender("users");navigate('/dashboardAdmin?render=users')}}
             className={s.btn}

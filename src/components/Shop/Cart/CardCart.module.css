@@ -68,7 +68,6 @@
 }
 .divSubtotal {
     /* background: red; */
-    width: 50%;
     align-self: flex-end;
     display: flex;
     flex-direction: column;
@@ -115,4 +114,26 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5rem;
     color: #404040;
+}
+@media (max-width: 32.5rem) {
+    .container {
+        /* background: lightgray; */
+        flex-direction: column;
+        margin-bottom: .5rem;
+        align-items: center;
+        justify-content: space-between;
+        height: 15rem;
+    }
+    .name {
+        /* display: none; */
+        order: -1;
+        width: auto;
+
+    }
+    .divSubtotal>button {
+        width: max-content;
+    }
+    .divSubtotal > div {
+        width: 100%;
+    }
 }
