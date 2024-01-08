@@ -13,7 +13,7 @@ import { findUserById } from "../../redux/actions";
 import s from "./MyAccount.module.css"
 export default function MyAccount() {
   const dispatch = useDispatch()
-  const [selection, setSelection] = useState(false);
+  const [selection, setSelection] = useState("my-data");
   const user = useSelector((state)=>state.user)
   const userStorage = JSON.parse(window.localStorage.getItem("loggedUser"))
   function handlerChangeSelection(value) {
@@ -35,7 +35,8 @@ useEffect(()=>{
           hg="6rem"
           br="0"
           pd="0"
-          alItems="flex-end"
+          // alItems="flex-end"
+          jfCont="space-between"
           className={s.containerTopBar}
         >
           <Div bg="#f687c7"wd="380px" 
@@ -57,7 +58,7 @@ useEffect(()=>{
             </P>
           </Div>
 
-          <Div bg="#f687c7"
+          {/* <Div bg="#f687c7"
             hg="100%"
             jfCont="space-evenly"
             alItems="flex-end"
@@ -129,7 +130,7 @@ useEffect(()=>{
                 Estudiar
               </P>
             </Button2>
-          </Div>
+          </Div> */}
         </Div>
 
         <Div wd="100%"bg="#fff"br="0">

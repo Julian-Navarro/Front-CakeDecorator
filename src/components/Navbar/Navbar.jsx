@@ -125,7 +125,7 @@ return (
             <Button2 className={account?s.btnCuentaMove:s.btnCuenta}
                 onClick={()=>setAccount(!account)}
                 bg={account?"#fff":"transparent"}
-                bd={account?".1rem solid #f6dbf5":".1rem solid #fff"}
+                // bd={account?".1rem solid #f6dbf5":".1rem solid #fff"}
                 pos={"relative"}
                 pd="0 .25rem 0 .25rem"
                 // posTop={account?"-2.5rem":"0rem"}

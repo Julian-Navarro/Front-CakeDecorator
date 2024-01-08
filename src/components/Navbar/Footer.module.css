@@ -1,3 +1,15 @@
+.divContainer {
+    background: #C7CAD6;
+    background: #2c2760;
+    z-index: -1;
+    display: flex;
+    padding: 1rem 2rem 1rem 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.divContainer p {
+    color: #fff;
+}
 .arrowRight {
     width: .8rem;
     height: .8rem;
@@ -6,8 +18,18 @@
     width: 1.4rem;
     height: 1.4rem;
 }
-@media (max-width: 960px) {
+.pointer {
+    cursor: pointer;
+}
+@media (max-width: 48rem) {
     .divContainer {
+        /* flex-direction: column; */
+    }
+}
+@media (max-width: 21.5rem) {
+    .divContainer {
+        /* background: red; */
         flex-direction: column;
+        
     }
 }

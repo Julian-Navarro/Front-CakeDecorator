@@ -9,42 +9,41 @@ export default function Footer () {
   const violet = "#DBB5FA";
   const navigate = useNavigate()
     return (
-        <Div br="0"bg="#C7CAD6" wd="100%"minHg="9rem"zInd="-1"alItems="flex-start"pd=".5rem"
-          className={s.divContainer}>
+        <div className={s.divContainer}>
           <Div flexDir="column"alItems="flex-start"jfCont="flex-start"pd="2px">
             <Div wd="8rem" hg="6rem">
               <img src={logo} alt="" />
             </Div>
-            <Div jfCont="flex-start">
+            <Div jfCont="flex-start" className={s.pointer}>
               <img src={igIcon} alt=""className={s.icons}/>
               <P fWeight="bold"fSize=".9rem">Instagram</P>
             </Div>
-            <Div jfCont="flex-start">
+            <Div jfCont="flex-start" className={s.pointer}>
               <img src={fbIcon} alt=""className={s.icons}/>
               <P fWeight="bold"fSize=".9rem">Facebook</P>
             </Div>
           </Div>
           <Div flexDir="column"alItems="flex-start">
-            <Div jfCont="flex-start">
+            {/* <Div jfCont="flex-start">
               <img src={arrow}alt="" className={s.arrowRight}/>
               <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/home")}>Home</P>
-            </Div>
-            <Div jfCont="flex-start">
+            </Div> */}
+            <Div jfCont="flex-start" className={s.pointer}>
               <img src={arrow}alt="" className={s.arrowRight}/>
               <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/courses")}>Cursos</P>
             </Div>
-            <Div jfCont="flex-start">
+            <Div jfCont="flex-start" className={s.pointer}>
               <img src={arrow}alt="" className={s.arrowRight}/>
               <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/shop")}>Tienda</P>
             </Div>
-            <Div jfCont="flex-start">
+            {/* <Div jfCont="flex-start">
               <img src={arrow}alt="" className={s.arrowRight}/>
               <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/aboutUs")}>Nosotros</P>
-            </Div>
+            </Div> */}
           </Div>
-          <Div>
+          <Div className={s.pointer}>
             <P fWeight="bold"fSize=".9rem">Contactanos</P>
           </Div>
-        </Div>
+        </div>
     )
 }

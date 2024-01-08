@@ -90,9 +90,9 @@ return (
             display={breakPoint!="1"?displayOption==="line"?"flex":"none":"none"}
         >
             <div className={s.divIconGlass2}>
-                <img src={iconGlass}
+                {/* <img src={iconGlass}
                     onClick={()=>navigate(`/products/${id}`)}
-                />
+                /> */}
                 {
                 path==="adm"
                 ? <button className={s.btnEdit}
@@ -215,7 +215,7 @@ return (
                     <img src={iconAdd} className={s.iconAdd}/>
                   </div>
                   <div className={s.divIconGlass}>
-                    <img src={iconGlass} onClick={()=>navigate(`/products/${id}`)}className={s.iconGlass}/>
+                    {/* <img src={iconGlass} onClick={()=>navigate(`/products/${id}`)}className={s.iconGlass}/> */}
                     { path === "adm"?
 
                         <button className={s.btnEdit2}
