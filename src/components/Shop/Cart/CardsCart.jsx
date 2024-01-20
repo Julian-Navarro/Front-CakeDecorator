@@ -34,7 +34,11 @@ export default function CardsCart({ handlerSetCartFlag, cart, total}){
                 <div>
                   <div>
                     <p>Sub-Total</p>
-                    <p>2 items</p>
+                    <p>{cart.length} Items</p>
+                    <p>{cart.reduce((acumulador, valorActual) => {
+                        return acumulador + valorActual.amount;
+                        }, 0)} unidades
+                    </p>
                   </div>
                   <p className={s.total}>${total}</p>
                 </div>

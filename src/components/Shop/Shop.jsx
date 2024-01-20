@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCards from "./Products/ProductCards";
 import { HOST } from "../../utils";
-import { Div, P } from "../../utils/StyledComponents/StyledComponents"; 
+import { Div } from "../../utils/StyledComponents/StyledComponents"; 
 import Filters from "./Filters/Filters";
 import loading from "../../utils/IMAGES/loading-loading-gif.gif"
 import s from "./Shop.module.css"
@@ -17,27 +17,26 @@ export default function Shop({ breakPoint, path }) {
     brands: ["all"]
   });
   function handlerSetFilters(e) {
-    console.log("FFFFFF: event : ", e);
     if(e.target.value === "all") {
-      console.log(`Caso value All en key: ${e.target.name}`);
+      // console.log(`Caso value All en key: ${e.target.name}`);
       setFilters({
         ...filters,
         [e.target.name]: ["all"]
       })
     } else {
-      console.log(`Caso NO es All en key: ${e.target.name}`);
+      // console.log(`Caso NO es All en key: ${e.target.name}`);
       if(!filters[e.target.name].includes("all")) {
-        console.log("Caso all no está");
+        // console.log("Caso all no está");
         if(filters[e.target.name].includes(e.target.value)) {
-          console.log("Caso hay que borrar el valor");
+          // console.log("Caso hay que borrar el valor");
           if(filters[e.target.name].length === 1){
-            console.log("Caso borrar Length es 1");
+            // console.log("Caso borrar Length es 1");
             setFilters({
              ...filters,
              [e.target.name]: ["all"]
             });
           } else {
-            console.log("Caso borrar y length no es 1");
+            // console.log("Caso borrar y length no es 1");
             let index = filters[e.target.name].indexOf(e.target.value)
             let firstPart = filters[e.target.name].slice(0, index);  
             let secondPart = filters[e.target.name].slice(index + 1);
@@ -47,16 +46,14 @@ export default function Shop({ breakPoint, path }) {
             });
           };
         } else {
-          console.log("Caso no incluye el valor");
+          // console.log("Caso no incluye el valor");
           setFilters({
             ...filters,
             [e.target.name]: [...filters[e.target.name], e.target.value]
           }); 
         };
       } else {
-        console.log("Caso el primer valor es 'all' ");
-        console.log("VALUE: ", e.target.value);
-        console.log(filters[e.target.name][0]);
+        // console.log("Caso el primer valor es 'all' ");
           setFilters({
           ...filters,
           [e.target.name]: [e.target.value]
@@ -68,10 +65,10 @@ export default function Shop({ breakPoint, path }) {
   function applyFilters() {
     const filteredProducts = [];
     if(filters.categories[0] === "all" && filters.brands[0] === "all") {
-      console.log("Caso todo ALL");
+      // console.log("Caso todo ALL");
       setProducts(allProducts)
     } else if(filters.categories[0] !== "all" && filters.brands[0] !== "all") {
-      console.log("Caso ninguno es ALL, hay que filtrar ambos");
+      // console.log("Caso ninguno es ALL, hay que filtrar ambos");
       allProducts.forEach((pr)=> {
         let strCategories = pr.categories.join(" "); 
         let brandFlag = false;
@@ -84,8 +81,8 @@ export default function Shop({ breakPoint, path }) {
       });     
       setProducts(filteredProducts)
     } else if(filters.categories[0] === "all") {
-      console.log("Caso hay que filtrar un valor");
-      console.log("Caso hay que filtrar por marca");
+      // console.log("Caso hay que filtrar un valor");
+      // console.log("Caso hay que filtrar por marca");
       allProducts.forEach((pr)=> {
         let flag = false;
         filters.brands.forEach((br)=>pr.brand===br?flag=true:null)
@@ -95,8 +92,8 @@ export default function Shop({ breakPoint, path }) {
       });
       setProducts(filteredProducts)
     } else {
-      console.log("Caso hay que filtrar un valor");
-      console.log("Caso hay que filtrar por categoria");
+      // console.log("Caso hay que filtrar un valor");
+      // console.log("Caso hay que filtrar por categoria");
       allProducts.forEach((pr)=> {
         let flag = false;
         let str = pr.categories.join(" ");
@@ -197,44 +194,42 @@ export default function Shop({ breakPoint, path }) {
         if (index !== false) {
           console.log("SARASA");
           if (stock >= oldCart[index].amount + amountToAdd) {
-            console.log("CASO HAY CARRITO HAY INDEX & NO SE SUPERA EL STOCK",JSON.parse(localStorage.getItem("cart")));
+            // console.log("CASO HAY CARRITO HAY INDEX & NO SE SUPERA EL STOCK",JSON.parse(localStorage.getItem("cart")));
 
             oldCart[index].amount += amountToAdd;
             oldCart[index].total = oldCart[index].price * oldCart[index].amount;
-            let newCart = window.localStorage.setItem(
+            window.localStorage.setItem(
               "cart",
               JSON.stringify([...oldCart])
             );
             getProductsDB(); //! NO SÉ SI HACE FALTA ESTA LINEA
             return alert(`Agregaste de nuevo el producto ${name}`);
           } else {
-            console.log("CASO HAY CARRITO HAY INDEX & SE SUPERA EL STOCK DISPONIBLE");
+            // console.log("CASO HAY CARRITO HAY INDEX & SE SUPERA EL STOCK DISPONIBLE");
             oldCart[index].amount = stock
             oldCart[index].total = stock * oldCart[index].price;
             window.localStorage.setItem(
               "cart",
               JSON.stringify([...oldCart])
             );
-            console.log("SARACATUNGA");
-
             return alert("La cantidad que se quiere agregar excede el stock");
           }
         } else {
-          console.log(
-            "CASO SI EXISTE CARRITO Y NOOOOO TENGO INDEX",
-            JSON.parse(localStorage.getItem("cart"))
-          );
+          // console.log(
+          //   "CASO SI EXISTE CARRITO Y NOOOOO TENGO INDEX",
+          //   JSON.parse(localStorage.getItem("cart"))
+          // );
           if (stock !== 0) {
             if(amountToAdd <= stock) {
               product.total = product.price * amountToAdd;
-              let newCart = window.localStorage.setItem(
+              window.localStorage.setItem(
                 "cart",
                 JSON.stringify([...oldCart, product])
               );
             } else {
               product.total = product.price * stock;
               product.amount = stock
-              let newCart = window.localStorage.setItem(
+              window.localStorage.setItem(
                 "cart",
                 JSON.stringify([...oldCart, product])
               );
@@ -247,12 +242,12 @@ export default function Shop({ breakPoint, path }) {
           }
         }
       } else {
-        console.log("CASO NO EXISTE CARRITO", JSON.parse(localStorage.getItem("cart")));
+        // console.log("CASO NO EXISTE CARRITO", JSON.parse(localStorage.getItem("cart")));
         if (stock !== 0) {
           if(amountToAdd < stock) {
             product.total = product.price * amountToAdd; //! agregado "* amountToAdd"
   
-            let newCart = window.localStorage.setItem(
+            window.localStorage.setItem(
               "cart",
               JSON.stringify([product])
             );
@@ -261,7 +256,7 @@ export default function Shop({ breakPoint, path }) {
           } else {
               product.total = product.price * stock;
               product.amount = stock
-              let newCart = window.localStorage.setItem(
+              window.localStorage.setItem(
                 "cart",
                 JSON.stringify([product])
               );           
@@ -280,7 +275,7 @@ export default function Shop({ breakPoint, path }) {
   useEffect(() => {
     getProductsDB();
   }, []);
-
+  
   useEffect(() => {
     applyFilters()
   }, [flag, filters]);
@@ -311,7 +306,7 @@ export default function Shop({ breakPoint, path }) {
               />
             </Div>
           : <Div mt="7rem">
-              <img src={loading}/>
+              <img src={loading}alt=""/> 
             </Div> 
           }
         </Div>

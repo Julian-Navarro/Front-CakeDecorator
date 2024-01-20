@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function CourseCard({ title, type, category, img, videos }) {
-  // useEffect(() => {
-  //   console.log("ME RENDERIZO EN CARD");
-  // }, []);
   return (
     <div>
       <div>

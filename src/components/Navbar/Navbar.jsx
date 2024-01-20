@@ -80,8 +80,8 @@ return (
     jfCont="flex-start"br="0"
     zInd="10">
 
-    <Div pos="absolute"posRight="0"mr="1rem"zInd="4"mt=".5rem"
-      posTop="0px"wd="2.4rem" hg="2.4rem"br="50%"bg={"#fff"}
+    <Div pos="absolute"posRight="-.5rem"mr="1rem"zInd="4"mt=".5rem"
+      posTop="-.3rem"wd="2.4rem" hg="2.4rem"br="50%"bg={"#fff"}
       display="none"className={s.btnBurguer}
       onClick={()=>handlerCloseBarAccount()}
       >

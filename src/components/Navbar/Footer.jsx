@@ -6,7 +6,6 @@ import logo from "../../utils/IMAGES/Logo.png"
 import s from "./Footer.module.css"
 import { useNavigate } from "react-router-dom";
 export default function Footer () {
-  const violet = "#DBB5FA";
   const navigate = useNavigate()
     return (
         <div className={s.divContainer}>
@@ -24,10 +23,6 @@ export default function Footer () {
             </Div>
           </Div>
           <Div flexDir="column"alItems="flex-start">
-            {/* <Div jfCont="flex-start">
-              <img src={arrow}alt="" className={s.arrowRight}/>
-              <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/home")}>Home</P>
-            </Div> */}
             <Div jfCont="flex-start" className={s.pointer}>
               <img src={arrow}alt="" className={s.arrowRight}/>
               <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/courses")}>Cursos</P>
@@ -36,10 +31,6 @@ export default function Footer () {
               <img src={arrow}alt="" className={s.arrowRight}/>
               <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/shop")}>Tienda</P>
             </Div>
-            {/* <Div jfCont="flex-start">
-              <img src={arrow}alt="" className={s.arrowRight}/>
-              <P fWeight="bold"fSize=".9rem"onClick={()=>navigate("/aboutUs")}>Nosotros</P>
-            </Div> */}
           </Div>
           <Div className={s.pointer}>
             <P fWeight="bold"fSize=".9rem">Contactanos</P>
