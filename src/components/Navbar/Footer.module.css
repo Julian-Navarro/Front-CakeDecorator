@@ -1,6 +1,6 @@
 .divContainer {
     background: #C7CAD6;
-    background: #2c2760;
+    /* background: #2c2760; */
     z-index: -1;
     display: flex;
     padding: 1rem 2rem 1rem 1rem;
