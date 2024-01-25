@@ -1,6 +1,5 @@
 import CardCart from "./CardCart"
-import { Div, P } from "../../../utils/StyledComponents/StyledComponents"
-import { useEffect } from "react";
+import { Div } from "../../../utils/StyledComponents/StyledComponents"
 import s from "./CardCart.module.css"
 export default function CardsCart({ handlerSetCartFlag, cart, total}){
 
