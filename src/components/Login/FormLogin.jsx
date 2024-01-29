@@ -40,6 +40,7 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
     }
     async function validate() {
         console.log("SUBMIT INPUT: ",input);
+        
         const userDB = await axios.get(`${HOST}/users/userEmail/?email=${input.email}`);
         const user = userDB.data
 
