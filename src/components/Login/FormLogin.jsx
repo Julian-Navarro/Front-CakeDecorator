@@ -39,8 +39,8 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
         // console.log("INPUT: ", input);
     }
     async function validate() {
-        console.log("SUBMIT INPUT: ",input);
-        
+        // console.log("SUBMIT INPUT: ",input);
+
         const userDB = await axios.get(`${HOST}/users/userEmail/?email=${input.email}`);
         const user = userDB.data
 
@@ -62,14 +62,14 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
             if(user !== false){
 
                 const pwIsCorrect = await bcryptjs.compare(input.password, user.password)
-                console.log("PW IS CORRECT: ",pwIsCorrect);
+                // console.log("PW IS CORRECT: ",pwIsCorrect);
                 if(pwIsCorrect) {
                     if(user.status === "active"){
                         localStorage.setItem("loggedUser", JSON.stringify(user))
                         handlerSetLoggedUserFlag()
                         handlerSetUserFlagApp()
                         alert("Usuario logeado correctamente");
-                        navigate("/home")
+                        navigate("/courses")
                     }else{
                         errors.status = "Falta verificar la cuenta. Revisar correo"
                         alert("Falta verificar la cuenta. Revisá tu correo por favor.")
