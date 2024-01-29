@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const HOST = "http://localhost:3001";
+// export const HOST = "http://localhost:3001";
+export const HOST = "http://back-cake-decorator-web.onrender.com/";
 
 export async function postCourses(obj) {
   try {
