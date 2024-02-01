@@ -45,7 +45,7 @@ export default function Courses ({ path, componentCourseListFlag }) {
         return false
       }
     })
-    console.log("COMBINADOS: ", newCourses);
+    // console.log("COMBINADOS: ", newCourses);
     setCourses(newCourses)
   }
   function handlerCategoryFilter(){
@@ -56,7 +56,7 @@ export default function Courses ({ path, componentCourseListFlag }) {
         return false
       }
     })
-    console.log("CATEGORY: ", newCourses);
+    // console.log("CATEGORY: ", newCourses);
     setCourses(newCourses)
   }
   function handlerTypeFilter(){
@@ -67,18 +67,18 @@ export default function Courses ({ path, componentCourseListFlag }) {
         return false
       }
     })
-    console.log("CATEGORY: ", newCourses);
+    // console.log("CATEGORY: ", newCourses);
     setCourses(newCourses)
   }
 
   useEffect(()=>{
     dispatch(getCoursesFromDB())
-    console.log("1 - COURSES.jsx: ", courses);
+    // console.log("1 - COURSES.jsx: ", courses);
   }, [componentCourseListFlag])
 
   useEffect(()=>{
     handlerSetCourses();
-    console.log("2 - COURSES.jsx: ", courses);
+    // console.log("2 - COURSES.jsx: ", courses);
   },[allCourses, categoryFilter, typeFilter]) 
 return (
     <Div flexDir="column"bg="#fff"br="0">

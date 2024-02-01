@@ -39,8 +39,8 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
         // console.log("INPUT: ", input);
     }
     async function validate() {
-        // console.log("SUBMIT INPUT: ",input);
-
+        console.log("SUBMIT INPUT: ",input);
+        console.log("HOST: ",HOST);
         const userDB = await axios.get(`${HOST}/users/userEmail/?email=${input.email}`);
         const user = userDB.data
 
@@ -81,7 +81,7 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
             }
         }
         changeErrorsFlag()
-        console.log("ERRORS: ",errors);
+        // console.log("ERRORS: ",errors);
     }
 
     async function handlerSubmit (e) {
@@ -103,8 +103,8 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
             // console.log("USER STATE: ", loggedUser);
             setLoggedUserFlag(true)
         } else {
-            console.log("SETEANDO FLAG: ", loggedUserFlag);
-            console.log("USER STATE: ", loggedUser);
+            // console.log("SETEANDO FLAG: ", loggedUserFlag);
+            // console.log("USER STATE: ", loggedUser);
             setLoggedUserFlag(false)
         }
     }
@@ -122,7 +122,7 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
 
     useEffect(()=>{},[loggedUserFlag])
     useEffect(()=>{
-        console.log("US-EFF: BREAK POINT: ", breakPoint);
+        // console.log("US-EFF: BREAK POINT: ", breakPoint);
     },[breakPoint])
     return loggedUser === null
      ? (

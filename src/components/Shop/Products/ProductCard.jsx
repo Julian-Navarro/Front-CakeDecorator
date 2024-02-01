@@ -79,7 +79,7 @@ function handlerDeleteProduct (id) {
 }
 
 useEffect(() => {
-console.log(breakPoint);
+// console.log(breakPoint);
 },[displayOption, breakPoint])
 return (
     <div className={breakPoint!="1"?displayOption==="line"?s.containerAllLine:s.containerAllGrid:s.containerAllGrid}>

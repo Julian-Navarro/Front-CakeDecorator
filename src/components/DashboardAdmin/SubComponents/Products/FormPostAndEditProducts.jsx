@@ -658,8 +658,8 @@ export default function FormProductPostAndEdit ({ isPost }) {
   };
   function handlerSetInput(e){
     e.preventDefault();
-    console.log("E VALUE: ",e.target.value);
-    console.log("E NAME: ",e.target.name);
+    // console.log("E VALUE: ",e.target.value);
+    // console.log("E NAME: ",e.target.name);
     if(e.target.value !== "default") {
       if(e.target.name === "categories") {
         if(input.categories.includes(e.target.value)) {
@@ -757,8 +757,8 @@ export default function FormProductPostAndEdit ({ isPost }) {
     handleSetProductToEdit()
   }, [])
   useEffect(()=>{
-    console.log("INPUT: ", input);
-    console.log("productToEdit: ", productToEdit);
+    // console.log("INPUT: ", input);
+    // console.log("productToEdit: ", productToEdit);
   },[input, brands, categories, productToEdit])
   return (
   <div className={s.container}>

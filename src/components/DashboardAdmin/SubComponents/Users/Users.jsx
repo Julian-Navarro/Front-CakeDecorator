@@ -31,10 +31,10 @@ export default function Users () {
   };
 
   function handlerSetUsersByStatus(status) {
-  console.log("Ejecutando Funcion Block Users");
+  // console.log("Ejecutando Funcion Block Users");
   setCurrentPage(1)
   const newUsers = allUsers.filter((user) => user.status === status)
-  console.log(newUsers);
+  // console.log(newUsers);
   setUsers(newUsers)
   handlerSetFlag()
   }
@@ -84,10 +84,10 @@ function handlerSetSearchValue (e) {
 
 
 function handlerSearchValue() {
-  console.log("Ejecutando Funcion");
+  // console.log("Ejecutando Funcion");
   setCurrentPage(1)
   const newUsers = allUsers.filter((user) => user[searchValue.en].toLowerCase().includes(inputValue.toLowerCase()))
-  console.log(newUsers);
+  // console.log(newUsers);
   setUsers(newUsers)
   handlerSetFlag()
 }

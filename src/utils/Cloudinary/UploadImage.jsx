@@ -40,7 +40,7 @@ export default function CloudinaryUploader({
   }, [folder]);
 
   const handleUpload = async (e) => {
-    if (e.target.files[0] == undefined) return
+    // if (e.target.files[0] == undefined) return
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
@@ -50,7 +50,7 @@ export default function CloudinaryUploader({
     const response = await fetch(uploadImageUrl, {
       method: "POST",
       body: formData,
-    });
+    }).catch((err)=>{console.log(err);return err});
     const data = await response.json();
 
     if (folder === "imagenes_de_cursos") {

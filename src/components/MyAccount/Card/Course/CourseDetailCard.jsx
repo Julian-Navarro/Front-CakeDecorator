@@ -12,14 +12,14 @@ export default function CourseDetailCard() {
   }
 
   useEffect(() => {
-    console.log("ME RENDERIZO EN COURSE DETAILE 1");
+    // console.log("ME RENDERIZO EN COURSE DETAILE 1");
     getMyCourseDetail();
   },[]);
 
   useEffect(() => {
-    if (typeof myCourse === "object") {
-      console.log("ME RENDERIZO EN COURSE DETAILE 2");
-    }
+    // if (typeof myCourse === "object") {
+    //   console.log("ME RENDERIZO EN COURSE DETAILE 2");
+    // }
   }, [myCourse, productId]);
   return (
     <div>

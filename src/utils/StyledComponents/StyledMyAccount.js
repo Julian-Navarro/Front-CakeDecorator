@@ -49,7 +49,10 @@ export const BoxColumn = styled.div`
 export const StyledInput = styled.input`
   display: block;
   width: 100%;
-  cursor: ${(props) => console.log("CURS ", props.cr)} ${sharedStyle};
+  cursor: ${(props) => {
+      /* console.log("CURS ", props.cr)*/
+    }}
+    ${sharedStyle};
 `;
 export const StyledInputBlocked = styled(StyledInput)`
   cursor: not-allowed;
@@ -77,10 +80,10 @@ export const StyledButton = styled.button`
   box-sizing: border-box;
 `;
 export const BoxSaveButton = styled.div`
-display: flex;
-height: 125px;
-justify-content: flex-start;
-align-items: flex-end;
+  display: flex;
+  height: 125px;
+  justify-content: flex-start;
+  align-items: flex-end;
 `;
 
 export const StyledSaveButton = styled(StyledButton)`
@@ -106,7 +109,7 @@ export const StyledSaveButton = styled(StyledButton)`
 export const StyledAllowInputs = styled(StyledInput)`
   ${(success) => {
     let isSuccess = success.success.currentPassword;
-    console.log("SUC ", isSuccess);
+    // console.log("SUC ", isSuccess);
     if (isSuccess !== "success") {
       return css`
         opacity: 0.6;

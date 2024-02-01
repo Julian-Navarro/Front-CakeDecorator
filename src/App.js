@@ -73,7 +73,7 @@ function App() {
             path="/generateNewPass/:id"
             element={<GenerateNewPass />}
           ></Route>
-          <Route exact path="/home" element={<Home />} />
+          {/* <Route exact path="/home" element={<Home />} /> */}
           <Route exact path="/courses" element={<Courses path={false} />} />
           <Route exact path="/myAccount" element={<MyAccount />} />
           <Route
@@ -86,7 +86,7 @@ function App() {
             path="/myAccount/purchaseDetail/:id"
             element={<PurchaseDetailCard />}
           />
-          <Route exact path="/aboutUs" element={<AboutUs />} />
+          {/* <Route exact path="/aboutUs" element={<AboutUs />} /> */}
           <Route exact path="/createAccount" element={<FormPostUser />} />
           <Route
             exact

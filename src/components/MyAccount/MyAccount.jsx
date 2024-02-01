@@ -23,7 +23,7 @@ export default function MyAccount() {
   dispatch(findUserById(userStorage.id));
 },[])
 useEffect(()=>{
-  console.log(user);
+  // console.log(user);
 },[user])
   return (
     <div>

@@ -30,7 +30,7 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
     
 
   const handleVideoUpload = async (files) => {
-    console.log("FILES", files);
+    // console.log("FILES", files);
     setIsUploading(true);
 
     const uploadPromises = Array.from(files).map(async (file) => {
@@ -65,10 +65,10 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
           method: "POST",
           body: formData,
         });
-        console.log("RES ", response);
+        // console.log("RES ", response);
         if (response.ok) {
           const data = await response.json();
-          console.log("DATA ", data);
+          // console.log("DATA ", data);
           const { secure_url } = data;
           return secure_url;
         } else {
@@ -82,13 +82,13 @@ export default function CloudinaryUploadVideo({ input, setInput }) {
         return null;
       }
     });
-    console.log("PROMISE", uploadPromises);
+    // console.log("PROMISE", uploadPromises);
 
     Promise.all(uploadPromises)
       .then((results) => {
         setIsUploading(false);
         const validUrls = results.filter((url) => url !== null);
-        console.log("VALID URLS", validUrls);
+        // console.log("VALID URLS", validUrls);
 
         const newVideosUrls = [...videoUrls, ...validUrls];
         setVideoUrls(newVideosUrls);

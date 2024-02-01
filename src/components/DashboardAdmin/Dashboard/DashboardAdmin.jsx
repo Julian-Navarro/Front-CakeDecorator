@@ -22,12 +22,12 @@ export default function DashboardAdmin ({ breakPoint }) {
         setRender(value)
     }
     useEffect(()=>{
-      console.log(location.search);
+      // console.log(location.search);
       if(location?.search) {
-        console.log(location.search);
+        // console.log(location.search);
         setRender(location.search.split("=")[1])
       } else {
-        console.log("No location: ", location);
+        // console.log("No location: ", location);
       }
     }, [])
     useEffect(()=>{

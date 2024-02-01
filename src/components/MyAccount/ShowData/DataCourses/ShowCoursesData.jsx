@@ -17,7 +17,7 @@ export default function ShowCoursesData() {
   // const [input, setInput] = useState("");
 
   // console.log("SELECT STATE", selectType);
-  console.log("COPY", myCourses);
+  // console.log("COPY", myCourses);
 
   async function getMyCourses() {
     const response = await axios.get(
@@ -67,7 +67,7 @@ export default function ShowCoursesData() {
     // setSelectType(select);
     // setInput("");
 
-    console.log("SElECT PADRE", select);
+    // console.log("SElECT PADRE", select);
     if (select !== "" || select !== undefined) {
       const filtered = allMyCourses.filter(
         (course) => course.category === select

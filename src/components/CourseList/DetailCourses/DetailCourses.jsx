@@ -13,8 +13,13 @@ export default function DetailCourses () {
         const course = await axios.get(`${HOST}/courses/id?id=${id}`);
         setCourse(course.data)
     }
-    useEffect(()=>{getCourse(id);console.log(course);},[]);
-    useEffect(()=>{console.log(course?.id);},[course])
+    useEffect(()=>{
+        getCourse(id)
+        // console.log(course)
+    },[]);
+    useEffect(()=>{
+        // console.log(course?.id)
+    },[course])
 // BORDER IMG COLORS #C78BD7, #EFB1FF, #ABE6FF, #EFB1FF, #C78BD7
     return (
     <Div bg="#fff"br="0"mt="2rem"flexDir="column"
