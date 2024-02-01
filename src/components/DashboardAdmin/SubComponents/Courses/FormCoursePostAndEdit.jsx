@@ -183,7 +183,7 @@ export default function FormCoursePostAndEdit({ handlerSetComponentCourseListFla
 
 
   useEffect(()=>{
-    console.log("RENDERING FORM COURSES");
+    // console.log("RENDERING FORM COURSES");
   }, [formFlag, formPage])
 
   //! ********************** COLORES PARA CSS  **********************

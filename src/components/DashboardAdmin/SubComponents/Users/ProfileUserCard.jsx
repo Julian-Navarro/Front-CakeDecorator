@@ -22,7 +22,7 @@ function copiarAlPortapapeles(texto) {
   document.body.removeChild(inputTemp);
 }
     useEffect(()=>{
-      console.log(user);
+      // console.log(user);
     },[user])
     // courses: []
     // email: "user@gmail.com"

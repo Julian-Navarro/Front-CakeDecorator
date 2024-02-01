@@ -46,7 +46,7 @@ function handlerChange (e) {
 
 async function postUser(trimInput){
         // trimInput.password = await bcryptjs.hash(trimInput.password, 8)
-        console.log("TRIMINPUT",trimInput)
+        // console.log("TRIMINPUT",trimInput)
         await axios.post(`${HOST}/users`, {...trimInput, role: "user", status: "inactive"});
         alert("¡Revisá tu casilla de correo para verificar tu cuenta!")
         navigate("/")
@@ -130,11 +130,11 @@ async function validate() {
 
     if(newErrors.email === "" && newErrors.name === "" && newErrors.surname === "" && newErrors.phone === "" && newErrors.password === "" && newErrors.confirmPassword === "" ) {
         errors = newErrors
-        console.log("Entrando caso de postear usuario");
+        // console.log("Entrando caso de postear usuario");
         postUser(trimInput)
     } else {
         errors = newErrors
-        console.log("CASO NO SE PUEDE POSTEAR XQ HAY UN ERROR");
+        // console.log("CASO NO SE PUEDE POSTEAR XQ HAY UN ERROR");
     }
     // validate()
 }

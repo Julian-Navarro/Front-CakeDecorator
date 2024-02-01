@@ -20,10 +20,10 @@ export default function GenerateNewPass() {
   function changeErrorsFlag() {
     if (errorsFlag === true) {
       setErrorsFlag(false);
-      console.log(errorsFlag);
+      // console.log(errorsFlag);
     } else {
       setErrorsFlag(true);
-      console.log(errorsFlag);
+      // console.log(errorsFlag);
     }
   }
 

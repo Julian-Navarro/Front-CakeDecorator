@@ -169,7 +169,7 @@ export default function ShowProfileData() {
   }
 
   function resetInputsPasswords() {
-    console.log("Entre ? ");
+    // console.log("Entre");
     setCurrentPassword("");
     setNewPassword("");
     setConfirmPassword("");

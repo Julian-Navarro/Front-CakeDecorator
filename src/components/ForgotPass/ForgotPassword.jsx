@@ -14,15 +14,15 @@ export default function ForgotPassword() {
   const [input, setInput] = useState({
     email: "",
   });
-  console.log("INPUT", input);
+  // console.log("INPUT", input);
 
   function changeErrorsFlag() {
     if (errorsFlag === true) {
       setErrorsFlag(false);
-      console.log(errorsFlag);
+      // console.log(errorsFlag);
     } else {
       setErrorsFlag(true);
-      console.log(errorsFlag);
+      // console.log(errorsFlag);
     }
   }
 
@@ -40,7 +40,7 @@ export default function ForgotPassword() {
     let userInfo = await axios.get(
       `${HOST}/users/forgotPassword?email=${trimInput.email}`
     );
-    console.log("RES", userInfo);
+    // console.log("RES", userInfo);
 
     if (userInfo && userInfo.data !== "") {
       alert("Te enviamos un mail para cambiar la contraseña. ¡Revisalo!");

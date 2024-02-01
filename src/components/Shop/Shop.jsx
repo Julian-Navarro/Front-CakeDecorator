@@ -192,7 +192,7 @@ export default function Shop({ breakPoint, path }) {
         });
         //? Pregunto si encontré en oldcart el producto que quiero agregar nuevamente
         if (index !== false) {
-          console.log("SARASA");
+          // console.log("AAAAAAAAAAA");
           if (stock >= oldCart[index].amount + amountToAdd) {
             // console.log("CASO HAY CARRITO HAY INDEX & NO SE SUPERA EL STOCK",JSON.parse(localStorage.getItem("cart")));
 

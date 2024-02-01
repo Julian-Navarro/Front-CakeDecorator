@@ -6,7 +6,7 @@ import { HOST } from "../../../../utils";
 export default function PurchaseDetailCard() {
   const productId = useParams();
   const [myProduct, setMyProduct] = useState(false);
-  console.log("PRODUCT", myProduct);
+  // console.log("PRODUCT", myProduct);
 
   async function getMyProduct() {
     const productFinded = await axios.get(

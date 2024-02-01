@@ -99,7 +99,7 @@ useEffect(()=>{
     getBrands()
 },[flag])
 useEffect(()=>{
-    console.log(brands, categories)
+    // console.log(brands, categories)
 },[categories, input])
     return (
         <div className={s.container}>

@@ -47,7 +47,7 @@ export async function postProduct(input) {
 }
 export async function editProduct(input) {
   try {
-    console.log("111111111111", input);
+    // console.log("111111111111", input);
     let product = await axios.put(`${HOST}/products/${input.id}`, input);
 
     return product.data;
