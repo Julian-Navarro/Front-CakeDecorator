@@ -25,7 +25,7 @@ export default function CardsCart({ handlerSetCartFlag, cart, total}){
             img={pr.img}
             />
             )
-            : null 
+            : <p className={s.noProducts}>No sumaste productos a tu carrito</p> 
             }
             <div className={s.containerSubTotal}>
               <div className={s.line}></div>
