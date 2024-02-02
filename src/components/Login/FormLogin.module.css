@@ -28,6 +28,23 @@
     outline: none;
     font-family: 'Roboto';
 }
+.btnCloseSesion {
+    width: fit-content;
+    height: 1.8rem;
+    padding: 0 2rem 0 2rem;
+    background: #B39BE5;
+    border-radius: 1rem;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: .05rem;
+    transition: .3s;
+    font-family: Roboto;
+    box-shadow: .1rem .1rem .3rem .1rem #25252586;
+}
+.btnCloseSesion:hover {
+    background: #9bcee5
+}
 @media (max-width: 550px) {
     .title {
         display: none !important;

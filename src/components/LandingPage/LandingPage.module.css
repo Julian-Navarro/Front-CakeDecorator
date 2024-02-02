@@ -15,6 +15,21 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.divRecomendedUser {
+    width: 90%;
+    background: lightgray;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 4rem;
+    margin-bottom: 2rem;
+}
+.divRecomendedUser > h2 {
+    color: red;
+    font-weight: bold;
+
+}
+.divRecomendedUser label {
+    font-weight: bold;
+}
 @media (max-width: 550px) {
     .divContainer {
         padding: 0 !important;

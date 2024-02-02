@@ -11,6 +11,11 @@ return (
       <Div flexDir="column"wd="100%"minHg="100vh"
         jfCont="flex-start"bg="#fff"pd=".5rem"br="0"
         className={s.divContainer}>
+        <div className={s.divRecomendedUser}>
+          <h2>Recomendamos logear con el siguiente usuario para poder explorar las funciones de administrador</h2>
+          <p><label htmlFor="">E-mail: </label> admin@gmail.com</p>
+          <p><label>Contraseña: </label> asdqweasdA1</p>
+        </div>
         <FormLogin breakPoint={breakPoint}
           handlerSetUserFlagApp={handlerSetUserFlagApp}/>
         <LinkCourses/>
