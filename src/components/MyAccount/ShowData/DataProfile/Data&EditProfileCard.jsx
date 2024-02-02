@@ -67,7 +67,7 @@ export default function ShowProfileData() {
   function notify (succes, msg) {
       toast[succes](msg);
   };
-  // console.log("HAVE CHAN: ", haveChanges);
+  // console.log("HAVE CHANGES: ", haveChanges);
   // console.log("ERRORS: ", errors);
   // console.log("INPUT: ", input);
   // console.log("USER: ", userInfo);
@@ -81,8 +81,7 @@ export default function ShowProfileData() {
       email: typeof input.email === "string" ? input.email?.trim() : "",
       name: typeof input.name === "string" ? input.name?.trim() : "",
       surname: typeof input.surname === "string" ? input.surname?.trim() : "",
-      phone:
-        typeof input.phone.toString() === "string"
+      phone: typeof input.phone.toString() === "string"
           ? input.phone.toString().trim()
           : "",
       currentPassword:
