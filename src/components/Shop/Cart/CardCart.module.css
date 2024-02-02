@@ -122,6 +122,11 @@
     color: #404040;
     margin-top: .5rem;
 }
+.noProducts {
+    font-size: 1.2rem;
+    font-family: Roboto;
+    
+}
 @media (max-width: 32.5rem) {
     .container {
         /* background: lightgray; */
