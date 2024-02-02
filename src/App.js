@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./components/Home/Home.jsx";
-import AboutUs from "./components/AboutUs/AboutUs";
+// import Home from "./components/Home/Home.jsx";
+// import AboutUs from "./components/AboutUs/AboutUs";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Courses from "./components/CourseList/Courses.jsx";
 import CourseDetailCard from "./components/MyAccount/Card/Course/CourseDetailCard.jsx";

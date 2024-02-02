@@ -39,8 +39,8 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
         // console.log("INPUT: ", input);
     }
     async function validate() {
-        console.log("SUBMIT INPUT: ",input);
-        console.log("HOST: ",HOST);
+        // console.log("SUBMIT INPUT: ",input);
+        // console.log("HOST: ",HOST);
         const userDB = await axios.get(`${HOST}/users/userEmail/?email=${input.email}`);
         const user = userDB.data
 
@@ -110,7 +110,7 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
     }
     function handlerCloseSesion (e) {
         e.preventDefault();
-        localStorage.clear()
+        localStorage.removeItem("loggedUser")
         handlerSetLoggedUserFlag()
         handlerSetUserFlagApp()
         setLoggedUser(null)
@@ -187,7 +187,7 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
                     >
                     Ingresar
                 </Button>
-                <P cursor="pointer"fSize=".85rem"_hovCol="#5A5AEA"mt="2rem"
+                <P cursor="pointer"fSize=".85rem"_hovCol="#5A5AEA"mt=".5rem"
                     pd="0 1rem 0 1rem"bg="transparent"color="#333"
                     onClick={()=>navigate("/forgotPassword")}>
                     ¿Olvidaste tu contraseña?
@@ -201,5 +201,15 @@ export default function Login ({handlerSetUserFlagApp, breakPoint}) {
             </Div>
         </Div>
     )
-    : null
+    : <button onClick={(e)=>handlerCloseSesion(e)}
+        wd="16rem"
+        bd=".1rem solid #B39BE5"
+        fSize=".9rem"
+        br="2rem"
+        jfCont="center"
+        color="#B39BE5"
+        fWeight="bold"
+        className={s.btnCloseSesion}
+        >Cerrar Sesión
+      </button>
 }
